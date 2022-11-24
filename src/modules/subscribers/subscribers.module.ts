@@ -20,12 +20,6 @@ export default class Subscriber implements SubscriberInterface {
      * @params {Object} - List Subscribers params
      */
     public get(params: GetParams): Promise<AxiosResponse<any, any>> {
-        if (params.filter) {
-            params.filter = { //  because it should be looking like ?filter[status]=xxx
-                status: params.filter
-            };
-        }
-
         return request(`/api/subscribers`, {
             method: "GET",
             params: params

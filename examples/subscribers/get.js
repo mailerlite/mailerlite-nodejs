@@ -13,7 +13,9 @@ const mailerlite = new MailerLite({
 
 let myArgs = {};
 if (process.argv.slice(2).length) {
-  myArgs.filter = String(process.argv[2]);
+  myArgs.filter = {
+    status: String(process.argv[2])
+  };
   myArgs.limit = parseInt(process.argv[3]);
   myArgs.page = parseInt(process.argv[4]);
 }

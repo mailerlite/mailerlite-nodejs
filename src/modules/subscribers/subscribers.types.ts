@@ -9,7 +9,9 @@ export interface SubscriberInterface {
 }
 
 export type GetParams = {
-    filter?: object | "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
+    filter?: {
+        status: "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk" // because it should be looking like ?filter[status]=xxx
+    };
     /**
      * @default 25
      */
