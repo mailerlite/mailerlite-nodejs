@@ -23,7 +23,7 @@ export type GetParams = {
 }
 
 export type CreateOrUpdateParams = {
-    email?:             string
+    email:              string
     fields?:	        object;
     groups?:	        Array<string>;
     status?:	        "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
