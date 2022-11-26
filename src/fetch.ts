@@ -3,14 +3,14 @@ import { Config }  from './modules/types'
 
 type Options = {
     headers?: object;
-    method?: string;
+    method: string;
     body?: null | object;
     params?: object;
 }
 
-export default function request(endpoint: string = "", options: Options = {}, config: Config) {
+export default function request(endpoint: string = "", options: Options, config: Config) {
 
-    const {headers = {}, method = 'GET', body = null, params = {}} = options
+    const {headers = {}, method, body = null, params = {}} = options
 
     let queryString = serializeQuery(params)
     queryString = queryString ? `?${queryString}` : ''
