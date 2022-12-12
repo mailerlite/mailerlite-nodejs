@@ -1,4 +1,4 @@
-// node examples/subscribers/create.js
+// node examples/subscribers/createOrUpdate.js
 
 "use strict";
 
