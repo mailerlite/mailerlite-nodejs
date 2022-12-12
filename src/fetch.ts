@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Config }  from './modules/types'
 
-type Options = {
+interface Options {
     headers?: object;
     method: string;
     body?: null | object;

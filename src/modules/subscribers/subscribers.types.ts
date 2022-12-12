@@ -8,7 +8,7 @@ export interface SubscriberInterface {
     delete:         (subscriber_id: string) => Promise<AxiosResponse<any, any>>;
 }
 
-export type GetParams = {
+export interface GetParams {
     filter?: {
         status: "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk"; // because it should be looking like ?filter[status]=xxx
     };
@@ -22,7 +22,7 @@ export type GetParams = {
     page?: number;
 }
 
-export type CreateOrUpdateParams = {
+export interface CreateOrUpdateParams {
     email:              string;
     fields?:	        object;
     groups?:	        Array<string>;
@@ -34,7 +34,7 @@ export type CreateOrUpdateParams = {
     unsubscribed_at?:	string;
 }
 
-type Meta = {
+interface Meta {
     current_page:   number;
     from:           number;
     last_page:      number;
@@ -45,7 +45,7 @@ type Meta = {
     total:          number;
 }
 
-type SubscriberObject = {
+interface SubscriberObject {
     id:             string;
     email:          string;
     status:         string;
@@ -75,7 +75,7 @@ type SubscriberObject = {
     optin_ip:       string;
 }
 
-export type ListAllResponse = {
+export interface ListAllResponse {
     data: Array<SubscriberObject>;
     links: {
         first:  string;
@@ -86,10 +86,10 @@ export type ListAllResponse = {
     meta: Meta;
 }
 
-export type SingleSubscriberResponse = {
+export interface SingleSubscriberResponse {
     data: SubscriberObject;
 }
 
-export type SubscribersCountResponse = {
+export interface SubscribersCountResponse {
     total: number;
 }
