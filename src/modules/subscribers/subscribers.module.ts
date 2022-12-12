@@ -3,7 +3,7 @@ import request from '../../fetch.js'
 
 import type { Config }  from '../types'
 import { AxiosResponse } from "axios";
-import type { GetParams, CreateOrUpdateParams, SubscriberInterface } from './subscribers.types.js';
+import type { GetParams, CreateOrUpdateParams, SubscriberInterface, ListAllResponse, SingleSubscriberResponse, SubscribersCountResponse } from './subscribers.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -19,7 +19,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @params {Object} - List Subscribers params
      */
-    public get(params: GetParams): Promise<AxiosResponse<any, any>> {
+    public get(params: GetParams): Promise<AxiosResponse<ListAllResponse>> {
         return request(`/api/subscribers`, {
             method: "GET",
             params: params
@@ -33,7 +33,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @requestBody {Object} - Subscriber data for create or update
      */
-    public createOrUpdate(requestBody: CreateOrUpdateParams): Promise<AxiosResponse<any, any>> {
+    public createOrUpdate(requestBody: CreateOrUpdateParams): Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateParams>> {
         return request(`/api/subscribers`, {
             method: "POST",
             body: requestBody
@@ -47,7 +47,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @subscriber_id {String} - Subscriber ID
      */
-    public find(subscriber_id: string): Promise<AxiosResponse<any, any>> {
+    public find(subscriber_id: string): Promise<AxiosResponse<SingleSubscriberResponse>> {
 
         validateSubscriberId(subscriber_id);
 
@@ -61,7 +61,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @see https://developers.mailerlite.com/docs/subscribers.html#fetch-total-subscribers-count
      */
-    public getCount(): Promise<AxiosResponse<any, any>> {
+    public getCount(): Promise<AxiosResponse<SubscribersCountResponse>> {
         const params = {
             limit: 0
         }
@@ -79,7 +79,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @subscriber_id {String} - Subscriber ID
      */
-    public delete(subscriber_id: string): Promise<AxiosResponse<any, any>> {
+    public delete(subscriber_id: string): Promise<AxiosResponse<null>> {
         validateSubscriberId(subscriber_id);
 
         return request(`/api/subscribers/${subscriber_id}`, {
