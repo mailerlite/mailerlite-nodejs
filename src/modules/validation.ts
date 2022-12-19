@@ -1,9 +1,9 @@
-export function validateSubscriberId (subscriber_id: string): void {
-    if (typeof subscriber_id === 'number') { // Shouldn't use parseInt() because Number.MAX_SAFE_INTEGER < subscriber_id
-        throw new Error("subscriber_id must be of type string");
+export function validateId (id: string): void {
+    if (!id) {
+        throw new Error("ID must be provided");
     }
 
-    if (!subscriber_id) {
-        throw new Error("Subscriber ID must be provided");
+    if (typeof id === 'number') { // Shouldn't use toString() because Number.MAX_SAFE_INTEGER < ID
+        throw new Error("ID must be of type string");
     }
 }
