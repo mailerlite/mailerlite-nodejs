@@ -16,12 +16,17 @@
   <br />
 </div>
 
-# Table of Contents
-
-- [Installation](#installation)
 
 # Installation
 
 ```bash
 npm install mailerlite-nodejs
 ```
+
+# Usage
+- [Subscribers](src/modules/subscribers/README.md)
+  * [List all subscribers](src/modules/subscribers/README.md#list-all-subscribers)
+  * [Create/update subscriber](src/modules/subscribers/README.md#createupdate-subscriber)
+  * [Fetch a subscriber](src/modules/subscribers/README.md#fetch-a-subscriber)
+  * [Fetch total subscribers count](src/modules/subscribers/README.md#fetch-total-subscribers-count)
+  * [Delete a subscriber](src/modules/subscribers/README.md#delete-a-subscriber)
