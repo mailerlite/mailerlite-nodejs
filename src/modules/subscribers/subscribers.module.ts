@@ -1,4 +1,4 @@
-import { validateSubscriberId } from '../validation.js';
+import { validateId } from '../validation.js';
 import request from '../../fetch.js'
 
 import type { Config }  from '../types'
@@ -49,7 +49,7 @@ export default class Subscriber implements SubscriberInterface {
      */
     public find(subscriber_id: string): Promise<AxiosResponse<SingleSubscriberResponse>> {
 
-        validateSubscriberId(subscriber_id);
+        validateId(subscriber_id);
 
         return request(`/api/subscribers/${subscriber_id}`, {
             method: "GET"
@@ -80,7 +80,7 @@ export default class Subscriber implements SubscriberInterface {
      * @subscriber_id {String} - Subscriber ID
      */
     public delete(subscriber_id: string): Promise<AxiosResponse<null>> {
-        validateSubscriberId(subscriber_id);
+        validateId(subscriber_id);
 
         return request(`/api/subscribers/${subscriber_id}`, {
             method: "DELETE"
