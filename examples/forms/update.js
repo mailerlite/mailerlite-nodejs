@@ -1,4 +1,4 @@
-// node examples/subscribers/find.js ID_string
+// node examples/forms/update.js ID_string
 
 "use strict";
 
@@ -11,12 +11,16 @@ const mailerlite = new MailerLite({
   api_key: process.env.API_KEY,
 });
 
-let subscriber_id = null
+let form_id = null
 if (process.argv.slice(2).length) {
-  subscriber_id = process.argv[2];
+  form_id = process.argv[2];
 }
 
-mailerlite.subscribers.find(subscriber_id)
+const requestBody = {
+  name: 'Updated name'
+}
+
+mailerlite.forms.update(form_id, requestBody)
   .then(response => {
     console.log(response.data);
   })
@@ -24,3 +28,4 @@ mailerlite.subscribers.find(subscriber_id)
     if (error.response) console.log(error.response.data);
     console.log(error.message);
   });
+

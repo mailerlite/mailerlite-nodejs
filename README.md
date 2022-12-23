@@ -38,3 +38,7 @@ npm install mailerlite-nodejs
     * [Schedule a campaign](src/modules/campaigns/README.md#schedule-a-campaign)
     * [Cancel a ready campaign](src/modules/campaigns/README.md#cancel-a-ready-campaign)
     * [Delete a campaign](src/modules/campaigns/README.md#delete-a-campaign)
+- [Forms](src/modules/forms/README.md)
+    * [List all forms](src/modules/forms/README.md#list-all-forms)
+    * [Update a form](src/modules/forms/README.md#update-a-form)
+    * [Delete a form](src/modules/forms/README.md#delete-a-form)
