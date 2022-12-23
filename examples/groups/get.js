@@ -1,4 +1,4 @@
-// node examples/groups/get.js sent regular 25 1
+// node examples/groups/get.js
 
 "use strict";
 
@@ -15,7 +15,7 @@ let params = {
   limit: 5,
   page: 1,
   filter: {
-      name: "dummy"
+      name: ""
   },
   sort: "-name" // name, total, open_rate, click_rate, created_at
 };

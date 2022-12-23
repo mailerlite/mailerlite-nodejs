@@ -97,7 +97,7 @@ interface SubscriberObject {
         state:        string;
         z_i_p:        string;
     };
-    groups: [];
+    groups:           Array<string>;
     opted_in_at:      string;
     optin_ip:         string;
 }
