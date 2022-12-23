@@ -39,7 +39,6 @@ export interface CreateUpdateParams {
 }
 
 export interface SubscriberParams {
-    group_id: string;
     filter?: {
         /**
          * @default "active"

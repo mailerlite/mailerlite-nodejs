@@ -17,7 +17,6 @@ if (process.argv.slice(2).length) {
 }
 
 const params = {
-  group_id: "GROUP_ID",
   filter: {
       status: "active" // active, unsubscribed, unconfirmed, bounced or junk
   },
