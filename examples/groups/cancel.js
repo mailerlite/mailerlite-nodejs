@@ -13,7 +13,7 @@ const mailerlite = new MailerLite({
 
 let group_id = null
 if (process.argv.slice(2).length) {
-  group_id = process.argv[2];
+  group_id = String(process.argv[2]);
 }
 
 mailerlite.groups.cancel(group_id)

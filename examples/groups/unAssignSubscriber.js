@@ -13,8 +13,8 @@ const mailerlite = new MailerLite({
 
 let subscriber_id = null
 let group_id = null
-if (process.argv.slice(2).length) subscriber_id = process.argv[2];
-if (process.argv.slice(3).length) group_id = process.argv[3];
+if (process.argv.slice(2).length) subscriber_id = String(process.argv[2]);
+if (process.argv.slice(3).length) group_id = String(process.argv[3]);
 
 mailerlite.groups.unAssignSubscriber(subscriber_id, group_id)
   .then(response => {
