@@ -42,3 +42,8 @@ npm install mailerlite-nodejs
     * [List all forms](src/modules/forms/README.md#list-all-forms)
     * [Update a form](src/modules/forms/README.md#update-a-form)
     * [Delete a form](src/modules/forms/README.md#delete-a-form)
+- [Segments](src/modules/segments/README.md)
+    * [List all segments](src/modules/segments/README.md#list-all-segments)
+    * [Get subscribers belonging to a segment](src/modules/segments/README.md#get-subscribers-belonging-to-a-segment)
+    * [Update segment](src/modules/segments/README.md#update-segment)
+    * [Delete segment](src/modules/segments/README.md#delete-segment)
