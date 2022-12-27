@@ -42,3 +42,8 @@ npm install mailerlite-nodejs
     * [List all forms](src/modules/forms/README.md#list-all-forms)
     * [Update a form](src/modules/forms/README.md#update-a-form)
     * [Delete a form](src/modules/forms/README.md#delete-a-form)
+- [Fields](src/modules/fields/README.md)
+    * [List all fields](src/modules/fields/README.md#list-all-fields)
+    * [Create a field](src/modules/fields/README.md#create-a-field)
+    * [Update a field](src/modules/fields/README.md#update-a-field)
+    * [Delete a field](src/modules/fields/README.md#delete-a-field)
