@@ -55,4 +55,8 @@ npm install mailerlite-nodejs
     * [Get subscribers belonging to a segment](src/modules/segments/README.md#get-subscribers-belonging-to-a-segment)
     * [Update segment](src/modules/segments/README.md#update-segment)
     * [Delete segment](src/modules/segments/README.md#delete-segment)
-
+- [Fields](src/modules/fields/README.md)
+    * [List all fields](src/modules/fields/README.md#list-all-fields)
+    * [Create a field](src/modules/fields/README.md#create-a-field)
+    * [Update a field](src/modules/fields/README.md#update-a-field)
+    * [Delete a field](src/modules/fields/README.md#delete-a-field)

@@ -15,6 +15,9 @@ import { GroupsInterface } from "./modules/groups/groups.types";
 import Segment from './modules/segments/segments.module.js';
 import { SegmentsInterface } from "./modules/segments/segments.types";
 
+import Field from './modules/fields/fields.module.js';
+import { FieldsInterface } from "./modules/fields/fields.types";
+
 export default class MailerLite {
 
     private config: Config;
@@ -23,6 +26,7 @@ export default class MailerLite {
     public forms: FormsInterface;
     public groups: GroupsInterface;
     public segments: SegmentsInterface;
+    public fields: FieldsInterface;
 
     constructor(params: { api_key: string; }) {
         this.config = {
@@ -35,5 +39,6 @@ export default class MailerLite {
         this.forms = new Form(this.config);
         this.groups = new Group(this.config);
         this.segments = new Segment(this.config);
+        this.fields = new Field(this.config);
     }
 };
