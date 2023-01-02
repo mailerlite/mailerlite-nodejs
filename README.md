@@ -50,3 +50,9 @@ npm install mailerlite-nodejs
     * [Get subscribers belonging to a group](src/modules/groups/README.md#get-subscribers-belonging-to-a-group)
     * [Assign subscriber to a group](src/modules/groups/README.md#assign-subscriber-to-a-group)
     * [Unassign subscriber from a group](src/modules/groups/README.md#unassign-subscriber-from-a-group)
+- [Segments](src/modules/segments/README.md)
+    * [List all segments](src/modules/segments/README.md#list-all-segments)
+    * [Get subscribers belonging to a segment](src/modules/segments/README.md#get-subscribers-belonging-to-a-segment)
+    * [Update segment](src/modules/segments/README.md#update-segment)
+    * [Delete segment](src/modules/segments/README.md#delete-segment)
+
