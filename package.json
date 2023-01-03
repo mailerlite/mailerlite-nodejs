@@ -4,6 +4,11 @@
   "description": "Node.js helper module for MailerLite API",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mailerlite/mailerlite-nodejs.git"
