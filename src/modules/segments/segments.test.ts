@@ -44,7 +44,9 @@ describe("Segments", () => {
     });
 
     it("Get subscribers belonging to a segment", async () => {
-        if (!segmentId) return;
+        if (!segmentId) {
+            throw 'No segments found';
+        }
 
         const params: GetSubscribersParams = {
             filter: {
