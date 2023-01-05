@@ -45,7 +45,7 @@ interface Meta {
     total:          number;
 }
 
-interface SubscriberObject {
+export interface SubscriberObject {
     id:             string;
     email:          string;
     status:         string;
