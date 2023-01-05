@@ -64,3 +64,6 @@ npm install mailerlite-nodejs
     * [Get a list of sent campaigns](src/modules/stats/README.md#get-a-list-of-sent-campaigns)
     * [Get stats for a sent campaign](src/modules/stats/README.md#get-stats-for-a-sent-campaign)
     * [Get a subscribers of sent campaign](src/modules/stats/README.md#get-a-subscribers-of-sent-campaign)
+    * [Get a list of forms by type](src/modules/stats/README.md#get-a-list-of-forms-by-type)
+    * [Get forms count by type](src/modules/stats/README.md#get-forms-count-by-type)
+    * [Get subscribers of a form](src/modules/stats/README.md#get-subscribers-of-a-form)
