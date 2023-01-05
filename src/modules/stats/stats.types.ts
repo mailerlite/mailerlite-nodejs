@@ -1,10 +1,10 @@
 import { AxiosResponse } from "axios";
 
-import type { GetParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
+import type { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
 import type { SubscriberObject } from '../subscribers/subscribers.types.js'
 
 export interface StatsInterface {
-    getSentCampaigns:           (params: GetParams)     => Promise<AxiosResponse<ListCampaignsResponse>>;
+    getSentCampaigns:           (params: GetCampaignsParams)     => Promise<AxiosResponse<ListCampaignsResponse>>;
     getSentCampaignStats:       (campaign_id: string)   => Promise<CampaignStats | AxiosResponse>;
     getSentCampaignSubscribers: (campaign_id: string, requestBody: CampaignSubscribersActivityParams) => Promise<AxiosResponse<CampaignSubscribersActivityResponse>>;
 }
