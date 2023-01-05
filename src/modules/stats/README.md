@@ -76,3 +76,77 @@ mailerlite.stats.getSentCampaignStats("CAMPAIGN_ID")
     if (error.response) console.log(error.response.data);
   });
 ```
+
+### Get a list of forms by type
+[Official Documentation](https://developers.mailerlite.com/docs/forms.html#list-all-forms)
+
+---
+```javascript
+import { MailerLite } from "MailerLite";
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+
+const params = {
+  sort: "created_at",
+  limit: 10,
+  page: 1
+};
+
+mailerlite.stats.getFormsByType("FORM_TYPE", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Get forms count by type
+
+---
+```javascript
+import { MailerLite } from "MailerLite";
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+
+mailerlite.stats.getFormsCountByType("FORM_TYPE")
+  .then(count => {
+    console.log(`Number of ${FORM_TYPE}: ${count}`);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+    console.log(error.message);
+  });
+```
+
+### Get subscribers of a form
+[Official Documentation](https://developers.mailerlite.com/docs/forms.html#get-subscribers-who-signed-up-to-a-specific-form)
+
+---
+```javascript
+import { MailerLite } from "MailerLite";
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+
+const params = {
+  filter: {
+    status: "active", // possible status: active, unsubscribed, unconfirmed, bounced, junk
+  },
+  limit: 10,
+  page:  1
+}
+
+mailerlite.stats.getFormSubscribers("FORM_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```

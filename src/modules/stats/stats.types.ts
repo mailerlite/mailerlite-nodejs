@@ -1,12 +1,18 @@
 import { AxiosResponse } from "axios";
 
-import type { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
-import type { SubscriberObject } from '../subscribers/subscribers.types.js'
+import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
+import { SubscriberObject } from '../subscribers/subscribers.types.js'
+import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types";
+import { ListSubscribersResponse } from "../subscribers/subscribers.types.js";
 
 export interface StatsInterface {
-    getSentCampaigns:           (params: GetCampaignsParams)     => Promise<AxiosResponse<ListCampaignsResponse>>;
-    getSentCampaignStats:       (campaign_id: string)   => Promise<CampaignStats | AxiosResponse>;
-    getSentCampaignSubscribers: (campaign_id: string, requestBody: CampaignSubscribersActivityParams) => Promise<AxiosResponse<CampaignSubscribersActivityResponse>>;
+    getSentCampaigns:           (params: GetCampaignsParams)                                            => Promise<AxiosResponse<ListCampaignsResponse>>;
+    getSentCampaignStats:       (campaign_id: string)                                                   => Promise<CampaignStats | AxiosResponse>;
+    getSentCampaignSubscribers: (campaign_id: string, requestBody: CampaignSubscribersActivityParams)   => Promise<AxiosResponse<CampaignSubscribersActivityResponse>>;
+
+    getFormsByType:         (type: FormTypes, params: GetFormsParams)           => Promise<AxiosResponse<ListFormsResponse>>;
+    getFormsCountByType:    (type: FormTypes)                                   => Promise<number | AxiosResponse>;
+    getFormSubscribers:     (form_id: string, params: FormsSubscribersParams)   => Promise<AxiosResponse<ListSubscribersResponse>>;
 }
 
 
@@ -23,6 +29,23 @@ export interface CampaignSubscribersActivityParams {
      * @default "id"
      */
     sort?:  "id" | "updated_at" | "clicks_count" | "opens_count";
+    page?:  number;
+}
+
+export interface FormsSubscribersParams {
+    /**
+     * @default active
+     */
+    filter?: {
+        status?: "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
+    },
+    /**
+     * @default 25
+     */
+    limit?: number;
+    /**
+     * @default 1
+     */
     page?:  number;
 }
 
