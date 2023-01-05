@@ -3,7 +3,7 @@ import request from '../../fetch.js'
 
 import type { Config }  from '../types'
 import { AxiosResponse } from "axios";
-import type { FormsInterface, GetParams, ListAllResponse, SingleFormResponse, UpdateParams, FormTypes } from './forms.types.js';
+import type { FormsInterface, GetFormsParams, ListFormsResponse, SingleFormResponse, UpdateParams, FormTypes } from './forms.types.js';
 
 export default class Form implements FormsInterface {
     private config: Config;
@@ -20,7 +20,7 @@ export default class Form implements FormsInterface {
      * @type {String} - Form type
      * @params {Object} - List forms params
      */
-    public get(type: FormTypes, params: GetParams): Promise<AxiosResponse<ListAllResponse>> {
+    public get(type: FormTypes, params: GetFormsParams): Promise<AxiosResponse<ListFormsResponse>> {
         return request(`/api/forms/${type}`, {
             method: "GET",
             params: params
