@@ -60,3 +60,7 @@ npm install mailerlite-nodejs
     * [Create a field](src/modules/fields/README.md#create-a-field)
     * [Update a field](src/modules/fields/README.md#update-a-field)
     * [Delete a field](src/modules/fields/README.md#delete-a-field)
+- [Stats](src/modules/stats/README.md)
+    * [Get a list of sent campaigns](src/modules/stats/README.md#get-a-list-of-sent-campaigns)
+    * [Get stats for a sent campaign](src/modules/stats/README.md#get-stats-for-a-sent-campaign)
+    * [Get a subscribers of sent campaign](src/modules/stats/README.md#get-a-subscribers-of-sent-campaign)
