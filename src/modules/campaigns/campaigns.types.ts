@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 
 export interface CampaignsInterface {
-    get:            (params: GetParams)                                 => Promise<AxiosResponse<ListCampaignsResponse>>;
+    get:            (params: GetCampaignsParams)                                 => Promise<AxiosResponse<ListCampaignsResponse>>;
     find:           (campaign_id: string)                               => Promise<AxiosResponse<SingleCampaignResponse>>;
     create:         (params: CreateUpdateParams)                        => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;
     update:         (campaign_id: string, params: CreateUpdateParams)   => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;
@@ -10,7 +10,7 @@ export interface CampaignsInterface {
     delete:         (campaign_id: string)                               => Promise<AxiosResponse<null>>;
 }
 
-export interface GetParams {
+export interface GetCampaignsParams {
     filter?: {
         /**
          * @default "ready"

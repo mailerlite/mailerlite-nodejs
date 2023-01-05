@@ -4,7 +4,7 @@ import request from '../../fetch.js'
 import type { Config }  from '../types'
 import { AxiosResponse } from "axios";
 import type { StatsInterface, CampaignSubscribersActivityParams, CampaignSubscribersActivityResponse } from './stats.types.js';
-import type { GetParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
+import type { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
 
 export default class Statistics implements StatsInterface {
     private config: Config;
@@ -18,7 +18,7 @@ export default class Statistics implements StatsInterface {
      *
      * @params {Object} - 'limit' & 'page' params
      */
-    public getSentCampaigns(params: GetParams): Promise<AxiosResponse<ListCampaignsResponse>> {
+    public getSentCampaigns(params: GetCampaignsParams): Promise<AxiosResponse<ListCampaignsResponse>> {
         params.filter = {
             status: "sent"
             // getting all types
