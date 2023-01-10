@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import { Stats } from "../types";
 
 export interface CampaignsInterface {
     get:            (params: GetCampaignsParams)                                 => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -124,7 +125,7 @@ interface CampaignObject {
     emails:                 Array<Email>;
     used_in_automations:    boolean;
     type_for_humans:        string;
-    stats: CampaignStats;
+    stats:                  CampaignStats;
     is_stopped:                     boolean;
     has_winner:                     boolean;
     winner_version_for_human:       string;
@@ -138,7 +139,15 @@ interface CampaignObject {
     is_currently_sending_out:       boolean;
 }
 
-interface Email {
+interface CampaignStats extends Stats {
+    forwards_count:     number;
+    click_to_open_rate: {
+        float:          number;
+        string:         string;
+    }
+}
+
+export interface Email {
     id:               string;
     account_id:       string;
     emailable_id:     string;
@@ -156,85 +165,13 @@ interface Email {
     is_designed:      boolean;
     language_id:      string;
     is_winner:        boolean;
-    stats: {
-        sent:                 number;
-        opens_count:          number;
-        unique_opens_count:   number;
-        open_rate: {
-            float:            number;
-            string:           string;
-        };
-        clicks_count:         number;
-        unique_clicks_count:  number;
-        click_rate: {
-            float:            number;
-            string:           string;
-        };
-        unsubscribes_count:   number;
-        unsubscribe_rate: {
-            float:            number;
-            string:           string;
-        };
-        spam_count:           number;
-        spam_rate: {
-            float:            number;
-            string:           string;
-        };
-        hard_bounces_count:   number;
-        hard_bounce_rate: {
-            float:            number;
-            string:           string;
-        };
-        soft_bounces_count:   number;
-        soft_bounce_rate: {
-            float:            number;
-            string:           string;
-        };
-        forwards_count:       number;
-    };
-    send_after:               string;
-    track_opens:              boolean;
+    stats:            EmailStats;
+    send_after:       string;
+    track_opens:      boolean;
 }
 
-export interface CampaignStats {
-    sent:               number;
-    opens_count:        number;
-    unique_opens_count: number;
-    open_rate: {
-        float:          number;
-        string:         string;
-    };
-    clicks_count:       number;
-    unique_clicks_count:number;
-    click_rate: {
-        float:          number;
-        string:         string;
-    };
-    unsubscribes_count: number;
-    unsubscribe_rate: {
-        float:          number;
-        string:         string;
-    };
-    spam_count:         number;
-    spam_rate: {
-        float:          number;
-        string:         string;
-    };
-    hard_bounces_count: number;
-    hard_bounce_rate: {
-        float:          number;
-        string:         string;
-    };
-    soft_bounces_count: number;
-    soft_bounce_rate: {
-        float:          number;
-        string:         string;
-    };
-    forwards_count:     number;
-    click_to_open_rate: {
-        float:          number;
-        string:         string;
-    }
+interface EmailStats extends Stats {
+    forwards_count:   number;
 }
 
 interface Meta {

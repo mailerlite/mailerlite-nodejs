@@ -18,6 +18,9 @@ import { SegmentsInterface } from "./modules/segments/segments.types";
 import Field from './modules/fields/fields.module.js';
 import { FieldsInterface } from "./modules/fields/fields.types";
 
+import Automation from './modules/automations/automations.module.js';
+import { AutomationsInterface } from "./modules/automations/automations.types";
+
 import Statistics from './modules/stats/stats.module.js';
 import { StatsInterface } from "./modules/stats/stats.types";
 
@@ -30,6 +33,7 @@ export default class MailerLite {
     public groups: GroupsInterface;
     public segments: SegmentsInterface;
     public fields: FieldsInterface;
+    public automations: AutomationsInterface;
     public stats: StatsInterface;
 
     constructor(params: { api_key: string; }) {
@@ -44,6 +48,7 @@ export default class MailerLite {
         this.groups = new Group(this.config);
         this.segments = new Segment(this.config);
         this.fields = new Field(this.config);
+        this.automations = new Automation(this.config);
         this.stats = new Statistics(this.config);
     }
 };

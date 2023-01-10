@@ -36,7 +36,7 @@ export interface UpdateParams {
     name: string;
 }
 
-interface FormObject {
+export interface FormObject {
     id:                   string;
     type:                 string;
     slug:                 string;
