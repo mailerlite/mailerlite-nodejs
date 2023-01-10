@@ -139,7 +139,7 @@ interface CampaignObject {
     is_currently_sending_out:       boolean;
 }
 
-interface CampaignStats extends Stats {
+export interface CampaignStats extends Stats {
     forwards_count:     number;
     click_to_open_rate: {
         float:          number;
