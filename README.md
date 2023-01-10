@@ -60,3 +60,7 @@ npm install mailerlite-nodejs
     * [Create a field](src/modules/fields/README.md#create-a-field)
     * [Update a field](src/modules/fields/README.md#update-a-field)
     * [Delete a field](src/modules/fields/README.md#delete-a-field)
+- [Automations](src/modules/automations/README.md)
+    * [List all automations](src/modules/automations/README.md#list-all-automations)
+    * [Get an automation](src/modules/automations/README.md#get-an-automation)
+    * [Get the subscriber activity for an automation](src/modules/automations/README.md#get-the-subscriber-activity-for-an-automation)
