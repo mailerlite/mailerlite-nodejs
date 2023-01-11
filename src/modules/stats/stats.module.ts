@@ -8,6 +8,7 @@ import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../cam
 import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types";
 import { FormsSubscribersParams } from "./stats.types.js";
 import { ListSubscribersResponse } from "../subscribers/subscribers.types";
+import { AutomationStats, AutomationSubsParams, AutomationSubsResponse, GetAutomationsParams, ListAutomationsResponse } from "../automations/automations.types";
 
 export default class Statistics implements StatsInterface {
     private config: Config;
@@ -24,7 +25,6 @@ export default class Statistics implements StatsInterface {
     public getSentCampaigns(params: GetCampaignsParams): Promise<AxiosResponse<ListCampaignsResponse>> {
         params.filter = {
             status: "sent"
-            // getting all types
         }
 
         return request(`/api/campaigns`, {
@@ -113,6 +113,58 @@ export default class Statistics implements StatsInterface {
      */
     public getFormSubscribers(form_id: string, params: FormsSubscribersParams): Promise<AxiosResponse<ListSubscribersResponse>> {
         return request(`/api/forms/${form_id}/subscribers`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description List all automations
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html#list-all-automations
+     *
+     * @params {Object} - List automations params
+     */
+    public getAutomations(params: GetAutomationsParams): Promise<AxiosResponse<ListAutomationsResponse>> {
+        return request('/api/automations', {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description Get stats for a specific automation
+     *
+     * @automation_id {String} - Automation ID
+     */
+    public async getAutomationStats(automation_id: string): Promise<AutomationStats | AxiosResponse> {
+
+        validateId(automation_id);
+
+        const response = await request(`/api/automations/${automation_id}`, {
+            method: "GET"
+        }, this.config);
+
+        if (response.data && response.data.data && response.data.data.stats) {
+            return response.data.data.stats;
+        } else {
+            throw new Error("No stats available.");
+        }
+    }
+
+    /**
+     * @description Get the subscriber activity for an automation
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html#get-the-subscriber-activity-for-an-automation
+     *
+     * @automation_id {String} - Automation ID
+     * @params {Object} - List automation subscribers params
+     */
+    public getAutomationSubscribers(automation_id: string, params: AutomationSubsParams): Promise<AxiosResponse<AutomationSubsResponse>> {
+
+        validateId(automation_id);
+
+        return request(`/api/automations/${automation_id}/activity`, {
             method: "GET",
             params: params
         }, this.config);

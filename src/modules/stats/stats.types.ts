@@ -4,6 +4,10 @@ import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../cam
 import { SubscriberObject } from '../subscribers/subscribers.types.js'
 import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types";
 import { ListSubscribersResponse } from "../subscribers/subscribers.types.js";
+import {
+    AutomationStats, AutomationSubsParams, AutomationSubsResponse,
+    GetAutomationsParams, ListAutomationsResponse
+} from "../automations/automations.types";
 
 export interface StatsInterface {
     getSentCampaigns:           (params: GetCampaignsParams)                                            => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -13,8 +17,11 @@ export interface StatsInterface {
     getFormsByType:         (type: FormTypes, params: GetFormsParams)           => Promise<AxiosResponse<ListFormsResponse>>;
     getFormsCountByType:    (type: FormTypes)                                   => Promise<number | AxiosResponse>;
     getFormSubscribers:     (form_id: string, params: FormsSubscribersParams)   => Promise<AxiosResponse<ListSubscribersResponse>>;
-}
 
+    getAutomations:             (params: GetAutomationsParams)                          => Promise<AxiosResponse<ListAutomationsResponse>>;
+    getAutomationStats:         (automation_id: string)                                 => Promise<AutomationStats | AxiosResponse>;
+    getAutomationSubscribers:   (automation_id: string, params: AutomationSubsParams)   => Promise<AxiosResponse<AutomationSubsResponse>>;
+}
 
 export interface CampaignSubscribersActivityParams {
     filter?: {

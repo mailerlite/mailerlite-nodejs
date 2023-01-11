@@ -150,3 +150,80 @@ mailerlite.stats.getFormSubscribers("FORM_ID", params)
     if (error.response) console.log(error.response.data);
   });
 ```
+
+
+### List all automations
+[Official Documentation](https://developers.mailerlite.com/docs/automations.html#list-all-automations)
+
+---
+```javascript
+import { MailerLite } from "MailerLite";
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+
+const params = {
+  filter: {
+    status: true,
+    name: "test"
+  },
+  limit: 10,
+  page: 1
+};
+
+mailerlite.stats.getAutomations(params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Get stats for a specific automation
+
+---
+```javascript
+import { MailerLite } from "MailerLite";
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+
+mailerlite.stats.getAutomationStats("AUTOMATION_ID")
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Get the subscriber activity for an automation
+[Official Documentation](https://developers.mailerlite.com/docs/automations.html#get-the-subscriber-activity-for-an-automation)
+
+---
+```javascript
+import { MailerLite } from "MailerLite";
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+
+const params = {
+  filter: {
+    status: "completed"
+  },
+  limit: 10,
+  page: 1
+};
+
+mailerlite.stats.getAutomationSubscribers("AUTOMATION_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
