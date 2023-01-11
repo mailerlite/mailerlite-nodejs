@@ -1,11 +1,11 @@
 import { AxiosResponse } from "axios";
 
 export interface SubscriberInterface {
-    get:            (params: GetParams) => Promise<AxiosResponse<ListSubscribersResponse>>;
-    createOrUpdate: (params: CreateOrUpdateParams) => Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateParams>>;
-    find:           (subscriber_id: string) => Promise<AxiosResponse<SingleSubscriberResponse>>;
-    getCount:       () => Promise<AxiosResponse<SubscribersCountResponse>>;
-    delete:         (subscriber_id: string) => Promise<AxiosResponse<null>>;
+    get:            (params: GetParams)             => Promise<AxiosResponse<ListSubscribersResponse>>;
+    createOrUpdate: (params: CreateOrUpdateParams)  => Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateParams>>;
+    find:           (subscriber_id: string)         => Promise<AxiosResponse<SingleSubscriberResponse>>;
+    getCount:       ()                              => Promise<AxiosResponse<SubscribersCountResponse>>;
+    delete:         (subscriber_id: string)         => Promise<AxiosResponse<null>>;
 }
 
 export interface GetParams {

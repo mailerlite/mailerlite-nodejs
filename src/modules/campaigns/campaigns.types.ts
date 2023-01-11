@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios";
 import { Stats } from "../types";
 
 export interface CampaignsInterface {
-    get:            (params: GetCampaignsParams)                                 => Promise<AxiosResponse<ListCampaignsResponse>>;
+    get:            (params: GetCampaignsParams)                        => Promise<AxiosResponse<ListCampaignsResponse>>;
     find:           (campaign_id: string)                               => Promise<AxiosResponse<SingleCampaignResponse>>;
     create:         (params: CreateUpdateParams)                        => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;
     update:         (campaign_id: string, params: CreateUpdateParams)   => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;

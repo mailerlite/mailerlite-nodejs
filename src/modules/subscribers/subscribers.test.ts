@@ -4,7 +4,7 @@ import MailerLite from '../../MailerLite';
 import {
     CreateOrUpdateParams,
     GetParams,
-    ListAllResponse,
+    ListSubscribersResponse,
     SingleSubscriberResponse,
     SubscribersCountResponse
 } from "./subscribers.types";
@@ -38,7 +38,7 @@ describe("Subscribers", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListAllResponse>()
+            expectTypeOf(response.data).toEqualTypeOf<ListSubscribersResponse>()
         } catch (error) {
             handleCatchedError(error);
         }
