@@ -64,3 +64,5 @@ npm install mailerlite-nodejs
     * [List all automations](src/modules/automations/README.md#list-all-automations)
     * [Get an automation](src/modules/automations/README.md#get-an-automation)
     * [Get the subscriber activity for an automation](src/modules/automations/README.md#get-the-subscriber-activity-for-an-automation)
+- [Timezones](src/modules/timezones/README.md)
+    * [List all timezones](src/modules/timezones/README.md#list-all-timezones)

@@ -21,6 +21,9 @@ import { FieldsInterface } from "./modules/fields/fields.types";
 import Automation from './modules/automations/automations.module.js';
 import { AutomationsInterface } from "./modules/automations/automations.types";
 
+import Timezone from './modules/timezones/timezones.module.js';
+import { TimezonesInterface } from "./modules/timezones/timezones.types";
+
 export default class MailerLite {
 
     private config: Config;
@@ -31,6 +34,7 @@ export default class MailerLite {
     public segments: SegmentsInterface;
     public fields: FieldsInterface;
     public automations: AutomationsInterface;
+    public timezones: TimezonesInterface;
 
     constructor(params: { api_key: string; }) {
         this.config = {
@@ -45,5 +49,6 @@ export default class MailerLite {
         this.segments = new Segment(this.config);
         this.fields = new Field(this.config);
         this.automations = new Automation(this.config);
+        this.timezones = new Timezone(this.config);
     }
 };
