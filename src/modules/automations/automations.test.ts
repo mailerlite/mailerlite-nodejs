@@ -3,7 +3,7 @@ import "dotenv/config";
 import MailerLite from '../../MailerLite';
 import {
     AutomationSubsParams, AutomationSubsResponse,
-    GetParams, ListAutomationsResponse, SingleAutomationResponse,
+    GetAutomationsParams, ListAutomationsResponse, SingleAutomationResponse,
 } from "./automations.types";
 import {handleCatchedError} from "../helpers";
 
@@ -22,7 +22,7 @@ describe("Automations", () => {
 
     it.concurrent("List all automations", async () => {
 
-        const params: GetParams = {
+        const params: GetAutomationsParams = {
             filter: {
                 status: true,
                 name: "nodejs"
