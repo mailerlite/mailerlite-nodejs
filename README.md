@@ -71,3 +71,7 @@ npm install mailerlite-nodejs
     * [Get a list of forms by type](src/modules/stats/README.md#get-a-list-of-forms-by-type)
     * [Get forms count by type](src/modules/stats/README.md#get-forms-count-by-type)
     * [Get subscribers of a form](src/modules/stats/README.md#get-subscribers-of-a-form)
+    * [List all automations](src/modules/stats/README.md#list-all-automations)
+    * [Get stats for a specific automation](src/modules/stats/README.md#get-stats-for-a-specific-automation)
+    * [Get the subscriber activity for an automation](src/modules/stats/README.md#get-the-subscriber-activity-for-an-automation)
+
