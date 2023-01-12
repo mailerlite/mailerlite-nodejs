@@ -24,6 +24,9 @@ import { AutomationsInterface } from "./modules/automations/automations.types";
 import Timezone from './modules/timezones/timezones.module.js';
 import { TimezonesInterface } from "./modules/timezones/timezones.types";
 
+import Language from './modules/languages/languages.module.js';
+import { LanguagesInterface } from "./modules/languages/languages.types";
+
 export default class MailerLite {
 
     private config: Config;
@@ -35,6 +38,7 @@ export default class MailerLite {
     public fields: FieldsInterface;
     public automations: AutomationsInterface;
     public timezones: TimezonesInterface;
+    public languages: LanguagesInterface;
 
     constructor(params: { api_key: string; }) {
         this.config = {
@@ -50,5 +54,6 @@ export default class MailerLite {
         this.fields = new Field(this.config);
         this.automations = new Automation(this.config);
         this.timezones = new Timezone(this.config);
+        this.languages = new Language(this.config);
     }
 };
