@@ -9,9 +9,9 @@ export interface ListAllResponse {
 }
 
 interface TimezoneObject {
-    id:                 string,
-    name:               string,
-    name_for_humans:    string,
-    offset_name:        string,
-    offset:             number
+    id:                 string;
+    name:               string;
+    name_for_humans:    string;
+    offset_name:        string;
+    offset:             number;
 }
