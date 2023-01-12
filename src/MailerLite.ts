@@ -27,6 +27,9 @@ import { TimezonesInterface } from "./modules/timezones/timezones.types";
 import Language from './modules/languages/languages.module.js';
 import { LanguagesInterface } from "./modules/languages/languages.types";
 
+import Batch from './modules/batches/batches.module.js';
+import { BatchesInterface } from "./modules/batches/batches.types";
+
 export default class MailerLite {
 
     private config: Config;
@@ -39,6 +42,7 @@ export default class MailerLite {
     public automations: AutomationsInterface;
     public timezones: TimezonesInterface;
     public languages: LanguagesInterface;
+    public batches: BatchesInterface;
 
     constructor(params: { api_key: string; }) {
         this.config = {
@@ -55,5 +59,6 @@ export default class MailerLite {
         this.automations = new Automation(this.config);
         this.timezones = new Timezone(this.config);
         this.languages = new Language(this.config);
+        this.batches = new Batch(this.config);
     }
 };
