@@ -30,6 +30,9 @@ import { LanguagesInterface } from "./modules/languages/languages.types";
 import Batch from './modules/batches/batches.module.js';
 import { BatchesInterface } from "./modules/batches/batches.types";
 
+import Webhook from './modules/webhooks/webhooks.module.js';
+import { WebhooksInterface } from "./modules/webhooks/webhooks.types";
+
 export default class MailerLite {
 
     private config: Config;
@@ -43,6 +46,7 @@ export default class MailerLite {
     public timezones: TimezonesInterface;
     public languages: LanguagesInterface;
     public batches: BatchesInterface;
+    public webhooks: WebhooksInterface;
 
     constructor(params: { api_key: string; }) {
         this.config = {
@@ -60,5 +64,6 @@ export default class MailerLite {
         this.timezones = new Timezone(this.config);
         this.languages = new Language(this.config);
         this.batches = new Batch(this.config);
+        this.webhooks = new Webhook(this.config);
     }
 };
