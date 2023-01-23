@@ -64,6 +64,12 @@ npm install mailerlite-nodejs
     * [List all automations](src/modules/automations/README.md#list-all-automations)
     * [Get an automation](src/modules/automations/README.md#get-an-automation)
     * [Get the subscriber activity for an automation](src/modules/automations/README.md#get-the-subscriber-activity-for-an-automation)
+- [Batching](src/modules/batches/README.md)
+    * [Send batch request](src/modules/batches/README.md#send-batch-request)
+- [Timezones](src/modules/timezones/README.md)
+    * [List all timezones](src/modules/timezones/README.md#list-all-timezones)
+- [Campaign languages](src/modules/languages/README.md)
+    * [List all languages](src/modules/languages/README.md#list-all-languages)
 - [Stats](src/modules/stats/README.md)
     * [Get a list of sent campaigns](src/modules/stats/README.md#get-a-list-of-sent-campaigns)
     * [Get stats for a sent campaign](src/modules/stats/README.md#get-stats-for-a-sent-campaign)
@@ -74,4 +80,3 @@ npm install mailerlite-nodejs
     * [List all automations](src/modules/stats/README.md#list-all-automations)
     * [Get stats for a specific automation](src/modules/stats/README.md#get-stats-for-a-specific-automation)
     * [Get the subscriber activity for an automation](src/modules/stats/README.md#get-the-subscriber-activity-for-an-automation)
-
