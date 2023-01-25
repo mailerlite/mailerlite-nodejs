@@ -1,14 +1,14 @@
 import { AxiosResponse } from "axios";
 
 export interface FormsInterface {
-    get:            (type: FormTypes, params: GetParams)            => Promise<AxiosResponse<ListAllResponse>>;
+    get:            (type: FormTypes, params: GetFormsParams)       => Promise<AxiosResponse<ListFormsResponse>>;
     update:         (form_id: string, params: UpdateParams)         => Promise<AxiosResponse<SingleFormResponse, UpdateParams>>;
     delete:         (form_id: string)                               => Promise<AxiosResponse<null>>;
 }
 
 export type FormTypes = "popup" | "embedded" | "promotion";
 
-export interface GetParams {
+export interface GetFormsParams {
     limit?: number;
     page?:  number;
     filter?: {
@@ -17,7 +17,7 @@ export interface GetParams {
     sort?: "created_at" | "-created_at" | "name" | "-name" | "conversions_count" | "-conversions_count" | "opens_count" | "-opens_count" | "visitors" | "-visitors" | "conversion_rate" | "-conversion_rate" | "last_registration_at" | "-last_registration_at";
 }
 
-export interface ListAllResponse {
+export interface ListFormsResponse {
     data: Array<FormObject>;
     links: {
         first:  string;

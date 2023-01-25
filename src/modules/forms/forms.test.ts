@@ -3,8 +3,8 @@ import "dotenv/config";
 import MailerLite from '../../MailerLite';
 import {
     FormTypes,
-    GetParams,
-    ListAllResponse,
+    GetFormsParams,
+    ListFormsResponse,
     SingleFormResponse
 } from "./forms.types";
 import {getRandomInt, handleCatchedError} from "../helpers";
@@ -24,7 +24,7 @@ describe("Forms", () => {
 
     it("List all forms", async () => {
         const formType:FormTypes = "popup";
-        const params: GetParams = {
+        const params: GetFormsParams = {
             limit: 25,
             page: 1,
             filter: {
@@ -39,7 +39,7 @@ describe("Forms", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListAllResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<ListFormsResponse>();
 
             if (response.data.data.length) formId = response.data.data[0].id;
         } catch (error) {

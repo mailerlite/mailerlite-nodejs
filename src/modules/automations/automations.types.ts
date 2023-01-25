@@ -3,12 +3,12 @@ import { Email } from "../campaigns/campaigns.types";
 import { Stats } from "../types";
 
 export interface AutomationsInterface {
-    get:                        (params: GetParams)                                     => Promise<AxiosResponse<ListAutomationsResponse>>;
+    get:                        (params: GetAutomationsParams)                          => Promise<AxiosResponse<ListAutomationsResponse>>;
     find:                       (automation_id: string)                                 => Promise<AxiosResponse<SingleAutomationResponse>>;
     getAutomationSubscribers:   (automation_id: string, params: AutomationSubsParams)   => Promise<AxiosResponse<AutomationSubsResponse>>;
 }
 
-export interface GetParams {
+export interface GetAutomationsParams {
     filter?: {
         status?:    boolean;
         name?:      string;
@@ -128,7 +128,7 @@ interface AutomationObject {
     qualified_subscribers_count: number;
 }
 
-interface AutomationStats extends Stats {
+export interface AutomationStats extends Stats {
     completed_subscribers_count:    number;
     subscribers_in_queue_count:     number;
     bounce_rate: {

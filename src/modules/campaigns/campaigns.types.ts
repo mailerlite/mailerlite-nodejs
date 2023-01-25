@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios";
 import { Stats } from "../types";
 
 export interface CampaignsInterface {
-    get:            (params: GetParams)                                 => Promise<AxiosResponse<ListAllResponse>>;
+    get:            (params: GetCampaignsParams)                        => Promise<AxiosResponse<ListCampaignsResponse>>;
     find:           (campaign_id: string)                               => Promise<AxiosResponse<SingleCampaignResponse>>;
     create:         (params: CreateUpdateParams)                        => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;
     update:         (campaign_id: string, params: CreateUpdateParams)   => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;
@@ -11,7 +11,7 @@ export interface CampaignsInterface {
     delete:         (campaign_id: string)                               => Promise<AxiosResponse<null>>;
 }
 
-export interface GetParams {
+export interface GetCampaignsParams {
     filter?: {
         /**
          * @default "ready"
@@ -32,7 +32,7 @@ export interface GetParams {
     page?: number;
 }
 
-export interface ListAllResponse {
+export interface ListCampaignsResponse {
     data: Array<CampaignObject>;
     meta: Meta;
 }
@@ -139,7 +139,7 @@ interface CampaignObject {
     is_currently_sending_out:       boolean;
 }
 
-interface CampaignStats extends Stats {
+export interface CampaignStats extends Stats {
     forwards_count:     number;
     click_to_open_rate: {
         float:          number;

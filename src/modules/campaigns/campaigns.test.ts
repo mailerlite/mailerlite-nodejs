@@ -2,8 +2,8 @@ import { describe, it, expect, beforeAll, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../MailerLite';
 import {
-    GetParams,
-    ListAllResponse,
+    GetCampaignsParams,
+    ListCampaignsResponse,
     SingleCampaignResponse,
     CreateUpdateParams,
     ScheduleParams
@@ -28,7 +28,7 @@ describe("Campaigns", () => {
     let createdCampaignId: string;
 
     it.concurrent("List campaigns", async () => {
-        const params: GetParams = {
+        const params: GetCampaignsParams = {
             filter: {
                 status: "sent", // possible statuses: sent, draft, ready
                 type: "regular" // possible types: regular, ab, resend, rss
@@ -43,7 +43,7 @@ describe("Campaigns", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListAllResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<ListCampaignsResponse>();
         } catch (error) {
             handleCatchedError(error);
         }

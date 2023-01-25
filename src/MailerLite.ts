@@ -30,6 +30,9 @@ import { LanguagesInterface } from "./modules/languages/languages.types";
 import Batch from './modules/batches/batches.module.js';
 import { BatchesInterface } from "./modules/batches/batches.types";
 
+import Statistics from './modules/stats/stats.module.js';
+import { StatsInterface } from "./modules/stats/stats.types";
+
 export default class MailerLite {
 
     private config: Config;
@@ -43,6 +46,7 @@ export default class MailerLite {
     public timezones: TimezonesInterface;
     public languages: LanguagesInterface;
     public batches: BatchesInterface;
+    public stats: StatsInterface;
 
     constructor(params: { api_key: string; }) {
         this.config = {
@@ -60,5 +64,6 @@ export default class MailerLite {
         this.timezones = new Timezone(this.config);
         this.languages = new Language(this.config);
         this.batches = new Batch(this.config);
+        this.stats = new Statistics(this.config);
     }
 };
