@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import {Links} from "../types";
+import {Links, Meta} from "../types";
 
 export interface SegmentsInterface {
     get:            (params: GetParams)                                 => Promise<AxiosResponse<ListAllResponse>>;
@@ -57,17 +57,6 @@ interface SegmentObject {
         string:     string;
     },
     created_at:     string;
-}
-
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
 }
 
 interface SubscriberObject {

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { Email } from "../campaigns/campaigns.types";
-import {Links, Stats} from "../types";
+import {Links, Meta, Stats} from "../types";
 
 export interface AutomationsInterface {
     get:                        (params: GetAutomationsParams)                          => Promise<AxiosResponse<ListAutomationsResponse>>;
@@ -44,20 +44,15 @@ export interface AutomationSubsParams {
 }
 
 export interface ListAutomationsResponse {
-    data: Array<AutomationObject>;
-    links: Links;
-    meta: ListAutomationsResponseMeta;
+    data:   Array<AutomationObject>;
+    links:  Links;
+    meta:   ListAutomationsResponseMeta;
 }
 
 export interface AutomationSubsResponse {
-    data: Array<AutomationSubObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<AutomationSubObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleAutomationResponse {
@@ -180,18 +175,6 @@ interface AutomationTriggers {
     exclude_group_ids:  Array<string>;
     excluded_groups:    Array<string>;
     broken:             boolean;
-}
-
-interface Meta {
-    current_page:       number;
-    from:               number;
-    last_page:          number;
-    links:              Array<object>;
-    path:               string;
-    per_page:           number;
-    to:                 number;
-    total:              number;
-    total_unfiltered:   number
 }
 
 interface ListAutomationsResponseMeta extends Meta {

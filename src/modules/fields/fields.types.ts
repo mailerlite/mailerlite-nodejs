@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import {Links} from "../types";
+import {Links, Meta} from "../types";
 
 export interface FieldsInterface {
     get:    (params: GetParams)                         => Promise<AxiosResponse<ListAllResponse>>;
@@ -44,15 +44,4 @@ interface FieldObject {
     name:   string;
     key:    string;
     type:   string;
-}
-
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
 }
