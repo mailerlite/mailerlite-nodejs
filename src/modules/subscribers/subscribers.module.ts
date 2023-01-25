@@ -3,7 +3,7 @@ import request from '../../fetch.js'
 
 import type { Config }  from '../types'
 import { AxiosResponse } from "axios";
-import type { GetParams, CreateOrUpdateParams, SubscriberInterface, ListAllResponse, SingleSubscriberResponse, SubscribersCountResponse } from './subscribers.types.js';
+import type { GetParams, CreateOrUpdateParams, SubscriberInterface, ListSubscribersResponse, SingleSubscriberResponse, SubscribersCountResponse } from './subscribers.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -19,7 +19,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @params {Object} - List Subscribers params
      */
-    public get(params: GetParams): Promise<AxiosResponse<ListAllResponse>> {
+    public get(params: GetParams): Promise<AxiosResponse<ListSubscribersResponse>> {
         return request(`/api/subscribers`, {
             method: "GET",
             params: params

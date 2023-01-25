@@ -6,7 +6,7 @@ import { AxiosResponse } from "axios";
 
 import {
     AutomationsInterface, AutomationSubsParams, AutomationSubsResponse,
-    GetParams,
+    GetAutomationsParams,
     ListAutomationsResponse,
     SingleAutomationResponse
 } from "./automations.types.js";
@@ -25,7 +25,7 @@ export default class Automation implements AutomationsInterface {
      *
      * @params {Object} - List automations params
      */
-    public get(params: GetParams): Promise<AxiosResponse<ListAutomationsResponse>> {
+    public get(params: GetAutomationsParams): Promise<AxiosResponse<ListAutomationsResponse>> {
         return request('/api/automations', {
             method: "GET",
             params: params

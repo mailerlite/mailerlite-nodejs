@@ -1,11 +1,11 @@
 import { AxiosResponse } from "axios";
 
 export interface SubscriberInterface {
-    get:            (params: GetParams) => Promise<AxiosResponse<ListAllResponse>>;
-    createOrUpdate: (params: CreateOrUpdateParams) => Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateParams>>;
-    find:           (subscriber_id: string) => Promise<AxiosResponse<SingleSubscriberResponse>>;
-    getCount:       () => Promise<AxiosResponse<SubscribersCountResponse>>;
-    delete:         (subscriber_id: string) => Promise<AxiosResponse<null>>;
+    get:            (params: GetParams)             => Promise<AxiosResponse<ListSubscribersResponse>>;
+    createOrUpdate: (params: CreateOrUpdateParams)  => Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateParams>>;
+    find:           (subscriber_id: string)         => Promise<AxiosResponse<SingleSubscriberResponse>>;
+    getCount:       ()                              => Promise<AxiosResponse<SubscribersCountResponse>>;
+    delete:         (subscriber_id: string)         => Promise<AxiosResponse<null>>;
 }
 
 export interface GetParams {
@@ -45,7 +45,7 @@ interface Meta {
     total:          number;
 }
 
-interface SubscriberObject {
+export interface SubscriberObject {
     id:             string;
     email:          string;
     status:         string;
@@ -75,7 +75,7 @@ interface SubscriberObject {
     optin_ip:       string;
 }
 
-export interface ListAllResponse {
+export interface ListSubscribersResponse {
     data: Array<SubscriberObject>;
     links: {
         first:  string;

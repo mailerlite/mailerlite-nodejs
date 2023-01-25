@@ -3,7 +3,7 @@ import request from '../../fetch.js'
 
 import type { Config }  from '../types'
 import { AxiosResponse } from "axios";
-import type { CampaignsInterface, GetParams, ListAllResponse, SingleCampaignResponse, CreateUpdateParams, ScheduleParams } from './campaigns.types.js';
+import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateParams, ScheduleParams } from './campaigns.types.js';
 
 export default class Campaign implements CampaignsInterface {
     private config: Config;
@@ -19,7 +19,7 @@ export default class Campaign implements CampaignsInterface {
      *
      * @params {Object} - List campaigns params
      */
-    public get(params: GetParams): Promise<AxiosResponse<ListAllResponse>> {
+    public get(params: GetCampaignsParams): Promise<AxiosResponse<ListCampaignsResponse>> {
         return request(`/api/campaigns`, {
             method: "GET",
             params: params
