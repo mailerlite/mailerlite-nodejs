@@ -1,4 +1,4 @@
-import { validateId } from '../validation.js';
+import { validateId } from '../helpers.js';
 import request from '../../fetch.js'
 
 import type { Config }  from '../types'
