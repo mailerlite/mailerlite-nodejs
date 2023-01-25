@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { Stats } from "../types";
+import {Links, Stats} from "../types";
 
 export interface CampaignsInterface {
     get:            (params: GetCampaignsParams)                        => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -33,8 +33,9 @@ export interface GetCampaignsParams {
 }
 
 export interface ListCampaignsResponse {
-    data: Array<CampaignObject>;
-    meta: Meta;
+    data:   Array<CampaignObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleCampaignResponse {

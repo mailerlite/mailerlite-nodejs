@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links} from "../types";
 
 export interface WebhooksInterface {
     get:            ()                              => Promise<AxiosResponse<ListAllResponse>>;
@@ -10,14 +11,9 @@ export interface WebhooksInterface {
 }
 
 export interface ListAllResponse {
-    data: Array<WebhookObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<WebhookObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleWebhookResponse {

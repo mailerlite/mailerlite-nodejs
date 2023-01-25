@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links} from "../types";
 
 export interface FieldsInterface {
     get:    (params: GetParams)                         => Promise<AxiosResponse<ListAllResponse>>;
@@ -20,14 +21,9 @@ export interface GetParams {
 }
 
 export interface ListAllResponse {
-    data: Array<FieldObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<FieldObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleFieldResponse {

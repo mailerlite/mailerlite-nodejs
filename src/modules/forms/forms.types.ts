@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links} from "../types";
 
 export interface FormsInterface {
     get:            (type: FormTypes, params: GetFormsParams)       => Promise<AxiosResponse<ListFormsResponse>>;
@@ -18,14 +19,9 @@ export interface GetFormsParams {
 }
 
 export interface ListFormsResponse {
-    data: Array<FormObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<FormObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleFormResponse {

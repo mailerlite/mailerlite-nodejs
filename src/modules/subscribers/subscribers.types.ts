@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links} from "../types";
 
 export interface SubscriberInterface {
     get:            (params: GetParams)             => Promise<AxiosResponse<ListSubscribersResponse>>;
@@ -76,14 +77,9 @@ export interface SubscriberObject {
 }
 
 export interface ListSubscribersResponse {
-    data: Array<SubscriberObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<SubscriberObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleSubscriberResponse {

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { Email } from "../campaigns/campaigns.types";
-import { Stats } from "../types";
+import {Links, Stats} from "../types";
 
 export interface AutomationsInterface {
     get:                        (params: GetAutomationsParams)                          => Promise<AxiosResponse<ListAutomationsResponse>>;
@@ -45,12 +45,7 @@ export interface AutomationSubsParams {
 
 export interface ListAutomationsResponse {
     data: Array<AutomationObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
+    links: Links;
     meta: ListAutomationsResponseMeta;
 }
 
