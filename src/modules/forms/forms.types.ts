@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links, Meta} from "../types";
 
 export interface FormsInterface {
     get:            (type: FormTypes, params: GetFormsParams)       => Promise<AxiosResponse<ListFormsResponse>>;
@@ -18,14 +19,9 @@ export interface GetFormsParams {
 }
 
 export interface ListFormsResponse {
-    data: Array<FormObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<FormObject>;
+    links:  Links;
+    meta:   FormsMeta;
 }
 
 export interface SingleFormResponse {
@@ -62,15 +58,7 @@ export interface FormObject {
     screenshot_url:       string;
 }
 
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
+interface FormsMeta extends Meta {
     aggregations: {
         popup:      number;
         embedded:   number;

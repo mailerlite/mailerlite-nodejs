@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links, Meta} from "../types";
 
 export interface GroupsInterface {
     get:                (params: GetParams)                             => Promise<AxiosResponse<ListAllGroupsResponse>>;
@@ -20,13 +21,14 @@ export interface GetParams {
 }
 
 export interface ListAllGroupsResponse {
-    data: Array<GroupObject>;
-    meta: Meta;
+    data:   Array<GroupObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface ListAllSubscribersResponse {
     data:   Array<SubscriberObject>;
-    links:  Array<object>;
+    links:  Links;
     meta:   Meta;
 }
 
@@ -99,15 +101,4 @@ interface SubscriberObject {
     groups:           Array<string>;
     opted_in_at:      string;
     optin_ip:         string;
-}
-
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
 }

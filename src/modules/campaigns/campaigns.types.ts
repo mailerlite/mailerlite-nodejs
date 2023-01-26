@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { Stats } from "../types";
+import {Links, Meta, Stats} from "../types";
 
 export interface CampaignsInterface {
     get:            (params: GetCampaignsParams)                        => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -33,8 +33,9 @@ export interface GetCampaignsParams {
 }
 
 export interface ListCampaignsResponse {
-    data: Array<CampaignObject>;
-    meta: Meta;
+    data:   Array<CampaignObject>;
+    links:  Links;
+    meta:   CampaignsMeta;
 }
 
 export interface SingleCampaignResponse {
@@ -174,15 +175,7 @@ interface EmailStats extends Stats {
     forwards_count:   number;
 }
 
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
+interface CampaignsMeta extends Meta {
     aggregations: {
         total:      number;
         draft:      number;

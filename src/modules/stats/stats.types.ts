@@ -8,6 +8,7 @@ import {
     AutomationStats, AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams, ListAutomationsResponse
 } from "../automations/automations.types";
+import {Links} from "../types";
 
 export interface StatsInterface {
     getSentCampaigns:           (params: GetCampaignsParams)                                            => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -58,7 +59,7 @@ export interface FormsSubscribersParams {
 
 export interface CampaignSubscribersActivityResponse {
     data:   Array<ActivityObject>,
-    links:  Array<object>;
+    links:  Links;
     meta:   Meta
 }
 

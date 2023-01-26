@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links, Meta} from "../types";
 
 export interface WebhooksInterface {
     get:            ()                              => Promise<AxiosResponse<ListAllResponse>>;
@@ -10,14 +11,9 @@ export interface WebhooksInterface {
 }
 
 export interface ListAllResponse {
-    data: Array<WebhookObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<WebhookObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleWebhookResponse {
@@ -35,17 +31,6 @@ export interface UpdateParams {
     events?:    Array<string>;
     url?:       string;
     enabled?:   boolean;
-}
-
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
 }
 
 interface WebhookObject {

@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links, Meta} from "../types";
 
 export interface SubscriberInterface {
     get:            (params: GetParams)             => Promise<AxiosResponse<ListSubscribersResponse>>;
@@ -34,17 +35,6 @@ export interface CreateOrUpdateParams {
     unsubscribed_at?:	string;
 }
 
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
-}
-
 export interface SubscriberObject {
     id:             string;
     email:          string;
@@ -76,14 +66,9 @@ export interface SubscriberObject {
 }
 
 export interface ListSubscribersResponse {
-    data: Array<SubscriberObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<SubscriberObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface SingleSubscriberResponse {

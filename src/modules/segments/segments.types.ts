@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import {Links, Meta} from "../types";
 
 export interface SegmentsInterface {
     get:            (params: GetParams)                                 => Promise<AxiosResponse<ListAllResponse>>;
@@ -21,14 +22,9 @@ export interface GetSubscribersParams {
 }
 
 export interface ListAllResponse {
-    data: Array<SegmentObject>;
-    links: {
-        first:  string;
-        last:   string;
-        prev:   string;
-        next:   string;
-    };
-    meta: Meta;
+    data:   Array<SegmentObject>;
+    links:  Links;
+    meta:   Meta;
 }
 
 export interface ListAllSubscribers {
@@ -61,17 +57,6 @@ interface SegmentObject {
         string:     string;
     },
     created_at:     string;
-}
-
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
 }
 
 interface SubscriberObject {
