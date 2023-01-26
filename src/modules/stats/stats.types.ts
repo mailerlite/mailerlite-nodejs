@@ -2,12 +2,12 @@ import { AxiosResponse } from "axios";
 
 import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
 import { SubscriberObject } from '../subscribers/subscribers.types.js'
-import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types";
+import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types.js";
 import { ListSubscribersResponse } from "../subscribers/subscribers.types.js";
 import {
     AutomationStats, AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams, ListAutomationsResponse
-} from "../automations/automations.types";
+} from "../automations/automations.types.js";
 import {Links} from "../types";
 
 export interface StatsInterface {

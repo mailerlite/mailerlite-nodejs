@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import {Links, Meta, Stats} from "../types";
+import {Links, Meta, Stats} from "../types.js";
 
 export interface CampaignsInterface {
     get:            (params: GetCampaignsParams)                        => Promise<AxiosResponse<ListCampaignsResponse>>;
