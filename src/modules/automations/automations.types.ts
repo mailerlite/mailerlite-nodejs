@@ -10,7 +10,7 @@ export interface AutomationsInterface {
 
 export interface GetAutomationsParams {
     filter?: {
-        status?:    boolean;
+        enabled?:   boolean;
         name?:      string;
         group?:     string;
     };

@@ -160,7 +160,7 @@ describe("Stats", () => {
 
         const params: GetAutomationsParams = {
             filter: {
-                status: true,
+                enabled: true,
                 name: "nodejs"
             },
             limit: 10,
