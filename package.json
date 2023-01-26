@@ -1,7 +1,7 @@
 {
-  "name": "mailerlite-nodejs",
+  "name": "@mailerlite/mailerlite-nodejs",
   "version": "1.0.0",
-  "description": "Node.js helper module for MailerLite API",
+  "description": "MailerLite Node.js SDK",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,8 +13,11 @@
     "type": "git",
     "url": "git+https://github.com/mailerlite/mailerlite-nodejs.git"
   },
-  "keywords": [],
-  "author": "MailerLite",
+  "keywords": ["mailerlite", "typescript"],
+  "author": {
+    "name": "MailerLite",
+    "url": "https://www.mailerlite.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mailerlite/mailerlite-nodejs/issues"
