@@ -5,7 +5,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import MailerLite from '../../dist/MailerLite.js';
+import MailerLite from '../../dist/index.js';
 
 const mailerlite = new MailerLite({
   api_key: process.env.API_KEY,
