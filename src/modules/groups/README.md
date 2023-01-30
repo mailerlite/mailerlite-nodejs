@@ -6,12 +6,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   limit: 25,
   page: 1,
@@ -35,12 +29,6 @@ mailerlite.groups.get(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Dummy group"
 };
@@ -59,12 +47,6 @@ mailerlite.groups.create("GROUP_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Dummy group updated"
 }
@@ -83,12 +65,6 @@ mailerlite.groups.update("GROUP_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.groups.delete("GROUP_ID")
   .then(response => {
     console.log(response.data);
@@ -103,12 +79,6 @@ mailerlite.groups.delete("GROUP_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: "active" // active, unsubscribed, unconfirmed, bounced or junk
@@ -131,12 +101,6 @@ mailerlite.groups.getSubscribers("GROUP_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.groups.assignSubscriber("SUBSCRIBER_ID", "GROUP_ID")
   .then(response => {
     console.log(response.data);
@@ -151,12 +115,6 @@ mailerlite.groups.assignSubscriber("SUBSCRIBER_ID", "GROUP_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.groups.unAssignSubscriber("SUBSCRIBER_ID", "GROUP_ID")
   .then(response => {
     console.log(response.data);

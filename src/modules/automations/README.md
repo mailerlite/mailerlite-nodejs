@@ -6,12 +6,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: true,
@@ -35,12 +29,6 @@ mailerlite.automations.get(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.automations.find("AUTOMATION_ID")
   .then(response => {
     console.log(response.data);
@@ -55,12 +43,6 @@ mailerlite.automations.find("AUTOMATION_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: "active"

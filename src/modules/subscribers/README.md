@@ -6,12 +6,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: "active" // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
@@ -34,12 +28,6 @@ mailerlite.subscribers.get(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   email: "dummy@example.com",
   fields: {
@@ -75,12 +63,6 @@ mailerlite.subscribers.createOrUpdate(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.subscribers.find("SUBSCRIBER_ID")
   .then(response => {
     console.log(response.data);
@@ -95,12 +77,6 @@ mailerlite.subscribers.find("SUBSCRIBER_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.subscribers.getCount()
   .then(response => {
     console.log(response.data);
@@ -115,12 +91,6 @@ mailerlite.subscribers.getCount()
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.subscribers.delete("SUBSCRIBER_ID")
   .then(response => {
     console.log(response.data);

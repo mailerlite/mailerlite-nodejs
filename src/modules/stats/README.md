@@ -5,12 +5,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     type: "regular" // possible types: regular, ab, resend, rss
@@ -32,12 +26,6 @@ mailerlite.stats.getSentCampaigns(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.stats.getSentCampaignStats("CAMPAIGN_ID")
   .then(stats => {
     console.log(stats);
@@ -53,12 +41,6 @@ mailerlite.stats.getSentCampaignStats("CAMPAIGN_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     type: "opened",  // possible types: opened, unopened, clicked, unsubscribed, forwarded, hardbounced, softbounced, junk
@@ -82,12 +64,6 @@ mailerlite.stats.getSentCampaignStats("CAMPAIGN_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   sort: "created_at",
   limit: 10,
@@ -107,12 +83,6 @@ mailerlite.stats.getFormsByType("FORM_TYPE", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.stats.getFormsCountByType("FORM_TYPE")
   .then(count => {
     console.log(`Number of ${FORM_TYPE}: ${count}`);
@@ -128,12 +98,6 @@ mailerlite.stats.getFormsCountByType("FORM_TYPE")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: "active", // possible status: active, unsubscribed, unconfirmed, bounced, junk
@@ -157,12 +121,6 @@ mailerlite.stats.getFormSubscribers("FORM_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: true,
@@ -185,12 +143,6 @@ mailerlite.stats.getAutomations(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.stats.getAutomationStats("AUTOMATION_ID")
   .then(response => {
     console.log(response.data);
@@ -205,12 +157,6 @@ mailerlite.stats.getAutomationStats("AUTOMATION_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: "completed"

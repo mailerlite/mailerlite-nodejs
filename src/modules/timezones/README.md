@@ -5,12 +5,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.timezones.get()
   .then(response => {
     console.log(response.data);

@@ -6,12 +6,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: "sent", // possible statuses: sent, draft, ready
@@ -35,12 +29,6 @@ mailerlite.campaigns.get(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.campaigns.find("CAMPAIGN_ID")
   .then(response => {
     console.log(response.data);
@@ -55,12 +43,6 @@ mailerlite.campaigns.find("CAMPAIGN_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Dummy AB campaign",
   language_id: 4,
@@ -100,12 +82,6 @@ mailerlite.campaigns.create(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Dummy resend campaign update",
   language_id: 4,
@@ -140,12 +116,6 @@ mailerlite.campaigns.update("CAMPAIGN_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   delivery: "scheduled",
   schedule: {
@@ -170,12 +140,6 @@ mailerlite.campaigns.schedule("CAMPAIGN_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.campaigns.cancel("CAMPAIGN_ID")
   .then(response => {
     console.log(response.data);
@@ -190,12 +154,6 @@ mailerlite.campaigns.cancel("CAMPAIGN_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.campaigns.delete("CAMPAIGN_ID")
   .then(response => {
     console.log(response.data);

@@ -7,12 +7,6 @@ Make multiple request to api in a single call
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   requests: [
     {
