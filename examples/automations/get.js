@@ -13,7 +13,7 @@ const mailerlite = new MailerLite({
 
 const params = {
   filter: {
-    status: true,
+    enabled: true,
     name: "test",
     // group: "GROUP_ID"
   },
