@@ -3,9 +3,9 @@
 "use strict";
 
 import dotenv from 'dotenv';
-dotenv.config();
+import MailerLite from '../../dist/index.mjs';
 
-import MailerLite from '../../dist/esm/index.mjs';
+dotenv.config();
 
 const mailerlite = new MailerLite({
   api_key: process.env.API_KEY,
