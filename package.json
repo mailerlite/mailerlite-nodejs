@@ -45,7 +45,11 @@
     "typescript": "^4.9.3",
     "vitest": "^0.26.2"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "import": {
