@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, expectTypeOf } from "vitest";
 import "dotenv/config";
-import MailerLite from '../../MailerLite';
+import MailerLite from '../../index';
 import {ListAllResponse} from "./timezones.types";
 import {handleCatchedError} from "../helpers";
 

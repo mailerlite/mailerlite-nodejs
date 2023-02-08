@@ -1,14 +1,14 @@
 import { validateId } from '../helpers.js';
 import request from '../../fetch.js'
 
-import type { Config }  from '../types'
+import type { Config }  from '../types.js'
 import { AxiosResponse } from "axios";
 import { StatsInterface, CampaignSubscribersActivityParams, CampaignSubscribersActivityResponse } from './stats.types.js';
 import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
-import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types";
+import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types.js";
 import { FormsSubscribersParams } from "./stats.types.js";
-import { ListSubscribersResponse } from "../subscribers/subscribers.types";
-import { AutomationStats, AutomationSubsParams, AutomationSubsResponse, GetAutomationsParams, ListAutomationsResponse } from "../automations/automations.types";
+import { ListSubscribersResponse } from "../subscribers/subscribers.types.js";
+import { AutomationStats, AutomationSubsParams, AutomationSubsResponse, GetAutomationsParams, ListAutomationsResponse } from "../automations/automations.types.js";
 
 export default class Statistics implements StatsInterface {
     private config: Config;

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, expectTypeOf } from "vitest";
 import "dotenv/config";
-import MailerLite from '../../MailerLite';
+import MailerLite from '../../index';
 import {BatchParams, BatchResponses} from "./batches.types";
 import {handleCatchedError} from "../helpers";
 

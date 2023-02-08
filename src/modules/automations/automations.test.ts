@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, expectTypeOf } from "vitest";
 import "dotenv/config";
-import MailerLite from '../../MailerLite';
+import MailerLite from '../../index';
 import {
     AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams, ListAutomationsResponse, SingleAutomationResponse,
@@ -24,7 +24,7 @@ describe("Automations", () => {
 
         const params: GetAutomationsParams = {
             filter: {
-                status: true,
+                enabled: true,
                 name: "nodejs"
             },
             limit: 10,

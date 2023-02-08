@@ -24,6 +24,25 @@ npm install mailerlite-nodejs
 ```
 
 # Usage
+
+```javascript
+// For ECMAScript (ESM)
+import MailerLite from '@mailerlite/mailerlite-nodejs';
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+```
+
+```javascript
+// For CommonJS (CJS)
+const MailerLite = require('@mailerlite/mailerlite-nodejs').default;
+
+const mailerlite = new MailerLite({
+  api_key: "API_KEY"
+});
+```
+
 - [Subscribers](src/modules/subscribers/README.md)
     * [List all subscribers](src/modules/subscribers/README.md#list-all-subscribers)
     * [Create/update subscriber](src/modules/subscribers/README.md#createupdate-subscriber)

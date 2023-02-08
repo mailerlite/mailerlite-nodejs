@@ -3,3 +3,5 @@ dist
 .env
 .DS_Store
 .idea
+mailerlite-mailerlite-nodejs-*.tgz
+/examples/package-lock.json

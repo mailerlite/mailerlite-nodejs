@@ -1,7 +1,7 @@
 import { validateId } from '../helpers.js';
 import request from '../../fetch.js'
 
-import type { Config }  from '../types'
+import type { Config }  from '../types.js'
 import { AxiosResponse } from "axios";
 import type { GroupsInterface, GetParams, ListAllGroupsResponse, SingleGroupResponse, CreateUpdateParams, ListAllSubscribersResponse, SubscriberParams } from './groups.types.js';
 

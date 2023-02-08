@@ -1,11 +1,14 @@
 {
-  "name": "mailerlite-nodejs",
+  "name": "@mailerlite/mailerlite-nodejs",
   "version": "1.0.0",
-  "description": "Node.js helper module for MailerLite API",
-  "main": "index.js",
-  "type": "module",
+  "description": "MailerLite Node.js SDK",
+  "main": "./dist/index.js",
+  "module": "/dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && tsup",
+    "prepack": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
@@ -13,8 +16,20 @@
     "type": "git",
     "url": "git+https://github.com/mailerlite/mailerlite-nodejs.git"
   },
-  "keywords": [],
-  "author": "MailerLite",
+  "keywords": [
+    "mailerlite",
+    "typescript",
+    "javascript",
+    "esm",
+    "cjs",
+    "nodejs",
+    "commonjs",
+    "ecmascript"
+  ],
+  "author": {
+    "name": "MailerLite",
+    "url": "https://www.mailerlite.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mailerlite/mailerlite-nodejs/issues"
@@ -25,7 +40,20 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
+    "tsup": "^6.5.0",
     "typescript": "^4.9.3",
     "vitest": "^0.26.2"
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
   }
 }

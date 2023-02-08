@@ -6,12 +6,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   limit: 25,
   page: 1
@@ -31,12 +25,6 @@ mailerlite.segments.get(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   filter: {
     status: "active",
@@ -59,12 +47,6 @@ mailerlite.segments.getSubscribers("SEGMENT_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Updated segment name"
 };
@@ -84,12 +66,6 @@ mailerlite.segments.update("SEGMENT_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.segments.delete("SEGMENT_ID")
   .then(response => {
     console.log(response.data);

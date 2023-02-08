@@ -1,6 +1,6 @@
 import request from '../../fetch.js'
 
-import type { Config }  from '../types'
+import type { Config }  from '../types.js'
 import { AxiosResponse } from "axios";
 import { BatchResponses, BatchesInterface, BatchParams } from "./batches.types.js";
 

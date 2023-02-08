@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
-import { Email } from "../campaigns/campaigns.types";
-import {Links, Meta, Stats} from "../types";
+import { Email } from "../campaigns/campaigns.types.js";
+import {Links, Meta, Stats} from "../types.js";
 
 export interface AutomationsInterface {
     get:                        (params: GetAutomationsParams)                          => Promise<AxiosResponse<ListAutomationsResponse>>;
@@ -10,7 +10,7 @@ export interface AutomationsInterface {
 
 export interface GetAutomationsParams {
     filter?: {
-        status?:    boolean;
+        enabled?:   boolean;
         name?:      string;
         group?:     string;
     };

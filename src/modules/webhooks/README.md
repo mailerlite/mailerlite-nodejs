@@ -6,12 +6,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.webhooks.get()
   .then(response => {
     console.log(response.data);
@@ -26,12 +20,6 @@ mailerlite.webhooks.get()
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.webhooks.find("WEBHOOK_ID")
   .then(response => {
     console.log(response.data);
@@ -46,12 +34,6 @@ mailerlite.webhooks.find("WEBHOOK_ID")
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Test webhook",
   events: ["subscriber.updated"],
@@ -72,12 +54,6 @@ mailerlite.webhooks.create(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Test webhook updated",
   enabled: false
@@ -97,12 +73,6 @@ mailerlite.webhooks.update(params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.webhooks.delete("WEBHOOK_ID")
   .then(response => {
     console.log(response.data);

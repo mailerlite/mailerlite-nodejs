@@ -6,12 +6,6 @@
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const formType = "popup";
 
 const params = {
@@ -35,12 +29,6 @@ mailerlite.forms.get(formType, params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 const params = {
   name: "Updated name"
 };
@@ -60,12 +48,6 @@ mailerlite.forms.update("FORM_ID", params)
 
 ---
 ```javascript
-import { MailerLite } from "MailerLite";
-
-const mailerlite = new MailerLite({
-  api_key: "API_KEY"
-});
-
 mailerlite.forms.delete("FORM_ID")
   .then(response => {
     console.log(response.data);
