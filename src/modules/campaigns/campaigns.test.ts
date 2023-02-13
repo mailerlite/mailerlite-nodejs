@@ -15,6 +15,7 @@ const MAILERLITE_API_KEY = process.env.API_KEY as string;
 const MAILERLITE_VERIFIED_EMAIL = process.env.VERIFIED_EMAIL as string;
 const mailerlite = new MailerLite({
     api_key: MAILERLITE_API_KEY,
+    base_path: "http://localhost:9090",
 });
 
 describe("Campaigns", () => {

@@ -52,10 +52,10 @@ export default class MailerLite {
     public webhooks: WebhooksInterface;
     public stats: StatsInterface;
 
-    constructor(params: { api_key: string; }) {
+    constructor(params: { api_key: string; base_path?: string; }) {
         this.config = {
             api_key: params.api_key,
-            basePath: "https://connect.mailerlite.com"
+            basePath: params.base_path || "https://connect.mailerlite.com"
         };
 
         this.subscribers = new Subscriber(this.config);

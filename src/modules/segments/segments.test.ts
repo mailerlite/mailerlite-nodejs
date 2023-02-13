@@ -13,6 +13,7 @@ import {handleCatchedError} from "../helpers";
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 const mailerlite = new MailerLite({
     api_key: MAILERLITE_API_KEY,
+    base_path: "http://localhost:9090",
 });
 
 describe("Segments", () => {
