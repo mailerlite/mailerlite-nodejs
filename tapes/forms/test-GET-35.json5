@@ -1,0 +1,103 @@
+{
+    meta: {
+        createdAt: '2023-02-13T15:22:59.081Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/forms/79088439017866397/subscribers?filter[status]=active&limit=10&page=1',
+        method: 'GET',
+        body: 'bnVsbA==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Mon, 13 Feb 2023 15:22:59 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'close',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '84',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=15724800; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '798e90077845bc0f-VNO',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '79088720698935066',
+                    email: 'mantas.andriukevicius@mailerlite.com',
+                    status: 'active',
+                    source: 'webform',
+                    sent: 1,
+                    opens_count: 1,
+                    clicks_count: 0,
+                    open_rate: 100,
+                    click_rate: 0,
+                    ip_address: '78.62.135.89',
+                    subscribed_at: '2023-02-03 11:48:01',
+                    unsubscribed_at: null,
+                    created_at: '2023-02-03 11:48:01',
+                    updated_at: '2023-02-03 11:48:52',
+                    fields: {
+                        name: null,
+                        last_name: null,
+                        company: null,
+                        country: null,
+                        city: null,
+                        phone: null,
+                        state: null,
+                        z_i_p: null,
+                        test_batch_field_1: null,
+                        test_batch_field_2: null,
+                    },
+                    opted_in_at: '2023-02-03 11:48:21',
+                    optin_ip: '78.62.135.89',
+                },
+            ],
+            links: {
+                first: null,
+                last: null,
+                prev: null,
+                next: null,
+            },
+            meta: {
+                path: 'https://connect.mailerlite.com/api/forms/79088439017866397/subscribers',
+                per_page: 10,
+                next_cursor: null,
+                prev_cursor: null,
+            },
+        },
+    },
+}

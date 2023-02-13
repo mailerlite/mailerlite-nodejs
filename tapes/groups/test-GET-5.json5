@@ -1,0 +1,203 @@
+{
+    meta: {
+        createdAt: '2023-02-13T15:22:57.649Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/groups?limit=5&page=1&sort=name',
+        method: 'GET',
+        body: 'bnVsbA==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Mon, 13 Feb 2023 15:22:57 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'close',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '113',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=15724800; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '798e8ffe994fbc16-VNO',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '75138557045376452',
+                    name: 'A test Group',
+                    active_count: 0,
+                    sent_count: 0,
+                    opens_count: 0,
+                    open_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    clicks_count: 0,
+                    click_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    unsubscribed_count: 0,
+                    unconfirmed_count: 0,
+                    bounced_count: 0,
+                    junk_count: 0,
+                    created_at: '2022-12-21 21:21:52',
+                },
+                {
+                    id: '79088295512901061',
+                    name: '[Do not delete] nodejs test group',
+                    active_count: 1,
+                    sent_count: 0,
+                    opens_count: 0,
+                    open_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    clicks_count: 0,
+                    click_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    unsubscribed_count: 0,
+                    unconfirmed_count: 1,
+                    bounced_count: 0,
+                    junk_count: 0,
+                    created_at: '2023-02-03 11:41:16',
+                },
+                {
+                    id: '75011449370445335',
+                    name: 'My Group',
+                    active_count: 3,
+                    sent_count: 3,
+                    opens_count: 3,
+                    open_rate: {
+                        float: 1,
+                        string: '100%',
+                    },
+                    clicks_count: 0,
+                    click_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    unsubscribed_count: 0,
+                    unconfirmed_count: 2,
+                    bounced_count: 0,
+                    junk_count: 0,
+                    created_at: '2022-12-20 11:41:32',
+                },
+                {
+                    id: '75138838590129612',
+                    name: 'SMmwGofyQP',
+                    active_count: 3,
+                    sent_count: 7,
+                    opens_count: 3,
+                    open_rate: {
+                        float: 0.42857142857143,
+                        string: '42.86%',
+                    },
+                    clicks_count: 0,
+                    click_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    unsubscribed_count: 0,
+                    unconfirmed_count: 0,
+                    bounced_count: 0,
+                    junk_count: 0,
+                    created_at: '2022-12-21 21:26:20',
+                },
+                {
+                    id: '75138532090315810',
+                    name: 'test_group',
+                    active_count: 0,
+                    sent_count: 0,
+                    opens_count: 0,
+                    open_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    clicks_count: 0,
+                    click_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    unsubscribed_count: 0,
+                    unconfirmed_count: 0,
+                    bounced_count: 0,
+                    junk_count: 0,
+                    created_at: '2022-12-21 21:21:28',
+                },
+            ],
+            links: {
+                first: 'https://connect.mailerlite.com/api/groups?page=1',
+                last: 'https://connect.mailerlite.com/api/groups?page=2',
+                prev: null,
+                next: 'https://connect.mailerlite.com/api/groups?page=2',
+            },
+            meta: {
+                current_page: 1,
+                from: 1,
+                last_page: 2,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/groups?page=1',
+                        label: '1',
+                        active: true,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/groups?page=2',
+                        label: '2',
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/groups?page=2',
+                        label: 'Next &raquo;',
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/groups',
+                per_page: 5,
+                to: 5,
+                total: 6,
+            },
+        },
+    },
+}

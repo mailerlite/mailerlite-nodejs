@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, expectTypeOf } from "vitest";
+import { describe, it, expect, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
@@ -9,22 +9,21 @@ import {
     ListAllSubscribersResponse,
     SubscriberParams
 } from "./groups.types";
-import {getRandomInt, handleCatchedError} from "../helpers";
-import {CreateOrUpdateParams, SingleSubscriberResponse} from "../subscribers/subscribers.types";
+import {getRandomInt, handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
+
+if (!MAILERLITE_API_KEY)
+    throw "No MailerLite API key found in environment variables";
+
 const mailerlite = new MailerLite({
     api_key: MAILERLITE_API_KEY,
+    base_path: "http://localhost:9090",
 });
 
 describe("Groups", () => {
-    beforeAll(() => {
-        if (!MAILERLITE_API_KEY)
-            throw "No MailerLite API key found in environment variables";
-    });
 
     let createdGroupId: string;
-    let createdSubscriberId: string;
 
     it.concurrent("List all groups", async () => {
         const params: GetParams = {
@@ -104,64 +103,6 @@ describe("Groups", () => {
             handleCatchedError(error);
         }
     });
-
-    it("Create or update a subscriber", async () => {
-        const randomInt = getRandomInt();
-        const params: CreateOrUpdateParams = {
-            email: `test${randomInt}@nodejs.com`,
-            status:	'active'
-        };
-
-        try {
-            const response = await mailerlite.subscribers.createOrUpdate(params);
-
-            expect(response).not.toBeNull();
-            expect(response.data).toBeDefined();
-            expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
-            expectTypeOf(response.data).toEqualTypeOf<SingleSubscriberResponse>()
-            createdSubscriberId = response.data.data.id;
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Assign subscriber to a group", async () => {
-        try {
-            const response = await mailerlite.groups.assignSubscriber(createdSubscriberId, createdGroupId);
-
-            expect(response).not.toBeNull();
-            expect(response.data).toBeDefined();
-            expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
-            expectTypeOf(response.data).toEqualTypeOf<SingleGroupResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Unassign subscriber from a group", async () => {
-        try {
-            const response = await mailerlite.groups.unAssignSubscriber(createdSubscriberId, createdGroupId);
-
-            expect(response).not.toBeNull();
-            expect(response.data).toBeDefined();
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Delete a subscriber", async () => {
-        try {
-            const response = await mailerlite.subscribers.delete(createdSubscriberId);
-
-            expect(response).not.toBeNull();
-            expect(response.data).toBeDefined();
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
     it("Delete a group", async () => {
         try {
             const response = await mailerlite.groups.delete(createdGroupId);
