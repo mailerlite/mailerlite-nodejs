@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import {Links, Meta} from "../types.js";
+import {Links, Meta} from "../../utils/types.js";
 
 export interface GroupsInterface {
     get:                (params: GetParams)                             => Promise<AxiosResponse<ListAllGroupsResponse>>;

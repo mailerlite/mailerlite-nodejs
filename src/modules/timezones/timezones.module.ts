@@ -1,6 +1,6 @@
 import request from '../../utils/fetch.js'
 
-import type { Config }  from '../types.js'
+import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
 import { ListAllResponse, TimezonesInterface } from "./timezones.types.js";
 

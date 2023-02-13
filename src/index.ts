@@ -1,4 +1,4 @@
-import { Config }  from './modules/types.js'
+import { Config }  from './utils/types.js'
 
 import Subscriber from './modules/subscribers/subscribers.module.js';
 import { SubscriberInterface } from "./modules/subscribers/subscribers.types.js";

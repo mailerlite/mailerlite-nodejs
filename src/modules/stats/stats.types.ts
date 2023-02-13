@@ -8,7 +8,7 @@ import {
     AutomationStats, AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams, ListAutomationsResponse
 } from "../automations/automations.types.js";
-import {Links} from "../types.js";
+import {Links} from "../../utils/types.js";
 
 export interface StatsInterface {
     getSentCampaigns:           (params: GetCampaignsParams)                                            => Promise<AxiosResponse<ListCampaignsResponse>>;
