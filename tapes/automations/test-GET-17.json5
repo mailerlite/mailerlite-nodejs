@@ -1,0 +1,92 @@
+{
+    meta: {
+        createdAt: '2023-02-13T15:22:58.242Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/automations/79088320863274637/activity?filter[status]=active&limit=10&page=1',
+        method: 'GET',
+        body: 'bnVsbA==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Mon, 13 Feb 2023 15:22:58 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'close',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '102',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=15724800; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '798e90023d79bc10-VNO',
+            ],
+        },
+        body: {
+            data: [],
+            links: {
+                first: 'https://connect.mailerlite.com/api/automations/79088320863274637/activity?page=1',
+                last: 'https://connect.mailerlite.com/api/automations/79088320863274637/activity?page=1',
+                prev: null,
+                next: null,
+            },
+            meta: {
+                current_page: 1,
+                from: null,
+                last_page: 1,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/automations/79088320863274637/activity?page=1',
+                        label: '1',
+                        active: true,
+                    },
+                    {
+                        url: null,
+                        label: 'Next &raquo;',
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/automations/79088320863274637/activity',
+                per_page: 10,
+                to: null,
+                total: 0,
+            },
+        },
+    },
+}

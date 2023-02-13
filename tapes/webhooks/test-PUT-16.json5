@@ -1,0 +1,71 @@
+{
+    meta: {
+        createdAt: '2023-02-13T15:22:58.183Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/webhooks/80008213192247058',
+        method: 'PUT',
+        body: 'ewogICJuYW1lIjogIlRlc3Qgd2ViaG9vayBub2RlanMgdXBkYXRlZCA0MTg3MTYiLAogICJlbmFibGVkIjogZmFsc2UKfQ==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Mon, 13 Feb 2023 15:22:58 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'close',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '101',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=15724800; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '798e9001d8cfbc15-VNO',
+            ],
+        },
+        body: {
+            data: {
+                id: '80008213192247058',
+                name: 'Test webhook nodejs updated 418716',
+                url: 'http://www.marvin.com/omnis-accusamus-est-rem-delectus-quaerat.html',
+                events: [
+                    'subscriber.updated',
+                ],
+                enabled: false,
+                secret: 'OjK2C3Ufoo',
+                created_at: '2023-02-13 15:22:58',
+                updated_at: '2023-02-13 15:22:58',
+            },
+        },
+    },
+}

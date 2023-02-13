@@ -1,0 +1,125 @@
+{
+    meta: {
+        createdAt: '2023-02-13T15:22:58.460Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/campaigns/75323191845717113/reports/subscriber-activity',
+        method: 'POST',
+        body: 'ewogICJmaWx0ZXIiOiB7fSwKICAibGltaXQiOiAxMCwKICAic29ydCI6ICJpZCIsCiAgInBhZ2UiOiAxCn0=',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Mon, 13 Feb 2023 15:22:58 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'close',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '96',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=15724800; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '798e90039dc1bc1b-VNO',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '76046933329708818',
+                    opens_count: 12,
+                    clicks_count: 0,
+                },
+                {
+                    id: '76046933406254870',
+                    opens_count: 0,
+                    clicks_count: 0,
+                },
+                {
+                    id: '76046933445052185',
+                    opens_count: 0,
+                    clicks_count: 0,
+                },
+                {
+                    id: '76046933481752348',
+                    opens_count: 2,
+                    clicks_count: 0,
+                },
+            ],
+            links: {
+                first: 'https://connect.mailerlite.com/api/campaigns/75323191845717113/reports/subscriber-activity?page=1',
+                last: 'https://connect.mailerlite.com/api/campaigns/75323191845717113/reports/subscriber-activity?page=1',
+                prev: null,
+                next: null,
+            },
+            meta: {
+                current_page: 1,
+                from: 1,
+                last_page: 1,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns/75323191845717113/reports/subscriber-activity?page=1',
+                        label: '1',
+                        active: true,
+                    },
+                    {
+                        url: null,
+                        label: 'Next &raquo;',
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/campaigns/75323191845717113/reports/subscriber-activity',
+                per_page: 10,
+                to: 4,
+                total: 4,
+                aggregations: {
+                    all: 4,
+                    opened: 2,
+                    unopened: 2,
+                    clicked: 0,
+                    unsubscribed: 0,
+                    forwarded: 0,
+                    hardbounced: 1,
+                    softbounced: 0,
+                    junk: 0,
+                    social_interaction: 0,
+                },
+            },
+        },
+    },
+}

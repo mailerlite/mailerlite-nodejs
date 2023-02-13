@@ -8,12 +8,12 @@ import path from "path";
 export async function setup() {
     const opts = {
         host: "https://connect.mailerlite.com",
-        record: talkback.Options.RecordMode.DISABLED,
+        record: talkback.Options.RecordMode.DISABLED, // to record new tapes change to RecordMode.NEW or RecordMode.OVERWRITE and comment out fallbackMode
         fallbackMode: talkback.Options.FallbackMode.NOT_FOUND,
         name: "MailerLite",
         port: 9090,
         path: "./tapes",
-        allowHeaders: ['url', 'method', 'body'],
+        allowHeaders: [], // all headers are identical, do not save or match by them
         ignoreBody: true,
         silent: true,
         // debug: true,
@@ -28,13 +28,6 @@ export async function setup() {
             let endpointName = url.pathname.replace('/api/', '');
             endpointName = endpointName.split('/')[0];
             return path.join(`${endpointName}`, `test-${tape.req.method}-${tapeNumber}`);
-        },
-
-        tapeDecorator: function tapeDecorator(tape: Tape) {
-            if (tape.req.headers.authorization) {
-                delete tape.req.headers.authorization;
-            }
-            return tape
         }
     };
 
