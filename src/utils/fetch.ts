@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Config }  from './modules/types.js'
+import { Config }  from '../modules/types.js'
 
 interface Options {
     headers?: object;

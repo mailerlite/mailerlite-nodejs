@@ -1,4 +1,4 @@
-import request from '../../fetch.js'
+import request from '../../utils/fetch.js'
 
 import type { Config }  from '../types.js'
 import { AxiosResponse } from "axios";
