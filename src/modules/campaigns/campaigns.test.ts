@@ -9,7 +9,7 @@ import {
     ScheduleParams
 } from "./campaigns.types";
 
-import {getRandomInt, handleCatchedError} from "../helpers";
+import {getRandomInt, handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 const MAILERLITE_VERIFIED_EMAIL = process.env.VERIFIED_EMAIL as string;

@@ -5,7 +5,7 @@ import {
     AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams, ListAutomationsResponse, SingleAutomationResponse,
 } from "./automations.types";
-import {handleCatchedError} from "../helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 const mailerlite = new MailerLite({

@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {ListAllResponse} from "./timezones.types";
-import {handleCatchedError} from "../helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 const mailerlite = new MailerLite({

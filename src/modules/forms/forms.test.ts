@@ -7,7 +7,7 @@ import {
     ListFormsResponse,
     SingleFormResponse
 } from "./forms.types";
-import {getRandomInt, handleCatchedError} from "../helpers";
+import {getRandomInt, handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 const mailerlite = new MailerLite({
