@@ -31,7 +31,7 @@ export default function request(endpoint: string = "", options: Options, config:
 
 function serializeQuery(params: object, prefix?: string): string {
 
-    const query: string[] = Object.keys(params).map((key) => {
+    const queryParamsArray: string[] = Object.keys(params).map((key) => {
         const value = params[key as keyof typeof params];
 
         if (params.constructor === Array)
@@ -45,6 +45,5 @@ function serializeQuery(params: object, prefix?: string): string {
             return `${key}=${encodeURIComponent(value)}`;
     });
 
-    // @ts-ignore
-    return [].concat.apply([], query).join('&')
+    return queryParamsArray.flat(10).join('&');
 }
