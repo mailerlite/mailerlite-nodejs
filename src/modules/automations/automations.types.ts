@@ -101,17 +101,17 @@ interface AutomationObject {
     name:       string;
     enabled:    boolean;
     trigger_data: {
-        group_id:               string;
-        exclude_group_ids:      Array<string>;
-        valid:                  boolean
+        track_ecommerce: boolean;
+        repeatable:      boolean;
+        valid:           boolean;
     };
     steps:                      Array<AutomationStep | AutomationEmailStep>;
     triggers:                   Array<AutomationTriggers>;
     complete:                   boolean;
     broken:                     boolean;
     warnings:                   Array<string>;
-    emails_count:               number;
-    first_email_screenshot_url: string;
+    emails_count?:              number;
+    first_email_screenshot_url?: string;
     stats:                      AutomationStats;
     created_at:                 string;
     has_banned_content:         boolean;
@@ -166,12 +166,12 @@ interface AutomationEmailStep {
 interface AutomationTriggers {
     id:         string;
     type:       string;
-    group_id:   string;
-    group: {
-        id:     string;
-        name:   string;
-        url:    string
-    };
+    group_ids:  Array<string>;
+    groups:     Array<{
+                    id: string;
+                    name: string;
+                    url: string;
+                }>;
     exclude_group_ids:  Array<string>;
     excluded_groups:    Array<string>;
     broken:             boolean;
