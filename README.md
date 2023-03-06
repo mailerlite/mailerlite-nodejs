@@ -11,6 +11,7 @@
     <br />
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
+![NPM Version](https://img.shields.io/npm/v/@mailerlite/mailerlite-nodejs)
 
   </sup>
   <br />
@@ -20,7 +21,7 @@
 # Installation
 
 ```bash
-npm install mailerlite-nodejs
+npm install @mailerlite/mailerlite-nodejs
 ```
 
 # Usage
