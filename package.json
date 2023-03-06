@@ -56,5 +56,8 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
