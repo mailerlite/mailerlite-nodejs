@@ -1,20 +1,20 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:58.143Z',
+        createdAt: '2023-03-06T09:26:16.237Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/fields/117076',
+        url: '/api/fields/130475',
         method: 'PUT',
-        body: 'ewogICJuYW1lIjogIlRlc3QgZmllbGQgbm9kZWpzIHVwZGF0ZWQgOTcxMzQ0Igp9',
+        body: 'ewogICJuYW1lIjogIlRlc3QgZmllbGQgbm9kZWpzIHVwZGF0ZWQgODQwMzA3Igp9',
     },
     res: {
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:58 GMT',
+                'Mon, 06 Mar 2023 09:26:16 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '100',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '104',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,14 +50,14 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e90019e00c030-VNO',
+                '7a398e6008adb801-RIX',
             ],
         },
         body: {
             data: {
-                id: '117076',
-                name: 'Test field nodejs updated 971344',
-                key: 'test_field_nodejs_738347',
+                id: '130475',
+                name: 'Test field nodejs updated 840307',
+                key: 'test_field_nodejs_316382',
                 type: 'text',
                 is_default: false,
                 used_in_automations: false,

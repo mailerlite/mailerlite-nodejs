@@ -1,11 +1,11 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:58.552Z',
+        createdAt: '2023-03-06T09:26:16.336Z',
         host: 'https://connect.mailerlite.com',
     },
     req: {
         headers: {},
-        url: '/api/groups/80008213314930087',
+        url: '/api/webhooks/81888307734120418',
         method: 'DELETE',
         body: 'bnVsbA==',
     },
@@ -13,10 +13,13 @@
         status: 204,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:58 GMT',
+                'Mon, 06 Mar 2023 09:26:16 GMT',
             ],
             connection: [
                 'close',
+            ],
+            'access-control-allow-origin': [
+                '*',
             ],
             'cache-control': [
                 'no-cache, private',
@@ -28,10 +31,7 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '94',
-            ],
-            'access-control-allow-origin': [
-                '*',
+                '98',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -43,7 +43,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e90042b42bc16-VNO',
+                '7a398e60aa74b4d8-RIX',
             ],
         },
         body: '',

@@ -1,6 +1,6 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:58.670Z',
+        createdAt: '2023-03-06T09:26:15.387Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:58 GMT',
+                'Mon, 06 Mar 2023 09:26:15 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '119',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '92',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e9004e9a4c03c-VNO',
+                '7a398e5afb28b80a-RIX',
             ],
         },
         body: {
@@ -59,7 +59,7 @@
                     id: '79088439017866397',
                     type: 'popup',
                     slug: 'w3zZJj',
-                    name: '[Do not delete] nodejs popup 192835',
+                    name: '[Do not delete] nodejs popup 627178',
                     created_at: '2023-02-03 11:43:33',
                     conversions_count: 1,
                     opens_count: 0,

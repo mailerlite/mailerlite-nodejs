@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:58.391Z',
+        createdAt: '2023-03-06T09:26:16.472Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/groups/80008213314930087/subscribers?filter[status]=active&limit=5&page=1',
+        url: '/api/subscribers?limit=0',
         method: 'GET',
         body: 'bnVsbA==',
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:58 GMT',
+                'Mon, 06 Mar 2023 09:26:16 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '93',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '99',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,23 +50,11 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e900328f8c03a-VNO',
+                '7a398e618adeb804-RIX',
             ],
         },
         body: {
-            data: [],
-            links: {
-                first: null,
-                last: null,
-                prev: null,
-                next: null,
-            },
-            meta: {
-                path: 'https://connect.mailerlite.com/api/groups/80008213314930087/subscribers',
-                per_page: 5,
-                next_cursor: null,
-                prev_cursor: null,
-            },
+            total: 11,
         },
     },
 }

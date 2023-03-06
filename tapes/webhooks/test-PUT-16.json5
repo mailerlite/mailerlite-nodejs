@@ -1,20 +1,20 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:58.183Z',
+        createdAt: '2023-03-06T09:26:16.118Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/webhooks/80008213192247058',
+        url: '/api/webhooks/81888307734120418',
         method: 'PUT',
-        body: 'ewogICJuYW1lIjogIlRlc3Qgd2ViaG9vayBub2RlanMgdXBkYXRlZCA0MTg3MTYiLAogICJlbmFibGVkIjogZmFsc2UKfQ==',
+        body: 'ewogICJuYW1lIjogIlRlc3Qgd2ViaG9vayBub2RlanMgdXBkYXRlZCA0OTY1NTYiLAogICJlbmFibGVkIjogZmFsc2UKfQ==',
     },
     res: {
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:58 GMT',
+                'Mon, 06 Mar 2023 09:26:16 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '103',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '101',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,21 +50,21 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e9001d8cfbc15-VNO',
+                '7a398e5f4c62b804-RIX',
             ],
         },
         body: {
             data: {
-                id: '80008213192247058',
-                name: 'Test webhook nodejs updated 418716',
+                id: '81888307734120418',
+                name: 'Test webhook nodejs updated 496556',
                 url: 'http://www.marvin.com/omnis-accusamus-est-rem-delectus-quaerat.html',
                 events: [
                     'subscriber.updated',
                 ],
                 enabled: false,
-                secret: 'OjK2C3Ufoo',
-                created_at: '2023-02-13 15:22:58',
-                updated_at: '2023-02-13 15:22:58',
+                secret: 'w9Ifwx3vxT',
+                created_at: '2023-03-06 09:26:15',
+                updated_at: '2023-03-06 09:26:16',
             },
         },
     },

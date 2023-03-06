@@ -1,6 +1,6 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:58.018Z',
+        createdAt: '2023-03-06T09:26:15.785Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:58 GMT',
+                'Mon, 06 Mar 2023 09:26:16 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '108',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '108',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e9000dc6bbc19-VNO',
+                '7a398e5d3eddb80d-RIX',
             ],
         },
         body: {
@@ -166,6 +166,10 @@
                                 float: 0,
                                 string: '0%',
                             },
+                            click_to_open_rate: {
+                                float: 0,
+                                string: '0%',
+                            },
                         },
                         send_after: null,
                         track_opens: true,
@@ -241,6 +245,7 @@
                 can_be_scheduled: false,
                 warnings: [],
                 is_currently_sending_out: false,
+                can_be_copied: true,
             },
         },
     },

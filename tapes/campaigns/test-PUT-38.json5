@@ -1,20 +1,20 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:59.745Z',
+        createdAt: '2023-03-06T09:26:17.771Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/campaigns/80008213340096277',
+        url: '/api/campaigns/81888307954321379',
         method: 'PUT',
-        body: 'ewogICJuYW1lIjogIlRlc3QgY2FtcGFpZ24gdXBkYXRlZCBub2RlanMgMjA5Nzk4IiwKICAibGFuZ3VhZ2VfaWQiOiA0LAogICJ0eXBlIjogInJlZ3VsYXIiLAogICJlbWFpbHMiOiBbCiAgICB7CiAgICAgICJzdWJqZWN0IjogIkR1bW15IHN1YmplY3QgdXBkYXRlZCIsCiAgICAgICJmcm9tX25hbWUiOiAiRHVtbXkgVGVzdGVyc29uIHVwZGF0ZWQiLAogICAgICAiZnJvbSI6ICJzZGtAbWFpbGVybGl0ZS5jb20iLAogICAgICAiY29udGVudCI6ICI8IURPQ1RZUEUgaHRtbD5cbjxodG1sPlxuPGhlYWQ+XG4gIDxtZXRhIGh0dHAtZXF1aXY9XCJDb250ZW50LVR5cGVcIiBjb250ZW50PVwidGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04XCIgLz5cbiAgPG1ldGEgbmFtZT1cInZpZXdwb3J0XCIgY29udGVudD1cIndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjBcIiAvPlxuICA8bWV0YSBodHRwLWVxdWl2PVwiWC1VQS1Db21wYXRpYmxlXCIgY29udGVudD1cIklFPWVkZ2VcIiAvPlxuICA8bWV0YSBuYW1lPVwiZm9ybWF0LWRldGVjdGlvblwiIGNvbnRlbnQ9XCJhZGRyZXNzPW5vXCIgLz5cbiAgPG1ldGEgbmFtZT1cImZvcm1hdC1kZXRlY3Rpb25cIiBjb250ZW50PVwidGVsZXBob25lPW5vXCIgLz5cbiAgPG1ldGEgbmFtZT1cImZvcm1hdC1kZXRlY3Rpb25cIiBjb250ZW50PVwiZW1haWw9bm9cIiAvPlxuICA8bWV0YSBuYW1lPVwieC1hcHBsZS1kaXNhYmxlLW1lc3NhZ2UtcmVmb3JtYXR0aW5nXCIgLz5cbiAgPHRpdGxlPlVudGl0bGVkPC90aXRsZT5cbiAgPCEtLSBTdHlsZSBnb2VzIGhlcmUgLS0+XG4gIDxzdHlsZSB0eXBlPVwidGV4dC9jc3NcIj5cblxuICA8L3N0eWxlPlxuPC9oZWFkPlxuPGJvZHkgc3R5bGU9XCJtYXJnaW46IDA7IHBhZGRpbmc6IDA7XCI+XG48IS0tIE1haW4gdGFibGUgLS0+XG48dGFibGUgYm9yZGVyPVwiMFwiIGNlbGxzcGFjaW5nPVwiMFwiIGNlbGxwYWRkaW5nPVwiMFwiIHdpZHRoPVwiMTAwJVwiPlxuICA8dHI+XG4gICAgPHRkIHN0eWxlPVwicGFkZGluZzogMCA0MHB4O1wiPlxuICAgICAgPCEtLSBDaGlsZCB0YWJsZSAtLT5cbiAgICAgIDx0YWJsZSBhbGlnbj1cImNlbnRlclwiIGJvcmRlcj1cIjBcIiBjZWxsc3BhY2luZz1cIjBcIiBjZWxscGFkZGluZz1cIjBcIiB3aWR0aD1cIjEwMCVcIiBzdHlsZT1cIndpZHRoOiAxMDAlOyBtaW4td2lkdGg6IDEwMCU7XCI+XG4gICAgICAgIDx0cj5cbiAgICAgICAgICA8dGQ+XG4gICAgICAgICAgICA8cD4gVGhpcyBpcyBhIHRlc3QgY29udGVudCA8L3A+XG4gICAgICAgICAgICA8YSBocmVmPVwieyR1bnN1YnNjcmliZX1cIj5VbnN1YnNjcmliZTwvYT5cbiAgICAgICAgICA8L3RkPlxuICAgICAgICA8L3RyPlxuICAgICAgPC90YWJsZT5cblxuICAgIDwvdGQ+XG4gIDwvdHI+XG48L3RhYmxlPlxuPCEtLSBGb290ZXIgLS0+XG48L2JvZHk+XG48L2h0bWw+IgogICAgfQogIF0KfQ==',
+        body: 'ewogICJuYW1lIjogIlRlc3QgY2FtcGFpZ24gdXBkYXRlZCBub2RlanMgOTgxNDU3IiwKICAibGFuZ3VhZ2VfaWQiOiA0LAogICJ0eXBlIjogInJlZ3VsYXIiLAogICJlbWFpbHMiOiBbCiAgICB7CiAgICAgICJzdWJqZWN0IjogIkR1bW15IHN1YmplY3QgdXBkYXRlZCIsCiAgICAgICJmcm9tX25hbWUiOiAiRHVtbXkgVGVzdGVyc29uIHVwZGF0ZWQiLAogICAgICAiZnJvbSI6ICJzZGtAbWFpbGVybGl0ZS5jb20iLAogICAgICAiY29udGVudCI6ICI8IURPQ1RZUEUgaHRtbD5cbjxodG1sPlxuPGhlYWQ+XG4gIDxtZXRhIGh0dHAtZXF1aXY9XCJDb250ZW50LVR5cGVcIiBjb250ZW50PVwidGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04XCIgLz5cbiAgPG1ldGEgbmFtZT1cInZpZXdwb3J0XCIgY29udGVudD1cIndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjBcIiAvPlxuICA8bWV0YSBodHRwLWVxdWl2PVwiWC1VQS1Db21wYXRpYmxlXCIgY29udGVudD1cIklFPWVkZ2VcIiAvPlxuICA8bWV0YSBuYW1lPVwiZm9ybWF0LWRldGVjdGlvblwiIGNvbnRlbnQ9XCJhZGRyZXNzPW5vXCIgLz5cbiAgPG1ldGEgbmFtZT1cImZvcm1hdC1kZXRlY3Rpb25cIiBjb250ZW50PVwidGVsZXBob25lPW5vXCIgLz5cbiAgPG1ldGEgbmFtZT1cImZvcm1hdC1kZXRlY3Rpb25cIiBjb250ZW50PVwiZW1haWw9bm9cIiAvPlxuICA8bWV0YSBuYW1lPVwieC1hcHBsZS1kaXNhYmxlLW1lc3NhZ2UtcmVmb3JtYXR0aW5nXCIgLz5cbiAgPHRpdGxlPlVudGl0bGVkPC90aXRsZT5cbiAgPCEtLSBTdHlsZSBnb2VzIGhlcmUgLS0+XG4gIDxzdHlsZSB0eXBlPVwidGV4dC9jc3NcIj5cblxuICA8L3N0eWxlPlxuPC9oZWFkPlxuPGJvZHkgc3R5bGU9XCJtYXJnaW46IDA7IHBhZGRpbmc6IDA7XCI+XG48IS0tIE1haW4gdGFibGUgLS0+XG48dGFibGUgYm9yZGVyPVwiMFwiIGNlbGxzcGFjaW5nPVwiMFwiIGNlbGxwYWRkaW5nPVwiMFwiIHdpZHRoPVwiMTAwJVwiPlxuICA8dHI+XG4gICAgPHRkIHN0eWxlPVwicGFkZGluZzogMCA0MHB4O1wiPlxuICAgICAgPCEtLSBDaGlsZCB0YWJsZSAtLT5cbiAgICAgIDx0YWJsZSBhbGlnbj1cImNlbnRlclwiIGJvcmRlcj1cIjBcIiBjZWxsc3BhY2luZz1cIjBcIiBjZWxscGFkZGluZz1cIjBcIiB3aWR0aD1cIjEwMCVcIiBzdHlsZT1cIndpZHRoOiAxMDAlOyBtaW4td2lkdGg6IDEwMCU7XCI+XG4gICAgICAgIDx0cj5cbiAgICAgICAgICA8dGQ+XG4gICAgICAgICAgICA8cD4gVGhpcyBpcyBhIHRlc3QgY29udGVudCA8L3A+XG4gICAgICAgICAgICA8YSBocmVmPVwieyR1bnN1YnNjcmliZX1cIj5VbnN1YnNjcmliZTwvYT5cbiAgICAgICAgICA8L3RkPlxuICAgICAgICA8L3RyPlxuICAgICAgPC90YWJsZT5cblxuICAgIDwvdGQ+XG4gIDwvdHI+XG48L3RhYmxlPlxuPCEtLSBGb290ZXIgLS0+XG48L2JvZHk+XG48L2h0bWw+IgogICAgfQogIF0KfQ==',
     },
     res: {
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:23:01 GMT',
+                'Mon, 06 Mar 2023 09:26:19 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '82',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '81',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,14 +50,14 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e900ba946ffdc-VNO',
+                '7a398e69ad11b80f-RIX',
             ],
         },
         body: {
             data: {
-                id: '80008213340096277',
+                id: '81888307954321379',
                 account_id: '252151',
-                name: 'Test campaign updated nodejs 209798',
+                name: 'Test campaign updated nodejs 981457',
                 type: 'regular',
                 status: 'draft',
                 missing_data: [],
@@ -66,19 +66,19 @@
                 filter_for_humans: [],
                 delivery_schedule: null,
                 language_id: '4',
-                created_at: '2023-02-13 15:22:58',
-                updated_at: '2023-02-13 15:22:59',
+                created_at: '2023-03-06 09:26:16',
+                updated_at: '2023-03-06 09:26:18',
                 scheduled_for: null,
                 queued_at: null,
                 started_at: null,
                 finished_at: null,
                 stopped_at: null,
-                default_email_id: '80008213353727766',
+                default_email_id: '81888307980535780',
                 emails: [
                     {
-                        id: '80008213353727766',
+                        id: '81888307980535780',
                         account_id: '252151',
-                        emailable_id: '80008213340096277',
+                        emailable_id: '81888307954321379',
                         emailable_type: 'campaigns',
                         type: 'builder_html',
                         from: 'sdk@mailerlite.com',
@@ -87,10 +87,10 @@
                         subject: 'Dummy subject updated',
                         content: '<!DOCTYPE html>\n<html>\n  <head>\n    <!--{$head_bottom}-->\n    <title></title>\n  </head>\n  <body class="" style="">\n    <!--{$body_top}-->\n    <head>\n      <!--{$head_top}-->\n      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="IE=edge">\n      <meta name="format-detection" content="address=no">\n      <meta name="format-detection" content="telephone=no">\n      <meta name="format-detection" content="email=no">\n      <meta name="x-apple-disable-message-reformatting">\n      <title>\n        Untitled\n      </title><!-- Style goes here -->\n\n      <style type="text/css"></style>\n    </head><!--{$body_top}-->\n    <!-- Main table -->\n    <table border="0" cellspacing="0" cellpadding="0" width="100%">\n      <tr>\n        <td style="padding: 0 40px;">\n          <!-- Child table -->\n          <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style=\n          "width: 100%; min-width: 100%;">\n            <tr>\n              <td>\n                <p>\n                  This is a test content\n                </p><a href="{$unsubscribe}">Unsubscribe</a>\n              </td>\n            </tr>\n          </table>\n        </td>\n      </tr>\n    </table><!-- Footer -->\n    <!--{$body_bottom}-->\n    <style type="text/css">\n    .mlFooter p {\n    margin: 0;\n    }\n\n    @media only screen and (max-width: 640px) {\n    .mlContentTable{\n      width: 100%!important;\n      min-width: 10%!important;\n      margin: 0!important;\n      float: none!important;\n    }\n\n    .mlContentOuter{\n      padding-bottom: 0!important;\n      padding-left: 15px!important;\n      padding-right: 15px!important;\n      padding-top: 0!important;\n    }\n    }\n    </style><!--{$body_bottom}-->\n  </body>\n</html>',
                         plain_text: "Hello,\n\nYou have received a newsletter from {$account}.\n\nHowever, your email software can't display HTML emails. You can view the newsletter by clicking here:\n\n{$url}\n\n\n\nYou're receiving this newsletter because you have shown interest in {$account}.\nNot interested anymore? Click here to unsubscribe:\n{$unsubscribe}\n",
-                        screenshot_url: null,
-                        preview_url: 'https://preview.mailerlite.io/preview/252151/emails/80008213353727766',
-                        created_at: '2023-02-13 15:22:58',
-                        updated_at: '2023-02-13 15:23:01',
+                        screenshot_url: 'https://storage.googleapis.com/mailerlite-screenshots-prod/screenshot/emails/81888307980535780/1284x736.png',
+                        preview_url: 'https://preview.mailerlite.io/preview/252151/emails/81888307980535780',
+                        created_at: '2023-03-06 09:26:16',
+                        updated_at: '2023-03-06 09:26:19',
                         is_designed: true,
                         language_id: 4,
                         language: {
@@ -145,6 +145,10 @@
                                 float: 0,
                                 string: '0%',
                             },
+                            click_to_open_rate: {
+                                float: 0,
+                                string: '0%',
+                            },
                         },
                         send_after: null,
                         track_opens: true,
@@ -171,7 +175,7 @@
                 can_be_scheduled: true,
                 breadcrumbs: [
                     {
-                        url: 'https://dashboard.mailerlite.com/campaigns/80008213340096277/edit',
+                        url: 'https://dashboard.mailerlite.com/campaigns/81888307954321379/edit',
                         text: 'Details',
                         active: false,
                         disabled: false,
@@ -179,7 +183,7 @@
                         state: null,
                     },
                     {
-                        url: 'https://dashboard.mailerlite.com/emails/80008213353727766/edit',
+                        url: 'https://dashboard.mailerlite.com/emails/81888307980535780/edit',
                         text: 'Content',
                         active: false,
                         disabled: false,
@@ -187,7 +191,7 @@
                         state: null,
                     },
                     {
-                        url: 'https://dashboard.mailerlite.com/campaigns/80008213340096277/recipients/basic',
+                        url: 'https://dashboard.mailerlite.com/campaigns/81888307954321379/recipients/basic',
                         text: 'Recipients',
                         active: false,
                         disabled: false,
@@ -195,7 +199,7 @@
                         state: null,
                     },
                     {
-                        url: 'https://dashboard.mailerlite.com/campaigns/80008213340096277/review',
+                        url: 'https://dashboard.mailerlite.com/campaigns/81888307954321379/review',
                         text: 'Review',
                         active: false,
                         disabled: false,
@@ -203,7 +207,7 @@
                         state: null,
                     },
                     {
-                        url: 'https://dashboard.mailerlite.com/campaigns/80008213340096277/schedule',
+                        url: 'https://dashboard.mailerlite.com/campaigns/81888307954321379/schedule',
                         text: 'Schedule',
                         active: false,
                         disabled: false,
@@ -213,8 +217,9 @@
                 ],
                 warnings: [],
                 recipients_count: 6,
-                next_step: 'https://dashboard.mailerlite.com/campaigns/80008213340096277/review',
+                next_step: 'https://dashboard.mailerlite.com/campaigns/81888307954321379/review',
                 is_currently_sending_out: false,
+                can_be_copied: true,
             },
         },
     },

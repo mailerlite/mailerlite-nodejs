@@ -1,6 +1,6 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:57.840Z',
+        createdAt: '2023-03-06T09:26:15.688Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
@@ -8,13 +8,13 @@
         headers: {},
         url: '/api/subscribers',
         method: 'POST',
-        body: 'ewogICJlbWFpbCI6ICJ0ZXN0MTQ1NDkxQG5vZGVqcy5jb20iLAogICJmaWVsZHMiOiB7CiAgICAibmFtZSI6ICJUZXN0IG5hbWUgMTQ1NDkxIiwKICAgICJsYXN0X25hbWUiOiAiVGVzdCBsYXN0bmFtZSAxNDU0OTEiLAogICAgImNvbXBhbnkiOiAidGVzdCBjb21wYW55IDE0NTQ5MSIsCiAgICAiY291bnRyeSI6ICJ0ZXN0IGNvdW50cnkgMTQ1NDkxIiwKICAgICJjaXR5IjogInRlc3QgY2l0eSAxNDU0OTEiCiAgfSwKICAic3RhdHVzIjogImFjdGl2ZSIsCiAgInN1YnNjcmliZWRfYXQiOiAiMjAyMi0xMS0yMyAwOTo1OTo1NiIKfQ==',
+        body: 'ewogICJlbWFpbCI6ICJ0ZXN0MTc0NzQzQG5vZGVqcy5jb20iLAogICJmaWVsZHMiOiB7CiAgICAibmFtZSI6ICJUZXN0IG5hbWUgMTc0NzQzIiwKICAgICJsYXN0X25hbWUiOiAiVGVzdCBsYXN0bmFtZSAxNzQ3NDMiLAogICAgImNvbXBhbnkiOiAidGVzdCBjb21wYW55IDE3NDc0MyIsCiAgICAiY291bnRyeSI6ICJ0ZXN0IGNvdW50cnkgMTc0NzQzIiwKICAgICJjaXR5IjogInRlc3QgY2l0eSAxNzQ3NDMiCiAgfSwKICAic3RhdHVzIjogImFjdGl2ZSIsCiAgInN1YnNjcmliZWRfYXQiOiAiMjAyMi0xMS0yMyAwOTo1OTo1NiIKfQ==',
     },
     res: {
         status: 201,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:58 GMT',
+                'Mon, 06 Mar 2023 09:26:16 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '112',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '112',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,13 +50,13 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e8fffbd50bc1c-VNO',
+                '7a398e5caeb5b4cc-RIX',
             ],
         },
         body: {
             data: {
-                id: '80008213176518029',
-                email: 'test145491@nodejs.com',
+                id: '81888307764528758',
+                email: 'test174743@nodejs.com',
                 status: 'active',
                 source: 'api',
                 sent: 0,
@@ -67,19 +67,21 @@
                 ip_address: null,
                 subscribed_at: '2022-11-23 09:59:56',
                 unsubscribed_at: null,
-                created_at: '2023-02-13 15:22:58',
-                updated_at: '2023-02-13 15:22:58',
+                created_at: '2023-03-06 09:26:15',
+                updated_at: '2023-03-06 09:26:16',
                 fields: {
-                    name: 'Test name 145491',
-                    last_name: 'Test lastname 145491',
-                    company: 'test company 145491',
-                    country: 'test country 145491',
-                    city: 'test city 145491',
+                    name: 'Test name 174743',
+                    last_name: 'Test lastname 174743',
+                    company: 'test company 174743',
+                    country: 'test country 174743',
+                    city: 'test city 174743',
                     phone: null,
                     state: null,
                     z_i_p: null,
                     test_batch_field_1: null,
                     test_batch_field_2: null,
+                    test_batch_field_3: null,
+                    test_batch_field_4: null,
                 },
                 groups: [],
                 location: null,

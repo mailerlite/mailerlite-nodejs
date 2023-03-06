@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:57.647Z',
+        createdAt: '2023-03-06T09:26:15.387Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/campaigns?filter[status]=sent&limit=10&page=1',
+        url: '/api/campaigns?filter[status]=sent&filter[type]=regular&limit=25&page=1',
         method: 'GET',
         body: 'bnVsbA==',
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:57 GMT',
+                'Mon, 06 Mar 2023 09:26:15 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '114',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '116',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e8ffe9882c03a-VNO',
+                '7a398e5b096eb4a2-RIX',
             ],
         },
         body: {
@@ -142,6 +142,10 @@
                                     float: 0,
                                     string: '0%',
                                 },
+                                click_to_open_rate: {
+                                    float: 0,
+                                    string: '0%',
+                                },
                             },
                             send_after: null,
                             track_opens: true,
@@ -218,6 +222,7 @@
                     warnings: [],
                     initial_created_at: null,
                     is_currently_sending_out: false,
+                    can_be_copied: true,
                 },
                 {
                     id: '75323121649846116',
@@ -306,6 +311,10 @@
                                     float: 0,
                                     string: '0%',
                                 },
+                                click_to_open_rate: {
+                                    float: 0,
+                                    string: '0%',
+                                },
                             },
                             send_after: null,
                             track_opens: true,
@@ -382,6 +391,7 @@
                     warnings: [],
                     initial_created_at: null,
                     is_currently_sending_out: false,
+                    can_be_copied: true,
                 },
                 {
                     id: '75037917434611569',
@@ -470,6 +480,10 @@
                                     float: 0,
                                     string: '0%',
                                 },
+                                click_to_open_rate: {
+                                    float: 0,
+                                    string: '0%',
+                                },
                             },
                             send_after: null,
                             track_opens: true,
@@ -546,6 +560,7 @@
                     warnings: [],
                     initial_created_at: null,
                     is_currently_sending_out: false,
+                    can_be_copied: true,
                 },
             ],
             links: {
@@ -576,7 +591,7 @@
                     },
                 ],
                 path: 'https://connect.mailerlite.com/api/campaigns',
-                per_page: 10,
+                per_page: 25,
                 to: 3,
                 total: 3,
                 aggregations: {

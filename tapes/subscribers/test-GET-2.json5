@@ -1,6 +1,6 @@
 {
     meta: {
-        createdAt: '2023-02-13T15:22:57.629Z',
+        createdAt: '2023-03-06T09:26:15.366Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Mon, 13 Feb 2023 15:22:57 GMT',
+                'Mon, 06 Mar 2023 09:26:15 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -25,6 +25,12 @@
             connection: [
                 'close',
             ],
+            'x-ratelimit-remaining': [
+                '117',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'cache-control': [
                 'no-cache, private',
             ],
@@ -33,12 +39,6 @@
             ],
             'x-ratelimit-limit': [
                 '120',
-            ],
-            'x-ratelimit-remaining': [
-                '118',
-            ],
-            'access-control-allow-origin': [
-                '*',
             ],
             'strict-transport-security': [
                 'max-age=15724800; includeSubDomains',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '798e8ffe9f28c03c-VNO',
+                '7a398e5afc4ab4d2-RIX',
             ],
         },
         body: {
@@ -81,6 +81,8 @@
                         z_i_p: null,
                         test_batch_field_1: null,
                         test_batch_field_2: null,
+                        test_batch_field_3: null,
+                        test_batch_field_4: null,
                     },
                     opted_in_at: null,
                     optin_ip: null,
@@ -111,6 +113,8 @@
                         z_i_p: null,
                         test_batch_field_1: null,
                         test_batch_field_2: null,
+                        test_batch_field_3: null,
+                        test_batch_field_4: null,
                     },
                     opted_in_at: '2023-02-03 11:48:21',
                     optin_ip: '78.62.135.89',
@@ -141,6 +145,8 @@
                         z_i_p: null,
                         test_batch_field_1: null,
                         test_batch_field_2: null,
+                        test_batch_field_3: null,
+                        test_batch_field_4: null,
                     },
                     opted_in_at: '2022-12-20 16:46:42',
                     optin_ip: '89.216.27.147',
@@ -171,6 +177,8 @@
                         z_i_p: null,
                         test_batch_field_1: null,
                         test_batch_field_2: null,
+                        test_batch_field_3: null,
+                        test_batch_field_4: null,
                     },
                     opted_in_at: null,
                     optin_ip: null,
@@ -201,6 +209,8 @@
                         z_i_p: null,
                         test_batch_field_1: null,
                         test_batch_field_2: null,
+                        test_batch_field_3: null,
+                        test_batch_field_4: null,
                     },
                     opted_in_at: null,
                     optin_ip: null,
