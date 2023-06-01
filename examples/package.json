@@ -1,14 +1,14 @@
 {
   "name": "examples",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "For manual testing of 'mailerlite-nodejs'",
   "scripts": {
-    "install-mailerlite-nodejs": "npm install ../mailerlite-mailerlite-nodejs-1.0.0.tgz"
+    "install-mailerlite-nodejs": "npm install ../mailerlite-mailerlite-nodejs-1.0.1.tgz"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mailerlite/mailerlite-nodejs": "file:../mailerlite-mailerlite-nodejs-1.0.0.tgz"
+    "@mailerlite/mailerlite-nodejs": "file:../mailerlite-mailerlite-nodejs-1.0.1.tgz"
   }
 }
