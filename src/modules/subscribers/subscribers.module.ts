@@ -86,4 +86,18 @@ export default class Subscriber implements SubscriberInterface {
             method: "DELETE"
         }, this.config);
     }
+
+    /**
+     * @description Forget a subscriber
+     *
+     * @see https://developers.mailerlite.com/docs/subscribers.html#forget-a-subscriber
+     *
+     * @subscriber_id {String} - Subscriber ID
+     */
+    public forget(subscriber_id: string): Promise<AxiosResponse<null>> {
+        validateId(subscriber_id);
+        return request(`/api/subscribers/${subscriber_id}/forget`, {
+            method: "POST"
+        }, this.config);
+    }
 };
