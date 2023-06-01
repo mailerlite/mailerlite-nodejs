@@ -7,6 +7,7 @@ export interface SubscriberInterface {
     find:           (subscriber_id: string)         => Promise<AxiosResponse<SingleSubscriberResponse>>;
     getCount:       ()                              => Promise<AxiosResponse<SubscribersCountResponse>>;
     delete:         (subscriber_id: string)         => Promise<AxiosResponse<null>>;
+    forget:         (subscriber_id: string)         => Promise<AxiosResponse<SubscriberForgetResponse>>;
 }
 
 export interface GetParams {
@@ -82,4 +83,9 @@ export interface SingleSubscriberResponse {
 
 export interface SubscribersCountResponse {
     total: number;
+}
+
+export interface SubscriberForgetResponse {
+    message: string;
+    data: SubscriberObject;
 }
