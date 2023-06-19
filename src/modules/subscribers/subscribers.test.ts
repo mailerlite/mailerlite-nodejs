@@ -29,8 +29,7 @@ describe("Subscribers", () => {
             filter: {
                 status: "active" // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
             },
-            limit: 5,
-            page: 1
+            limit: 5
         };
 
         try {

@@ -10,8 +10,7 @@ const params = {
   filter: {
     status: "active" // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
   },
-  limit: 10,
-  page: 1
+  limit: 10
 };
 
 mailerlite.subscribers.get(params)
