@@ -21,6 +21,7 @@ export interface GetParams {
      * @default 1
      */
     page?: number;
+    cursor?: string;
 }
 
 export interface CreateOrUpdateParams {
