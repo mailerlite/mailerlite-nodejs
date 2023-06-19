@@ -100,6 +100,8 @@ describe("Subscribers", () => {
         }
     });
 
+    // Forget endpoint test skipped. If sub is forgotten, it can't be deleted
+
     it("Delete a subscriber", async () => {
         try {
             const response = await mailerlite.subscribers.delete(createdSubscriberId);

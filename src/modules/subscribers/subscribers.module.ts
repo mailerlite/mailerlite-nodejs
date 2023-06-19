@@ -3,8 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { GetParams, CreateOrUpdateParams, SubscriberInterface, ListSubscribersResponse, SingleSubscriberResponse, SubscribersCountResponse } from './subscribers.types.js';
-import { SubscriberForgetResponse } from './subscribers.types.js'
+import type { GetParams, CreateOrUpdateParams, SubscriberInterface, ListSubscribersResponse, SingleSubscriberResponse, SubscribersCountResponse, SubscriberForgetResponse } from './subscribers.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
