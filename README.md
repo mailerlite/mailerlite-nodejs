@@ -50,6 +50,7 @@ const mailerlite = new MailerLite({
     * [Fetch a subscriber](src/modules/subscribers/README.md#fetch-a-subscriber)
     * [Fetch total subscribers count](src/modules/subscribers/README.md#fetch-total-subscribers-count)
     * [Delete a subscriber](src/modules/subscribers/README.md#delete-a-subscriber)
+    * [Forget a subscriber](src/modules/subscribers/README.md#forget-a-subscriber)
 - [Groups](src/modules/groups/README.md)
     * [List all groups](src/modules/groups/README.md#list-all-groups)
     * [Create a group](src/modules/groups/README.md#create-a-group)

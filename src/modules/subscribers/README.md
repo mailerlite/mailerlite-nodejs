@@ -98,3 +98,17 @@ mailerlite.subscribers.delete("SUBSCRIBER_ID")
     if (error.response) console.log(error.response.data);
   });
 ```
+
+### Forget a subscriber
+[Official Documentation](https://developers.mailerlite.com/docs/subscribers.html#forget-a-subscriber)
+
+---
+```javascript
+mailerlite.subscribers.forget("SUBSCRIBER_ID")
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```

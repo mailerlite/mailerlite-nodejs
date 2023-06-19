@@ -4,6 +4,7 @@ import request from '../../utils/fetch.js'
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
 import type { GetParams, CreateOrUpdateParams, SubscriberInterface, ListSubscribersResponse, SingleSubscriberResponse, SubscribersCountResponse } from './subscribers.types.js';
+import { SubscriberForgetResponse } from './subscribers.types.js'
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -84,6 +85,20 @@ export default class Subscriber implements SubscriberInterface {
 
         return request(`/api/subscribers/${subscriber_id}`, {
             method: "DELETE"
+        }, this.config);
+    }
+
+    /**
+     * @description Forget a subscriber
+     *
+     * @see https://developers.mailerlite.com/docs/subscribers.html#forget-a-subscriber
+     *
+     * @subscriber_id {String} - Subscriber ID
+     */
+    public forget(subscriber_id: string): Promise<AxiosResponse<SubscriberForgetResponse>> {
+        validateId(subscriber_id);
+        return request(`/api/subscribers/${subscriber_id}/forget`, {
+            method: "POST"
         }, this.config);
     }
 };
