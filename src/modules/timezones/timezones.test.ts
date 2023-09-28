@@ -1,7 +1,7 @@
 import { describe, it, expect, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
-import {ListAllResponse} from "./timezones.types";
+import {ListAllTimezonesResponse} from "./timezones.types";
 import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
@@ -23,7 +23,7 @@ describe("Timezones", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListAllResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<ListAllTimezonesResponse>();
         } catch (error) {
             handleCatchedError(error);
         }

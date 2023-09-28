@@ -1,10 +1,10 @@
 import { AxiosResponse } from "axios";
 
 export interface TimezonesInterface {
-    get:    ()  => Promise<AxiosResponse<ListAllResponse>>;
+    get:    ()  => Promise<AxiosResponse<ListAllTimezonesResponse>>;
 }
 
-export interface ListAllResponse {
+export interface ListAllTimezonesResponse {
     data: Array<TimezoneObject>;
 }
 
