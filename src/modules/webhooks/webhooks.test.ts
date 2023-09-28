@@ -1,7 +1,7 @@
 import { describe, it, expect, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
-import {CreateParams, ListAllResponse, SingleWebhookResponse, UpdateParams} from "./webhooks.types";
+import {CreateWebhookParams, ListAllWebhooksResponse, SingleWebhookResponse, UpdateWebhookParams} from "./webhooks.types";
 import {getRandomInt, handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
@@ -26,7 +26,7 @@ describe("Webhooks", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListAllResponse>()
+            expectTypeOf(response.data).toEqualTypeOf<ListAllWebhooksResponse>()
         } catch (error) {
             handleCatchedError(error);
         }
@@ -35,7 +35,7 @@ describe("Webhooks", () => {
     it("Create a webhook", async () => {
         const randomInt = getRandomInt();
 
-        const params: CreateParams = {
+        const params: CreateWebhookParams = {
             name:  `Test webhook nodejs ${randomInt}`,
             events: ["subscriber.updated"],
             url:    "http://www.marvin.com/omnis-accusamus-est-rem-delectus-quaerat.html"
@@ -73,7 +73,7 @@ describe("Webhooks", () => {
     it("Update a webhook", async () => {
         const randomInt = getRandomInt();
 
-        const params: UpdateParams = {
+        const params: UpdateWebhookParams = {
             name:  `Test webhook nodejs updated ${randomInt}`,
             enabled: false
         };
