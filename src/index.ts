@@ -72,3 +72,16 @@ export default class MailerLite {
         this.stats = new Statistics(this.config);
     }
 };
+
+export * from "./modules/subscribers/subscribers.types.js";
+export * from "./modules/campaigns/campaigns.types.js";
+export * from "./modules/forms/forms.types.js";
+export * from "./modules/groups/groups.types.js";
+export * from "./modules/segments/segments.types.js";
+export * from "./modules/automations/automations.types.js";
+export * from "./modules/timezones/timezones.types.js";
+export * from "./modules/languages/languages.types.js";
+export * from "./modules/batches/batches.types.js";
+export * from "./modules/webhooks/webhooks.types.js";
+export * from "./modules/stats/stats.types.js";
+export * from "./utils/types.js";
