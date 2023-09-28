@@ -2,15 +2,15 @@ import { AxiosResponse } from "axios";
 import {Links} from "../../utils/types.js";
 
 export interface SubscriberInterface {
-    get:            (params: GetParams)             => Promise<AxiosResponse<ListSubscribersResponse>>;
-    createOrUpdate: (params: CreateOrUpdateParams)  => Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateParams>>;
-    find:           (subscriber_id: string)         => Promise<AxiosResponse<SingleSubscriberResponse>>;
-    getCount:       ()                              => Promise<AxiosResponse<SubscribersCountResponse>>;
-    delete:         (subscriber_id: string)         => Promise<AxiosResponse<null>>;
-    forget:         (subscriber_id: string)         => Promise<AxiosResponse<SubscriberForgetResponse>>;
+    get:            (params: GetSubscribersParams)              => Promise<AxiosResponse<ListSubscribersResponse>>;
+    createOrUpdate: (params: CreateOrUpdateSubscriberParams)    => Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateSubscriberParams>>;
+    find:           (subscriber_id: string)                     => Promise<AxiosResponse<SingleSubscriberResponse>>;
+    getCount:       ()                                          => Promise<AxiosResponse<CountSubscribersResponse>>;
+    delete:         (subscriber_id: string)                     => Promise<AxiosResponse<null>>;
+    forget:         (subscriber_id: string)                     => Promise<AxiosResponse<ForgetSubscriberResponse>>;
 }
 
-export interface GetParams {
+export interface GetSubscribersParams {
     filter?: {
         status: "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk"; // because it should be looking like ?filter[status]=xxx
     };
@@ -24,7 +24,7 @@ export interface GetParams {
     cursor?: string;
 }
 
-export interface CreateOrUpdateParams {
+export interface CreateOrUpdateSubscriberParams {
     email:              string;
     fields?:	        object;
     groups?:	        Array<string>;
@@ -81,11 +81,11 @@ export interface SingleSubscriberResponse {
     data: SubscriberObject;
 }
 
-export interface SubscribersCountResponse {
+export interface CountSubscribersResponse {
     total: number;
 }
 
-export interface SubscriberForgetResponse {
+export interface ForgetSubscriberResponse {
     message: string;
     data: SubscriberObject;
 }
