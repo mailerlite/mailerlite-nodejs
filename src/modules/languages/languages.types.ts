@@ -1,10 +1,10 @@
 import { AxiosResponse } from "axios";
 
 export interface LanguagesInterface {
-    get:    ()  => Promise<AxiosResponse<ListAllResponse>>;
+    get:    ()  => Promise<AxiosResponse<ListAllLanguagesResponse>>;
 }
 
-export interface ListAllResponse {
+export interface ListAllLanguagesResponse {
     data: Array<LanguageObject>;
 }
 
