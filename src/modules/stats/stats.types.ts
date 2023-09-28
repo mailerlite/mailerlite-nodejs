@@ -1,14 +1,13 @@
 import { AxiosResponse } from "axios";
 
 import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
-import { SubscriberObject } from '../subscribers/subscribers.types.js'
 import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types.js";
 import { ListSubscribersResponse } from "../subscribers/subscribers.types.js";
 import {
     AutomationStats, AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams, ListAutomationsResponse
 } from "../automations/automations.types.js";
-import {Links} from "../../utils/types.js";
+import {SubscriberObject, Links} from "../../utils/types.js";
 
 export interface StatsInterface {
     getSentCampaigns:           (params: GetCampaignsParams)                                            => Promise<AxiosResponse<ListCampaignsResponse>>;
