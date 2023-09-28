@@ -2,11 +2,11 @@ import { describe, it, expect, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
-    GetParams,
-    ListAllResponse,
+    GetFieldsParams,
+    ListFieldsResponse,
     SingleFieldResponse,
-    CreateParams,
-    UpdateParams
+    CreateFieldParams,
+    UpdateFieldParams
 } from "./fields.types";
 
 import {getRandomInt, handleCatchedError} from "../../utils/helpers";
@@ -26,7 +26,7 @@ describe("Fields", () => {
     let createdFieldId: string;
 
     it.concurrent("List all fields", async () => {
-        const params: GetParams = {
+        const params: GetFieldsParams = {
             limit: 5,
             page: 1,
             filter: {
@@ -41,7 +41,7 @@ describe("Fields", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListAllResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<ListFieldsResponse>();
         } catch (error) {
             handleCatchedError(error);
         }
@@ -49,7 +49,7 @@ describe("Fields", () => {
 
     it("Create a field", async () => {
         const randomInt: number = getRandomInt();
-        const params: CreateParams = {
+        const params: CreateFieldParams = {
             name: `Test field nodejs ${randomInt}`,
             type: 'text' // text, number, date
         }
@@ -70,7 +70,7 @@ describe("Fields", () => {
 
     it("Update a field", async () => {
         const randomInt: number = getRandomInt();
-        const params: UpdateParams = {
+        const params: UpdateFieldParams = {
             name: `Test field nodejs updated ${randomInt}`,
         }
 
