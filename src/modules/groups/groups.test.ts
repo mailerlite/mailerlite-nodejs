@@ -2,9 +2,9 @@ import { describe, it, expect, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
-    GetParams,
+    GetGroupsParams,
     ListAllGroupsResponse,
-    CreateUpdateParams,
+    CreateUpdateGroupParams,
     SingleGroupResponse,
     ListAllSubscribersResponse,
     SubscriberParams
@@ -26,7 +26,7 @@ describe("Groups", () => {
     let createdGroupId: string;
 
     it.concurrent("List all groups", async () => {
-        const params: GetParams = {
+        const params: GetGroupsParams = {
             limit: 5,
             page: 1,
             sort: "name" // name, total, open_rate, click_rate, created_at,
@@ -46,7 +46,7 @@ describe("Groups", () => {
 
     it("Create a group", async () => {
         const randomInt = getRandomInt();
-        const params: CreateUpdateParams = {
+        const params: CreateUpdateGroupParams = {
             name: `Test group nodejs ${randomInt}`
         };
 
@@ -66,7 +66,7 @@ describe("Groups", () => {
 
     it("Update a group", async () => {
         const randomInt = getRandomInt();
-        const params: CreateUpdateParams = {
+        const params: CreateUpdateGroupParams = {
             name: `Test group updated nodejs ${randomInt}`
         };
 
