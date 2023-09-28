@@ -3,7 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { FormsInterface, GetFormsParams, ListFormsResponse, SingleFormResponse, UpdateParams, FormTypes } from './forms.types.js';
+import type { FormsInterface, GetFormsParams, ListFormsResponse, SingleFormResponse, UpdateFormParams, FormTypes } from './forms.types.js';
 
 export default class Form implements FormsInterface {
     private config: Config;
@@ -35,7 +35,7 @@ export default class Form implements FormsInterface {
      * @form_id {String} - Form ID
      * @requestBody {Object} - Form data for update
      */
-    public update(form_id: string, requestBody: UpdateParams): Promise<AxiosResponse<SingleFormResponse, UpdateParams>> {
+    public update(form_id: string, requestBody: UpdateFormParams): Promise<AxiosResponse<SingleFormResponse, UpdateFormParams>> {
 
         validateId(form_id);
 

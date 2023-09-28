@@ -3,7 +3,7 @@ import {Links, Meta} from "../../utils/types.js";
 
 export interface FormsInterface {
     get:            (type: FormTypes, params: GetFormsParams)       => Promise<AxiosResponse<ListFormsResponse>>;
-    update:         (form_id: string, params: UpdateParams)         => Promise<AxiosResponse<SingleFormResponse, UpdateParams>>;
+    update:         (form_id: string, params: UpdateFormParams)     => Promise<AxiosResponse<SingleFormResponse, UpdateFormParams>>;
     delete:         (form_id: string)                               => Promise<AxiosResponse<null>>;
 }
 
@@ -28,7 +28,7 @@ export interface SingleFormResponse {
     data: FormObject;
 }
 
-export interface UpdateParams {
+export interface UpdateFormParams {
     name: string;
 }
 
