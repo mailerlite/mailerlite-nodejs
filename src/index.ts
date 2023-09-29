@@ -78,6 +78,7 @@ export * from "./modules/campaigns/campaigns.types.js";
 export * from "./modules/forms/forms.types.js";
 export * from "./modules/groups/groups.types.js";
 export * from "./modules/segments/segments.types.js";
+export * from "./modules/fields/fields.types.js";
 export * from "./modules/automations/automations.types.js";
 export * from "./modules/timezones/timezones.types.js";
 export * from "./modules/languages/languages.types.js";
