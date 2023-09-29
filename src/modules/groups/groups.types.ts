@@ -15,7 +15,7 @@ export interface GetGroupsParams {
     limit?: number;
     page?:  number;
     filter?: {
-        name?: "sent" | "draft" | "ready";
+        name?: string;
     };
     sort: "name" | "total" | "open_rate" | "click_rate" | "created_at" | "-name" | "-total" | "-open_rate" | "-click_rate" | "-created_at";
 }
