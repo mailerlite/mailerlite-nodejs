@@ -1,14 +1,12 @@
 import { AxiosResponse } from "axios";
-
 import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../campaigns/campaigns.types.js'
-import { SubscriberObject } from '../subscribers/subscribers.types.js'
 import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types.js";
 import { ListSubscribersResponse } from "../subscribers/subscribers.types.js";
 import {
     AutomationStats, AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams, ListAutomationsResponse
 } from "../automations/automations.types.js";
-import {Links} from "../../utils/types.js";
+import {SubscriberObject, Links, Meta} from "../../utils/types.js";
 
 export interface StatsInterface {
     getSentCampaigns:           (params: GetCampaignsParams)                                            => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -60,25 +58,17 @@ export interface FormsSubscribersParams {
 export interface CampaignSubscribersActivityResponse {
     data:   Array<ActivityObject>,
     links:  Links;
-    meta:   Meta
+    meta:   StatsMeta
 }
 
-interface ActivityObject {
+export interface ActivityObject {
     id:             string;
     opens_count:    number;
     clicks_count:   number;
     subscriber:     SubscriberObject;
 }
 
-interface Meta {
-    current_page:   number;
-    from:           number;
-    last_page:      number;
-    links:          Array<object>;
-    path:           string;
-    per_page:       number;
-    to:             number;
-    total:          number;
+export interface StatsMeta extends Meta {
     counts: {
         all:            number;
         opened:         number;

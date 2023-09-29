@@ -2,13 +2,13 @@ import { AxiosResponse } from "axios";
 import {Links, Meta, Stats} from "../../utils/types.js";
 
 export interface CampaignsInterface {
-    get:            (params: GetCampaignsParams)                        => Promise<AxiosResponse<ListCampaignsResponse>>;
-    find:           (campaign_id: string)                               => Promise<AxiosResponse<SingleCampaignResponse>>;
-    create:         (params: CreateUpdateParams)                        => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;
-    update:         (campaign_id: string, params: CreateUpdateParams)   => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>>;
-    schedule:       (campaign_id: string, params: ScheduleParams)       => Promise<AxiosResponse<SingleCampaignResponse, ScheduleParams>>;
-    cancel:         (campaign_id: string)                               => Promise<AxiosResponse<SingleCampaignResponse>>;
-    delete:         (campaign_id: string)                               => Promise<AxiosResponse<null>>;
+    get:            (params: GetCampaignsParams)                                => Promise<AxiosResponse<ListCampaignsResponse>>;
+    find:           (campaign_id: string)                                       => Promise<AxiosResponse<SingleCampaignResponse>>;
+    create:         (params: CreateUpdateCampaignParams)                        => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateCampaignParams>>;
+    update:         (campaign_id: string, params: CreateUpdateCampaignParams)   => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateCampaignParams>>;
+    schedule:       (campaign_id: string, params: ScheduleCampaignParams)       => Promise<AxiosResponse<SingleCampaignResponse, ScheduleCampaignParams>>;
+    cancel:         (campaign_id: string)                                       => Promise<AxiosResponse<SingleCampaignResponse>>;
+    delete:         (campaign_id: string)                                       => Promise<AxiosResponse<null>>;
 }
 
 export interface GetCampaignsParams {
@@ -42,7 +42,7 @@ export interface SingleCampaignResponse {
     data: CampaignObject;
 }
 
-export interface CreateUpdateParams {
+export interface CreateUpdateCampaignParams {
     name:	                string;
     language_id?:	        number;
     type:	                "regular" | "ab" | "resend";
@@ -75,7 +75,7 @@ export interface CreateUpdateParams {
     }
 }
 
-export interface ScheduleParams {
+export interface ScheduleCampaignParams {
     delivery?:	         "instant" | "scheduled" | "timezone_based";
     schedule?: {
         date?:           string;
@@ -92,7 +92,7 @@ export interface ScheduleParams {
     }
 }
 
-interface CampaignObject {
+export interface CampaignObject {
     id:             string;
     account_id:     string;
     name:           string;
@@ -171,11 +171,11 @@ export interface Email {
     track_opens:      boolean;
 }
 
-interface EmailStats extends Stats {
+export interface EmailStats extends Stats {
     forwards_count:   number;
 }
 
-interface CampaignsMeta extends Meta {
+export interface CampaignsMeta extends Meta {
     aggregations: {
         total:      number;
         draft:      number;

@@ -2,11 +2,11 @@ import { describe, it, expect, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
-    CreateOrUpdateParams,
-    GetParams,
+    CreateOrUpdateSubscriberParams,
+    GetSubscribersParams,
     ListSubscribersResponse,
     SingleSubscriberResponse,
-    SubscribersCountResponse
+    CountSubscribersResponse
 } from "./subscribers.types";
 import {getRandomInt, handleCatchedError} from "../../utils/helpers";
 
@@ -25,7 +25,7 @@ describe("Subscribers", () => {
     let createdSubscriberId: string;
 
     it.concurrent("List Subscribers", async () => {
-        const params: GetParams = {
+        const params: GetSubscribersParams = {
             filter: {
                 status: "active" // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
             },
@@ -47,7 +47,7 @@ describe("Subscribers", () => {
     it("Create or update a subscriber", async () => {
         const randomInt = getRandomInt();
 
-        const params: CreateOrUpdateParams = {
+        const params: CreateOrUpdateSubscriberParams = {
             email: `test${randomInt}@nodejs.com`,
             fields:	{
                 name: `Test name ${randomInt}`,
@@ -94,7 +94,7 @@ describe("Subscribers", () => {
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SubscribersCountResponse>()
+            expectTypeOf(response.data).toEqualTypeOf<CountSubscribersResponse>()
         } catch (error) {
             handleCatchedError(error);
         }

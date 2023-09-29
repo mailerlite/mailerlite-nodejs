@@ -3,7 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateParams, ScheduleParams } from './campaigns.types.js';
+import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateCampaignParams, ScheduleCampaignParams } from './campaigns.types.js';
 
 export default class Campaign implements CampaignsInterface {
     private config: Config;
@@ -49,7 +49,7 @@ export default class Campaign implements CampaignsInterface {
      *
      * @requestBody {Object} - Campaign data for create
      */
-    public create(requestBody: CreateUpdateParams): Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>> {
+    public create(requestBody: CreateUpdateCampaignParams): Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateCampaignParams>> {
         return request(`/api/campaigns`, {
             method: "POST",
             body: requestBody
@@ -64,7 +64,7 @@ export default class Campaign implements CampaignsInterface {
      * @campaign_id {String} - Campaign ID
      * @requestBody {Object} - Campaign data for update
      */
-    public update(campaign_id: string, requestBody: CreateUpdateParams): Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateParams>> {
+    public update(campaign_id: string, requestBody: CreateUpdateCampaignParams): Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateCampaignParams>> {
 
         validateId(campaign_id);
 
@@ -82,7 +82,7 @@ export default class Campaign implements CampaignsInterface {
      * @campaign_id {String} - Campaign ID
      * @requestBody {Object} - Campaign data for schedule
      */
-    public schedule(campaign_id: string, requestBody: ScheduleParams): Promise<AxiosResponse<SingleCampaignResponse, ScheduleParams>> {
+    public schedule(campaign_id: string, requestBody: ScheduleCampaignParams): Promise<AxiosResponse<SingleCampaignResponse, ScheduleCampaignParams>> {
 
         validateId(campaign_id);
 

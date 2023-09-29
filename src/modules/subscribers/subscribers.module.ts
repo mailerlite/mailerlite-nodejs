@@ -3,7 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { GetParams, CreateOrUpdateParams, SubscriberInterface, ListSubscribersResponse, SingleSubscriberResponse, SubscribersCountResponse, SubscriberForgetResponse } from './subscribers.types.js';
+import type { GetSubscribersParams, CreateOrUpdateSubscriberParams, SubscriberInterface, ListSubscribersResponse, SingleSubscriberResponse, CountSubscribersResponse, ForgetSubscriberResponse } from './subscribers.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -19,7 +19,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @params {Object} - List Subscribers params
      */
-    public get(params: GetParams): Promise<AxiosResponse<ListSubscribersResponse>> {
+    public get(params: GetSubscribersParams): Promise<AxiosResponse<ListSubscribersResponse>> {
         return request(`/api/subscribers`, {
             method: "GET",
             params: params
@@ -33,7 +33,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @requestBody {Object} - Subscriber data for create or update
      */
-    public createOrUpdate(requestBody: CreateOrUpdateParams): Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateParams>> {
+    public createOrUpdate(requestBody: CreateOrUpdateSubscriberParams): Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateSubscriberParams>> {
         return request(`/api/subscribers`, {
             method: "POST",
             body: requestBody
@@ -61,7 +61,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @see https://developers.mailerlite.com/docs/subscribers.html#fetch-total-subscribers-count
      */
-    public getCount(): Promise<AxiosResponse<SubscribersCountResponse>> {
+    public getCount(): Promise<AxiosResponse<CountSubscribersResponse>> {
         const params = {
             limit: 0
         }
@@ -94,7 +94,7 @@ export default class Subscriber implements SubscriberInterface {
      *
      * @subscriber_id {String} - Subscriber ID
      */
-    public forget(subscriber_id: string): Promise<AxiosResponse<SubscriberForgetResponse>> {
+    public forget(subscriber_id: string): Promise<AxiosResponse<ForgetSubscriberResponse>> {
         validateId(subscriber_id);
         return request(`/api/subscribers/${subscriber_id}/forget`, {
             method: "POST"

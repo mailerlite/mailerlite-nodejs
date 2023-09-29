@@ -5,8 +5,8 @@ import {
     GetCampaignsParams,
     ListCampaignsResponse,
     SingleCampaignResponse,
-    CreateUpdateParams,
-    ScheduleParams
+    CreateUpdateCampaignParams,
+    ScheduleCampaignParams
 } from "./campaigns.types";
 
 import {getRandomInt, handleCatchedError} from "../../utils/helpers";
@@ -52,7 +52,7 @@ describe("Campaigns", () => {
 
     it("Create a campaign", async () => {
         const randomInt: number = getRandomInt();
-        const params: CreateUpdateParams = {
+        const params: CreateUpdateCampaignParams = {
             name: `Test campaign nodejs ${randomInt}`,
             language_id: 4,
             type: "regular",
@@ -94,7 +94,7 @@ describe("Campaigns", () => {
 
     it("Update a campaign", async () => {
         const randomInt: number = getRandomInt();
-        const params: CreateUpdateParams = {
+        const params: CreateUpdateCampaignParams = {
             name: `Test campaign updated nodejs ${randomInt}`,
             language_id: 4,
             type: "regular",
@@ -125,7 +125,7 @@ describe("Campaigns", () => {
         const month = dateObj.getUTCMonth() + 1; // months from 1-12
         var day = dateObj.getUTCDate();
 
-        const params: ScheduleParams = {
+        const params: ScheduleCampaignParams = {
             delivery: "scheduled",
             schedule: {
                 date: `${year}-${month}-${day}`,

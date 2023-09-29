@@ -2,15 +2,15 @@ import { AxiosResponse } from "axios";
 import {Links, Meta} from "../../utils/types.js";
 
 export interface FieldsInterface {
-    get:    (params: GetParams)                         => Promise<AxiosResponse<ListAllResponse>>;
-    create: (params: CreateParams)                      => Promise<AxiosResponse<SingleFieldResponse, CreateParams>>;
-    update: (field_id: string, params: UpdateParams)    => Promise<AxiosResponse<SingleFieldResponse, UpdateParams>>;
-    delete: (field_id: string)                          => Promise<AxiosResponse<null>>;
+    get:    (params: GetFieldsParams)                       => Promise<AxiosResponse<ListFieldsResponse>>;
+    create: (params: CreateFieldParams)                     => Promise<AxiosResponse<SingleFieldResponse, CreateFieldParams>>;
+    update: (field_id: string, params: UpdateFieldParams)   => Promise<AxiosResponse<SingleFieldResponse, UpdateFieldParams>>;
+    delete: (field_id: string)                              => Promise<AxiosResponse<null>>;
 }
 
 export type FilterTypes = "text" | "number" | "date";
 
-export interface GetParams {
+export interface GetFieldsParams {
     limit?: number;
     page?:  number;
     filter?: {
@@ -20,7 +20,7 @@ export interface GetParams {
     sort?: "name" | "-name" | "type" | "-type"
 }
 
-export interface ListAllResponse {
+export interface ListFieldsResponse {
     data:   Array<FieldObject>;
     links:  Links;
     meta:   Meta;
@@ -30,16 +30,16 @@ export interface SingleFieldResponse {
     data: FieldObject;
 }
 
-export interface CreateParams {
+export interface CreateFieldParams {
     name: string;
     type: string;
 }
 
-export interface UpdateParams {
+export interface UpdateFieldParams {
     name: string;
 }
 
-interface FieldObject {
+export interface FieldObject {
     id:     string;
     name:   string;
     key:    string;

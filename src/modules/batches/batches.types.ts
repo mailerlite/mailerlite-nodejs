@@ -8,7 +8,7 @@ export interface BatchParams {
     requests: Array<BatchRequestObject>;
 }
 
-interface BatchRequestObject {
+export interface BatchRequestObject {
     method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
     path:   string;
     body:   object;
@@ -21,7 +21,7 @@ export interface BatchResponses {
     responses:  Array<BatchResponseObject>;
 }
 
-interface BatchResponseObject {
+export interface BatchResponseObject {
     code: number;
     body: {
         data: Array<object>;

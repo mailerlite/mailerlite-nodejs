@@ -1,17 +1,17 @@
 import { AxiosResponse } from "axios";
-import {Links, Meta} from "../../utils/types.js";
+import {SubscriberObject, Links, Meta} from "../../utils/types.js";
 
 export interface GroupsInterface {
-    get:                (params: GetParams)                             => Promise<AxiosResponse<ListAllGroupsResponse>>;
-    create:             (params: CreateUpdateParams)                    => Promise<AxiosResponse<SingleGroupResponse, CreateUpdateParams>>;
-    update:             (group_id: string, params: CreateUpdateParams)  => Promise<AxiosResponse<SingleGroupResponse, CreateUpdateParams>>;
-    delete:             (group_id: string)                              => Promise<AxiosResponse<null>>;
-    getSubscribers:     (group_id: string, params: SubscriberParams)    => Promise<AxiosResponse<ListAllSubscribersResponse>>;
-    assignSubscriber:   (subscriber_id: string, group_id: string)       => Promise<AxiosResponse<SingleGroupResponse>>;
-    unAssignSubscriber: (subscriber_id: string, group_id: string)       => Promise<AxiosResponse<null>>;
+    get:                (params: GetGroupsParams)                           => Promise<AxiosResponse<ListAllGroupsResponse>>;
+    create:             (params: CreateUpdateGroupParams)                   => Promise<AxiosResponse<SingleGroupResponse, CreateUpdateGroupParams>>;
+    update:             (group_id: string, params: CreateUpdateGroupParams) => Promise<AxiosResponse<SingleGroupResponse, CreateUpdateGroupParams>>;
+    delete:             (group_id: string)                                  => Promise<AxiosResponse<null>>;
+    getSubscribers:     (group_id: string, params: SubscriberParams)        => Promise<AxiosResponse<ListAllSubscribersResponse>>;
+    assignSubscriber:   (subscriber_id: string, group_id: string)           => Promise<AxiosResponse<SingleGroupResponse>>;
+    unAssignSubscriber: (subscriber_id: string, group_id: string)           => Promise<AxiosResponse<null>>;
 }
 
-export interface GetParams {
+export interface GetGroupsParams {
     limit?: number;
     page?:  number;
     filter?: {
@@ -36,7 +36,7 @@ export interface SingleGroupResponse {
     data: GroupObject;
 }
 
-export interface CreateUpdateParams {
+export interface CreateUpdateGroupParams {
     name: string;
 }
 
@@ -51,7 +51,7 @@ export interface SubscriberParams {
     page:   number;
 }
 
-interface GroupObject {
+export interface GroupObject {
     id:                 string;
     name:               string;
     active_count:       number;
@@ -71,34 +71,4 @@ interface GroupObject {
     bounced_count:      number;
     junk_count:         number;
     created_at:         string;
-}
-
-interface SubscriberObject {
-    id:               string;
-    email:            string;
-    status:           string;
-    source:           string;
-    sent:             number;
-    opens_count:      number;
-    clicks_count:     number;
-    open_rate:        number;
-    click_rate:       number;
-    ip_address:       string;
-    subscribed_at:    string;
-    unsubscribed_at:  string;
-    created_at:       string;
-    updated_at:       string;
-    fields: {
-        city:         string;
-        company:      string;
-        country:      string;
-        last_name:    string;
-        name:         string;
-        phone:        string;
-        state:        string;
-        z_i_p:        string;
-    };
-    groups:           Array<string>;
-    opted_in_at:      string;
-    optin_ip:         string;
 }

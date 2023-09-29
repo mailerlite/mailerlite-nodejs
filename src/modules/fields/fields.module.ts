@@ -3,7 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { FieldsInterface, GetParams, ListAllResponse, SingleFieldResponse, CreateParams, UpdateParams } from './fields.types.js';
+import type { FieldsInterface, GetFieldsParams, ListFieldsResponse, SingleFieldResponse, CreateFieldParams, UpdateFieldParams } from './fields.types.js';
 
 export default class Field implements FieldsInterface {
     private config: Config;
@@ -19,7 +19,7 @@ export default class Field implements FieldsInterface {
      *
      * @params {Object} - List fields params
      */
-    public get(params: GetParams): Promise<AxiosResponse<ListAllResponse>> {
+    public get(params: GetFieldsParams): Promise<AxiosResponse<ListFieldsResponse>> {
         return request(`/api/fields`, {
             method: "GET",
             params: params
@@ -33,7 +33,7 @@ export default class Field implements FieldsInterface {
      *
      * @requestBody {Object} - Field data for create
      */
-    public create(requestBody: CreateParams): Promise<AxiosResponse<SingleFieldResponse, CreateParams>> {
+    public create(requestBody: CreateFieldParams): Promise<AxiosResponse<SingleFieldResponse, CreateFieldParams>> {
         return request(`/api/fields`, {
             method: "POST",
             body: requestBody
@@ -48,7 +48,7 @@ export default class Field implements FieldsInterface {
      * @field_id {String} - Field ID
      * @requestBody {Object} - Field data for update
      */
-    public update(field_id: string, requestBody: UpdateParams): Promise<AxiosResponse<SingleFieldResponse, UpdateParams>> {
+    public update(field_id: string, requestBody: UpdateFieldParams): Promise<AxiosResponse<SingleFieldResponse, UpdateFieldParams>> {
 
         validateId(field_id);
 

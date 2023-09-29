@@ -3,7 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { GroupsInterface, GetParams, ListAllGroupsResponse, SingleGroupResponse, CreateUpdateParams, ListAllSubscribersResponse, SubscriberParams } from './groups.types.js';
+import type { GroupsInterface, GetGroupsParams, ListAllGroupsResponse, SingleGroupResponse, CreateUpdateGroupParams, ListAllSubscribersResponse, SubscriberParams } from './groups.types.js';
 
 export default class Group implements GroupsInterface {
     private config: Config;
@@ -19,7 +19,7 @@ export default class Group implements GroupsInterface {
      *
      * @params {Object} - List groups params
      */
-    public get(params: GetParams): Promise<AxiosResponse<ListAllGroupsResponse>> {
+    public get(params: GetGroupsParams): Promise<AxiosResponse<ListAllGroupsResponse>> {
         return request(`/api/groups`, {
             method: "GET",
             params: params
@@ -33,7 +33,7 @@ export default class Group implements GroupsInterface {
      *
      * @requestBody {Object} - Campaign data for create
      */
-    public create(requestBody: CreateUpdateParams): Promise<AxiosResponse<SingleGroupResponse, CreateUpdateParams>> {
+    public create(requestBody: CreateUpdateGroupParams): Promise<AxiosResponse<SingleGroupResponse, CreateUpdateGroupParams>> {
         return request(`/api/groups`, {
             method: "POST",
             body: requestBody
@@ -48,7 +48,7 @@ export default class Group implements GroupsInterface {
      * @group_id {String} - Group ID
      * @requestBody {Object} - Group data for update
      */
-    public update(group_id: string, requestBody: CreateUpdateParams): Promise<AxiosResponse<SingleGroupResponse, CreateUpdateParams>> {
+    public update(group_id: string, requestBody: CreateUpdateGroupParams): Promise<AxiosResponse<SingleGroupResponse, CreateUpdateGroupParams>> {
 
         validateId(group_id);
 

@@ -5,10 +5,10 @@ import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
 import {
     WebhooksInterface,
-    ListAllResponse,
+    ListAllWebhooksResponse,
     SingleWebhookResponse,
-    CreateParams,
-    UpdateParams
+    CreateWebhookParams,
+    UpdateWebhookParams
 } from "./webhooks.types.js";
 
 export default class Webhook implements WebhooksInterface {
@@ -24,7 +24,7 @@ export default class Webhook implements WebhooksInterface {
      * @see https://developers.mailerlite.com/docs/webhooks.html#list-all-webhooks
      *
      */
-    public get(): Promise<AxiosResponse<ListAllResponse>> {
+    public get(): Promise<AxiosResponse<ListAllWebhooksResponse>> {
         return request(`/api/webhooks`, {
             method: "GET"
         }, this.config);
@@ -53,7 +53,7 @@ export default class Webhook implements WebhooksInterface {
      *
      * @requestBody {Object} - Webhook data for create
      */
-    public create(requestBody: CreateParams): Promise<AxiosResponse<SingleWebhookResponse, CreateParams>> {
+    public create(requestBody: CreateWebhookParams): Promise<AxiosResponse<SingleWebhookResponse, CreateWebhookParams>> {
         return request(`/api/webhooks`, {
             method: "POST",
             body: requestBody
@@ -67,7 +67,7 @@ export default class Webhook implements WebhooksInterface {
      *
      * @requestBody {Object} - Webhook data for update
      */
-    public update(webhook_id: string, requestBody: UpdateParams): Promise<AxiosResponse<SingleWebhookResponse, UpdateParams>> {
+    public update(webhook_id: string, requestBody: UpdateWebhookParams): Promise<AxiosResponse<SingleWebhookResponse, UpdateWebhookParams>> {
         return request(`/api/webhooks/${webhook_id}`, {
             method: "PUT",
             body: requestBody

@@ -3,7 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import { SegmentsInterface, GetParams, ListAllResponse, GetSubscribersParams, ListAllSubscribers, UpdateParams, SingleSegmentResponse} from "./segments.types.js";
+import { SegmentsInterface, GetSegmentsParams, ListAllSegmentsResponse, GetSegmentSubscribersParams, ListAllSubscribers, UpdateSegmentParams, SingleSegmentResponse} from "./segments.types.js";
 
 export default class Segment implements SegmentsInterface {
     private config: Config;
@@ -19,7 +19,7 @@ export default class Segment implements SegmentsInterface {
      *
      * @params {Object} - List segment params
      */
-    public get(params: GetParams): Promise<AxiosResponse<ListAllResponse>> {
+    public get(params: GetSegmentsParams): Promise<AxiosResponse<ListAllSegmentsResponse>> {
         return request(`/api/segments`, {
             method: "GET",
             params: params
@@ -34,7 +34,7 @@ export default class Segment implements SegmentsInterface {
      * @segment_id {String} - Segment ID
      * @params {Object} - Segment params
      */
-    public getSubscribers(segment_id: string, params: GetSubscribersParams): Promise<AxiosResponse<ListAllSubscribers>> {
+    public getSubscribers(segment_id: string, params: GetSegmentSubscribersParams): Promise<AxiosResponse<ListAllSubscribers>> {
 
         validateId(segment_id);
 
@@ -52,7 +52,7 @@ export default class Segment implements SegmentsInterface {
      * @segment_id {String} - Segment ID
      * @requestBody {Object} - Segment data for update
      */
-    public update(segment_id: string, requestBody: UpdateParams): Promise<AxiosResponse<SingleSegmentResponse, UpdateParams>> {
+    public update(segment_id: string, requestBody: UpdateSegmentParams): Promise<AxiosResponse<SingleSegmentResponse, UpdateSegmentParams>> {
 
         validateId(segment_id);
 

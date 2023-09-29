@@ -2,10 +2,10 @@ import { describe, it, expect, expectTypeOf } from "vitest";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
-    GetParams,
-    ListAllResponse,
+    GetSegmentsParams,
+    ListAllSegmentsResponse,
     ListAllSubscribers,
-    GetSubscribersParams
+    GetSegmentSubscribersParams
 } from "./segments.types";
 
 import {handleCatchedError} from "../../utils/helpers";
@@ -25,7 +25,7 @@ describe("Segments", () => {
     let segmentId: string;
 
     it.concurrent("List all segments", async () => {
-        const params: GetParams = {
+        const params: GetSegmentsParams = {
             limit: 25,
             page: 1
         }
@@ -36,7 +36,7 @@ describe("Segments", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListAllResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<ListAllSegmentsResponse>();
 
             if (response.data.data.length) segmentId = response.data.data[0].id;
         } catch (error) {
@@ -49,7 +49,7 @@ describe("Segments", () => {
             throw 'No segments found';
         }
 
-        const params: GetSubscribersParams = {
+        const params: GetSegmentSubscribersParams = {
             filter: {
                 status: "active",
             },
