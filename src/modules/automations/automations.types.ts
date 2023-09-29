@@ -59,7 +59,7 @@ export interface SingleAutomationResponse {
     data: AutomationObject;
 }
 
-interface AutomationSubObject {
+export interface AutomationSubObject {
     id:                 string;
     status:             string;
     date:               string;
@@ -96,7 +96,7 @@ interface AutomationSubObject {
     description:        string;
 }
 
-interface AutomationObject {
+export interface AutomationObject {
     id:         string;
     name:       string;
     enabled:    boolean;
@@ -131,7 +131,7 @@ export interface AutomationStats extends Stats {
     };
 }
 
-interface AutomationStep {
+export interface AutomationStep {
     id:             string;
     type:           string;
     parent_id:      string;
@@ -143,7 +143,7 @@ interface AutomationStep {
     description:    string;
 }
 
-interface AutomationEmailStep {
+export interface AutomationEmailStep {
     id:                     string;
     type:                   string;
     parent_id:              string;
@@ -163,7 +163,7 @@ interface AutomationEmailStep {
     description:            string;
 }
 
-interface AutomationTriggers {
+export interface AutomationTriggers {
     id:         string;
     type:       string;
     group_ids:  Array<string>;
@@ -177,6 +177,6 @@ interface AutomationTriggers {
     broken:             boolean;
 }
 
-interface ListAutomationsResponseMeta extends Meta {
+export interface ListAutomationsResponseMeta extends Meta {
     total_unfiltered:   number
 }

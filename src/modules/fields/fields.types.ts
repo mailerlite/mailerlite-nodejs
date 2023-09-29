@@ -39,7 +39,7 @@ export interface UpdateFieldParams {
     name: string;
 }
 
-interface FieldObject {
+export interface FieldObject {
     id:     string;
     name:   string;
     key:    string;

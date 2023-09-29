@@ -51,7 +51,7 @@ export interface SubscriberParams {
     page:   number;
 }
 
-interface GroupObject {
+export interface GroupObject {
     id:                 string;
     name:               string;
     active_count:       number;

@@ -92,7 +92,7 @@ export interface ScheduleCampaignParams {
     }
 }
 
-interface CampaignObject {
+export interface CampaignObject {
     id:             string;
     account_id:     string;
     name:           string;
@@ -171,11 +171,11 @@ export interface Email {
     track_opens:      boolean;
 }
 
-interface EmailStats extends Stats {
+export interface EmailStats extends Stats {
     forwards_count:   number;
 }
 
-interface CampaignsMeta extends Meta {
+export interface CampaignsMeta extends Meta {
     aggregations: {
         total:      number;
         draft:      number;

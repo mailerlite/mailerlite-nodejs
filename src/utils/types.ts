@@ -57,7 +57,7 @@ export interface Meta {
     total:          number;
 }
 
-interface MetaLinks {
+export interface MetaLinks {
     url:    string;
     label:  string;
     active: boolean;

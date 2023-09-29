@@ -33,7 +33,7 @@ export interface UpdateWebhookParams {
     enabled?:   boolean;
 }
 
-interface WebhookObject {
+export interface WebhookObject {
     id:         string;
     name:       string;
     url:        string;

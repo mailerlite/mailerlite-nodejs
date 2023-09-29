@@ -58,7 +58,7 @@ export interface FormObject {
     screenshot_url:       string;
 }
 
-interface FormsMeta extends Meta {
+export interface FormsMeta extends Meta {
     aggregations: {
         popup:      number;
         embedded:   number;

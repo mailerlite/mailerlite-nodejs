@@ -8,7 +8,7 @@ export interface ListAllTimezonesResponse {
     data: Array<TimezoneObject>;
 }
 
-interface TimezoneObject {
+export interface TimezoneObject {
     id:                 string;
     name:               string;
     name_for_humans:    string;

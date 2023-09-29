@@ -44,7 +44,7 @@ export interface UpdateSegmentParams {
     name: string;
 }
 
-interface SegmentObject {
+export interface SegmentObject {
     id:             string;
     name:           string;
     total:          number;

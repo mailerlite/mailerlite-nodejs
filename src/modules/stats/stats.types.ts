@@ -61,14 +61,14 @@ export interface CampaignSubscribersActivityResponse {
     meta:   StatsMeta
 }
 
-interface ActivityObject {
+export interface ActivityObject {
     id:             string;
     opens_count:    number;
     clicks_count:   number;
     subscriber:     SubscriberObject;
 }
 
-interface StatsMeta extends Meta {
+export interface StatsMeta extends Meta {
     counts: {
         all:            number;
         opened:         number;

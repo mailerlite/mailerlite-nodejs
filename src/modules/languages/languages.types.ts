@@ -8,7 +8,7 @@ export interface ListAllLanguagesResponse {
     data: Array<LanguageObject>;
 }
 
-interface LanguageObject {
+export interface LanguageObject {
     id:         string;
     shortcode:  string;
     iso639:     string;
