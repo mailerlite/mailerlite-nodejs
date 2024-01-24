@@ -76,7 +76,7 @@ export interface CreateUpdateCampaignParams {
 }
 
 export interface ScheduleCampaignParams {
-    delivery?:	         "instant" | "scheduled" | "timezone_based";
+    delivery:	         "instant" | "scheduled" | "timezone_based";
     schedule?: {
         date?:           string;
         hours?:          string;
