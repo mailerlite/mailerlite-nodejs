@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import {SubscriberObject, Links} from "../../utils/types.js";
+import { GroupObject } from "../groups/groups.types.js";
 
 export interface SubscriberInterface {
     get:            (params: GetSubscribersParams)              => Promise<AxiosResponse<ListSubscribersResponse>>;
@@ -28,7 +29,7 @@ export interface GetSubscribersParams {
 export interface CreateOrUpdateSubscriberParams {
     email:              string;
     fields?:	        object;
-    groups?:	        Array<string>;
+    groups?:	        Array<GroupObject>;
     status?:	        "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
     subscribed_at?:	    string;
     ip_address?:	    string;
