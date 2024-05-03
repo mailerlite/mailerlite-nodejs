@@ -31,7 +31,8 @@ export interface AutomationSubsParams {
         date_to?:           Date;
         scheduled_from?:    Date;
         scheduled_to?:      Date;
-        keyword?:           string;
+        keyword?:           string; // deprecated
+        search?:            string;
     };
     /**
      * @default 10

@@ -11,7 +11,7 @@ export type FormTypes = "popup" | "embedded" | "promotion";
 
 export interface GetFormsParams {
     limit?: number;
-    page?:  number;
+    page?:  number; //deprecated
     filter?: {
         name?: string;
     };

@@ -55,7 +55,7 @@ export interface CreateUpdateCampaignParams {
     groups?:	            Array<string>;
     segments?:	            Array<string>;
     ab_settings?: {
-        test_type?:	        "subject" | "sender";
+        test_type?:	        "subject" | "sender" | "sending_time";
         select_winner_by?:	"o" | "c";
         after_time_amount?:	number;
         after_time_unit?:	"h" | "d";
@@ -76,7 +76,7 @@ export interface CreateUpdateCampaignParams {
 }
 
 export interface ScheduleCampaignParams {
-    delivery:	         "instant" | "scheduled" | "timezone_based";
+    delivery:	         "instant" | "scheduled" | "timezone_based" | "smart_sending";
     schedule?: {
         date?:           string;
         hours?:          string;

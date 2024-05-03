@@ -21,9 +21,10 @@ export interface SingleWebhookResponse {
 }
 
 export interface CreateWebhookParams {
-    name?:  string;
-    events: Array<string>;
-    url:    string;
+    name?:      string;
+    events:     Array<string>;
+    url:        string;
+    enabled?:   boolean;
 }
 
 export interface UpdateWebhookParams {
