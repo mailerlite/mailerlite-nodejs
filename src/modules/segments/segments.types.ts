@@ -19,6 +19,7 @@ export interface GetSegmentSubscribersParams {
     };
     limit?: number;
     after?: number;
+    cursor?: string;
 }
 
 export interface ListAllSegmentsResponse {

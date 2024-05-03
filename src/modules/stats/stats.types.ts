@@ -52,7 +52,8 @@ export interface FormsSubscribersParams {
     /**
      * @default 1
      */
-    page?:  number;
+    page?:  number; // deprecated
+    cursor?: string;
 }
 
 export interface CampaignSubscribersActivityResponse {

@@ -47,8 +47,9 @@ export interface SubscriberParams {
          */
         status: "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
     };
-    limit:  number;
-    page:   number;
+    limit?:  number;
+    page?:   number; // deprecated
+    cursor?: string;
 }
 
 export interface GroupObject {
