@@ -90,7 +90,7 @@ export interface SubscriberObject {
         state:        string;
         z_i_p:        string;
     };
-    groups:           Array<GroupObject>;
+    groups?:          Array<GroupObject>; // In some endpoints groups are excluded by default. They get added when `include` param is used in request
     opted_in_at:      string;
     optin_ip:         string;
 }
