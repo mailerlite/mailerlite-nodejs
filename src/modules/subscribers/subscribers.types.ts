@@ -21,8 +21,9 @@ export interface GetSubscribersParams {
     /**
      * @default 1
      */
-    page?: number; // deprecated
-    cursor?: string;
+    page?:      number; // deprecated
+    cursor?:    string;
+    include?:   string;
 }
 
 export interface CreateOrUpdateSubscriberParams {
