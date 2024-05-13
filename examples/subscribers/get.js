@@ -1,4 +1,4 @@
-// node examples/subscribers/get.js active 5
+// node examples/subscribers/get.js active 5 groups
 
 "use strict";
 
@@ -17,6 +17,7 @@ if (process.argv.slice(2).length) {
     status: String(process.argv[2])
   };
   myArgs.limit = parseInt(process.argv[3]);
+  myArgs.include = String(process.argv[4]);
 }
 
 mailerlite.subscribers.get(myArgs)
