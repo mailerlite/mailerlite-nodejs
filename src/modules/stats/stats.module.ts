@@ -56,7 +56,7 @@ export default class Statistics implements StatsInterface {
     }
 
     /**
-     * @description Get subscribers of sent campaign
+     * @description Get subscribers' activity of a sent campaign
      *
      * @see https://developers.mailerlite.com/docs/campaigns.html#get-subscribers-activity-of-a-sent-campaign
      *

@@ -23,7 +23,7 @@ export interface GetSubscribersParams {
      */
     page?:      number; // deprecated
     cursor?:    string;
-    include?:   string;
+    include?:   "groups";
 }
 
 export interface CreateOrUpdateSubscriberParams {

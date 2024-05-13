@@ -34,8 +34,9 @@ export interface CampaignSubscribersActivityParams {
     /**
      * @default "id"
      */
-    sort?:  "id" | "updated_at" | "clicks_count" | "opens_count";
-    page?:  number;
+    sort?:      "id" | "updated_at" | "clicks_count" | "opens_count";
+    page?:      number;
+    include?:   "subscriber"
 }
 
 export interface FormsSubscribersParams {
@@ -66,7 +67,7 @@ export interface ActivityObject {
     id:             string;
     opens_count:    number;
     clicks_count:   number;
-    subscriber:     SubscriberObject;
+    subscriber?:    SubscriberObject; // Subscriber data excluded by default
 }
 
 export interface StatsMeta extends Meta {
