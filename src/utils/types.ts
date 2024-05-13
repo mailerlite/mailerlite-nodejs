@@ -1,3 +1,5 @@
+import {GroupObject} from "../modules/groups/groups.types";
+
 export interface Config {
     basePath: string;
     api_key: string;
@@ -88,7 +90,7 @@ export interface SubscriberObject {
         state:        string;
         z_i_p:        string;
     };
-    groups:           Array<string>;
+    groups:           Array<GroupObject>;
     opted_in_at:      string;
     optin_ip:         string;
 }
