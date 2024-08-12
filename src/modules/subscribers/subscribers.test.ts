@@ -74,6 +74,35 @@ describe("Subscribers", () => {
         }
     });
 
+    it("Update a subscriber", async () => {
+        const randomInt = getRandomInt();
+
+        const params: CreateOrUpdateSubscriberParams = {
+            fields: {
+                name: `Test name ${randomInt}`,
+                last_name: `Test lastname ${randomInt}`,
+                company: `test company ${randomInt}`,
+                country: `test country ${randomInt}`,
+                city: `test city ${randomInt}`,
+                email: `test${randomInt}@nodejs.com`,
+            },
+            status: 'active',
+            subscribed_at: '2022-11-23 09:59:56'
+        };
+
+        try {
+            const response = await mailerlite.subscribers.update(createdSubscriberId,params);
+
+            expect(response).not.toBeNull();
+            expect(response.data).toBeDefined();
+            expect(response.data.data).toBeDefined();
+            expect(response.data.data.id).not.toBeNull();
+            expectTypeOf(response.data).toEqualTypeOf<SingleSubscriberResponse>()
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
     it("Fetch a subscriber by ID", async () => {
         try {
             const response = await mailerlite.subscribers.find(createdSubscriberId);

@@ -57,6 +57,41 @@ mailerlite.subscribers.createOrUpdate(params)
   });
 ```
 
+### Update a subscriber
+[Official Documentation](https://developers.mailerlite.com/docs/subscribers.html#update-a-subscriber)
+
+---
+```javascript
+const params = {
+  fields: {
+    name: "Dummy",
+    last_name: "Testerson",
+    company: "MailerLite",
+    country: "Best country",
+    city: "Best city",
+    phone: "37060677606",
+    state: "Best state",
+    z_i_p: "99999"
+  },
+  groups: ["4243829086487936"],
+  status: "active", // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
+  subscribed_at: "2021-08-31 14:22:08",
+  ip_address: null,
+  opted_in_at: null, // yyyy-MM-dd HH:mm:ss
+  optin_ip: null,
+  unsubscribed_at: null // yyyy-MM-dd HH:mm:ss
+};
+
+mailerlite.subscribers.update("subscriber_id",params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+
 ### Fetch a subscriber
 [Official Documentation](https://developers.mailerlite.com/docs/subscribers.html#fetch-a-subscriber)
 
