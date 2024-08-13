@@ -4,6 +4,7 @@ import {SubscriberObject, Links} from "../../utils/types.js";
 export interface SubscriberInterface {
     get:            (params: GetSubscribersParams)              => Promise<AxiosResponse<ListSubscribersResponse>>;
     createOrUpdate: (params: CreateOrUpdateSubscriberParams)    => Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateSubscriberParams>>;
+    update:         (subscriber_id: string, params: UpdateSubscriberParams) => Promise<AxiosResponse<SingleSubscriberResponse, UpdateSubscriberParams>>;
     find:           (subscriber_id: string)                     => Promise<AxiosResponse<SingleSubscriberResponse>>;
     getCount:       ()                                          => Promise<AxiosResponse<CountSubscribersResponse>>;
     delete:         (subscriber_id: string)                     => Promise<AxiosResponse<null>>;
@@ -26,8 +27,7 @@ export interface GetSubscribersParams {
     include?:   "groups";
 }
 
-export interface CreateOrUpdateSubscriberParams {
-    email:              string;
+export interface UpdateSubscriberParams {
     fields?:	        object;
     groups?:	        Array<string>;
     status?:	        "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
@@ -36,6 +36,10 @@ export interface CreateOrUpdateSubscriberParams {
     opted_in_at?:	    string;
     optin_ip?:	        string;
     unsubscribed_at?:	string;
+}
+
+export interface CreateOrUpdateSubscriberParams extends UpdateSubscriberParams{
+    email:              string;
 }
 
 export interface ListSubscribersResponse {

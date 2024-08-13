@@ -3,7 +3,16 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { GetSubscribersParams, CreateOrUpdateSubscriberParams, SubscriberInterface, ListSubscribersResponse, SingleSubscriberResponse, CountSubscribersResponse, ForgetSubscriberResponse } from './subscribers.types.js';
+import type {
+    GetSubscribersParams,
+    CreateOrUpdateSubscriberParams,
+    SubscriberInterface,
+    ListSubscribersResponse,
+    SingleSubscriberResponse,
+    CountSubscribersResponse,
+    ForgetSubscriberResponse,
+    UpdateSubscriberParams
+} from './subscribers.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -36,6 +45,23 @@ export default class Subscriber implements SubscriberInterface {
     public createOrUpdate(requestBody: CreateOrUpdateSubscriberParams): Promise<AxiosResponse<SingleSubscriberResponse, CreateOrUpdateSubscriberParams>> {
         return request(`/api/subscribers`, {
             method: "POST",
+            body: requestBody
+        }, this.config);
+    }
+
+    /**
+     * @description Update a subscriber
+     *
+     * @see https://developers.mailerlite.com/docs/subscribers.html#update-a-subscriber
+     *
+     * @subscriber_id {String} - Subscriber ID
+     * @requestBody {Object} - Subscriber data for update
+     */
+    public update(subscriber_id: string, requestBody: UpdateSubscriberParams): Promise<AxiosResponse<SingleSubscriberResponse, UpdateSubscriberParams>> {
+        validateId(subscriber_id);
+
+        return request(`/api/subscribers/${subscriber_id}`, {
+            method: "PUT",
             body: requestBody
         }, this.config);
     }
