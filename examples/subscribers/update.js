@@ -1,4 +1,4 @@
-// node examples/subscribers/update.js
+// node examples/subscribers/update.js ID_string
 
 "use strict";
 
@@ -11,7 +11,11 @@ const mailerlite = new MailerLite({
   api_key: process.env.API_KEY,
 });
 
-const subscriberId = '<subscriber_id>';
+let subscriber_id = null;
+
+if (process.argv.slice(2).length) {
+  subscriber_id = process.argv[2];
+}
 
 const subscriberData = {
   fields:	{
@@ -30,7 +34,7 @@ const subscriberData = {
   unsubscribed_at:	''
 };
 
-mailerlite.subscribers.update(subscriberId,subscriberData)
+mailerlite.subscribers.update(subscriber_id,subscriberData)
   .then(response => {
     console.log(response.data);
   })

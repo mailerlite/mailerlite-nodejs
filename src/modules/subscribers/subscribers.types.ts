@@ -27,8 +27,7 @@ export interface GetSubscribersParams {
     include?:   "groups";
 }
 
-export interface CreateOrUpdateSubscriberParams {
-    email:              string;
+export interface UpdateSubscriberParams {
     fields?:	        object;
     groups?:	        Array<string>;
     status?:	        "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
@@ -39,15 +38,8 @@ export interface CreateOrUpdateSubscriberParams {
     unsubscribed_at?:	string;
 }
 
-export interface UpdateSubscriberParams {
-    fields?:	        object;
-    groups?:	        Array<string>;
-    status?:	        "active" | "unsubscribed" | "unconfirmed" | "bounced" | "junk";
-    subscribed_at?:	    string;
-    ip_address?:	    string;
-    opted_in_at?:	    string;
-    optin_ip?:	        string;
-    unsubscribed_at?:	string;
+export interface CreateOrUpdateSubscriberParams extends UpdateSubscriberParams{
+    email:              string;
 }
 
 export interface ListSubscribersResponse {
