@@ -8,7 +8,7 @@ import path from "path";
 export async function setup() {
     const opts = {
         host: "https://connect.mailerlite.com",
-        record: talkback.Options.RecordMode.DISABLED, // to record new tapes: 1. rm -rf /tapes 2. change to RecordMode.NEW 3. comment out fallbackMode
+        record: talkback.Options.RecordMode.DISABLED, // to record new tapes: 1. rm -rf tapes 2. change to RecordMode.NEW 3. comment out fallbackMode 4. npm run test
         fallbackMode: talkback.Options.FallbackMode.NOT_FOUND,
         name: "MailerLite",
         port: 9090,
