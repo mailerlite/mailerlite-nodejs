@@ -1,14 +1,14 @@
 {
     meta: {
-        createdAt: '2024-08-13T09:49:51.603Z',
+        createdAt: '2024-08-13T09:49:51.736Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
         url: '/api/webhooks/129543796591428797',
-        method: 'GET',
-        body: 'bnVsbA==',
+        method: 'PUT',
+        body: 'ewogICJuYW1lIjogIlRlc3Qgd2ViaG9vayBub2RlanMgdXBkYXRlZCA0OTI3NDAiLAogICJlbmFibGVkIjogZmFsc2UKfQ==',
     },
     res: {
         status: 200,
@@ -35,7 +35,7 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '108',
+                '104',
             ],
             'access-control-allow-origin': [
                 '*',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '8b27cc2e099bbc0f-VNO',
+                '8b27cc2eeb77c035-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -59,12 +59,12 @@
         body: {
             data: {
                 id: '129543796591428797',
-                name: 'Test webhook nodejs 453234',
+                name: 'Test webhook nodejs updated 492740',
                 url: 'http://www.marvin.com/omnis-accusamus-est-rem-delectus-quaerat.html',
                 events: [
                     'subscriber.updated',
                 ],
-                enabled: true,
+                enabled: false,
                 is_blocked: false,
                 secret: 'N8j0kwRp1w',
                 created_at: '2024-08-13 09:49:51',

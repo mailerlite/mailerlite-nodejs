@@ -1,6 +1,6 @@
 {
     meta: {
-        createdAt: '2023-03-06T09:26:16.998Z',
+        createdAt: '2024-08-13T09:49:52.488Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Mon, 06 Mar 2023 09:26:17 GMT',
+                'Tue, 13 Aug 2024 09:49:52 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -23,13 +23,7 @@
                 'chunked',
             ],
             connection: [
-                'close',
-            ],
-            'x-ratelimit-remaining': [
-                '85',
-            ],
-            'access-control-allow-origin': [
-                '*',
+                'keep-alive',
             ],
             'cache-control': [
                 'no-cache, private',
@@ -40,8 +34,14 @@
             'x-ratelimit-limit': [
                 '120',
             ],
+            'x-ratelimit-remaining': [
+                '84',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
             'strict-transport-security': [
-                'max-age=15724800; includeSubDomains',
+                'max-age=31536000; includeSubDomains',
             ],
             'cf-cache-status': [
                 'DYNAMIC',
@@ -50,14 +50,17 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '7a398e64cf74b809-RIX',
+                '8b27cc339b7cc03c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
             ],
         },
         body: {
             data: [
                 {
                     id: '79088720698935066',
-                    email: 'mantas.andriukevicius@mailerlite.com',
+                    email: 'test@mailerlite.com',
                     status: 'active',
                     source: 'webform',
                     sent: 1,
@@ -83,6 +86,7 @@
                         test_batch_field_2: null,
                         test_batch_field_3: null,
                         test_batch_field_4: null,
+                        test_field_name: null,
                     },
                     opted_in_at: '2023-02-03 11:48:21',
                     optin_ip: '78.62.135.89',

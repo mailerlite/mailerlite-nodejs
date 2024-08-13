@@ -1,0 +1,287 @@
+{
+    meta: {
+        createdAt: '2024-08-13T09:49:51.226Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/automations?filter[enabled]=true&filter[name]=nodejs&limit=10&page=1',
+        method: 'GET',
+        body: 'bnVsbA==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Tue, 13 Aug 2024 09:49:51 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '113',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=31536000; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '8b27cc2c5c7a7120-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '79088320863274637',
+                    name: '[Do not delete] nodejs test automation',
+                    enabled: true,
+                    trigger_data: {
+                        track_ecommerce: false,
+                        repeatable: false,
+                        valid: true,
+                    },
+                    triggers: [
+                        {
+                            id: '79088341487716129',
+                            type: 'subscriber_joins_group',
+                            group_ids: [
+                                '79088295512901061',
+                            ],
+                            groups: [
+                                {
+                                    id: '79088295512901061',
+                                    name: '[Do not delete] nodejs test group',
+                                    url: 'https://dashboard.mailerlite.com/subscribers?rules=W1t7Im9wZXJhdG9yIjoiaW5fYW55IiwiY29uZGl0aW9uIjoiZ3JvdXBzIiwiYXJncyI6WyJncm91cHMiLFsiNzkwODgyOTU1MTI5MDEwNjEiXV19XV0%3D',
+                                },
+                            ],
+                            exclude_group_ids: [],
+                            excluded_groups: [],
+                            broken: false,
+                        },
+                    ],
+                    complete: true,
+                    broken: false,
+                    warnings: [],
+                    emails_count: 1,
+                    first_email_screenshot_url: 'https://storage.googleapis.com/mailerlite-screenshots-prod/screenshot/emails/79088366594819095/1284x7362023-02-03-11:42:54.png',
+                    stats: {
+                        completed_subscribers_count: 1,
+                        subscribers_in_queue_count: 0,
+                        bounce_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        click_to_open_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        sent: 1,
+                        opens_count: 1,
+                        unique_opens_count: null,
+                        open_rate: {
+                            float: 1,
+                            string: '100%',
+                        },
+                        clicks_count: 0,
+                        unique_clicks_count: null,
+                        click_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        unsubscribes_count: 0,
+                        unsubscribe_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        spam_count: 0,
+                        spam_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        hard_bounces_count: 0,
+                        hard_bounce_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        soft_bounces_count: 0,
+                        soft_bounce_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        forward_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        social_interactions_count: null,
+                        social_interaction_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                    },
+                    created_at: '2023-02-03 11:41:40',
+                    has_banned_content: false,
+                    qualified_subscribers_count: 0,
+                    steps: [
+                        {
+                            id: '79088348672558383',
+                            type: 'email',
+                            parent_id: null,
+                            name: 'nodejs test email',
+                            subject: 'nodejs test email',
+                            from: 'test@mailerlite.com',
+                            from_name: 'SDK account',
+                            reply_to: 'test@mailerlite.com',
+                            email_id: '79088366594819095',
+                            email: {
+                                id: '79088366594819095',
+                                account_id: '252151',
+                                emailable_id: '79088320863274637',
+                                emailable_type: 'automations',
+                                type: 'builder',
+                                from: 'test@mailerlite.com',
+                                from_name: 'SDK account',
+                                reply_to: 'test@mailerlite.com',
+                                name: 'nodejs test email',
+                                subject: 'nodejs test email',
+                                plain_text: "Hello,\n\nYou have received a newsletter from {$account}.\n\nHowever, your email software can't display HTML emails. You can view the newsletter by clicking here:\n\n{$url}{link-id:79088398350944114}\n\n\n\nYou're receiving this newsletter because you have shown interest in {$account}.\nNot interested anymore? Click here to unsubscribe:\n{$unsubscribe}{link-id:79088398347798385}",
+                                screenshot_url: 'https://storage.googleapis.com/mailerlite-screenshots-prod/screenshot/emails/79088366594819095/1284x7362023-02-03-11:42:54.png',
+                                preview_url: 'https://preview.mailerlite.io/preview/252151/emails/79088366594819095',
+                                created_at: '2023-02-03 11:42:23',
+                                updated_at: '2023-11-19 14:24:53',
+                                is_designed: true,
+                                language_id: 4,
+                                is_winner: false,
+                                stats: {
+                                    sent: 1,
+                                    opens_count: 2,
+                                    unique_opens_count: 1,
+                                    open_rate: {
+                                        float: 1,
+                                        string: '100%',
+                                    },
+                                    clicks_count: 0,
+                                    unique_clicks_count: 0,
+                                    click_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                    unsubscribes_count: 0,
+                                    unsubscribe_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                    spam_count: 0,
+                                    spam_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                    hard_bounces_count: 0,
+                                    hard_bounce_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                    soft_bounces_count: 0,
+                                    soft_bounce_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                    forwards_count: 0,
+                                    forward_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                    social_interactions_count: 0,
+                                    social_interaction_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                    click_to_open_rate: {
+                                        float: 0,
+                                        string: '0%',
+                                    },
+                                },
+                                send_after: null,
+                                track_opens: true,
+                                uses_survey: false,
+                                uses_quiz: false,
+                                preheader: null,
+                            },
+                            language_id: 4,
+                            complete: true,
+                            created_at: '2023-02-03 11:42:06',
+                            updated_at: '2023-10-16 13:48:57',
+                            track_opens: true,
+                            google_analytics: null,
+                            tracking_was_disabled: false,
+                            broken: false,
+                            description: 'Send "nodejs test email" email',
+                            type_count: 1,
+                        },
+                    ],
+                },
+            ],
+            links: {
+                first: 'https://connect.mailerlite.com/api/automations?page=1',
+                last: 'https://connect.mailerlite.com/api/automations?page=1',
+                prev: null,
+                next: null,
+            },
+            meta: {
+                current_page: 1,
+                from: 1,
+                last_page: 1,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/automations?page=1',
+                        label: '1',
+                        active: true,
+                    },
+                    {
+                        url: null,
+                        label: 'Next &raquo;',
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/automations',
+                per_page: 10,
+                to: 1,
+                total: 1,
+                aggregations: {
+                    all: 3,
+                },
+            },
+        },
+    },
+}

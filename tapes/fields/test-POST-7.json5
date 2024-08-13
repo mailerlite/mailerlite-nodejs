@@ -1,17 +1,17 @@
 {
     meta: {
-        createdAt: '2024-08-13T09:49:51.603Z',
+        createdAt: '2024-08-13T09:49:51.490Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/webhooks/129543796591428797',
-        method: 'GET',
-        body: 'bnVsbA==',
+        url: '/api/fields',
+        method: 'POST',
+        body: 'ewogICJuYW1lIjogIlRlc3QgZmllbGQgbm9kZWpzIDM0ODcxMCIsCiAgInR5cGUiOiAidGV4dCIKfQ==',
     },
     res: {
-        status: 200,
+        status: 201,
         headers: {
             date: [
                 'Tue, 13 Aug 2024 09:49:51 GMT',
@@ -35,7 +35,7 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '108',
+                '110',
             ],
             'access-control-allow-origin': [
                 '*',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '8b27cc2e099bbc0f-VNO',
+                '8b27cc2d59a4bc1b-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -58,21 +58,11 @@
         },
         body: {
             data: {
-                id: '129543796591428797',
-                name: 'Test webhook nodejs 453234',
-                url: 'http://www.marvin.com/omnis-accusamus-est-rem-delectus-quaerat.html',
-                events: [
-                    'subscriber.updated',
-                ],
-                enabled: true,
-                is_blocked: false,
-                secret: 'N8j0kwRp1w',
-                created_at: '2024-08-13 09:49:51',
-                updated_at: '2024-08-13 09:49:51',
-                batchable: false,
-                version: '2022-01',
-                last_fired_at: null,
-                response_code: null,
+                id: '545001',
+                name: 'Test field nodejs 348710',
+                key: 'test_field_nodejs_348710',
+                type: 'text',
+                is_default: false,
             },
         },
     },
