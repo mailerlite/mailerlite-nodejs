@@ -3,6 +3,7 @@ import "dotenv/config";
 import MailerLite from '../../index';
 import {
     CreateOrUpdateSubscriberParams,
+    UpdateSubscriberParams,
     GetSubscribersParams,
     ListSubscribersResponse,
     SingleSubscriberResponse,
