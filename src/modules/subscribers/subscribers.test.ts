@@ -77,7 +77,7 @@ describe("Subscribers", () => {
     it("Update a subscriber", async () => {
         const randomInt = getRandomInt();
 
-        const params: CreateOrUpdateSubscriberParams = {
+        const params: UpdateSubscriberParams = {
             fields: {
                 name: `Test name ${randomInt}`,
                 last_name: `Test lastname ${randomInt}`,
