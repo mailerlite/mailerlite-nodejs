@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: '2024-08-13T09:49:51.225Z',
+        createdAt: '2024-08-13T09:49:52.176Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/webhooks',
+        url: '/api/segments?limit=25&page=1',
         method: 'GET',
         body: 'bnVsbA==',
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Tue, 13 Aug 2024 09:49:51 GMT',
+                'Tue, 13 Aug 2024 09:49:52 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -35,7 +35,7 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '117',
+                '91',
             ],
             'access-control-allow-origin': [
                 '*',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '8b27cc2c5eb3bc0f-VNO',
+                '8b27cc31ade67120-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -59,43 +59,23 @@
         body: {
             data: [
                 {
-                    id: '105729597095544804',
-                    name: 'test_webhook',
-                    url: 'http://foobar.hook',
-                    events: [
-                        'subscriber.created',
-                    ],
-                    enabled: true,
-                    is_blocked: false,
-                    secret: 'zDvzgB6TQ8',
-                    created_at: '2023-11-24 13:13:21',
-                    updated_at: '2023-11-24 13:13:21',
-                    batchable: false,
-                    version: '2022-01',
-                    last_fired_at: null,
-                    response_code: null,
-                },
-                {
-                    id: '75321551702984317',
-                    name: 'test_webhook',
-                    url: 'http://foobar.hook',
-                    events: [
-                        'subscriber.created',
-                    ],
-                    enabled: true,
-                    is_blocked: false,
-                    secret: 'pv04URxAE4',
-                    created_at: '2022-12-23 21:50:29',
-                    updated_at: '2022-12-23 21:50:29',
-                    batchable: false,
-                    version: '2022-01',
-                    last_fired_at: null,
-                    response_code: null,
+                    id: '75230139503346765',
+                    name: 'test_segment2',
+                    total: 3,
+                    open_rate: {
+                        float: 0.77777777777778,
+                        string: '77.78%',
+                    },
+                    click_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    created_at: '2022-12-22 21:37:31',
                 },
             ],
             links: {
-                first: 'https://connect.mailerlite.com/api/webhooks?page=1',
-                last: 'https://connect.mailerlite.com/api/webhooks?page=1',
+                first: 'https://connect.mailerlite.com/api/segments?page=1',
+                last: 'https://connect.mailerlite.com/api/segments?page=1',
                 prev: null,
                 next: null,
             },
@@ -110,7 +90,7 @@
                         active: false,
                     },
                     {
-                        url: 'https://connect.mailerlite.com/api/webhooks?page=1',
+                        url: 'https://connect.mailerlite.com/api/segments?page=1',
                         label: '1',
                         active: true,
                     },
@@ -120,10 +100,10 @@
                         active: false,
                     },
                 ],
-                path: 'https://connect.mailerlite.com/api/webhooks',
-                per_page: 50,
-                to: 2,
-                total: 2,
+                path: 'https://connect.mailerlite.com/api/segments',
+                per_page: 25,
+                to: 1,
+                total: 1,
             },
         },
     },

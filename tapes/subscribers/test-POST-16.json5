@@ -1,0 +1,97 @@
+{
+    meta: {
+        createdAt: '2024-08-13T09:49:51.488Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/subscribers',
+        method: 'POST',
+        body: 'ewogICJlbWFpbCI6ICJ0ZXN0MjIzNzQxQG5vZGVqcy5jb20iLAogICJmaWVsZHMiOiB7CiAgICAibmFtZSI6ICJUZXN0IG5hbWUgMjIzNzQxIiwKICAgICJsYXN0X25hbWUiOiAiVGVzdCBsYXN0bmFtZSAyMjM3NDEiLAogICAgImNvbXBhbnkiOiAidGVzdCBjb21wYW55IDIyMzc0MSIsCiAgICAiY291bnRyeSI6ICJ0ZXN0IGNvdW50cnkgMjIzNzQxIiwKICAgICJjaXR5IjogInRlc3QgY2l0eSAyMjM3NDEiCiAgfSwKICAic3RhdHVzIjogImFjdGl2ZSIsCiAgInN1YnNjcmliZWRfYXQiOiAiMjAyMi0xMS0yMyAwOTo1OTo1NiIKfQ==',
+    },
+    res: {
+        status: 201,
+        headers: {
+            date: [
+                'Tue, 13 Aug 2024 09:49:52 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '111',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=31536000; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '8b27cc2d59b8bc10-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '129543796651197476',
+                email: 'test223741@nodejs.com',
+                status: 'active',
+                source: 'api',
+                sent: 0,
+                opens_count: 0,
+                clicks_count: 0,
+                open_rate: 0,
+                click_rate: 0,
+                ip_address: null,
+                subscribed_at: '2022-11-23 09:59:56',
+                unsubscribed_at: null,
+                created_at: '2024-08-13 09:49:51',
+                updated_at: '2024-08-13 09:49:51',
+                fields: {
+                    name: 'Test name 223741',
+                    last_name: 'Test lastname 223741',
+                    company: 'test company 223741',
+                    country: 'test country 223741',
+                    city: 'test city 223741',
+                    phone: null,
+                    state: null,
+                    z_i_p: null,
+                    test_batch_field_1: null,
+                    test_batch_field_2: null,
+                    test_batch_field_3: null,
+                    test_batch_field_4: null,
+                    test_field_name: null,
+                    test_field_nodejs_348710: null,
+                },
+                groups: [],
+                opted_in_at: null,
+                optin_ip: null,
+            },
+        },
+    },
+}

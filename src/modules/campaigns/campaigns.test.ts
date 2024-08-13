@@ -122,7 +122,7 @@ describe("Campaigns", () => {
     it("Schedule a campaign", async () => {
         const dateObj = new Date();
         const year = dateObj.getUTCFullYear() + 1; // scheduled for the next year
-        const month = dateObj.getUTCMonth() + 1; // months from 1-12
+        const month = (dateObj.getUTCMonth() + 1).toString().padStart(2, '0'); // months from 01-12
         var day = dateObj.getUTCDate();
 
         const params: ScheduleCampaignParams = {

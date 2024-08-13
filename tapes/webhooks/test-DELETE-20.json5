@@ -1,0 +1,54 @@
+{
+    meta: {
+        createdAt: '2024-08-13T09:49:51.876Z',
+        host: 'https://connect.mailerlite.com',
+    },
+    req: {
+        headers: {},
+        url: '/api/webhooks/129543796591428797',
+        method: 'DELETE',
+        body: 'bnVsbA==',
+    },
+    res: {
+        status: 204,
+        headers: {
+            date: [
+                'Tue, 13 Aug 2024 09:49:52 GMT',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '99',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=31536000; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '8b27cc2fccb3c035-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: '',
+    },
+}

@@ -1,0 +1,184 @@
+{
+    meta: {
+        createdAt: '2024-08-13T09:49:52.122Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/forms/popup?limit=25&page=1&filter[name]=nodejs&sort=created_at',
+        method: 'GET',
+        body: 'bnVsbA==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Tue, 13 Aug 2024 09:49:52 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '94',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=31536000; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '8b27cc314ffac03c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '79088439017866397',
+                    account_id: '252151',
+                    type: 'popup',
+                    slug: 'w3zZJj',
+                    name: '[Do not delete] nodejs popup 888185',
+                    created_at: '2023-02-03 11:43:33',
+                    conversions_count: 1,
+                    opens_count: 0,
+                    conversion_rate: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    conversions_count_including_children: 1,
+                    opens_count_including_children: 0,
+                    conversion_rate_including_children: {
+                        float: 0,
+                        string: '0%',
+                    },
+                    settings: {
+                        double_optin: true,
+                        groot_id: 3330365,
+                        form_type: 'fullscreen',
+                        triggers: [
+                            'timeout',
+                        ],
+                        timeout_seconds: 5,
+                        scroll_percentage: 50,
+                        frequency: 1,
+                        frequency_unit: 'months',
+                        visibility: 'always',
+                        url_list: [],
+                        url_list_strict: null,
+                        hide_on: [],
+                        schedule: false,
+                    },
+                    last_registration_at: '2023-02-03T11:48:01.000000Z',
+                    active: false,
+                    is_broken: false,
+                    warning_messages: [],
+                    has_content: true,
+                    can: {
+                        update: true,
+                    },
+                    used_in_automations: false,
+                    warnings: [],
+                    double_optin: true,
+                    screenshot_url: 'https://storage.googleapis.com/mailerlite-screenshots-prod/screenshot/forms/79088439017866397/1284x1284.png',
+                    has_missing_groups: false,
+                    groups: [
+                        {
+                            id: '79088295512901061',
+                            name: '[Do not delete] nodejs test group',
+                            active_count: 1,
+                            sent_count: 1,
+                            opens_count: 1,
+                            open_rate: {
+                                float: 1,
+                                string: '100%',
+                            },
+                            clicks_count: 0,
+                            click_rate: {
+                                float: 0,
+                                string: '0%',
+                            },
+                            unsubscribed_count: 0,
+                            unconfirmed_count: 0,
+                            bounced_count: 0,
+                            junk_count: 0,
+                            created_at: '2023-02-03 11:41:16',
+                        },
+                    ],
+                    has_split_tests: false,
+                    split_test_finished: false,
+                    split_test_enabled: false,
+                    split_percentage: 0,
+                    is_split_test_winner: false,
+                    children: [],
+                    parent_id: null,
+                    original_name: null,
+                    analytics_reset_at: null,
+                    uses_survey: false,
+                },
+            ],
+            links: {
+                first: 'https://connect.mailerlite.com/api/forms/popup?page=1',
+                last: 'https://connect.mailerlite.com/api/forms/popup?page=1',
+                prev: null,
+                next: null,
+            },
+            meta: {
+                current_page: 1,
+                from: 1,
+                last_page: 1,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/forms/popup?page=1',
+                        label: '1',
+                        active: true,
+                    },
+                    {
+                        url: null,
+                        label: 'Next &raquo;',
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/forms/popup',
+                per_page: 25,
+                to: 1,
+                total: 1,
+                aggregations: {
+                    popup: 2,
+                    embedded: 0,
+                    promotion: 0,
+                },
+            },
+        },
+    },
+}

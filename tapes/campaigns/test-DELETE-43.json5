@@ -1,0 +1,54 @@
+{
+    meta: {
+        createdAt: '2024-08-13T09:49:58.388Z',
+        host: 'https://connect.mailerlite.com',
+    },
+    req: {
+        headers: {},
+        url: '/api/campaigns/129543796892370121',
+        method: 'DELETE',
+        body: 'bnVsbA==',
+    },
+    res: {
+        status: 204,
+        headers: {
+            date: [
+                'Tue, 13 Aug 2024 09:49:58 GMT',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '77',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'strict-transport-security': [
+                'max-age=31536000; includeSubDomains',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cf-ray': [
+                '8b27cc587c71bc0d-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: '',
+    },
+}

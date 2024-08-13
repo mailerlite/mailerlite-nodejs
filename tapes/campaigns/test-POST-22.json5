@@ -1,20 +1,20 @@
 {
     meta: {
-        createdAt: '2024-08-13T09:49:51.225Z',
+        createdAt: '2024-08-13T09:49:51.970Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/webhooks',
-        method: 'GET',
-        body: 'bnVsbA==',
+        url: '/api/campaigns/75323121649846116/reports/subscriber-activity',
+        method: 'POST',
+        body: 'ewogICJmaWx0ZXIiOiB7fSwKICAibGltaXQiOiAxMCwKICAic29ydCI6ICJpZCIsCiAgInBhZ2UiOiAxCn0=',
     },
     res: {
         status: 200,
         headers: {
             date: [
-                'Tue, 13 Aug 2024 09:49:51 GMT',
+                'Tue, 13 Aug 2024 09:49:52 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -35,7 +35,7 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '117',
+                '96',
             ],
             'access-control-allow-origin': [
                 '*',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '8b27cc2c5eb3bc0f-VNO',
+                '8b27cc305e74c03c-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -59,43 +59,29 @@
         body: {
             data: [
                 {
-                    id: '105729597095544804',
-                    name: 'test_webhook',
-                    url: 'http://foobar.hook',
-                    events: [
-                        'subscriber.created',
-                    ],
-                    enabled: true,
-                    is_blocked: false,
-                    secret: 'zDvzgB6TQ8',
-                    created_at: '2023-11-24 13:13:21',
-                    updated_at: '2023-11-24 13:13:21',
-                    batchable: false,
-                    version: '2022-01',
-                    last_fired_at: null,
-                    response_code: null,
+                    id: '76046933077001992',
+                    opens_count: 11,
+                    clicks_count: 0,
                 },
                 {
-                    id: '75321551702984317',
-                    name: 'test_webhook',
-                    url: 'http://foobar.hook',
-                    events: [
-                        'subscriber.created',
-                    ],
-                    enabled: true,
-                    is_blocked: false,
-                    secret: 'pv04URxAE4',
-                    created_at: '2022-12-23 21:50:29',
-                    updated_at: '2022-12-23 21:50:29',
-                    batchable: false,
-                    version: '2022-01',
-                    last_fired_at: null,
-                    response_code: null,
+                    id: '76046933135722250',
+                    opens_count: 0,
+                    clicks_count: 0,
+                },
+                {
+                    id: '76046933159839499',
+                    opens_count: 0,
+                    clicks_count: 0,
+                },
+                {
+                    id: '76046933183956748',
+                    opens_count: 2,
+                    clicks_count: 0,
                 },
             ],
             links: {
-                first: 'https://connect.mailerlite.com/api/webhooks?page=1',
-                last: 'https://connect.mailerlite.com/api/webhooks?page=1',
+                first: 'https://connect.mailerlite.com/api/campaigns/75323121649846116/reports/subscriber-activity?page=1',
+                last: 'https://connect.mailerlite.com/api/campaigns/75323121649846116/reports/subscriber-activity?page=1',
                 prev: null,
                 next: null,
             },
@@ -110,7 +96,7 @@
                         active: false,
                     },
                     {
-                        url: 'https://connect.mailerlite.com/api/webhooks?page=1',
+                        url: 'https://connect.mailerlite.com/api/campaigns/75323121649846116/reports/subscriber-activity?page=1',
                         label: '1',
                         active: true,
                     },
@@ -120,10 +106,22 @@
                         active: false,
                     },
                 ],
-                path: 'https://connect.mailerlite.com/api/webhooks',
-                per_page: 50,
-                to: 2,
-                total: 2,
+                path: 'https://connect.mailerlite.com/api/campaigns/75323121649846116/reports/subscriber-activity',
+                per_page: 10,
+                to: 4,
+                total: 4,
+                aggregations: {
+                    all: 4,
+                    opened: 2,
+                    unopened: 2,
+                    clicked: 0,
+                    unsubscribed: 0,
+                    forwarded: 0,
+                    hardbounced: 1,
+                    softbounced: 0,
+                    social_interaction: 0,
+                    junk: 0,
+                },
             },
         },
     },

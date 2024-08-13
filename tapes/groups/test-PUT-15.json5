@@ -1,14 +1,14 @@
 {
     meta: {
-        createdAt: '2024-08-13T09:49:51.603Z',
+        createdAt: '2024-08-13T09:49:51.735Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/webhooks/129543796591428797',
-        method: 'GET',
-        body: 'bnVsbA==',
+        url: '/api/groups/129543796681606183',
+        method: 'PUT',
+        body: 'ewogICJuYW1lIjogIlRlc3QgZ3JvdXAgdXBkYXRlZCBub2RlanMgNzA2MzU1Igp9',
     },
     res: {
         status: 200,
@@ -35,7 +35,7 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '108',
+                '102',
             ],
             'access-control-allow-origin': [
                 '*',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '8b27cc2e099bbc0f-VNO',
+                '8b27cc2eead9bc0f-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -58,21 +58,25 @@
         },
         body: {
             data: {
-                id: '129543796591428797',
-                name: 'Test webhook nodejs 453234',
-                url: 'http://www.marvin.com/omnis-accusamus-est-rem-delectus-quaerat.html',
-                events: [
-                    'subscriber.updated',
-                ],
-                enabled: true,
-                is_blocked: false,
-                secret: 'N8j0kwRp1w',
+                id: '129543796681606183',
+                name: 'Test group updated nodejs 706355',
+                active_count: 0,
+                sent_count: 0,
+                opens_count: 0,
+                open_rate: {
+                    float: 0,
+                    string: '0%',
+                },
+                clicks_count: 0,
+                click_rate: {
+                    float: 0,
+                    string: '0%',
+                },
+                unsubscribed_count: 0,
+                unconfirmed_count: 0,
+                bounced_count: 0,
+                junk_count: 0,
                 created_at: '2024-08-13 09:49:51',
-                updated_at: '2024-08-13 09:49:51',
-                batchable: false,
-                version: '2022-01',
-                last_fired_at: null,
-                response_code: null,
             },
         },
     },

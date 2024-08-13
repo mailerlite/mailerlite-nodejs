@@ -1,17 +1,17 @@
 {
     meta: {
-        createdAt: '2024-08-13T09:49:51.603Z',
+        createdAt: '2024-08-13T09:49:51.470Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/webhooks/129543796591428797',
-        method: 'GET',
-        body: 'bnVsbA==',
+        url: '/api/webhooks',
+        method: 'POST',
+        body: 'ewogICJuYW1lIjogIlRlc3Qgd2ViaG9vayBub2RlanMgNDUzMjM0IiwKICAiZXZlbnRzIjogWwogICAgInN1YnNjcmliZXIudXBkYXRlZCIKICBdLAogICJ1cmwiOiAiaHR0cDovL3d3dy5tYXJ2aW4uY29tL29tbmlzLWFjY3VzYW11cy1lc3QtcmVtLWRlbGVjdHVzLXF1YWVyYXQuaHRtbCIKfQ==',
     },
     res: {
-        status: 200,
+        status: 201,
         headers: {
             date: [
                 'Tue, 13 Aug 2024 09:49:51 GMT',
@@ -35,7 +35,7 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '108',
+                '112',
             ],
             'access-control-allow-origin': [
                 '*',
@@ -50,7 +50,7 @@
                 'cloudflare',
             ],
             'cf-ray': [
-                '8b27cc2e099bbc0f-VNO',
+                '8b27cc2d384ebc0f-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
