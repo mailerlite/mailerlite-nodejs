@@ -97,7 +97,8 @@ mailerlite.subscribers.update("subscriber_id",params)
 
 ---
 ```javascript
-mailerlite.subscribers.find("SUBSCRIBER_ID")
+const param = "SUBSCRIBER_ID" || "SUBSCRIBER_EMAIL";
+mailerlite.subscribers.find(param)
   .then(response => {
     console.log(response.data);
   })
