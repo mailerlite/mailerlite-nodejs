@@ -43,7 +43,7 @@
     "talkback": "^3.0.2",
     "tsup": "^6.5.0",
     "typescript": "^4.9.3",
-    "vitest": "^0.26.2"
+    "vitest": "^0.34.0"
   },
   "files": [
     "dist/**/*",
