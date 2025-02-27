@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <br/>
-    <a href="https://www.mailerlite.com"><img src="https://www.mailerlite.com/assets/SEO/mailerlite.png" alt="MailerLite logo" width="200px"/></a>
+    <a href="https://www.mailerlite.com"><img src="/src/assets/mailerlite_logo.png" alt="MailerLite logo" width="200px"/></a>
     <br />
   </h1>
   <sup>
