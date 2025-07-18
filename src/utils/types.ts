@@ -68,30 +68,30 @@ export interface MetaLinks {
 export interface SubscriberObject {
     id:               string;
     email:            string;
-    status:           string;
-    source:           string;
+    status:           'active' | 'unsubscribed' | 'unconfirmed' | 'bounced' | 'junk' | (string & {});
+    source:           'import' | 'api' | (string & {});
     sent:             number;
     opens_count:      number;
     clicks_count:     number;
     open_rate:        number;
     click_rate:       number;
-    ip_address:       string;
-    subscribed_at:    string;
-    unsubscribed_at:  string;
-    created_at:       string;
-    updated_at:       string;
+    ip_address:       null | string;
+    subscribed_at:    string;        // "YYYY-MM-DD HH:mm:ss"
+    unsubscribed_at:  null | string; // "YYYY-MM-DD HH:mm:ss"
+    created_at:       string;        // "YYYY-MM-DD HH:mm:ss"
+    updated_at:       string;        // "YYYY-MM-DD HH:mm:ss"
     fields: {
-        city:         string;
-        company:      string;
-        country:      string;
-        last_name:    string;
-        name:         string;
-        phone:        string;
-        state:        string;
-        z_i_p:        string;
+        name:         null | string;
+        last_name:    null | string;
+        city:         null | string;
+        company:      null | string;
+        country:      null | string;
+        phone:        null | string;
+        state:        null | string;
+        z_i_p:        null | string;
     };
     groups?:          Array<GroupObject>; // In some endpoints groups are excluded by default. They get added when `include` param is used in request
-    opted_in_at:      string;
-    optin_ip:         string;
+    opted_in_at:      null | string;
+    optin_ip:         null | string;
 }
 
