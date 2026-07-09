@@ -25,7 +25,12 @@ export default function request(endpoint: string = "", options: Options, config:
             "Content-type": "application/json",
             "accept-encoding": "null" // needed for axios
         },
-        data: body && JSON.stringify(body)
+        data: body && JSON.stringify(body),
+        // Let axios pick the first adapter supported by the current runtime.
+        // Node keeps using `http` and browsers keep using `xhr` (no behaviour
+        // change), while edge/serverless runtimes (Vercel Edge, Cloudflare
+        // Workers, Deno, Next.js edge) that ship neither fall back to `fetch`.
+        adapter: ["http", "xhr", "fetch"]
     })
 }
 

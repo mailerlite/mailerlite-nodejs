@@ -44,6 +44,14 @@ const mailerlite = new MailerLite({
 });
 ```
 
+### Edge & serverless runtimes
+
+The SDK works in edge/serverless runtimes that don't ship Node's `http`
+module — such as Vercel Edge Functions, Cloudflare Workers, Next.js edge
+routes and Deno. Requests automatically fall back to the `fetch` adapter
+in those environments, while Node and browsers keep using their existing
+adapters unchanged.
+
 - [Subscribers](src/modules/subscribers/README.md)
     * [List all subscribers](src/modules/subscribers/README.md#list-all-subscribers)
     * [Create/update subscriber](src/modules/subscribers/README.md#createupdate-subscriber)
