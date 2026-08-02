@@ -25,7 +25,10 @@ export default function request(endpoint: string = "", options: Options, config:
             "Content-type": "application/json",
             "accept-encoding": "null" // needed for axios
         },
-        data: body && JSON.stringify(body),
+        // Must be `undefined`, not `null`, when there is no body: workerd
+        // (Cloudflare Workers) rejects a GET/HEAD Request that carries any
+        // body property, even a null one. Node's http adapter tolerates it.
+        data: body ? JSON.stringify(body) : undefined,
         // Let axios pick the first adapter supported by the current runtime.
         // Node keeps using `http` and browsers keep using `xhr` (no behaviour
         // change), while edge/serverless runtimes (Vercel Edge, Cloudflare

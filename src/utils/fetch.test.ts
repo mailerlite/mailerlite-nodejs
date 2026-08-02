@@ -28,3 +28,32 @@ describe("request adapter selection", () => {
         expect(passedConfig.adapter).toEqual(["http", "xhr", "fetch"]);
     });
 });
+
+describe("request body handling", () => {
+    beforeEach(() => {
+        axiosMock.mockClear();
+    });
+
+    // Regression: `data: body && JSON.stringify(body)` yielded `null` on
+    // bodyless calls. Node's http adapter ignores that, but workerd throws
+    // "Request with a GET or HEAD method cannot have a body", breaking every
+    // read call on Cloudflare Workers once the fetch adapter is in play.
+    it("omits `data` entirely when there is no body", async () => {
+        await request("/api/subscribers", { method: "GET" }, config);
+
+        const passedConfig = axiosMock.mock.calls[0][0] as { data: unknown };
+        expect(passedConfig.data).toBeUndefined();
+        expect(passedConfig.data).not.toBeNull();
+    });
+
+    it("still serializes a body when one is given", async () => {
+        await request(
+            "/api/subscribers",
+            { method: "POST", body: { email: "test@example.com" } },
+            config
+        );
+
+        const passedConfig = axiosMock.mock.calls[0][0] as { data: unknown };
+        expect(passedConfig.data).toBe('{"email":"test@example.com"}');
+    });
+});
