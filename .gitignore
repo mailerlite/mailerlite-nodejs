@@ -5,3 +5,4 @@ dist
 .idea
 mailerlite-mailerlite-nodejs-*.tgz
 /examples/package-lock.json
+.direnv
