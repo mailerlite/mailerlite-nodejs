@@ -38,7 +38,7 @@ describe("Batches", () => {
                 },
                 {
                     method: "GET",
-                    path:   "/api/forms/popup",
+                    path:   "api/forms/popup",
                     body:   {
                         filter: {
                             name: "nodejs"

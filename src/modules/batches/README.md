@@ -27,7 +27,7 @@ const params = {
     },
     {
       method: "GET",
-      path:   "/api/forms/popup",
+      path:   "api/forms/popup",
       body:   {
         filter: {
           name: "test popup"
