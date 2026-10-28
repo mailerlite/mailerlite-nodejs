@@ -6,6 +6,7 @@ import {
     ListCampaignsResponse,
     SingleCampaignResponse,
     CreateUpdateCampaignParams,
+    CreateCampaignParams,
     ScheduleCampaignParams
 } from "./campaigns.types";
 
@@ -170,6 +171,49 @@ describe("Campaigns", () => {
             expect(response.data).toBeDefined();
         } catch (error) {
             handleCatchedError(error);
+        }
+    });
+
+    it("Create a campaign with the simple editor", async () => {
+        const randomInt: number = getRandomInt();
+        const params: CreateCampaignParams = {
+            name: `Test simple editor campaign nodejs ${randomInt}`,
+            type: "regular",
+            emails: [{
+                subject: "Dummy subject",
+                from_name: "Dummy Testerson",
+                from: MAILERLITE_VERIFIED_EMAIL,
+                editor: "simple",
+            }]
+        };
+
+        // existing create payloads must keep compiling
+        expectTypeOf<CreateUpdateCampaignParams>().toExtend<CreateCampaignParams>();
+
+        // @ts-expect-error content is not allowed with the simple editor
+        const withContent: CreateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", editor: "simple", content: "<p>hi</p>" };
+        // @ts-expect-error template_id needs the simple editor
+        const withTemplate: CreateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", template_id: "1" };
+        // @ts-expect-error update does not accept editor
+        const onUpdate: CreateUpdateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", editor: "simple" };
+        void [withContent, withTemplate, onUpdate];
+
+        let simpleEditorCampaignId: string | undefined;
+
+        try {
+            const response = await mailerlite.campaigns.create(params);
+            simpleEditorCampaignId = response.data.data.id;
+
+            expect(response.status).toBe(201);
+            expect(response.data.data.emails[0].id).not.toBeNull();
+            expect(response.data.data.emails[0].type).toBe("builder_inline_email");
+            expectTypeOf(response.data).toEqualTypeOf<SingleCampaignResponse>();
+        } catch (error) {
+            handleCatchedError(error);
+        } finally {
+            if (simpleEditorCampaignId) {
+                await mailerlite.campaigns.delete(simpleEditorCampaignId);
+            }
         }
     });
 
