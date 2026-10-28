@@ -31,14 +31,6 @@ const params = {
   }
 };
 
-const buttonParams = {
-  etag: etag,
-  type: "button",
-  editor_content: {
-    attrs: { url: "https://example.com/shop" },
-    content: [{ type: "text", text: "Shop now" }] // the button label lives here, not in attrs
-  }
-};
 
 mailerlite.emails.createBlock(email_id, params, options)
   .then(response => {

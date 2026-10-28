@@ -81,7 +81,9 @@ mailerlite.emails.createBlock("EMAIL_ID", params, { idempotencyKey: "welcome-int
 #### Batching
 
 These endpoints work inside `mailerlite.batches.send()` with `etag` in each request's `body`, but `/batch` does not
-accept `PATCH` (so no `updateBlock` or `updateSettings`) and does not forward idempotency keys.
+accept `PATCH` (so no `updateBlock` or `updateSettings`) and does not forward idempotency keys. Sub-requests are
+form-encoded, so an empty `editor_content: {}` arrives as `[]`, and `BatchResponseObject.body` has no `etag` type, so
+cast it to read the new etag.
 
 ### Get an email
 <!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
@@ -138,7 +140,8 @@ mailerlite.emails.findBlock("EMAIL_ID", "BLOCK_ID")
 Any type except `title` can be inserted. Inserts always go at the top level, so `placement.block_id` must be a
 top-level block; without `placement` the block goes at the end. `editor_content` is the editor's own JSON (camelCase
 keys) and may be `{}`, e.g. for a `divider`. A button's label is the text nodes in `content`, not an `attrs.label`.
-Link tracking IDs are assigned by the server.
+Link tracking IDs are assigned by the server. A value not allowed in email content, such as a `javascript:` URL, is a
+`422` naming the key, and nothing is written.
 
 ---
 ```javascript
@@ -169,7 +172,8 @@ mailerlite.emails.createBlock("EMAIL_ID", params)
 
 Replaces `editor_content` whole, with no merge: read the block with `findBlock`, change it, send it back. Links you
 send back keep their tracking IDs and click history. A block's type cannot change (delete it and create a new one),
-position changes go through `moveBlock`, and `title` blocks cannot be updated (`422`).
+position changes go through `moveBlock`, and `title` blocks cannot be updated (`422`). A value not allowed in email
+content is a `422` naming the key, and nothing is written.
 
 ---
 ```javascript
@@ -236,7 +240,8 @@ mailerlite.emails.moveBlock("EMAIL_ID", "BLOCK_ID", params)
 <!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
 
 Checks a block without writing it; no email ID or `etag` needed. Invalid content returns `200` with `valid: false`,
-so check `valid`. `errors` matches what `createBlock` would return in a `422`.
+so check `valid`. `errors` matches what `createBlock` would return in a `422`. A malformed request (missing `type`, or
+`editor_content` that is not an object) is still a `422`.
 
 ---
 ```javascript
@@ -261,14 +266,17 @@ mailerlite.emails.validateBlock(params)
 <!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
 
 - Send only the keys you are changing. Sending an inherited value back pins it to this email.
-- Style values are strings: `"16"`, not `16` or `"16px"`. Colours are hex or `"transparent"`.
+- Style values are strings: `"16"`, not `16` or `"16px"`; a number is a `422`. Colours are hex or `"transparent"`.
 - `brand.mode`: `account` follows the account palette, `template` the template's, `custom` the email's own colours.
+  Setting any brand colour switches the mode to `custom`, even if the value is unchanged.
 - `brand.style` applies a preset: use a preset's `identifier` from `mailerlite.brandStyles.get()`. It cannot be
   combined with `mode: "account"` or `mode: "template"`.
 - `footer.social_links` replaces the whole list. Send every link you keep with its `link_id`, or its click history
   is lost.
 - An unsafe value is dropped rather than refused; the response then lists it in `rejected.keys`. A key that cannot be
   changed is a `422`.
+- `show_preferences: true` and `preferences_text` need the preference centre on the plan, otherwise `422`. A change
+  that makes the unsubscribe link illegible (contrast) is also a `422`.
 
 ---
 ```javascript

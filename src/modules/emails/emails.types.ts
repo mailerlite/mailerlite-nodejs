@@ -107,8 +107,8 @@ export type EmailBlockPosition = "start" | "end" | "before" | "after";
 
 export interface EmailBlockPlacementParams {
     position:   EmailBlockPosition;
-    /** Required for `before`/`after`; ignored for `start`/`end`. The server accepts a number or a numeric string. */
-    block_id?:  string | number;
+    /** Required for `before`/`after`; ignored for `start`/`end`. */
+    block_id?:  string;
 }
 
 /*

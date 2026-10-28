@@ -32,7 +32,7 @@ if (!process.env.API_KEY)
 
 // A draft campaign email built with the simple editor on the recording account.
 // Its ID is part of every recorded URL, so replay only works with the recorded value.
-const INLINE_EMAIL_ID = process.env.INLINE_EMAIL_ID ?? "202022897780262459";
+const INLINE_EMAIL_ID = process.env.INLINE_EMAIL_ID || "202022897780262459";
 
 const mailerlite = new MailerLite({
     api_key: process.env.API_KEY as string,
