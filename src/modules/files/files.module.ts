@@ -21,31 +21,8 @@ export default class Files implements FilesInterface {
     public get(params?: GetFilesParams): Promise<AxiosResponse<ListFilesResponse>> {
         return request(`/api/files`, {
             method: "GET",
-            params: stripEmpty(params)
+            params: params
         }, this.config);
     }
 };
 
-/**
- * Drops `undefined` and `null` values (recursively) so they never reach the query string:
- * the query serializer prints `undefined` literally and throws on `null`.
- */
-function stripEmpty(params?: object): object {
-    const result: Record<string, unknown> = {};
-
-    if (!params) return result;
-
-    for (const [key, value] of Object.entries(params)) {
-        if (value === undefined || value === null) continue;
-
-        if (typeof value === 'object' && !Array.isArray(value)) {
-            const nested = stripEmpty(value);
-            if (Object.keys(nested).length) result[key] = nested;
-            continue;
-        }
-
-        result[key] = value;
-    }
-
-    return result;
-}
