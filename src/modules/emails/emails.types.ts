@@ -400,8 +400,31 @@ export interface GetEmailVersionsParams {
 
 export interface ListEmailVersionsResponse {
     data:   Array<EmailVersionObject>;
-    links:  Links;
-    meta:   Meta;
+    links:  EmailVersionsLinks;
+    meta:   EmailVersionsMeta;
+}
+
+/** `prev` is null on the first page, `next` on the last. */
+export interface EmailVersionsLinks extends Omit<Links, "prev" | "next"> {
+    prev:   string | null;
+    next:   string | null;
+}
+
+export interface EmailVersionsMeta extends Omit<Meta, "from" | "to" | "links"> {
+    /** null when the page is empty */
+    from:   number | null;
+    /** null when the page is empty */
+    to:     number | null;
+    links:  Array<EmailVersionsMetaLink>;
+}
+
+export interface EmailVersionsMetaLink {
+    /** null for a disabled "Previous"/"Next" link and for the "..." separator */
+    url:    string | null;
+    label:  string;
+    /** null for a disabled "Previous"/"Next" link; omitted for the "..." separator */
+    page?:  number | null;
+    active: boolean;
 }
 
 /** POST /api/emails/{email}/versions — 201 if a version was saved, 200 if nothing changed (the last one is returned). */
