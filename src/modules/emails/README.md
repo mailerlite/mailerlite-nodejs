@@ -1,5 +1,5 @@
 # Emails
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Read and edit the content and settings of emails built with the simple editor.
 
@@ -86,7 +86,7 @@ form-encoded, so an empty `editor_content: {}` arrives as `[]`, and `BatchRespon
 cast it to read the new etag.
 
 ### Get an email
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Returns the email's settings, its top-level blocks in order, and the `etag` for the next write.
 
@@ -102,7 +102,7 @@ mailerlite.emails.find("EMAIL_ID")
 ```
 
 ### Get the HTML of an email
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 A preview, not something to send yourself: personalisation stays as literal tags (`{$name}`) and links carry
 tracking markers. A `503` is temporary, so retry.
@@ -119,7 +119,7 @@ mailerlite.emails.getHtml("EMAIL_ID")
 ```
 
 ### Get a block
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Returns the block with its `placement` (the IDs of the siblings `after`/`before` it) and the email's current `etag`.
 
@@ -135,7 +135,7 @@ mailerlite.emails.findBlock("EMAIL_ID", "BLOCK_ID")
 ```
 
 ### Create a block
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Any type except `title` can be inserted. Inserts always go at the top level, so `placement.block_id` must be a
 top-level block; without `placement` the block goes at the end. `editor_content` is the editor's own JSON (camelCase
@@ -168,7 +168,7 @@ mailerlite.emails.createBlock("EMAIL_ID", params)
 ```
 
 ### Update a block
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Replaces `editor_content` whole, with no merge: read the block with `findBlock`, change it, send it back. Links you
 send back keep their tracking IDs and click history. A block's type cannot change (delete it and create a new one),
@@ -195,7 +195,7 @@ mailerlite.emails.updateBlock("EMAIL_ID", "BLOCK_ID", params)
 ```
 
 ### Delete a block
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Also deletes the blocks nested inside it. The response contains only the new `etag`. A block that is already gone
 returns `404`.
@@ -212,7 +212,7 @@ mailerlite.emails.deleteBlock("EMAIL_ID", "BLOCK_ID", { etag: "ETAG" })
 ```
 
 ### Move a block
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Moves a block among its siblings; it never changes nesting, so `placement.block_id` must be a sibling (`422`
 otherwise). Moving a block to where it already is succeeds without changes.
@@ -237,7 +237,7 @@ mailerlite.emails.moveBlock("EMAIL_ID", "BLOCK_ID", params)
 ```
 
 ### Validate a block
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Checks a block without writing it; no email ID or `etag` needed. Invalid content returns `200` with `valid: false`,
 so check `valid`. `errors` matches what `createBlock` would return in a `422`. A malformed request (missing `type`, or
@@ -263,7 +263,7 @@ mailerlite.emails.validateBlock(params)
 ```
 
 ### Update email settings
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 - Send only the keys you are changing. Sending an inherited value back pins it to this email.
 - Style values are strings: `"16"`, not `16` or `"16px"`; a number is a `422`. Colours are hex or `"transparent"`.
@@ -300,7 +300,7 @@ mailerlite.emails.updateSettings("EMAIL_ID", params)
 ```
 
 ### Validate email settings
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Checks a settings change without writing it; same body as `updateSettings`, without `etag`. Invalid values return
 `200` with `valid: false`, so check `valid`. An email that `updateSettings` would refuse still gets a `4xx`.
@@ -323,7 +323,7 @@ mailerlite.emails.validateSettings("EMAIL_ID", params)
 ```
 
 ### Save an email as a template
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 No `etag` needed. Works for any campaign email, not only drafts.
 
@@ -343,7 +343,7 @@ mailerlite.emails.saveAsTemplate("EMAIL_ID", params)
 ```
 
 ### List email versions
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 `links.next` drops `limit`, so build the next request from `page` and `limit` instead of following it.
 
@@ -364,7 +364,7 @@ mailerlite.emails.getVersions("EMAIL_ID", params)
 ```
 
 ### Save a version
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Edits made through the API do not create versions; call this to save one. Returns `201` with the new version, or
 `200` with the latest one when nothing changed. No `etag` needed.
@@ -381,7 +381,7 @@ mailerlite.emails.createVersion("EMAIL_ID")
 ```
 
 ### Restore a version
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Saves the current state as a version first, so a restore can be undone. Returns the whole email and the new `etag`;
 blocks come back under their original IDs.

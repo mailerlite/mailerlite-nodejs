@@ -36,7 +36,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Get a simple-editor email (settings and top-level blocks). The response carries the `etag` needed for the next write.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      */
@@ -52,7 +52,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Get a preview of the email's HTML. A 503 is temporary, so retry.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      */
@@ -68,7 +68,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Get a single block of an email, with its placement
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @block_id {String} - Block ID
@@ -86,7 +86,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Insert a block into an email. Requires the latest `etag` in the body; use the returned `etag` for the next write.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @requestBody {Object} - Block data for create (incl. `etag`)
@@ -106,7 +106,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Update a block's content. Replaces `editor_content` whole. Requires the latest `etag` in the body; use the returned `etag` for the next write.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @block_id {String} - Block ID
@@ -128,7 +128,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Delete a block (and the blocks nested inside it). Requires the latest `etag` in the body; the response contains only the new `etag`.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @block_id {String} - Block ID
@@ -150,7 +150,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Move a block among its siblings. Requires the latest `etag` in the body; use the returned `etag` for the next write.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @block_id {String} - Block ID
@@ -172,7 +172,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Validate a block in isolation without writing it. Invalid content returns 200 with `valid: false`. No `etag` needed.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @requestBody {Object} - Block data to validate
      */
@@ -186,7 +186,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Update an email's settings (deep partial; only sent keys change). Requires the latest `etag` in the body; use the returned `etag` for the next write.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @requestBody {Object} - Settings data for update (incl. `etag`)
@@ -206,7 +206,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Validate a settings change without writing it. Invalid values return 200 with `valid: false`. No `etag` needed.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @requestBody {Object} - Settings data to validate
@@ -224,7 +224,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Save an email as a template. No `etag` needed.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @requestBody {Object} - Template data
@@ -244,7 +244,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description List an email's saved versions
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @params {Object} - List versions params
@@ -262,7 +262,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Save the email's current state as a version. Editing through the API does not create versions. No `etag` needed.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @options {Object} - Optional request options (`idempotencyKey`)
@@ -280,7 +280,7 @@ export default class Emails implements EmailsInterface {
     /**
      * @description Restore an email to a saved version (the current state is saved as a version first). Requires the latest `etag` in the body; use the returned `etag` for the next write.
      *
-     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * // TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @email_id {String} - Email ID
      * @version_id {String} - Version ID
