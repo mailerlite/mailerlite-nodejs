@@ -340,7 +340,7 @@ export interface UpdateEmailSettingsParams {
         show_preferences?:  boolean;
         unsubscribe_text?:  string | null;
         preferences_text?:  string | null;
-        /** `{ content: [] }` or `{}` = unset */
+        /** `{ editor_content: { content: [] } }` or `{ editor_content: {} }` = unset; the `editor_content` wrapper is required */
         company_name?:      EmailFooterText;
         address?:           EmailFooterText;
         info_text?:         EmailFooterText;
