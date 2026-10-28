@@ -115,3 +115,7 @@ const mailerlite = new MailerLite({
     * [List all automations](src/modules/stats/README.md#list-all-automations)
     * [Get stats for a specific automation](src/modules/stats/README.md#get-stats-for-a-specific-automation)
     * [Get the subscriber activity for an automation](src/modules/stats/README.md#get-the-subscriber-activity-for-an-automation)
+- [Brand styles](src/modules/brand-styles/README.md)
+    * [Get brand styles](src/modules/brand-styles/README.md#get-brand-styles)
+- [Files](src/modules/files/README.md)
+    * [List all files](src/modules/files/README.md#list-all-files)
