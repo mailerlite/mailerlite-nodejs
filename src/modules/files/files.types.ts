@@ -21,8 +21,31 @@ export interface GetFilesParams {
 
 export interface ListFilesResponse {
     data:   Array<FileObject>;
-    links:  Links;
-    meta:   Meta;
+    links:  FilesLinks;
+    meta:   FilesMeta;
+}
+
+/** `prev` is null on the first page, `next` on the last. */
+export interface FilesLinks extends Omit<Links, "prev" | "next"> {
+    prev:   string | null;
+    next:   string | null;
+}
+
+export interface FilesMeta extends Omit<Meta, "from" | "to" | "links"> {
+    /** null when the page is empty */
+    from:   number | null;
+    /** null when the page is empty */
+    to:     number | null;
+    links:  Array<FilesMetaLink>;
+}
+
+export interface FilesMetaLink {
+    /** null for a disabled "Previous"/"Next" link and for the "..." separator */
+    url:    string | null;
+    label:  string;
+    /** null for a disabled "Previous"/"Next" link; omitted for the "..." separator */
+    page?:  number | null;
+    active: boolean;
 }
 
 export type FileType = "image" | "pdf" | "epub";
