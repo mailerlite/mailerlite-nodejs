@@ -118,7 +118,7 @@ export interface EmailBlockPlacementParams {
 export type EmailBrandMode = "account" | "template" | "custom";
 
 export interface EmailBrandSettings {
-    mode:               EmailBrandMode;
+    mode:               EmailBrandMode | (string & {});
     /** CSS font stack, e.g. "Inter, sans-serif" */
     font_family:        string;
     /** Hex or "transparent"; inherited values are not case-normalised */
@@ -215,7 +215,7 @@ export interface EmailDocumentObject {
     id:                 string;
     type:               string | null;
     /** Morph-map alias, plural */
-    emailable_type:     "campaigns" | "automations" | null;
+    emailable_type:     "campaigns" | "automations" | (string & {}) | null;
     /** Owner ID (campaign or automation ID) */
     emailable_id:       string;
     settings:           EmailSettingsObject;
