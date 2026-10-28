@@ -1,7 +1,7 @@
 # Files
 
 ### List all files
-<!-- TODO: add link once developers.mailerlite.com publishes these endpoints (CMAC-860) -->
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
 
 Lists the account's media library. A file's `url` can be used directly as an image block's `src` or a
 button/link `href`.

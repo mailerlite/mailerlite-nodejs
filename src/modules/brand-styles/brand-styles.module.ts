@@ -14,7 +14,7 @@ export default class BrandStyle implements BrandStylesInterface {
     /**
      * @description Get the account's brand style, the default style and the built-in presets
      *
-     * TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      */
     public get(): Promise<AxiosResponse<BrandStylesResponse>> {

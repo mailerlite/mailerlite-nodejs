@@ -14,7 +14,7 @@ export default class Files implements FilesInterface {
     /**
      * @description List files in the account's media library
      *
-     * TODO: add @see link once developers.mailerlite.com publishes these endpoints (CMAC-860)
+     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
      *
      * @params {Object} - List files params (limit, page, filter[name], filter[type], sort)
      */
