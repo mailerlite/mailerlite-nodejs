@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import {Links, Meta, Stats} from "../../utils/types.js";
+import { EcommerceReportParams, EcommerceReportOrdersParams, EcommerceStatsResponse, EcommerceReportOrder, ListResponse } from "../ecommerce/ecommerce.types.js";
 
 export interface CampaignsInterface {
     get:            (params: GetCampaignsParams)                                => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -9,6 +10,8 @@ export interface CampaignsInterface {
     schedule:       (campaign_id: string, params: ScheduleCampaignParams)       => Promise<AxiosResponse<SingleCampaignResponse, ScheduleCampaignParams>>;
     cancel:         (campaign_id: string)                                       => Promise<AxiosResponse<SingleCampaignResponse>>;
     delete:         (campaign_id: string)                                       => Promise<AxiosResponse<null>>;
+    getEcommerceStats:  (campaign_id: string, params: EcommerceReportParams)        => Promise<AxiosResponse<EcommerceStatsResponse>>;
+    getEcommerceOrders: (campaign_id: string, params: EcommerceReportOrdersParams)  => Promise<AxiosResponse<ListResponse<EcommerceReportOrder>>>;
 }
 
 export interface GetCampaignsParams {

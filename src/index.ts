@@ -36,6 +36,9 @@ import { WebhooksInterface } from "./modules/webhooks/webhooks.types.js";
 import Statistics from './modules/stats/stats.module.js';
 import { StatsInterface } from "./modules/stats/stats.types.js";
 
+import Ecommerce from './modules/ecommerce/ecommerce.module.js';
+import { EcommerceInterface } from "./modules/ecommerce/ecommerce.types.js";
+
 export default class MailerLite {
 
     private config: Config;
@@ -51,6 +54,7 @@ export default class MailerLite {
     public batches: BatchesInterface;
     public webhooks: WebhooksInterface;
     public stats: StatsInterface;
+    public ecommerce: EcommerceInterface;
 
     constructor(params: { api_key: string; base_path?: string; }) {
         this.config = {
@@ -70,6 +74,7 @@ export default class MailerLite {
         this.batches = new Batch(this.config);
         this.webhooks = new Webhook(this.config);
         this.stats = new Statistics(this.config);
+        this.ecommerce = new Ecommerce(this.config);
     }
 };
 
@@ -85,4 +90,5 @@ export * from "./modules/languages/languages.types.js";
 export * from "./modules/batches/batches.types.js";
 export * from "./modules/webhooks/webhooks.types.js";
 export * from "./modules/stats/stats.types.js";
+export * from "./modules/ecommerce/ecommerce.types.js";
 export * from "./utils/types.js";

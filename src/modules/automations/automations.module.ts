@@ -10,6 +10,12 @@ import {
     ListAutomationsResponse,
     SingleAutomationResponse
 } from "./automations.types.js";
+import type {
+    AutomationEcommerceStatsParams,
+    AutomationEcommerceOrdersParams,
+    EcommerceStatsResponse,
+    ListResponse
+} from "../ecommerce/ecommerce.types.js";
 
 export default class Automation implements AutomationsInterface {
     private config: Config;
@@ -61,6 +67,52 @@ export default class Automation implements AutomationsInterface {
         validateId(automation_id);
 
         return request(`/api/automations/${automation_id}/activity`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description Get the orders and revenue an automation earned
+     *
+     * @see https://developers.mailerlite.com/docs/automations
+     */
+    public getEcommerceStats(automation_id: string, params: AutomationEcommerceStatsParams = {}): Promise<AxiosResponse<EcommerceStatsResponse>> {
+
+        validateId(automation_id);
+
+        return request(`/api/automations/${automation_id}/monthly-totals/ecommerce`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description Get the orders and revenue one automation email earned
+     *
+     * @see https://developers.mailerlite.com/docs/automations
+     */
+    public getEmailEcommerceStats(automation_id: string, email_id: string, params: AutomationEcommerceStatsParams = {}): Promise<AxiosResponse<EcommerceStatsResponse>> {
+
+        validateId(automation_id);
+        validateId(email_id);
+
+        return request(`/api/automations/${automation_id}/emails/${email_id}/ecommerce-overview-stats`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description List the orders attributed to an automation
+     *
+     * @see https://developers.mailerlite.com/docs/automations
+     */
+    public getEcommerceOrders(automation_id: string, params: AutomationEcommerceOrdersParams): Promise<AxiosResponse<ListResponse<Record<string, unknown>>>> {
+
+        validateId(automation_id);
+
+        return request(`/api/automations/${automation_id}/order-activity`, {
             method: "GET",
             params: params
         }, this.config);

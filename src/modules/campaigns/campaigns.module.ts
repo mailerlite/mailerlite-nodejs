@@ -4,6 +4,7 @@ import request from '../../utils/fetch.js'
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
 import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateCampaignParams, ScheduleCampaignParams } from './campaigns.types.js';
+import type { EcommerceReportParams, EcommerceReportOrdersParams, EcommerceStatsResponse, EcommerceReportOrder, ListResponse } from '../ecommerce/ecommerce.types.js';
 
 export default class Campaign implements CampaignsInterface {
     private config: Config;
@@ -121,6 +122,36 @@ export default class Campaign implements CampaignsInterface {
 
         return request(`/api/campaigns/${campaign_id}`, {
             method: "DELETE"
+        }, this.config);
+    }
+
+    /**
+     * @description Get the orders and revenue a campaign earned in one shop
+     *
+     * @see https://developers.mailerlite.com/docs/campaigns
+     */
+    public getEcommerceStats(campaign_id: string, params: EcommerceReportParams): Promise<AxiosResponse<EcommerceStatsResponse>> {
+
+        validateId(campaign_id);
+
+        return request(`/api/campaigns/${campaign_id}/reports/ecommerce`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description List the orders attributed to a campaign in one shop
+     *
+     * @see https://developers.mailerlite.com/docs/campaigns
+     */
+    public getEcommerceOrders(campaign_id: string, params: EcommerceReportOrdersParams): Promise<AxiosResponse<ListResponse<EcommerceReportOrder>>> {
+
+        validateId(campaign_id);
+
+        return request(`/api/campaigns/${campaign_id}/reports/ecommerce/orders`, {
+            method: "GET",
+            params: params
         }, this.config);
     }
 };

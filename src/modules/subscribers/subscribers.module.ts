@@ -13,6 +13,7 @@ import type {
     ForgetSubscriberResponse,
     UpdateSubscriberParams
 } from './subscribers.types.js';
+import type { EcommerceReportParams, EcommerceReportOrdersParams, EcommerceStatsResponse, EcommerceReportOrder, ListResponse } from '../ecommerce/ecommerce.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -124,6 +125,32 @@ export default class Subscriber implements SubscriberInterface {
         validateId(subscriber_id);
         return request(`/api/subscribers/${subscriber_id}/forget`, {
             method: "POST"
+        }, this.config);
+    }
+
+    /**
+     * @description Get a subscriber's lifetime orders and revenue in one shop
+     *
+     * @see https://developers.mailerlite.com/docs/subscribers
+     */
+    public getEcommerceStats(subscriber_id: string, params: EcommerceReportParams): Promise<AxiosResponse<EcommerceStatsResponse>> {
+        validateId(subscriber_id);
+        return request(`/api/subscribers/${subscriber_id}/reports/ecommerce`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description List a subscriber's orders in one shop
+     *
+     * @see https://developers.mailerlite.com/docs/subscribers
+     */
+    public getEcommerceOrders(subscriber_id: string, params: EcommerceReportOrdersParams): Promise<AxiosResponse<ListResponse<EcommerceReportOrder>>> {
+        validateId(subscriber_id);
+        return request(`/api/subscribers/${subscriber_id}/reports/ecommerce/orders`, {
+            method: "GET",
+            params: params
         }, this.config);
     }
 };

@@ -1,11 +1,15 @@
 import { AxiosResponse } from "axios";
 import { Email } from "../campaigns/campaigns.types.js";
 import {Links, Meta, Stats} from "../../utils/types.js";
+import { AutomationEcommerceStatsParams, AutomationEcommerceOrdersParams, EcommerceStatsResponse, ListResponse } from "../ecommerce/ecommerce.types.js";
 
 export interface AutomationsInterface {
     get:                        (params: GetAutomationsParams)                          => Promise<AxiosResponse<ListAutomationsResponse>>;
     find:                       (automation_id: string)                                 => Promise<AxiosResponse<SingleAutomationResponse>>;
     getAutomationSubscribers:   (automation_id: string, params: AutomationSubsParams)   => Promise<AxiosResponse<AutomationSubsResponse>>;
+    getEcommerceStats:          (automation_id: string, params?: AutomationEcommerceStatsParams)                    => Promise<AxiosResponse<EcommerceStatsResponse>>;
+    getEmailEcommerceStats:     (automation_id: string, email_id: string, params?: AutomationEcommerceStatsParams)  => Promise<AxiosResponse<EcommerceStatsResponse>>;
+    getEcommerceOrders:         (automation_id: string, params: AutomationEcommerceOrdersParams)                    => Promise<AxiosResponse<ListResponse<Record<string, unknown>>>>;
 }
 
 export interface GetAutomationsParams {
