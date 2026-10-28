@@ -64,6 +64,8 @@ const cases: Array<[string, () => Promise<unknown>, string, string, unknown?]> =
     ["imports.products", () => mailerlite.ecommerce.imports.products("1", [{ name: "Hat" }]), "POST", `${shop}/products/import`, [{ name: "Hat" }]],
     ["imports.categories", () => mailerlite.ecommerce.imports.categories("1", [{ name: "Hats" }]), "POST", `${shop}/categories/import`, [{ name: "Hats" }]],
     ["imports.customers", () => mailerlite.ecommerce.imports.customers("1", [{ email: "a@b.test" }]), "POST", `${shop}/customers/import`, [{ email: "a@b.test" }]],
+    ["imports.orders", () => mailerlite.ecommerce.imports.orders("1", [{ customer: { email: "a@b.test" }, cart: { items: [{ ecommerce_product_id: "7" }] } }]), "POST", `${shop}/orders/import`, { orders: [{ customer: { email: "a@b.test" }, cart: { items: [{ ecommerce_product_id: "7" }] } }] }],
+    ["orders.create", () => mailerlite.ecommerce.orders.create("1", { customer: { email: "a@b.test" }, cart: { items: [{ ecommerce_product_id: "7" }] } }), "POST", `${shop}/orders`, { customer: { email: "a@b.test" }, cart: { items: [{ ecommerce_product_id: "7" }] } }],
 
     ["campaigns.getEcommerceStats", () => mailerlite.campaigns.getEcommerceStats("2", { shop_id: "1" }), "GET", "https://connect.mailerlite.com/api/campaigns/2/reports/ecommerce?shop_id=1"],
     ["campaigns.getEcommerceOrders", () => mailerlite.campaigns.getEcommerceOrders("2", { shop_id: "1", page: 2 }), "GET", "https://connect.mailerlite.com/api/campaigns/2/reports/ecommerce/orders?shop_id=1&page=2"],
