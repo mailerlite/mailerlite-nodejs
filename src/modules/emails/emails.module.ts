@@ -255,7 +255,7 @@ export default class Emails implements EmailsInterface {
 
         return request(`/api/emails/${email_id}/versions`, {
             method: "GET",
-            params: withoutEmptyValues(params)
+            params: params
         }, this.config);
     }
 
@@ -306,13 +306,4 @@ export default class Emails implements EmailsInterface {
  */
 function idempotencyHeaders(options?: EmailWriteOptions): Record<string, string> {
     return options?.idempotencyKey ? { "Idempotency-Key": options.idempotencyKey } : {};
-}
-
-/**
- * Drops `undefined`/`null` values so they never reach the query string (`serializeQuery` throws on null).
- */
-function withoutEmptyValues<T extends object>(params?: T): Partial<T> {
-    return Object.fromEntries(
-        Object.entries(params ?? {}).filter(([, value]) => value !== undefined && value !== null)
-    ) as Partial<T>;
 }
