@@ -1,0 +1,68 @@
+{
+    meta: {
+        createdAt: '2026-10-28T11:08:57.269Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202022897780262459/blocks/242539410',
+        method: 'PATCH',
+        body: 'ewogICJldGFnIjogIjEiLAogICJlZGl0b3JfY29udGVudCI6IHsKICAgICJhdHRycyI6IHsKICAgICAgImxldmVsIjogMSwKICAgICAgInRleHRBbGlnbiI6IG51bGwKICAgIH0sCiAgICAiY29udGVudCI6IFsKICAgICAgewogICAgICAgICJ0ZXh0IjogIlRoZSBFdmVybHkgQnJpZWYiLAogICAgICAgICJ0eXBlIjogInRleHQiCiAgICAgIH0KICAgIF0KICB9Cn0=',
+    },
+    res: {
+        status: 409,
+        headers: {
+            date: [
+                'Wed, 28 Oct 2026 11:08:57 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '107',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '150',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a5197c49f847e4d5-RIX',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            message: 'The email changed since you read it. Fetch it again, then retry with its new etag.',
+            code: 'version_conflict',
+            etag: '12',
+        },
+    },
+}

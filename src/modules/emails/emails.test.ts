@@ -352,34 +352,9 @@ describe("Emails", () => {
 
 describe("Emails validation", () => {
 
-    it.concurrent("Validate a valid block", async () => {
-        const params: ValidateEmailBlockParams = {
-            type: "paragraph",
-            editor_content: {
-                content: [{ type: "text", text: "SDK validation paragraph" }],
-            },
-        };
-
-        try {
-            const response = await mailerlite.emails.validateBlock(params);
-
-            expect(response).not.toBeNull();
-            // Not wrapped in `data`.
-            expect(response.data).toBeDefined();
-            expect(response.data.valid).toBe(true);
-            expect(response.data.errors).toBeDefined();
-            expect(Object.keys(response.data.errors)).toHaveLength(0);
-            expect(response.data.schema).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<EmailValidationResponse>();
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    // Skipped: same method + URL (POST /api/emails/blocks/validate) as the test above, and tapes ignore
-    // the body, so in replay it would get the valid response. Enable it in place of the valid-block test,
-    // or once the tape matcher can tell the two requests apart.
-    it.skip("Validate an invalid block", async () => {
+    // Only one validateBlock test: tapes match on method + URL and ignore the body, so a second
+    // POST /api/emails/blocks/validate would replay this response. The invalid case is the more useful one.
+    it.concurrent("Validate an invalid block", async () => {
         const params: ValidateEmailBlockParams = {
             type: "paragraph",
             editor_content: {
@@ -399,6 +374,7 @@ describe("Emails validation", () => {
             expect(response.status).toBe(200);
             expect(response.data.valid).toBe(false);
             expect(Object.keys(response.data.errors).length).toBeGreaterThan(0);
+            expect(response.data.schema).toBeDefined();
             expectTypeOf(response.data).toEqualTypeOf<EmailValidationResponse>();
         } catch (error) {
             handleCatchedError(error);

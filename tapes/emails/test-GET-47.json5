@@ -1,0 +1,577 @@
+{
+    meta: {
+        createdAt: '2026-10-28T11:08:54.484Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202022897780262459',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Wed, 28 Oct 2026 11:08:54 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '119',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '85',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a5197c397da0e4d5-RIX',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '202022897780262459',
+                type: 'builder_inline_email',
+                emailable_type: 'campaigns',
+                emailable_id: '202022897764533799',
+                settings: {
+                    brand: {
+                        mode: 'template',
+                        font_family: 'DM Sans, sans-serif',
+                        background_color: '#ffffff',
+                        text_color: '#333333',
+                        border_color: '#e5e5e5',
+                    },
+                    layout: {
+                        width_mode: 'default',
+                        alignment: 'center',
+                    },
+                    typography: {
+                        link: {
+                            color: '#ef4444',
+                        },
+                        heading: {
+                            font_family: 'Merriweather, serif',
+                            font_weight: '700',
+                            line_height: '150%',
+                            letter_spacing: '0',
+                            h1: {
+                                color: '#111111',
+                                size: '32',
+                            },
+                            h2: {
+                                color: '#111111',
+                                size: '24',
+                            },
+                            h3: {
+                                color: '#111111',
+                                size: '20',
+                            },
+                        },
+                        paragraph: {
+                            font_family: 'DM Sans, sans-serif',
+                            font_weight: '400',
+                            line_height: '150%',
+                            letter_spacing: '0',
+                            p1: {
+                                color: '#333333',
+                                size: '16',
+                            },
+                        },
+                    },
+                    button: {
+                        font_family: 'DM Sans, sans-serif',
+                        font_weight: '600',
+                        letter_spacing: '0.025',
+                        background_color: '#ef4444',
+                        text_color: '#ffffff',
+                        border_radius: '8',
+                    },
+                    footer: {
+                        show_preferences: false,
+                        company_name: {
+                            editor_content: {
+                                content: [
+                                    {
+                                        type: 'text',
+                                        text: 'Test account',
+                                        marks: [
+                                            {
+                                                type: 'bold',
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                        address: {
+                            editor_content: {
+                                content: [
+                                    {
+                                        type: 'text',
+                                        text: 'Add your company postal address here',
+                                    },
+                                ],
+                            },
+                        },
+                        info_text: {
+                            editor_content: {
+                                content: [
+                                    {
+                                        text: 'You received this email because you signed up on our website or made a purchase from us.',
+                                        type: 'text',
+                                    },
+                                ],
+                            },
+                        },
+                        unsubscribe_text: 'ML test account unsubscribe link text',
+                        preferences_text: 'Custom preference center link text',
+                        social_links: [
+                            {
+                                url: 'https://github.com/mailerlite/groot',
+                                type: 'github',
+                                label: 'github',
+                                link_id: 101,
+                            },
+                            {
+                                url: 'https://facebook.com/mailerlite',
+                                type: 'facebook',
+                                label: 'facebook',
+                                link_id: 102,
+                            },
+                        ],
+                    },
+                },
+                blocks: [
+                    {
+                        id: '242539410',
+                        type: 'heading',
+                        editor_content: {
+                            attrs: {
+                                level: 1,
+                                textAlign: null,
+                            },
+                            content: [
+                                {
+                                    text: 'The Everly Brief',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539411',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: 'left',
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: "This week I went deep on one question: why do some tiny newsletters feel more alive than publications with full editorial teams? I think I found the answer — and it's not what I expected.",
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539412',
+                        type: 'image',
+                        editor_content: {
+                            attrs: {
+                                alt: '',
+                                src: 'https://assets.mlcdn.com/images/v2/templates/40/40003/the-everly-brief.jpg',
+                                url: '',
+                                width: 2988,
+                                height: 1992,
+                                linkId: null,
+                                caption: 'A quiet desk, a blank page, and the question every writer eventually asks: who am I actually writing this for?',
+                                linkType: 'link',
+                                alignment: 'center',
+                                fullWidth: false,
+                                footerRole: null,
+                                openNewTab: false,
+                            },
+                        },
+                    },
+                    {
+                        id: '242539413',
+                        type: 'heading',
+                        editor_content: {
+                            attrs: {
+                                level: 2,
+                                textAlign: 'left',
+                            },
+                            content: [
+                                {
+                                    text: 'The Deep Dive',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539414',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: 'left',
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: 'Most advice about newsletter writing focuses on tactics — subject lines, send times, content length. But the writers with the most loyal audiences tend to share one quiet habit that has nothing to do with any of that.',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539415',
+                        type: 'heading',
+                        editor_content: {
+                            attrs: {
+                                level: 3,
+                                textAlign: 'left',
+                            },
+                            content: [
+                                {
+                                    text: 'The quiet advantage of writing to one person',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539416',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: 'left',
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: "The best newsletters don't feel like broadcasts. They feel like a message from a friend who happens to know a lot. This piece breaks down the specific writing habits that create that intimacy — and how to build them into your own process.",
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539417',
+                        type: 'divider',
+                        editor_content: {
+                            attrs: {
+                                size: 1,
+                                color: null,
+                                style: 'solid',
+                                width: '100%',
+                                alignment: 'center',
+                            },
+                        },
+                    },
+                    {
+                        id: '242539418',
+                        type: 'heading',
+                        editor_content: {
+                            attrs: {
+                                level: 2,
+                                textAlign: 'left',
+                            },
+                            content: [
+                                {
+                                    text: 'Worth Bookmarking',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539419',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: 'left',
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: 'The 2-minute inbox audit',
+                                    type: 'text',
+                                    marks: [
+                                        {
+                                            type: 'bold',
+                                        },
+                                    ],
+                                },
+                                {
+                                    text: ' — Scan your last 10 emails. Which ones did you open immediately? Which did you skip? The pattern tells you everything about your subject lines.',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539420',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: 'left',
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: 'Why "valuable content" is bad advice',
+                                    type: 'text',
+                                    marks: [
+                                        {
+                                            type: 'bold',
+                                        },
+                                    ],
+                                },
+                                {
+                                    text: " — Everyone says it. Nobody defines it. This essay finally does — and the answer is more specific than you'd think.",
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539421',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: 'left',
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: 'How Lenny Rachitsky built to 700k subscribers',
+                                    type: 'text',
+                                    marks: [
+                                        {
+                                            type: 'bold',
+                                        },
+                                    ],
+                                },
+                                {
+                                    text: ' — This is the one I mentioned above. One decision early on changed everything. Worth reading slowly.',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539422',
+                        type: 'divider',
+                        editor_content: {
+                            attrs: {
+                                size: 1,
+                                color: null,
+                                style: 'solid',
+                                width: '100%',
+                                alignment: 'center',
+                            },
+                        },
+                    },
+                    {
+                        id: '242539423',
+                        type: 'heading',
+                        editor_content: {
+                            attrs: {
+                                level: 2,
+                                textAlign: 'left',
+                            },
+                            content: [
+                                {
+                                    text: 'Enjoyed this issue?',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539424',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: 'left',
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: "I have been writing The Everly Brief for three years — every week, no exceptions. No ads, no sponsors, no fluff. Just the most interesting things she found, written the way she'd explain them to a friend over coffee. If this issue resonated, there are 150 more in the archive — and a new one lands every Tuesday.",
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539425',
+                        type: 'button',
+                        editor_content: {
+                            attrs: {
+                                url: '',
+                                size: 'medium',
+                                type: 'primary',
+                                width: 'auto',
+                                linkId: 103,
+                                linkType: 'link',
+                                alignment: 'center',
+                                textColor: null,
+                                openNewTab: false,
+                                backgroundColor: null,
+                            },
+                            content: [
+                                {
+                                    text: 'If you enjoyed this issue, pass it along',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539426',
+                        type: 'divider',
+                        editor_content: {
+                            attrs: {
+                                size: 1,
+                                color: null,
+                                style: 'solid',
+                                width: '100%',
+                                alignment: 'center',
+                            },
+                        },
+                    },
+                    {
+                        id: '242539427',
+                        type: 'image',
+                        editor_content: {
+                            attrs: {
+                                alt: '',
+                                src: 'https://storage.mlcdn.com/account_image/103/npnpiINUIcUqjQGU_who-let-doge-out-meme-260nw-2105632136.jpg',
+                                url: '',
+                                width: 130,
+                                height: null,
+                                linkId: null,
+                                caption: '',
+                                linkType: 'link',
+                                alignment: 'left',
+                                fullWidth: false,
+                                footerRole: null,
+                                openNewTab: false,
+                            },
+                        },
+                    },
+                    {
+                        id: '242539428',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                class: 'ml-p ml-p-1',
+                                textAlign: null,
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: "ML test' account",
+                                    type: 'text',
+                                    marks: [
+                                        {
+                                            type: 'bold',
+                                        },
+                                    ],
+                                },
+                                {
+                                    type: 'hardBreak',
+                                },
+                                {
+                                    text: 'Add your company postal address here',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '242539429',
+                        type: 'social_icon',
+                        editor_content: {
+                            attrs: {
+                                size: 16,
+                                color: 'grey',
+                                items: [
+                                    {
+                                        url: 'https://www.facebook.com/',
+                                        type: 'facebook',
+                                        uuid: 'Z5Z6sXRqiNicJHvvhIgsR',
+                                        label: 'facebook',
+                                        linkId: 104,
+                                    },
+                                    {
+                                        url: 'https://instagram.com',
+                                        type: 'instagram',
+                                        uuid: '-Oaso8LUnbbCc7nB4qqVc',
+                                        label: 'instagram',
+                                        linkId: 105,
+                                    },
+                                    {
+                                        url: 'https://slack.com',
+                                        type: 'slack',
+                                        uuid: 'jL-G8zqCYkZRpBBwCgYWl',
+                                        label: 'slack',
+                                        linkId: 106,
+                                    },
+                                ],
+                                shape: 'default',
+                                alignment: 'left',
+                                footerRole: null,
+                                targetBlank: true,
+                            },
+                        },
+                    },
+                ],
+            },
+            etag: '6',
+        },
+    },
+}
