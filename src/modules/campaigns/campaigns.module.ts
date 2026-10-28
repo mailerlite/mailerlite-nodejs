@@ -3,7 +3,7 @@ import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateCampaignParams, ScheduleCampaignParams } from './campaigns.types.js';
+import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateCampaignParams, CreateCampaignParams, ScheduleCampaignParams } from './campaigns.types.js';
 
 export default class Campaign implements CampaignsInterface {
     private config: Config;
@@ -47,9 +47,11 @@ export default class Campaign implements CampaignsInterface {
      *
      * @see https://developers.mailerlite.com/docs/campaigns.html#create-a-campaign
      *
+     * Set `editor: "simple"` on every email (and omit `content`) to create the campaign in the simple editor.
+     *
      * @requestBody {Object} - Campaign data for create
      */
-    public create(requestBody: CreateUpdateCampaignParams): Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateCampaignParams>> {
+    public create(requestBody: CreateCampaignParams): Promise<AxiosResponse<SingleCampaignResponse, CreateCampaignParams>> {
         return request(`/api/campaigns`, {
             method: "POST",
             body: requestBody
