@@ -52,7 +52,7 @@ export type FileType = "image" | "pdf" | "epub";
 
 export interface FileObject {
     id:         string;
-    type:       FileType;
+    type:       FileType | (string & {});
     name:       string;
     /** Public URL, usable directly as an image block's src or a button/link href. */
     url:        string;
