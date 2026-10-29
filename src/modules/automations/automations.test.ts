@@ -98,17 +98,21 @@ describe("Automation e-commerce reports", () => {
         const response = await mailerlite.ecommerce.shops.create({ name: `Test shop nodejs ${getRandomInt()}`, url: "https://shop.example.com", currency: "EUR" });
         shopId = response.data.data.id;
 
-        const automations = await mailerlite.automations.get({ limit: 1 });
-        const automation = automations.data.data[0];
-        automationId = automation.id;
-        emailId = (automation.steps.find(step => "email_id" in step) as AutomationEmailStep).email_id;
+        const automations = await mailerlite.automations.get({ limit: 25 });
+        const automation = automations.data.data.find(automation => automation.steps.some(step => "email_id" in step));
+        if (automation) {
+            automationId = automation.id;
+            emailId = (automation.steps.find(step => "email_id" in step) as AutomationEmailStep).email_id;
+        }
     });
 
     afterAll(async () => {
         await mailerlite.ecommerce.shops.delete(shopId);
     });
 
-    it("Get automation e-commerce stats", async () => {
+    it("Get automation e-commerce stats", async ({ skip }) => {
+        skip(!automationId);
+
         try {
             const response = await mailerlite.automations.getEcommerceStats(automationId, { shop_id: shopId });
 
@@ -120,7 +124,9 @@ describe("Automation e-commerce reports", () => {
         }
     });
 
-    it("Get automation email e-commerce stats", async () => {
+    it("Get automation email e-commerce stats", async ({ skip }) => {
+        skip(!automationId);
+
         try {
             const response = await mailerlite.automations.getEmailEcommerceStats(automationId, emailId, { shop_id: shopId });
 
@@ -132,7 +138,9 @@ describe("Automation e-commerce reports", () => {
         }
     });
 
-    it("Get automation e-commerce orders", async () => {
+    it("Get automation e-commerce orders", async ({ skip }) => {
+        skip(!automationId);
+
         try {
             const response = await mailerlite.automations.getEcommerceOrders(automationId, { time_frame: "all_time", ecommerce_shop_id: shopId, limit: 10 });
 

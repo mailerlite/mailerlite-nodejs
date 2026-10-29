@@ -187,14 +187,16 @@ describe("Campaign e-commerce reports", () => {
         shopId = response.data.data.id;
 
         const campaigns = await mailerlite.campaigns.get({ filter: { status: "sent" }, limit: 1 });
-        campaignId = campaigns.data.data[0].id;
+        if (campaigns.data.data.length) campaignId = campaigns.data.data[0].id;
     });
 
     afterAll(async () => {
         await mailerlite.ecommerce.shops.delete(shopId);
     });
 
-    it("Get campaign e-commerce stats", async () => {
+    it("Get campaign e-commerce stats", async ({ skip }) => {
+        skip(!campaignId);
+
         try {
             const response = await mailerlite.campaigns.getEcommerceStats(campaignId, { shop_id: shopId });
 
@@ -206,7 +208,9 @@ describe("Campaign e-commerce reports", () => {
         }
     });
 
-    it("Get campaign e-commerce orders", async () => {
+    it("Get campaign e-commerce orders", async ({ skip }) => {
+        skip(!campaignId);
+
         try {
             const response = await mailerlite.campaigns.getEcommerceOrders(campaignId, { shop_id: shopId, limit: 10 });
 
