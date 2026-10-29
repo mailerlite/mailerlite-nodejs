@@ -4,11 +4,13 @@ import MailerLite from '../../index';
 import {BrandStylesResponse} from "./brand-styles.types";
 import {handleCatchedError} from "../../utils/helpers";
 
-if (!process.env.API_KEY)
+const MAILERLITE_API_KEY = process.env.API_KEY as string;
+
+if (!MAILERLITE_API_KEY)
     throw "No MailerLite API key found in environment variables";
 
 const mailerlite = new MailerLite({
-    api_key: process.env.API_KEY as string,
+    api_key: MAILERLITE_API_KEY,
     base_path: "http://localhost:9090",
 });
 
