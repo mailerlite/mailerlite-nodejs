@@ -162,3 +162,40 @@ mailerlite.campaigns.delete("CAMPAIGN_ID")
     if (error.response) console.log(error.response.data);
   });
 ```
+
+### Get campaign e-commerce stats
+[Official Documentation](https://developers.mailerlite.com/api/campaigns#get-campaign-e-commerce-stats)
+
+---
+```javascript
+const params = {
+  shop_id: "SHOP_ID"
+};
+
+mailerlite.campaigns.getEcommerceStats("CAMPAIGN_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Get campaign e-commerce orders
+[Official Documentation](https://developers.mailerlite.com/api/campaigns#get-campaign-e-commerce-orders)
+
+---
+```javascript
+const params = {
+  shop_id: "SHOP_ID",
+  limit: 25
+};
+
+mailerlite.campaigns.getEcommerceOrders("CAMPAIGN_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```

@@ -148,3 +148,40 @@ mailerlite.subscribers.forget("SUBSCRIBER_ID")
     if (error.response) console.log(error.response.data);
   });
 ```
+
+### Fetch subscriber e-commerce stats
+[Official Documentation](https://developers.mailerlite.com/api/subscribers#fetch-subscriber-e-commerce-stats)
+
+---
+```javascript
+const params = {
+  shop_id: "SHOP_ID"
+};
+
+mailerlite.subscribers.getEcommerceStats("SUBSCRIBER_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Fetch subscriber e-commerce orders
+[Official Documentation](https://developers.mailerlite.com/api/subscribers#fetch-subscriber-e-commerce-orders)
+
+---
+```javascript
+const params = {
+  shop_id: "SHOP_ID",
+  limit: 25
+};
+
+mailerlite.subscribers.getEcommerceOrders("SUBSCRIBER_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```

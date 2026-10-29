@@ -4,7 +4,7 @@ import request from '../../utils/fetch.js'
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
 import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateCampaignParams, ScheduleCampaignParams } from './campaigns.types.js';
-import type { EcommerceReportParams, EcommerceReportOrdersParams, EcommerceStatsResponse, EcommerceReportOrder, ListResponse } from '../ecommerce/ecommerce.types.js';
+import type { CampaignEcommerceReportParams, CampaignEcommerceOrdersParams, CampaignEcommerceStatsResponse, CampaignEcommerceOrdersResponse } from './campaigns.types.js';
 
 export default class Campaign implements CampaignsInterface {
     private config: Config;
@@ -126,11 +126,14 @@ export default class Campaign implements CampaignsInterface {
     }
 
     /**
-     * @description Get the orders and revenue a campaign earned in one shop
+     * @description Get campaign e-commerce stats
      *
-     * @see https://developers.mailerlite.com/docs/campaigns
+     * @see https://developers.mailerlite.com/api/campaigns#get-campaign-e-commerce-stats
+     *
+     * @campaign_id {String} - Campaign ID
+     * @params {Object} - Query parameters
      */
-    public getEcommerceStats(campaign_id: string, params: EcommerceReportParams): Promise<AxiosResponse<EcommerceStatsResponse>> {
+    public getEcommerceStats(campaign_id: string, params: CampaignEcommerceReportParams): Promise<AxiosResponse<CampaignEcommerceStatsResponse>> {
 
         validateId(campaign_id);
 
@@ -141,11 +144,14 @@ export default class Campaign implements CampaignsInterface {
     }
 
     /**
-     * @description List the orders attributed to a campaign in one shop
+     * @description Get campaign e-commerce orders
      *
-     * @see https://developers.mailerlite.com/docs/campaigns
+     * @see https://developers.mailerlite.com/api/campaigns#get-campaign-e-commerce-orders
+     *
+     * @campaign_id {String} - Campaign ID
+     * @params {Object} - Query parameters
      */
-    public getEcommerceOrders(campaign_id: string, params: EcommerceReportOrdersParams): Promise<AxiosResponse<ListResponse<EcommerceReportOrder>>> {
+    public getEcommerceOrders(campaign_id: string, params: CampaignEcommerceOrdersParams): Promise<AxiosResponse<CampaignEcommerceOrdersResponse>> {
 
         validateId(campaign_id);
 

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import {Links, Meta, Stats} from "../../utils/types.js";
-import { EcommerceReportParams, EcommerceReportOrdersParams, EcommerceStatsResponse, EcommerceReportOrder, ListResponse } from "../ecommerce/ecommerce.types.js";
+import {EcommerceBestPerformingEmail, EcommerceReportOrderObject, EcommerceStats} from "../../utils/types.js";
 
 export interface CampaignsInterface {
     get:            (params: GetCampaignsParams)                                => Promise<AxiosResponse<ListCampaignsResponse>>;
@@ -10,8 +10,8 @@ export interface CampaignsInterface {
     schedule:       (campaign_id: string, params: ScheduleCampaignParams)       => Promise<AxiosResponse<SingleCampaignResponse, ScheduleCampaignParams>>;
     cancel:         (campaign_id: string)                                       => Promise<AxiosResponse<SingleCampaignResponse>>;
     delete:         (campaign_id: string)                                       => Promise<AxiosResponse<null>>;
-    getEcommerceStats:  (campaign_id: string, params: EcommerceReportParams)        => Promise<AxiosResponse<EcommerceStatsResponse>>;
-    getEcommerceOrders: (campaign_id: string, params: EcommerceReportOrdersParams)  => Promise<AxiosResponse<ListResponse<EcommerceReportOrder>>>;
+    getEcommerceStats:  (campaign_id: string, params: CampaignEcommerceReportParams)  => Promise<AxiosResponse<CampaignEcommerceStatsResponse>>;
+    getEcommerceOrders: (campaign_id: string, params: CampaignEcommerceOrdersParams)  => Promise<AxiosResponse<CampaignEcommerceOrdersResponse>>;
 }
 
 export interface GetCampaignsParams {
@@ -185,4 +185,27 @@ export interface CampaignsMeta extends Meta {
         ready:      number;
         sent:       number;
     }
+}
+
+export interface CampaignEcommerceReportParams {
+    shop_id: string;
+}
+
+export interface CampaignEcommerceOrdersParams {
+    shop_id: string;
+    limit?:  number;
+    page?:   number;
+}
+
+export interface CampaignEcommerceStatsResponse {
+    data: {
+        ecommerce:              EcommerceStats;
+        best_performing_email:  null | EcommerceBestPerformingEmail;
+    };
+}
+
+export interface CampaignEcommerceOrdersResponse {
+    data:   Array<EcommerceReportOrderObject>;
+    links:  Links;
+    meta:   Meta;
 }

@@ -59,3 +59,57 @@ mailerlite.automations.getAutomationSubscribers("AUTOMATION_ID", params)
     if (error.response) console.log(error.response.data);
   });
 ```
+
+### Get automation e-commerce stats
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
+
+---
+```javascript
+const params = {
+  shop_id: "SHOP_ID"
+};
+
+mailerlite.automations.getEcommerceStats("AUTOMATION_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Get automation email e-commerce stats
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
+
+---
+```javascript
+const params = {
+  shop_id: "SHOP_ID"
+};
+
+mailerlite.automations.getEmailEcommerceStats("AUTOMATION_ID", "EMAIL_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Get automation e-commerce orders
+<!-- TODO: add link once developers.mailerlite.com publishes these endpoints -->
+
+---
+```javascript
+const params = {
+  time_frame: "all_time"
+};
+
+mailerlite.automations.getEcommerceOrders("AUTOMATION_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```

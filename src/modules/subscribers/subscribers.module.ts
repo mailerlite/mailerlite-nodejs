@@ -13,7 +13,7 @@ import type {
     ForgetSubscriberResponse,
     UpdateSubscriberParams
 } from './subscribers.types.js';
-import type { EcommerceReportParams, EcommerceReportOrdersParams, EcommerceStatsResponse, EcommerceReportOrder, ListResponse } from '../ecommerce/ecommerce.types.js';
+import type { SubscriberEcommerceReportParams, SubscriberEcommerceOrdersParams, SubscriberEcommerceStatsResponse, SubscriberEcommerceOrdersResponse } from './subscribers.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -129,12 +129,17 @@ export default class Subscriber implements SubscriberInterface {
     }
 
     /**
-     * @description Get a subscriber's lifetime orders and revenue in one shop
+     * @description Fetch subscriber e-commerce stats
      *
-     * @see https://developers.mailerlite.com/docs/subscribers
+     * @see https://developers.mailerlite.com/api/subscribers#fetch-subscriber-e-commerce-stats
+     *
+     * @subscriber_id {String} - Subscriber ID
+     * @params {Object} - Query parameters
      */
-    public getEcommerceStats(subscriber_id: string, params: EcommerceReportParams): Promise<AxiosResponse<EcommerceStatsResponse>> {
+    public getEcommerceStats(subscriber_id: string, params: SubscriberEcommerceReportParams): Promise<AxiosResponse<SubscriberEcommerceStatsResponse>> {
+
         validateId(subscriber_id);
+
         return request(`/api/subscribers/${subscriber_id}/reports/ecommerce`, {
             method: "GET",
             params: params
@@ -142,12 +147,17 @@ export default class Subscriber implements SubscriberInterface {
     }
 
     /**
-     * @description List a subscriber's orders in one shop
+     * @description Fetch subscriber e-commerce orders
      *
-     * @see https://developers.mailerlite.com/docs/subscribers
+     * @see https://developers.mailerlite.com/api/subscribers#fetch-subscriber-e-commerce-orders
+     *
+     * @subscriber_id {String} - Subscriber ID
+     * @params {Object} - Query parameters
      */
-    public getEcommerceOrders(subscriber_id: string, params: EcommerceReportOrdersParams): Promise<AxiosResponse<ListResponse<EcommerceReportOrder>>> {
+    public getEcommerceOrders(subscriber_id: string, params: SubscriberEcommerceOrdersParams): Promise<AxiosResponse<SubscriberEcommerceOrdersResponse>> {
+
         validateId(subscriber_id);
+
         return request(`/api/subscribers/${subscriber_id}/reports/ecommerce/orders`, {
             method: "GET",
             params: params

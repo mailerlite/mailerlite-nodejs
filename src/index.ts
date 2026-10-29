@@ -36,8 +36,8 @@ import { WebhooksInterface } from "./modules/webhooks/webhooks.types.js";
 import Statistics from './modules/stats/stats.module.js';
 import { StatsInterface } from "./modules/stats/stats.types.js";
 
-import Ecommerce from './modules/ecommerce/ecommerce.module.js';
-import { EcommerceInterface } from "./modules/ecommerce/ecommerce.types.js";
+import Ecommerce from './ecommerce-modules/index.js';
+import { EcommerceInterface } from "./ecommerce-modules/index.js";
 
 export default class MailerLite {
 
@@ -90,5 +90,5 @@ export * from "./modules/languages/languages.types.js";
 export * from "./modules/batches/batches.types.js";
 export * from "./modules/webhooks/webhooks.types.js";
 export * from "./modules/stats/stats.types.js";
-export * from "./modules/ecommerce/ecommerce.types.js";
+export * from "./ecommerce-modules/index.js";
 export * from "./utils/types.js";

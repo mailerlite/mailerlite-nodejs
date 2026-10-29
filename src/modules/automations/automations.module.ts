@@ -10,12 +10,7 @@ import {
     ListAutomationsResponse,
     SingleAutomationResponse
 } from "./automations.types.js";
-import type {
-    AutomationEcommerceStatsParams,
-    AutomationEcommerceOrdersParams,
-    EcommerceStatsResponse,
-    ListResponse
-} from "../ecommerce/ecommerce.types.js";
+import type { AutomationEcommerceStatsParams, AutomationEcommerceOrdersParams, AutomationEcommerceStatsResponse, AutomationEmailEcommerceStatsResponse, AutomationEcommerceOrdersResponse } from './automations.types.js';
 
 export default class Automation implements AutomationsInterface {
     private config: Config;
@@ -75,9 +70,12 @@ export default class Automation implements AutomationsInterface {
     /**
      * @description Get the orders and revenue an automation earned
      *
-     * @see https://developers.mailerlite.com/docs/automations
+     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
+     *
+     * @automation_id {String} - Automation ID
+     * @params {Object} - Query parameters
      */
-    public getEcommerceStats(automation_id: string, params: AutomationEcommerceStatsParams = {}): Promise<AxiosResponse<EcommerceStatsResponse>> {
+    public getEcommerceStats(automation_id: string, params: AutomationEcommerceStatsParams): Promise<AxiosResponse<AutomationEcommerceStatsResponse>> {
 
         validateId(automation_id);
 
@@ -90,9 +88,13 @@ export default class Automation implements AutomationsInterface {
     /**
      * @description Get the orders and revenue one automation email earned
      *
-     * @see https://developers.mailerlite.com/docs/automations
+     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
+     *
+     * @automation_id {String} - Automation ID
+     * @email_id {String} - Email ID
+     * @params {Object} - Query parameters
      */
-    public getEmailEcommerceStats(automation_id: string, email_id: string, params: AutomationEcommerceStatsParams = {}): Promise<AxiosResponse<EcommerceStatsResponse>> {
+    public getEmailEcommerceStats(automation_id: string, email_id: string, params: AutomationEcommerceStatsParams): Promise<AxiosResponse<AutomationEmailEcommerceStatsResponse>> {
 
         validateId(automation_id);
         validateId(email_id);
@@ -104,11 +106,14 @@ export default class Automation implements AutomationsInterface {
     }
 
     /**
-     * @description List the orders attributed to an automation
+     * @description Get the orders attributed to an automation
      *
-     * @see https://developers.mailerlite.com/docs/automations
+     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
+     *
+     * @automation_id {String} - Automation ID
+     * @params {Object} - Query parameters
      */
-    public getEcommerceOrders(automation_id: string, params: AutomationEcommerceOrdersParams): Promise<AxiosResponse<ListResponse<Record<string, unknown>>>> {
+    public getEcommerceOrders(automation_id: string, params: AutomationEcommerceOrdersParams): Promise<AxiosResponse<AutomationEcommerceOrdersResponse>> {
 
         validateId(automation_id);
 
