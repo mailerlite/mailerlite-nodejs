@@ -198,7 +198,12 @@ describe("Campaigns", () => {
         const onUpdate: CreateUpdateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", editor: "simple" };
         // @ts-expect-error template_id must be a string
         const numericTemplate: CreateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", editor: "simple", template_id: 1 };
-        void [withContent, withTemplate, onUpdate, numericTemplate];
+        // @ts-expect-error all emails must use the same editor
+        const mixedEditors: CreateCampaignParams["emails"] = [
+            { subject: "s", from_name: "n", from: "a@b.c", editor: "simple" },
+            { subject: "s", from_name: "n", from: "a@b.c", content: "<p>hi</p>" },
+        ];
+        void [withContent, withTemplate, onUpdate, numericTemplate, mixedEditors];
 
         let simpleEditorCampaignId: string | undefined;
 

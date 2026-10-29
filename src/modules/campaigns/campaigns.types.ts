@@ -81,30 +81,34 @@ interface CampaignEmailBaseParams {
     from:	            string;
 }
 
-/**
- * An email of a campaign being created. Set `editor: "simple"` to create it in the simple editor,
- * in which case `content` is not allowed and the email is edited afterwards with the emails module.
- */
-export type CreateCampaignEmailParams =
-    | (CampaignEmailBaseParams & {
-        content?:       string;
-        editor?:        never;
-        template_id?:   never;
-    })
-    | (CampaignEmailBaseParams & {
-        /** Create the email in the simple editor. */
-        editor:         "simple";
-        /** Shared gallery simple-editor template ID. */
-        template_id?:   string;
-        content?:       never;
-    });
+/** An email of a campaign being created in the default editor. */
+export type DefaultEditorCampaignEmailParams = CampaignEmailBaseParams & {
+    content?:       string;
+    editor?:        never;
+    template_id?:   never;
+};
 
 /**
- * Params for creating a campaign. Every email must use the same `editor` and `template_id`.
+ * An email of a campaign being created in the simple editor. `content` is not allowed:
+ * the email is edited afterwards with the emails module.
+ */
+export type SimpleEditorCampaignEmailParams = CampaignEmailBaseParams & {
+    /** Create the email in the simple editor. */
+    editor:         "simple";
+    /** Shared gallery simple-editor template ID. */
+    template_id?:   string;
+    content?:       never;
+};
+
+export type CreateCampaignEmailParams = DefaultEditorCampaignEmailParams | SimpleEditorCampaignEmailParams;
+
+/**
+ * Params for creating a campaign. All emails must use the same editor, so `emails` is either all
+ * default editor or all simple editor. The API also requires the same `template_id` on every email.
  * `editor` and `template_id` can't be changed on update.
  */
 export interface CreateCampaignParams extends Omit<CreateUpdateCampaignParams, "emails"> {
-    emails: Array<CreateCampaignEmailParams>;
+    emails: Array<DefaultEditorCampaignEmailParams> | Array<SimpleEditorCampaignEmailParams>;
 }
 
 export interface ScheduleCampaignParams {
