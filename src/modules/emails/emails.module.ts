@@ -303,6 +303,9 @@ export default class Emails implements EmailsInterface {
 /**
  * Maps the write options to request headers. The `Idempotency-Key` header is only sent when a key is set
  * (an empty header value is a 400 on the API).
+ *
+ * Deliberately kept in the emails module: it is the only module that sends `Idempotency-Key`.
+ * Move it to `src/utils/` once another module needs it.
  */
 function idempotencyHeaders(options?: EmailWriteOptions): Record<string, string> {
     return options?.idempotencyKey ? { "Idempotency-Key": options.idempotencyKey } : {};
