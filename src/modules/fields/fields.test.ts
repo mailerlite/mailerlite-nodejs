@@ -60,7 +60,7 @@ describe("Fields", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleFieldResponse>()
             createdFieldId = response.data.data.id;
         } catch (error) {
@@ -80,7 +80,7 @@ describe("Fields", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleFieldResponse>()
         } catch (error) {
             handleCatchedError(error);

@@ -64,7 +64,7 @@ describe("Forms", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleFormResponse>()
         } catch (error) {
             handleCatchedError(error);

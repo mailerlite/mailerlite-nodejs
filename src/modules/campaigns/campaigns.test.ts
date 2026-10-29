@@ -71,7 +71,7 @@ describe("Campaigns", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleCampaignResponse>()
             createdCampaignId = response.data.data.id;
         } catch (error) {
@@ -86,7 +86,7 @@ describe("Campaigns", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleCampaignResponse>()
         } catch (error) {
             handleCatchedError(error);
@@ -113,7 +113,7 @@ describe("Campaigns", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleCampaignResponse>()
         } catch (error) {
             handleCatchedError(error);
@@ -142,7 +142,7 @@ describe("Campaigns", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleCampaignResponse>()
         } catch (error) {
             handleCatchedError(error);
@@ -156,7 +156,7 @@ describe("Campaigns", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleCampaignResponse>()
         } catch (error) {
             handleCatchedError(error);
@@ -212,7 +212,7 @@ describe("Campaigns", () => {
             simpleEditorCampaignId = response.data.data.id;
 
             expect(response.status).toBe(201);
-            expect(response.data.data.emails[0].id).not.toBeNull();
+            expect(response.data.data.emails[0].id).toEqual(expect.any(String));
             expect(response.data.data.emails[0].type).toBe("builder_inline_email");
             expectTypeOf(response.data).toEqualTypeOf<SingleCampaignResponse>();
         } catch (error) {
