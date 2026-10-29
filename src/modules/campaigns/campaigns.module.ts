@@ -43,11 +43,10 @@ export default class Campaign implements CampaignsInterface {
     }
 
     /**
-     * @description Create a campaign
+     * @description Create a campaign.
+     * Set `editor: "simple"` on every email (and omit `content`) to create the campaign in the simple editor.
      *
      * @see https://developers.mailerlite.com/docs/campaigns.html#create-a-campaign
-     *
-     * Set `editor: "simple"` on every email (and omit `content`) to create the campaign in the simple editor.
      *
      * @requestBody {Object} - Campaign data for create
      */
