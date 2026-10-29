@@ -81,6 +81,7 @@ const campaignDataSimpleEditor = {
   groups: ['19293959921600205']
 };
 
+// swap in campaignDataAb, campaignDataResend or campaignDataSimpleEditor to create other campaign types
 mailerlite.campaigns.create(campaignData)
   .then(response => {
     console.log(response.data);
