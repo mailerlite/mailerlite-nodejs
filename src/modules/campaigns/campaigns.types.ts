@@ -94,8 +94,8 @@ export type CreateCampaignEmailParams =
     | (CampaignEmailBaseParams & {
         /** Create the email in the simple editor. */
         editor:         "simple";
-        /** Shared gallery simple-editor template. Prefer a string: IDs can exceed Number.MAX_SAFE_INTEGER. */
-        template_id?:   string | number;
+        /** Shared gallery simple-editor template ID. */
+        template_id?:   string;
         content?:       never;
     });
 

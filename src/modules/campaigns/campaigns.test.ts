@@ -196,7 +196,9 @@ describe("Campaigns", () => {
         const withTemplate: CreateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", template_id: "1" };
         // @ts-expect-error update does not accept editor
         const onUpdate: CreateUpdateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", editor: "simple" };
-        void [withContent, withTemplate, onUpdate];
+        // @ts-expect-error template_id must be a string
+        const numericTemplate: CreateCampaignParams["emails"][number] = { subject: "s", from_name: "n", from: "a@b.c", editor: "simple", template_id: 1 };
+        void [withContent, withTemplate, onUpdate, numericTemplate];
 
         let simpleEditorCampaignId: string | undefined;
 
