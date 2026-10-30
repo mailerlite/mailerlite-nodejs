@@ -6,7 +6,7 @@ export interface ShopsInterface {
     find:     (shop_id: string)                                => Promise<AxiosResponse<SingleShopResponse>>;
     create:   (requestBody: CreateShopParams)                  => Promise<AxiosResponse<SingleShopResponse, CreateShopParams>>;
     update:   (shop_id: string, requestBody: UpdateShopParams) => Promise<AxiosResponse<SingleShopResponse, UpdateShopParams>>;
-    delete:   (shop_id: string)                                => Promise<AxiosResponse<null>>;
+    delete:   (shop_id: string)                                => Promise<AxiosResponse<SingleShopResponse>>;
     getStats: (shop_id: string, params: GetShopStatsParams)    => Promise<AxiosResponse<ShopStatsResponse>>;
 }
 

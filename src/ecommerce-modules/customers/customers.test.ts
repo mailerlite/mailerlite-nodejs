@@ -92,7 +92,8 @@ describe("E-commerce customers", () => {
             const response = await mailerlite.ecommerce.customers.delete(shopId, customerId);
 
             expect(response).not.toBeNull();
-            expect(response.status).toBe(204);
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<SingleCustomerResponse>()
         } catch (error) {
             handleCatchedError(error);
         }

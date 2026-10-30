@@ -1,0 +1,143 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:27.210Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223304/carts?limit=10',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:27 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '41',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '151',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30e68db15351-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '202753606489736379',
+                    resource_id: null,
+                    checkout_url: null,
+                    cart_total: 0,
+                    items: [
+                        {
+                            id: '202753606494979274',
+                            resource_id: null,
+                            product: {
+                                id: '202753606137415439',
+                                name: 'Test product nodejs carts',
+                                resource_id: null,
+                                price: 19.99,
+                                url: null,
+                                image: null,
+                                exclude_from_automations: false,
+                                enabled: true,
+                                short_description: null,
+                                description: null,
+                                type: 'one-time',
+                                categories: [],
+                                variants: [],
+                            },
+                            ecommerce_product_variant_id: null,
+                            variant: '',
+                            quantity: 1,
+                            price: 19.99,
+                        },
+                    ],
+                    ecommerce_order_id: '202753606504416476',
+                    customer: {
+                        id: '202753606456181873',
+                        resource_id: null,
+                        email: 'customer-carts@example.com',
+                        accepts_marketing: false,
+                        total_spent: null,
+                        orders_count: null,
+                        subscriber: null,
+                    },
+                },
+            ],
+            links: {
+                first: 'https://connect.mailerlite.com/api/ecommerce/shops/223304/carts?page=1',
+                last: 'https://connect.mailerlite.com/api/ecommerce/shops/223304/carts?page=1',
+                prev: null,
+                next: null,
+            },
+            meta: {
+                current_page: 1,
+                from: 1,
+                last_page: 1,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        page: null,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/ecommerce/shops/223304/carts?page=1',
+                        label: '1',
+                        page: 1,
+                        active: true,
+                    },
+                    {
+                        url: null,
+                        label: 'Next &raquo;',
+                        page: null,
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/ecommerce/shops/223304/carts',
+                per_page: 10,
+                to: 1,
+                total: 1,
+            },
+        },
+    },
+}

@@ -6,7 +6,7 @@ export interface ProductsInterface {
     find:         (shop_id: string, product_id: string)                                         => Promise<AxiosResponse<SingleProductResponse>>;
     create:       (shop_id: string, requestBody: CreateUpdateProductParams)                     => Promise<AxiosResponse<SingleProductResponse, CreateUpdateProductParams>>;
     update:       (shop_id: string, product_id: string, requestBody: CreateUpdateProductParams) => Promise<AxiosResponse<SingleProductResponse, CreateUpdateProductParams>>;
-    delete:       (shop_id: string, product_id: string)                                         => Promise<AxiosResponse<null>>;
+    delete:       (shop_id: string, product_id: string)                                         => Promise<AxiosResponse<SingleProductResponse>>;
     changeStatus: (shop_id: string, product_id: string, requestBody: ChangeProductStatusParams) => Promise<AxiosResponse<SingleProductResponse, ChangeProductStatusParams>>;
 }
 

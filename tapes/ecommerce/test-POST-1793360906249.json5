@@ -1,0 +1,133 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:25.815Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223295/orders/import',
+        method: 'POST',
+        body: 'ewogICJvcmRlcnMiOiBbCiAgICB7CiAgICAgICJjdXN0b21lciI6IHsKICAgICAgICAiZW1haWwiOiAiY3VzdG9tZXItaW1wb3J0QGV4YW1wbGUuY29tIiwKICAgICAgICAiY3JlYXRlX3N1YnNjcmliZXIiOiBmYWxzZQogICAgICB9LAogICAgICAiY2FydCI6IHsKICAgICAgICAiaXRlbXMiOiBbCiAgICAgICAgICB7CiAgICAgICAgICAgICJlY29tbWVyY2VfcHJvZHVjdF9pZCI6ICIyMDI3NTM2MDUwNzEwMTMxNDAiLAogICAgICAgICAgICAicXVhbnRpdHkiOiAxCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9CiAgICB9CiAgXQp9',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:26 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '63',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '175',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30de0a46934c-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '202753605494638064',
+                    resource_id: null,
+                    shop: {
+                        id: '223295',
+                        name: 'Test shop nodejs import',
+                        url: 'https://shop.example.com',
+                        currency: 'EUR',
+                        enabled: false,
+                        enable_popups: false,
+                        enable_resubscribe: false,
+                        group: null,
+                        created_at: '2026-10-30T11:48:23.000000Z',
+                        updated_at: '2026-10-30T11:48:23.000000Z',
+                        currency_sign: '€',
+                    },
+                    customer: {
+                        id: '202753604629563368',
+                        resource_id: '',
+                        email: 'customer-import@example.com',
+                        accepts_marketing: false,
+                        total_spent: null,
+                        orders_count: null,
+                        subscriber: null,
+                    },
+                    cart: {
+                        id: '202753605482055131',
+                        resource_id: null,
+                        checkout_url: null,
+                        cart_total: 0,
+                        items: [
+                            {
+                                id: '202753605486249451',
+                                resource_id: null,
+                                product: {
+                                    id: '202753605071013140',
+                                    name: 'Test product nodejs import orders',
+                                    resource_id: null,
+                                    price: 19.99,
+                                    url: null,
+                                    image: null,
+                                    exclude_from_automations: false,
+                                    enabled: true,
+                                    short_description: null,
+                                    description: null,
+                                    type: 'one-time',
+                                    categories: [],
+                                    variants: [],
+                                },
+                                ecommerce_product_variant_id: null,
+                                variant: '',
+                                quantity: 1,
+                                price: 0,
+                            },
+                        ],
+                    },
+                    total: null,
+                    status: null,
+                    stage: null,
+                    created_at: '2026-10-30T11:48:26.000000Z',
+                    updated_at: '2026-10-30T11:48:26.000000Z',
+                    completed_at: null,
+                    attribution: null,
+                    created_at_date: '2026-10-30 11:48:26',
+                    stripe_payment_intent_id: null,
+                },
+            ],
+        },
+    },
+}

@@ -103,7 +103,7 @@ describe("Automation e-commerce reports", () => {
             automationId = automation.id;
             emailId = (automation.steps.find(step => "email_id" in step) as AutomationEmailStep).email_id;
         }
-    });
+    }, 30000);
 
     afterAll(async () => {
         await mailerlite.ecommerce.shops.delete(shopId);

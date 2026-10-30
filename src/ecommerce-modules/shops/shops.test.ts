@@ -89,7 +89,8 @@ describe("E-commerce shops", () => {
             const response = await mailerlite.ecommerce.shops.delete(createdShopId);
 
             expect(response).not.toBeNull();
-            expect(response.status).toBe(204);
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<SingleShopResponse>()
         } catch (error) {
             handleCatchedError(error);
         }

@@ -1,0 +1,78 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:26.832Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223297',
+        method: 'DELETE',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:27 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '44',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '134',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30e3edd865a1-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '223297',
+                name: 'Test shop nodejs products',
+                url: 'https://shop.example.com',
+                currency: 'EUR',
+                enabled: false,
+                enable_popups: false,
+                enable_resubscribe: false,
+                group: null,
+                created_at: '2026-10-30T11:48:24.000000Z',
+                updated_at: '2026-10-30T11:48:24.000000Z',
+                currency_sign: '€',
+            },
+        },
+    },
+}

@@ -92,7 +92,7 @@ export default class Shop implements ShopsInterface {
      *
      * @shop_id {String} - Shop ID
      */
-    public delete(shop_id: string): Promise<AxiosResponse<null>> {
+    public delete(shop_id: string): Promise<AxiosResponse<SingleShopResponse>> {
 
         validateId(shop_id);
 

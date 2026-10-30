@@ -1,0 +1,131 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:24.647Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223294/orders',
+        method: 'POST',
+        body: 'ewogICJjdXN0b21lciI6IHsKICAgICJlbWFpbCI6ICJjdXN0b21lci1jYXJ0LWl0ZW1zQGV4YW1wbGUuY29tIiwKICAgICJjcmVhdGVfc3Vic2NyaWJlciI6IGZhbHNlCiAgfSwKICAiY2FydCI6IHsKICAgICJpdGVtcyI6IFsKICAgICAgewogICAgICAgICJlY29tbWVyY2VfcHJvZHVjdF9pZCI6ICIyMDI3NTM2MDM4MjMyMDc3OTkiLAogICAgICAgICJxdWFudGl0eSI6IDEsCiAgICAgICAgInByaWNlIjogMTkuOTkKICAgICAgfQogICAgXQogIH0KfQ==',
+    },
+    res: {
+        status: 201,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:25 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '90',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '159',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30d6bcfe5351-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '202753604266755691',
+                resource_id: null,
+                shop: {
+                    id: '223294',
+                    name: 'Test shop nodejs cart-items',
+                    url: 'https://shop.example.com',
+                    currency: 'EUR',
+                    enabled: false,
+                    enable_popups: false,
+                    enable_resubscribe: false,
+                    group: null,
+                    created_at: '2026-10-30T11:48:23.000000Z',
+                    updated_at: '2026-10-30T11:48:23.000000Z',
+                    currency_sign: '€',
+                },
+                customer: {
+                    id: '202753604232152622',
+                    resource_id: null,
+                    email: 'customer-cart-items@example.com',
+                    accepts_marketing: false,
+                    total_spent: null,
+                    orders_count: null,
+                    subscriber: null,
+                },
+                cart: {
+                    id: '202753604255221349',
+                    resource_id: null,
+                    checkout_url: null,
+                    cart_total: 0,
+                    items: [
+                        {
+                            id: '202753604260464232',
+                            resource_id: null,
+                            product: {
+                                id: '202753603823207799',
+                                name: 'Test product nodejs cart-items',
+                                resource_id: null,
+                                price: 19.99,
+                                url: null,
+                                image: null,
+                                exclude_from_automations: false,
+                                enabled: true,
+                                short_description: null,
+                                description: null,
+                                type: 'one-time',
+                                categories: [],
+                                variants: [],
+                            },
+                            ecommerce_product_variant_id: null,
+                            variant: '',
+                            quantity: 1,
+                            price: 19.99,
+                        },
+                    ],
+                },
+                total: null,
+                status: null,
+                stage: null,
+                created_at: '2026-10-30T11:48:24.000000Z',
+                updated_at: '2026-10-30T11:48:24.000000Z',
+                completed_at: null,
+                attribution: null,
+                created_at_date: '2026-10-30 11:48:24',
+                stripe_payment_intent_id: null,
+            },
+        },
+    },
+}

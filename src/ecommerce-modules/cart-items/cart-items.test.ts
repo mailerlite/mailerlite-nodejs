@@ -105,7 +105,8 @@ describe("E-commerce cart items", () => {
             const response = await mailerlite.ecommerce.cartItems.delete(shopId, cartId, itemId);
 
             expect(response).not.toBeNull();
-            expect(response.status).toBe(204);
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<SingleCartItemResponse>()
         } catch (error) {
             handleCatchedError(error);
         }

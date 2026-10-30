@@ -101,7 +101,7 @@ export default class Product implements ProductsInterface {
      * @shop_id {String} - Shop ID
      * @product_id {String} - Product ID
      */
-    public delete(shop_id: string, product_id: string): Promise<AxiosResponse<null>> {
+    public delete(shop_id: string, product_id: string): Promise<AxiosResponse<SingleProductResponse>> {
 
         validateId(shop_id);
         validateId(product_id);

@@ -109,7 +109,7 @@ export default class CartItem implements CartItemsInterface {
      * @cart_id {String} - Cart ID
      * @item_id {String} - Cart item ID
      */
-    public delete(shop_id: string, cart_id: string, item_id: string): Promise<AxiosResponse<null>> {
+    public delete(shop_id: string, cart_id: string, item_id: string): Promise<AxiosResponse<SingleCartItemResponse>> {
 
         validateId(shop_id);
         validateId(cart_id);

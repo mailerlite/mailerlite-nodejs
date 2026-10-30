@@ -86,7 +86,8 @@ describe("E-commerce categories products", () => {
             const response = await mailerlite.ecommerce.categoriesProducts.unassignProduct(shopId, categoryId, productId);
 
             expect(response).not.toBeNull();
-            expect(response.status).toBe(204);
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<CategoryProductResponse>()
         } catch (error) {
             handleCatchedError(error);
         }

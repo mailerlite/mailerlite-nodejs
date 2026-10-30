@@ -6,7 +6,7 @@ export interface OrdersInterface {
     find:   (shop_id: string, order_id: string)                                 => Promise<AxiosResponse<SingleOrderResponse>>;
     create: (shop_id: string, requestBody: CreateOrderParams)                   => Promise<AxiosResponse<SingleOrderResponse, CreateOrderParams>>;
     update: (shop_id: string, order_id: string, requestBody: UpdateOrderParams) => Promise<AxiosResponse<SingleOrderResponse, UpdateOrderParams>>;
-    delete: (shop_id: string, order_id: string)                                 => Promise<AxiosResponse<null>>;
+    delete: (shop_id: string, order_id: string)                                 => Promise<AxiosResponse<SingleOrderResponse>>;
 }
 
 export interface GetOrdersParams {

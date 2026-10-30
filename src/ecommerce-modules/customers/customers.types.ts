@@ -6,7 +6,7 @@ export interface CustomersInterface {
     find:   (shop_id: string, customer_id: string)                                          => Promise<AxiosResponse<SingleCustomerResponse>>;
     create: (shop_id: string, requestBody: CreateUpdateCustomerParams)                      => Promise<AxiosResponse<SingleCustomerResponse, CreateUpdateCustomerParams>>;
     update: (shop_id: string, customer_id: string, requestBody: CreateUpdateCustomerParams) => Promise<AxiosResponse<SingleCustomerResponse, CreateUpdateCustomerParams>>;
-    delete: (shop_id: string, customer_id: string)                                          => Promise<AxiosResponse<null>>;
+    delete: (shop_id: string, customer_id: string)                                          => Promise<AxiosResponse<SingleCustomerResponse>>;
 }
 
 export interface GetCustomersParams {

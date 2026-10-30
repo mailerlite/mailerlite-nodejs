@@ -1,0 +1,111 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:24.694Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223301/customers?filter[email]=customer-customers%40example.com',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:25 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '89',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '96',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30d6fc0b65a1-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '202753603891365254',
+                    resource_id: null,
+                    email: 'customer-customers@example.com',
+                    accepts_marketing: false,
+                    total_spent: null,
+                    orders_count: null,
+                    subscriber: null,
+                },
+            ],
+            links: {
+                first: 'https://connect.mailerlite.com/api/ecommerce/shops/223301/customers?page=1',
+                last: 'https://connect.mailerlite.com/api/ecommerce/shops/223301/customers?page=1',
+                prev: null,
+                next: null,
+            },
+            meta: {
+                current_page: 1,
+                from: 1,
+                last_page: 1,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        page: null,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/ecommerce/shops/223301/customers?page=1',
+                        label: '1',
+                        page: 1,
+                        active: true,
+                    },
+                    {
+                        url: null,
+                        label: 'Next &raquo;',
+                        page: null,
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/ecommerce/shops/223301/customers',
+                per_page: 100,
+                to: 1,
+                total: 1,
+            },
+        },
+    },
+}

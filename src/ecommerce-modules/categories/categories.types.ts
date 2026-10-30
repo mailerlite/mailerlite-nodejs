@@ -6,7 +6,7 @@ export interface CategoriesInterface {
     find:   (shop_id: string, category_id: string)                                          => Promise<AxiosResponse<SingleCategoryResponse>>;
     create: (shop_id: string, requestBody: CreateUpdateCategoryParams)                      => Promise<AxiosResponse<SingleCategoryResponse, CreateUpdateCategoryParams>>;
     update: (shop_id: string, category_id: string, requestBody: CreateUpdateCategoryParams) => Promise<AxiosResponse<SingleCategoryResponse, CreateUpdateCategoryParams>>;
-    delete: (shop_id: string, category_id: string)                                          => Promise<AxiosResponse<null>>;
+    delete: (shop_id: string, category_id: string)                                          => Promise<AxiosResponse<SingleCategoryResponse>>;
 }
 
 export interface GetCategoriesParams {

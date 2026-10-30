@@ -6,7 +6,7 @@ export interface CartItemsInterface {
     find:   (shop_id: string, cart_id: string, item_id: string)                                          => Promise<AxiosResponse<SingleCartItemResponse>>;
     create: (shop_id: string, cart_id: string, requestBody: CreateUpdateCartItemParams)                  => Promise<AxiosResponse<SingleCartItemResponse, CreateUpdateCartItemParams>>;
     update: (shop_id: string, cart_id: string, item_id: string, requestBody: CreateUpdateCartItemParams) => Promise<AxiosResponse<SingleCartItemResponse, CreateUpdateCartItemParams>>;
-    delete: (shop_id: string, cart_id: string, item_id: string)                                          => Promise<AxiosResponse<null>>;
+    delete: (shop_id: string, cart_id: string, item_id: string)                                          => Promise<AxiosResponse<SingleCartItemResponse>>;
 }
 
 export interface GetCartItemsParams {

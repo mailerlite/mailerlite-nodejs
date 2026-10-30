@@ -87,7 +87,7 @@ export default class CategoryProduct implements CategoriesProductsInterface {
      * @category_id {String} - Category ID
      * @product_id {String} - Product ID
      */
-    public unassignProduct(shop_id: string, category_id: string, product_id: string): Promise<AxiosResponse<null>> {
+    public unassignProduct(shop_id: string, category_id: string, product_id: string): Promise<AxiosResponse<CategoryProductResponse>> {
 
         validateId(shop_id);
         validateId(category_id);

@@ -1,0 +1,80 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:24.108Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223297/products',
+        method: 'POST',
+        body: 'ewogICJuYW1lIjogIlRlc3QgcHJvZHVjdCBub2RlanMgcHJvZHVjdHMiLAogICJwcmljZSI6IDE5Ljk5Cn0=',
+    },
+    res: {
+        status: 201,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:24 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '104',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '112',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30d43d0d934c-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '202753603801187698',
+                name: 'Test product nodejs products',
+                resource_id: null,
+                price: 19.99,
+                url: null,
+                image: null,
+                exclude_from_automations: null,
+                enabled: true,
+                short_description: null,
+                description: null,
+                type: 'one-time',
+                categories: [],
+                variants: [],
+            },
+        },
+    },
+}

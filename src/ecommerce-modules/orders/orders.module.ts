@@ -101,7 +101,7 @@ export default class Order implements OrdersInterface {
      * @shop_id {String} - Shop ID
      * @order_id {String} - Order ID
      */
-    public delete(shop_id: string, order_id: string): Promise<AxiosResponse<null>> {
+    public delete(shop_id: string, order_id: string): Promise<AxiosResponse<SingleOrderResponse>> {
 
         validateId(shop_id);
         validateId(order_id);

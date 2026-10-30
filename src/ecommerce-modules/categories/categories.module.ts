@@ -100,7 +100,7 @@ export default class Category implements CategoriesInterface {
      * @shop_id {String} - Shop ID
      * @category_id {String} - Category ID
      */
-    public delete(shop_id: string, category_id: string): Promise<AxiosResponse<null>> {
+    public delete(shop_id: string, category_id: string): Promise<AxiosResponse<SingleCategoryResponse>> {
 
         validateId(shop_id);
         validateId(category_id);

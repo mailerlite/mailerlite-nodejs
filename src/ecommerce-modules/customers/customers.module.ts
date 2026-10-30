@@ -100,7 +100,7 @@ export default class Customer implements CustomersInterface {
      * @shop_id {String} - Shop ID
      * @customer_id {String} - Customer ID
      */
-    public delete(shop_id: string, customer_id: string): Promise<AxiosResponse<null>> {
+    public delete(shop_id: string, customer_id: string): Promise<AxiosResponse<SingleCustomerResponse>> {
 
         validateId(shop_id);
         validateId(customer_id);

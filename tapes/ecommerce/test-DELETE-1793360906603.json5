@@ -1,0 +1,131 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:26.240Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223299/orders/202753604258367079',
+        method: 'DELETE',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:26 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '54',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '140',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30e0883b65e2-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '202753604258367079',
+                resource_id: null,
+                shop: {
+                    id: '223299',
+                    name: 'Test shop nodejs orders',
+                    url: 'https://shop.example.com',
+                    currency: 'EUR',
+                    enabled: false,
+                    enable_popups: false,
+                    enable_resubscribe: false,
+                    group: null,
+                    created_at: '2026-10-30T11:48:24.000000Z',
+                    updated_at: '2026-10-30T11:48:24.000000Z',
+                    currency_sign: '€',
+                },
+                customer: {
+                    id: '202753604219569704',
+                    resource_id: null,
+                    email: 'customer-orders@example.com',
+                    accepts_marketing: false,
+                    total_spent: null,
+                    orders_count: null,
+                    subscriber: null,
+                },
+                cart: {
+                    id: '202753604244735584',
+                    resource_id: null,
+                    checkout_url: null,
+                    cart_total: 0,
+                    items: [
+                        {
+                            id: '202753604248929890',
+                            resource_id: null,
+                            product: {
+                                id: '202753603879830914',
+                                name: 'Test product nodejs orders',
+                                resource_id: null,
+                                price: 19.99,
+                                url: null,
+                                image: null,
+                                exclude_from_automations: false,
+                                enabled: true,
+                                short_description: null,
+                                description: null,
+                                type: 'one-time',
+                                categories: [],
+                                variants: [],
+                            },
+                            ecommerce_product_variant_id: null,
+                            variant: '',
+                            quantity: 1,
+                            price: 19.99,
+                        },
+                    ],
+                },
+                total: 0,
+                status: 'complete',
+                stage: null,
+                created_at: '2026-10-30T11:48:24.000000Z',
+                updated_at: '2026-10-30T11:48:26.000000Z',
+                completed_at: null,
+                attribution: null,
+                created_at_date: '2026-10-30 11:48:24',
+                stripe_payment_intent_id: null,
+            },
+        },
+    },
+}
