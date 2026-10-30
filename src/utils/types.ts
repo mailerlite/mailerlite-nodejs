@@ -79,6 +79,29 @@ export interface MetaLinks {
     active: boolean;
 }
 
+/** `prev` is null on the first page, `next` on the last. */
+export interface NullableLinks extends Omit<Links, "prev" | "next"> {
+    prev:   string | null;
+    next:   string | null;
+}
+
+export interface NullableMeta extends Omit<Meta, "from" | "to" | "links"> {
+    /** null when the page is empty */
+    from:   number | null;
+    /** null when the page is empty */
+    to:     number | null;
+    links:  Array<NullableMetaLink>;
+}
+
+export interface NullableMetaLink {
+    /** null for a disabled "Previous"/"Next" link and for the "..." separator */
+    url:    string | null;
+    label:  string;
+    /** null for a disabled "Previous"/"Next" link; omitted for the "..." separator */
+    page?:  number | null;
+    active: boolean;
+}
+
 export interface SubscriberObject {
     id:               string;
     email:            string;

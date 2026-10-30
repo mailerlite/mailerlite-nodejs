@@ -4,7 +4,7 @@ import {Links, Meta, Stats} from "../../utils/types.js";
 export interface CampaignsInterface {
     get:            (params: GetCampaignsParams)                                => Promise<AxiosResponse<ListCampaignsResponse>>;
     find:           (campaign_id: string)                                       => Promise<AxiosResponse<SingleCampaignResponse>>;
-    create:         (params: CreateUpdateCampaignParams)                        => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateCampaignParams>>;
+    create:         (params: CreateCampaignParams)                              => Promise<AxiosResponse<SingleCampaignResponse, CreateCampaignParams>>;
     update:         (campaign_id: string, params: CreateUpdateCampaignParams)   => Promise<AxiosResponse<SingleCampaignResponse, CreateUpdateCampaignParams>>;
     schedule:       (campaign_id: string, params: ScheduleCampaignParams)       => Promise<AxiosResponse<SingleCampaignResponse, ScheduleCampaignParams>>;
     cancel:         (campaign_id: string)                                       => Promise<AxiosResponse<SingleCampaignResponse>>;
@@ -73,6 +73,42 @@ export interface CreateUpdateCampaignParams {
             subject?:	    string;
         }
     }
+}
+
+interface CampaignEmailBaseParams {
+    subject:	        string;
+    from_name:	        string;
+    from:	            string;
+}
+
+/** An email of a campaign being created in the default editor. */
+export type DefaultEditorCampaignEmailParams = CampaignEmailBaseParams & {
+    content?:       string;
+    editor?:        never;
+    template_id?:   never;
+};
+
+/**
+ * An email of a campaign being created in the simple editor. `content` is not allowed:
+ * the email is edited afterwards with the emails module.
+ */
+export type SimpleEditorCampaignEmailParams = CampaignEmailBaseParams & {
+    /** Create the email in the simple editor. */
+    editor:         "simple";
+    /** Shared gallery simple-editor template ID. */
+    template_id?:   string;
+    content?:       never;
+};
+
+export type CreateCampaignEmailParams = DefaultEditorCampaignEmailParams | SimpleEditorCampaignEmailParams;
+
+/**
+ * Params for creating a campaign. All emails must use the same editor, so `emails` is either all
+ * default editor or all simple editor. The API also requires the same `template_id` on every email.
+ * `editor` and `template_id` can't be changed on update.
+ */
+export interface CreateCampaignParams extends Omit<CreateUpdateCampaignParams, "emails"> {
+    emails: Array<DefaultEditorCampaignEmailParams> | Array<SimpleEditorCampaignEmailParams>;
 }
 
 export interface ScheduleCampaignParams {

@@ -42,8 +42,10 @@ function serializeQuery(params: object, prefix?: string): string {
     const queryParamsArray: string[] = Object.keys(params).flatMap((key) => {
         const value = params[key as keyof typeof params] as unknown;
 
+        // Unset params are omitted instead of sent as `key=undefined`; `null`
+        // would otherwise reach the recursive call below and throw.
         if (value === undefined || value === null)
-            return [];
+            return '';
 
         if (params.constructor === Array)
             key = `${prefix}[]`;
@@ -54,15 +56,15 @@ function serializeQuery(params: object, prefix?: string): string {
             return `${key}=${formatDate(value)}`;
         else if (typeof value === 'boolean')
             return `${key}=${value ? 1 : 0}`;
-        else if (Array.isArray(value) && prefix === 'filter')
-            return `${key}=${encodeURIComponent(value.join(','))}`;
         else if (typeof value === 'object')
             return serializeQuery(value, key);
         else
             return `${key}=${encodeURIComponent(String(value))}`;
     });
 
-    return queryParamsArray.flat(10).join('&');
+    // Drop empty entries from skipped keys and empty nested objects so they
+    // don't leave stray `&` separators.
+    return queryParamsArray.flat(10).filter(Boolean).join('&');
 }
 
 function formatDate(date: Date): string {
