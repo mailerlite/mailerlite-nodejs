@@ -25,3 +25,13 @@ export function validateId (id: string): void {
         throw new Error("ID must be of type string");
     }
 }
+
+// IDs go into the URL path as-is, so anything but digits (e.g. "1/html" or "../../subscribers/1") could reach another endpoint.
+// Encoding is not enough: the API decodes %2F.
+export function validateNumericId (id: string): void {
+    validateId(id);
+
+    if (!/^[0-9]+$/.test(id)) {
+        throw new Error("ID must contain only digits");
+    }
+}

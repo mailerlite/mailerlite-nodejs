@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { validateNumericId } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -42,7 +42,7 @@ export default class Emails implements EmailsInterface {
      */
     public find(email_id: string): Promise<AxiosResponse<SingleEmailDocumentResponse>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}`, {
             method: "GET"
@@ -58,7 +58,7 @@ export default class Emails implements EmailsInterface {
      */
     public getHtml(email_id: string): Promise<AxiosResponse<EmailHtmlResponse>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}/html`, {
             method: "GET"
@@ -75,8 +75,8 @@ export default class Emails implements EmailsInterface {
      */
     public findBlock(email_id: string, block_id: string): Promise<AxiosResponse<SingleEmailBlockResponse>> {
 
-        validateId(email_id);
-        validateId(block_id);
+        validateNumericId(email_id);
+        validateNumericId(block_id);
 
         return request(`/api/emails/${email_id}/blocks/${block_id}`, {
             method: "GET"
@@ -94,7 +94,7 @@ export default class Emails implements EmailsInterface {
      */
     public createBlock(email_id: string, requestBody: CreateEmailBlockParams, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailBlockResponse, CreateEmailBlockParams>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}/blocks`, {
             method: "POST",
@@ -115,8 +115,8 @@ export default class Emails implements EmailsInterface {
      */
     public updateBlock(email_id: string, block_id: string, requestBody: UpdateEmailBlockParams, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailBlockResponse, UpdateEmailBlockParams>> {
 
-        validateId(email_id);
-        validateId(block_id);
+        validateNumericId(email_id);
+        validateNumericId(block_id);
 
         return request(`/api/emails/${email_id}/blocks/${block_id}`, {
             method: "PATCH",
@@ -137,8 +137,8 @@ export default class Emails implements EmailsInterface {
      */
     public deleteBlock(email_id: string, block_id: string, requestBody: EmailEtagParams, options?: EmailWriteOptions): Promise<AxiosResponse<DeleteEmailBlockResponse, EmailEtagParams>> {
 
-        validateId(email_id);
-        validateId(block_id);
+        validateNumericId(email_id);
+        validateNumericId(block_id);
 
         return request(`/api/emails/${email_id}/blocks/${block_id}`, {
             method: "DELETE",
@@ -159,8 +159,8 @@ export default class Emails implements EmailsInterface {
      */
     public moveBlock(email_id: string, block_id: string, requestBody: MoveEmailBlockParams, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailBlockResponse, MoveEmailBlockParams>> {
 
-        validateId(email_id);
-        validateId(block_id);
+        validateNumericId(email_id);
+        validateNumericId(block_id);
 
         return request(`/api/emails/${email_id}/blocks/${block_id}/move`, {
             method: "POST",
@@ -194,7 +194,7 @@ export default class Emails implements EmailsInterface {
      */
     public updateSettings(email_id: string, requestBody: UpdateEmailSettingsParams, options?: EmailWriteOptions): Promise<AxiosResponse<UpdateEmailSettingsResponse, UpdateEmailSettingsParams>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}/settings`, {
             method: "PATCH",
@@ -213,7 +213,7 @@ export default class Emails implements EmailsInterface {
      */
     public validateSettings(email_id: string, requestBody: ValidateEmailSettingsParams): Promise<AxiosResponse<EmailValidationResponse, ValidateEmailSettingsParams>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}/settings/validate`, {
             method: "POST",
@@ -232,7 +232,7 @@ export default class Emails implements EmailsInterface {
      */
     public saveAsTemplate(email_id: string, requestBody: SaveEmailAsTemplateParams, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailTemplateResponse, SaveEmailAsTemplateParams>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}/templates`, {
             method: "POST",
@@ -251,7 +251,7 @@ export default class Emails implements EmailsInterface {
      */
     public getVersions(email_id: string, params?: GetEmailVersionsParams): Promise<AxiosResponse<ListEmailVersionsResponse>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}/versions`, {
             method: "GET",
@@ -269,7 +269,7 @@ export default class Emails implements EmailsInterface {
      */
     public createVersion(email_id: string, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailVersionResponse>> {
 
-        validateId(email_id);
+        validateNumericId(email_id);
 
         return request(`/api/emails/${email_id}/versions`, {
             method: "POST",
@@ -289,8 +289,8 @@ export default class Emails implements EmailsInterface {
      */
     public restoreVersion(email_id: string, version_id: string, requestBody: EmailEtagParams, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailDocumentResponse, EmailEtagParams>> {
 
-        validateId(email_id);
-        validateId(version_id);
+        validateNumericId(email_id);
+        validateNumericId(version_id);
 
         return request(`/api/emails/${email_id}/versions/${version_id}/restore`, {
             method: "POST",

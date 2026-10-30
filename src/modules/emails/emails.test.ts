@@ -409,6 +409,16 @@ describe("Emails", () => {
     });
 });
 
+describe("Emails ID validation", () => {
+
+    // Throws before any request, so no tapes are involved.
+    it("Reject IDs that are not only digits", () => {
+        expect(() => mailerlite.emails.find(`${emailId}/html`)).toThrow("ID must contain only digits");
+        expect(() => mailerlite.emails.findBlock(emailId, "1/../../123")).toThrow("ID must contain only digits");
+        expect(() => mailerlite.emails.restoreVersion(emailId, "1%2F2", { etag: "1" })).toThrow("ID must contain only digits");
+    });
+});
+
 describe("Emails validation", () => {
 
     // Only one validateBlock test: the tape is matched on the exact body, so another case would need its own
