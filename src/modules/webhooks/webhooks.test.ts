@@ -47,7 +47,7 @@ describe("Webhooks", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleWebhookResponse>()
 
             createdWebhookId = response.data.data.id;
@@ -63,7 +63,7 @@ describe("Webhooks", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleWebhookResponse>()
         } catch (error) {
             handleCatchedError(error);
@@ -84,7 +84,7 @@ describe("Webhooks", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleWebhookResponse>()
         } catch (error) {
             handleCatchedError(error);

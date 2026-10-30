@@ -31,16 +31,20 @@ MailerLite Node.js SDK (`@mailerlite/mailerlite-nodejs`) — TypeScript wrapper 
 
 - Tests run against a talkback proxy on `localhost:9090` (`src/utils/setup-teardown-hooks.ts`), replaying tapes from `tapes/`. Unrecorded requests return 404.
 - Env: `API_KEY` (required even in replay), `VERIFIED_EMAIL` (campaign tests). Never read `.env` — ask the user to provide the credentials.
-- Coverage: 49/51 endpoints.
 
 ### Recording new tapes
 
-In `setup-teardown-hooks.ts`:
-1. `rm -rf tapes`
-2. Set `record: talkback.Options.RecordMode.NEW`
-3. Comment out `fallbackMode`
-4. `npm run test` (hits the real API — needs a valid `API_KEY`)
-5. Revert steps 2–3 afterwards.
+Only add tapes for new requests — don't `rm -rf tapes`. In `NEW` mode, requests with a matching tape are replayed; only unmatched ones hit the real API and get recorded. New tapes are named by timestamp, so existing ones are never overwritten.
+
+1. `API_KEY` must belong to the production account (ask the user to put it in `.env`).
+2. In `setup-teardown-hooks.ts`: set `record: talkback.Options.RecordMode.NEW` and comment out `fallbackMode`.
+3. Run only the affected tests, e.g. `npx vitest run src/modules/<name>` (hits the real API).
+4. Revert step 2.
+5. Review `git status tapes/` before committing:
+   - keep only tapes for the new endpoints;
+   - every new tape must have a 2xx status — calls answered from old tapes (e.g. `campaigns.get`, `subscribers.createOrUpdate`) can hand new requests IDs that no longer exist, recording a 404;
+   - no `Authorization` header, tokens, real emails or personal names.
+6. `npm run test` in replay mode must pass.
 
 ## Release
 

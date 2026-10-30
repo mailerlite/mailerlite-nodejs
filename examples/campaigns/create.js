@@ -69,6 +69,19 @@ const campaignDataResend = {
   }
 };
 
+const campaignDataSimpleEditor = {
+  name: "Dummy campaign. Type: regular, simple editor",
+  type:	"regular",
+  emails:	[{
+    subject: "Dummy subject",
+    from_name: "Dummy Testerson",
+    from:	"dummy@mailerlite.io", // insert verified email
+    editor: "simple", // no content: the email is edited afterwards with the emails module
+  }],
+  groups: ['19293959921600205']
+};
+
+// swap in campaignDataAb, campaignDataResend or campaignDataSimpleEditor to create other campaign types
 mailerlite.campaigns.create(campaignData)
   .then(response => {
     console.log(response.data);

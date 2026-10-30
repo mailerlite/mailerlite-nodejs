@@ -4,6 +4,14 @@ import Tape from "talkback/tape";
 import path from "path";
 
 
+function campaignEditor(body: Buffer): string | undefined {
+    try {
+        return JSON.parse(body.toString())?.emails?.[0]?.editor;
+    } catch {
+        return undefined;
+    }
+}
+
 // Start talkback server before all tests
 export async function setup() {
     const opts = {
@@ -14,7 +22,20 @@ export async function setup() {
         port: 9090,
         path: "./tapes",
         allowHeaders: [], // all headers are identical, do not save or match by them
-        bodyMatcher: (_tape: Tape, req: Req) => !req.url.startsWith('/api/ecommerce/'),
+        // Bodies are not compared as a whole, see bodyMatcher: it is called for every request whose body differs from the tape's.
+        ignoreBody: false,
+        bodyMatcher: function bodyMatcher(tape: Tape, req: Req) {
+            // Matching is on method and URL only, except for campaign creation, where the editor is part of the match
+            // (a simple editor campaign must not replay the default editor tape), and e-commerce requests, where the whole body must match
+            // (each test file creates its own shop). Note talkback 4.2 has no `tapeMatcher` option.
+            if (req.method === "POST" && new URL(req.url, "http://localhost").pathname === "/api/campaigns") {
+                return campaignEditor(tape.req.body) === campaignEditor(req.body);
+            }
+            if (new URL(req.url, "http://localhost").pathname.startsWith("/api/ecommerce/")) {
+                return false;
+            }
+            return true;
+        },
         silent: true,
         // debug: true,
 
