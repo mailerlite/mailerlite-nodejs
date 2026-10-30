@@ -1,4 +1,4 @@
-import { describe, it, expect, expectTypeOf } from "vitest";
+import { describe, it, expect, expectTypeOf, beforeAll, afterAll } from "vitest";
 import "dotenv/config";
 import axios from "axios";
 import MailerLite from '../../index';
@@ -22,26 +22,58 @@ import {
     ValidateEmailSettingsParams,
     EmailValidationResponse,
     EmailVersionConflictError,
-    EmailBlockObject,
 } from "./emails.types";
 
 import { getRandomInt, handleCatchedError } from "../../utils/helpers";
 
 if (!process.env.API_KEY)
     throw "No MailerLite API key found in environment variables";
+if (!process.env.VERIFIED_EMAIL)
+    throw "No MailerLite verified email found in environment variables";
 
-// A draft campaign email built with the simple editor on the recording account.
-// Its ID is part of every recorded URL, so replay only works with the recorded value.
-const INLINE_EMAIL_ID = process.env.INLINE_EMAIL_ID || "202022897780262459";
+const MAILERLITE_VERIFIED_EMAIL = process.env.VERIFIED_EMAIL as string;
 
 const mailerlite = new MailerLite({
     api_key: process.env.API_KEY as string,
     base_path: "http://localhost:9090",
 });
 
+// The email under test is the blank email of a simple editor campaign created below, so no
+// pre-existing ID is needed. Both IDs come from tapes on replay, so they are identical on every run.
+let campaignId: string | undefined;
+let emailId: string;
+
+beforeAll(async () => {
+    try {
+        const response = await mailerlite.campaigns.create({
+            name: `Test emails module nodejs ${getRandomInt()}`,
+            type: "regular",
+            emails: [{
+                subject: "Dummy subject",
+                from_name: "Dummy Testerson",
+                from: MAILERLITE_VERIFIED_EMAIL,
+                editor: "simple",
+            }],
+        });
+
+        campaignId = response.data.data.id;
+        emailId = response.data.data.emails[0].id;
+    } catch (error) {
+        handleCatchedError(error);
+    }
+});
+
+afterAll(async () => {
+    if (campaignId) {
+        await mailerlite.campaigns.delete(campaignId);
+    }
+});
+
 /*
- * Tapes are matched on method + URL only (the body is ignored), so every call in this file
- * uses a unique method + URL. IDs and etags read from responses replay identically.
+ * Tapes under /api/emails/ are matched on method + URL + a deep-equal JSON body (see bodyMatcher in
+ * setup-teardown-hooks.ts), so two calls with the same method + URL need different bodies, otherwise
+ * they replay the same tape. IDs and etags read from responses replay identically.
+ * The campaign creation above is matched on its editor and name (digits ignored).
  */
 
 describe("Emails", () => {
@@ -49,26 +81,24 @@ describe("Emails", () => {
     // One etag covers the whole email: every write takes the latest one and returns the next.
     let etag: string;
     let createdBlockId: string;
+    // A second block, only used for the stale-etag test.
+    let staleTestBlockId: string;
     let createdVersionId: string;
-    // A pre-existing block (not the title, not the created one), used for the stale-etag test.
-    let otherBlock: EmailBlockObject | undefined;
 
     it("Find an email", async () => {
         try {
-            const response = await mailerlite.emails.find(INLINE_EMAIL_ID);
+            const response = await mailerlite.emails.find(emailId);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).toBe(INLINE_EMAIL_ID);
+            expect(response.data.data.id).toBe(emailId);
             expect(typeof response.data.etag).toBe("string");
             expect(Array.isArray(response.data.data.blocks)).toBeTruthy();
             expect(response.data.data.settings).toBeDefined();
             expectTypeOf(response.data).toEqualTypeOf<SingleEmailDocumentResponse>();
 
             etag = response.data.etag;
-            // Assumes the fixture email has at least one non-title block (e.g. a paragraph).
-            otherBlock = response.data.data.blocks.find((block) => block.type !== "title");
         } catch (error) {
             handleCatchedError(error);
         }
@@ -86,7 +116,7 @@ describe("Emails", () => {
         };
 
         try {
-            const response = await mailerlite.emails.createBlock(INLINE_EMAIL_ID, params, {
+            const response = await mailerlite.emails.createBlock(emailId, params, {
                 idempotencyKey: `sdk-test-create-block-${getRandomInt()}`,
             });
 
@@ -110,7 +140,7 @@ describe("Emails", () => {
 
     it("Find a block", async () => {
         try {
-            const response = await mailerlite.emails.findBlock(INLINE_EMAIL_ID, createdBlockId);
+            const response = await mailerlite.emails.findBlock(emailId, createdBlockId);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -135,7 +165,7 @@ describe("Emails", () => {
         };
 
         try {
-            const response = await mailerlite.emails.updateBlock(INLINE_EMAIL_ID, createdBlockId, params);
+            const response = await mailerlite.emails.updateBlock(emailId, createdBlockId, params);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -159,7 +189,7 @@ describe("Emails", () => {
         };
 
         try {
-            const response = await mailerlite.emails.moveBlock(INLINE_EMAIL_ID, createdBlockId, params);
+            const response = await mailerlite.emails.moveBlock(emailId, createdBlockId, params);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -177,6 +207,36 @@ describe("Emails", () => {
         }
     });
 
+    it("Create a second block", async () => {
+        // Only here for the stale-etag test at the end. Its text differs from the first block's, so
+        // this POST (same method + URL) has its own tape.
+        const params: CreateEmailBlockParams = {
+            etag,
+            type: "paragraph",
+            editor_content: {
+                content: [{ type: "text", text: "SDK test paragraph for stale etag" }],
+            },
+            placement: { position: "end" },
+        };
+
+        try {
+            const response = await mailerlite.emails.createBlock(emailId, params, {
+                idempotencyKey: `sdk-test-create-second-block-${getRandomInt()}`,
+            });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data.id).toBeTruthy();
+            expect(response.data.data.id).not.toBe(createdBlockId);
+            expect(typeof response.data.etag).toBe("string");
+            expectTypeOf(response.data).toEqualTypeOf<SingleEmailBlockResponse>();
+
+            staleTestBlockId = response.data.data.id;
+            etag = response.data.etag;
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
     it("Update email settings", async () => {
         const params: UpdateEmailSettingsParams = {
             etag,
@@ -184,7 +244,7 @@ describe("Emails", () => {
         };
 
         try {
-            const response = await mailerlite.emails.updateSettings(INLINE_EMAIL_ID, params);
+            const response = await mailerlite.emails.updateSettings(emailId, params);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -204,7 +264,7 @@ describe("Emails", () => {
         try {
             // Takes no etag and returns none. Assumes saving a version does not bump the email's
             // etag; if it does, the restore below gets a 409 and must re-read the email first.
-            const response = await mailerlite.emails.createVersion(INLINE_EMAIL_ID);
+            const response = await mailerlite.emails.createVersion(emailId);
 
             expect(response).not.toBeNull();
             // 201 when a version was saved, 200 when nothing changed since the last one.
@@ -228,7 +288,7 @@ describe("Emails", () => {
         };
 
         try {
-            const response = await mailerlite.emails.getVersions(INLINE_EMAIL_ID, params);
+            const response = await mailerlite.emails.getVersions(emailId, params);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -247,17 +307,18 @@ describe("Emails", () => {
         const params: EmailEtagParams = { etag };
 
         try {
-            // Restores the version saved above, which already contains the created block, so that
-            // block survives (blocks come back under their original IDs) and can be deleted next.
+            // Restores the version saved above, which already contains both created blocks, so they
+            // survive (blocks come back under their original IDs) and the first can be deleted next.
             // Assumes restoring the version the email is currently on is allowed (the API saves the
             // current state as a new version first) rather than refused as a no-op.
-            const response = await mailerlite.emails.restoreVersion(INLINE_EMAIL_ID, createdVersionId, params);
+            const response = await mailerlite.emails.restoreVersion(emailId, createdVersionId, params);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).toBe(INLINE_EMAIL_ID);
+            expect(response.data.data.id).toBe(emailId);
             expect(response.data.data.blocks.some((block) => block.id === createdBlockId)).toBeTruthy();
+            expect(response.data.data.blocks.some((block) => block.id === staleTestBlockId)).toBeTruthy();
             expect(typeof response.data.etag).toBe("string");
             expectTypeOf(response.data).toEqualTypeOf<SingleEmailDocumentResponse>();
 
@@ -271,7 +332,7 @@ describe("Emails", () => {
         const params: EmailEtagParams = { etag };
 
         try {
-            const response = await mailerlite.emails.deleteBlock(INLINE_EMAIL_ID, createdBlockId, params);
+            const response = await mailerlite.emails.deleteBlock(emailId, createdBlockId, params);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -287,7 +348,7 @@ describe("Emails", () => {
 
     it("Get email HTML", async () => {
         try {
-            const response = await mailerlite.emails.getHtml(INLINE_EMAIL_ID);
+            const response = await mailerlite.emails.getHtml(emailId);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -307,7 +368,7 @@ describe("Emails", () => {
         };
 
         try {
-            const response = await mailerlite.emails.saveAsTemplate(INLINE_EMAIL_ID, params);
+            const response = await mailerlite.emails.saveAsTemplate(emailId, params);
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
@@ -321,19 +382,17 @@ describe("Emails", () => {
     });
 
     it("Reject a block update with a stale etag", async () => {
-        // Targets a different block than the happy-path update so the PATCH URL (and tape) is unique.
-        expect(otherBlock, "The fixture email needs a non-title block").toBeDefined();
-        const block = otherBlock as EmailBlockObject;
-        expect(block.id).not.toBe(createdBlockId);
-
+        // Targets the second block, not the one from the happy-path update, so the PATCH URL (and tape) is unique.
         const params: UpdateEmailBlockParams = {
             etag: "1", // stale: the email has been written many times since
-            editor_content: block.editor_content,
+            editor_content: {
+                content: [{ type: "text", text: "SDK test paragraph for stale etag" }],
+            },
         };
 
         let caught: unknown;
         try {
-            await mailerlite.emails.updateBlock(INLINE_EMAIL_ID, block.id, params);
+            await mailerlite.emails.updateBlock(emailId, staleTestBlockId, params);
         } catch (error) {
             caught = error;
         }
@@ -352,8 +411,8 @@ describe("Emails", () => {
 
 describe("Emails validation", () => {
 
-    // Only one validateBlock test: tapes match on method + URL and ignore the body, so a second
-    // POST /api/emails/blocks/validate would replay this response. The invalid case is the more useful one.
+    // Only one validateBlock test: the tape is matched on the exact body, so another case would need its own
+    // recording of POST /api/emails/blocks/validate. The invalid case is the more useful one.
     it.concurrent("Validate an invalid block", async () => {
         const params: ValidateEmailBlockParams = {
             type: "paragraph",
@@ -387,7 +446,7 @@ describe("Emails validation", () => {
         };
 
         try {
-            const response = await mailerlite.emails.validateSettings(INLINE_EMAIL_ID, params);
+            const response = await mailerlite.emails.validateSettings(emailId, params);
 
             expect(response).not.toBeNull();
             // Not wrapped in `data`.
