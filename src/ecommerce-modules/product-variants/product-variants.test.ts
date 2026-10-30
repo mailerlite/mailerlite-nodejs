@@ -5,7 +5,7 @@ import {
     ListProductVariantsResponse,
     ProductWithVariantsResponse
 } from "./product-variants.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -24,14 +24,14 @@ describe("E-commerce product variants", () => {
 
     beforeAll(async () => {
         const response = await mailerlite.ecommerce.shops.create({
-            name: `Test shop nodejs ${getRandomInt()}`,
+            name: "Test shop nodejs product-variants",
             url: "https://shop.example.com",
             currency: "EUR"
         });
         shopId = response.data.data.id;
 
         const product = await mailerlite.ecommerce.products.create(shopId, {
-            name: `Test product nodejs ${getRandomInt()}`,
+            name: "Test product nodejs product-variants",
             price: 19.99
         });
         productId = product.data.data.id;
@@ -45,7 +45,7 @@ describe("E-commerce product variants", () => {
 
     it("Create product variants", async () => {
         try {
-            const response = await mailerlite.ecommerce.productVariants.create(shopId, productId, [{ name: "Large", attributes: { size: "L" }, resource_id: `variant-${getRandomInt()}` }]);
+            const response = await mailerlite.ecommerce.productVariants.create(shopId, productId, [{ name: "Large", attributes: { size: "L" }, resource_id: "variant-product-variants" }]);
 
             expect(response).not.toBeNull();
             expect(response.data.data.variants[0].id).toBeDefined();

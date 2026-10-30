@@ -1,7 +1,6 @@
 import { describe, it, expect, expectTypeOf } from "vitest";
 import { beforeAll, afterAll } from "vitest";
 import { AutomationEcommerceStatsResponse, AutomationEmailEcommerceStatsResponse, AutomationEcommerceOrdersResponse, AutomationEmailStep } from "./automations.types";
-import { getRandomInt } from "../../utils/helpers";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
@@ -95,7 +94,7 @@ describe("Automation e-commerce reports", () => {
     let emailId: string;
 
     beforeAll(async () => {
-        const response = await mailerlite.ecommerce.shops.create({ name: `Test shop nodejs ${getRandomInt()}`, url: "https://shop.example.com", currency: "EUR" });
+        const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs automations-reports", url: "https://shop.example.com", currency: "EUR" });
         shopId = response.data.data.id;
 
         const automations = await mailerlite.automations.get({ limit: 25 });

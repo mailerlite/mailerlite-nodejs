@@ -7,7 +7,7 @@ import {
     ImportProductsResponse,
     ImportOrdersResponse
 } from "./import.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -25,7 +25,7 @@ describe("E-commerce import", () => {
 
     beforeAll(async () => {
         const response = await mailerlite.ecommerce.shops.create({
-            name: `Test shop nodejs ${getRandomInt()}`,
+            name: "Test shop nodejs import",
             url: "https://shop.example.com",
             currency: "EUR"
         });
@@ -38,7 +38,7 @@ describe("E-commerce import", () => {
 
     it("Categories import", async () => {
         try {
-            const response = await mailerlite.ecommerce.import.importCategories(shopId, [{ name: `Test category nodejs ${getRandomInt()}` }]);
+            const response = await mailerlite.ecommerce.import.importCategories(shopId, [{ name: "Test category nodejs import" }]);
 
             expect(response).not.toBeNull();
             expect(Array.isArray(response.data.data)).toBeTruthy();
@@ -50,7 +50,7 @@ describe("E-commerce import", () => {
 
     it("Customers import", async () => {
         try {
-            const response = await mailerlite.ecommerce.import.importCustomers(shopId, [{ email: `customer-${getRandomInt()}@example.com` }]);
+            const response = await mailerlite.ecommerce.import.importCustomers(shopId, [{ email: "customer-import@example.com" }]);
 
             expect(response).not.toBeNull();
             expect(Array.isArray(response.data.data)).toBeTruthy();
@@ -62,7 +62,7 @@ describe("E-commerce import", () => {
 
     it("Products import", async () => {
         try {
-            const response = await mailerlite.ecommerce.import.importProducts(shopId, [{ name: `Test product nodejs ${getRandomInt()}`, price: 19.99 }]);
+            const response = await mailerlite.ecommerce.import.importProducts(shopId, [{ name: "Test product nodejs import", price: 19.99 }]);
 
             expect(response).not.toBeNull();
             expect(Array.isArray(response.data.data)).toBeTruthy();
@@ -74,10 +74,10 @@ describe("E-commerce import", () => {
 
     it("Orders import", async () => {
         try {
-            const products = await mailerlite.ecommerce.import.importProducts(shopId, [{ name: `Test product nodejs ${getRandomInt()}`, price: 19.99 }]);
+            const products = await mailerlite.ecommerce.import.importProducts(shopId, [{ name: "Test product nodejs import orders", price: 19.99 }]);
             const response = await mailerlite.ecommerce.import.importOrders(shopId, {
                 orders: [{
-                    customer: { email: `customer-${getRandomInt()}@example.com`, create_subscriber: false },
+                    customer: { email: "customer-import@example.com", create_subscriber: false },
                     cart: { items: [{ ecommerce_product_id: products.data.data[0].id, quantity: 1 }] }
                 }]
             });

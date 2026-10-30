@@ -6,7 +6,7 @@ import {
     SingleShopResponse,
     ShopStatsResponse
 } from "./shops.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -24,7 +24,7 @@ describe("E-commerce shops", () => {
 
     it("Create a shop", async () => {
         try {
-            const response = await mailerlite.ecommerce.shops.create({ name: `Test shop nodejs ${getRandomInt()}`, url: "https://shop.example.com", currency: "EUR" });
+            const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs shops", url: "https://shop.example.com", currency: "EUR" });
 
             expect(response).not.toBeNull();
             expect(response.data.data.id).toBeDefined();
@@ -62,7 +62,7 @@ describe("E-commerce shops", () => {
 
     it("Update a shop", async () => {
         try {
-            const response = await mailerlite.ecommerce.shops.update(createdShopId, { name: `Test shop nodejs updated ${getRandomInt()}` });
+            const response = await mailerlite.ecommerce.shops.update(createdShopId, { name: "Test shop nodejs updated shops" });
 
             expect(response).not.toBeNull();
             expect(response.data.data).toBeDefined();

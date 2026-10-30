@@ -5,7 +5,7 @@ import {
     ListCartsResponse,
     SingleCartResponse
 } from "./carts.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -25,20 +25,20 @@ describe("E-commerce carts", () => {
 
     beforeAll(async () => {
         const response = await mailerlite.ecommerce.shops.create({
-            name: `Test shop nodejs ${getRandomInt()}`,
+            name: "Test shop nodejs carts",
             url: "https://shop.example.com",
             currency: "EUR"
         });
         shopId = response.data.data.id;
 
         const product = await mailerlite.ecommerce.products.create(shopId, {
-            name: `Test product nodejs ${getRandomInt()}`,
+            name: "Test product nodejs carts",
             price: 19.99
         });
         productId = product.data.data.id;
 
         const order = await mailerlite.ecommerce.orders.create(shopId, {
-            customer: { email: `customer-${getRandomInt()}@example.com`, create_subscriber: false },
+            customer: { email: "customer-carts@example.com", create_subscriber: false },
             cart: { items: [{ ecommerce_product_id: productId, quantity: 1, price: 19.99 }] }
         });
         cartId = order.data.data.cart.id;

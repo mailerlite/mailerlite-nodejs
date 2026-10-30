@@ -5,7 +5,7 @@ import {
     ListCategoryProductsResponse,
     CategoryProductResponse
 } from "./categories-products.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -25,19 +25,19 @@ describe("E-commerce categories products", () => {
 
     beforeAll(async () => {
         const response = await mailerlite.ecommerce.shops.create({
-            name: `Test shop nodejs ${getRandomInt()}`,
+            name: "Test shop nodejs categories-products",
             url: "https://shop.example.com",
             currency: "EUR"
         });
         shopId = response.data.data.id;
 
         const product = await mailerlite.ecommerce.products.create(shopId, {
-            name: `Test product nodejs ${getRandomInt()}`,
+            name: "Test product nodejs categories-products",
             price: 19.99
         });
         productId = product.data.data.id;
 
-        const category = await mailerlite.ecommerce.categories.create(shopId, { name: `Test category nodejs ${getRandomInt()}` });
+        const category = await mailerlite.ecommerce.categories.create(shopId, { name: "Test category nodejs categories-products" });
         categoryId = category.data.data.id;
     });
 

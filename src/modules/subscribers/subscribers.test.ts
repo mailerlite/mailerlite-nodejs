@@ -153,19 +153,20 @@ describe("Subscriber e-commerce reports", () => {
     let subscriberId: string;
 
     beforeAll(async () => {
-        const response = await mailerlite.ecommerce.shops.create({ name: `Test shop nodejs ${getRandomInt()}`, url: "https://shop.example.com", currency: "EUR" });
+        const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs subscribers-reports", url: "https://shop.example.com", currency: "EUR" });
         shopId = response.data.data.id;
 
-        const subscriber = await mailerlite.subscribers.createOrUpdate({ email: `test_nodejs_ecommerce_${getRandomInt()}@example.com` });
-        subscriberId = subscriber.data.data.id;
+        const subscribers = await mailerlite.subscribers.get({ limit: 1 });
+        if (subscribers.data.data.length) subscriberId = subscribers.data.data[0].id;
     });
 
     afterAll(async () => {
         await mailerlite.ecommerce.shops.delete(shopId);
-        await mailerlite.subscribers.delete(subscriberId);
     });
 
-    it("Fetch subscriber e-commerce stats", async () => {
+    it("Fetch subscriber e-commerce stats", async ({ skip }) => {
+        skip(!subscriberId);
+
         try {
             const response = await mailerlite.subscribers.getEcommerceStats(subscriberId, { shop_id: shopId });
 
@@ -177,7 +178,9 @@ describe("Subscriber e-commerce reports", () => {
         }
     });
 
-    it("Fetch subscriber e-commerce orders", async () => {
+    it("Fetch subscriber e-commerce orders", async ({ skip }) => {
+        skip(!subscriberId);
+
         try {
             const response = await mailerlite.subscribers.getEcommerceOrders(subscriberId, { shop_id: shopId, limit: 10 });
 

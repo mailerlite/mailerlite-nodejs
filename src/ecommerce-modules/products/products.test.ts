@@ -5,7 +5,7 @@ import {
     ListProductsResponse,
     SingleProductResponse
 } from "./products.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -23,7 +23,7 @@ describe("E-commerce products", () => {
 
     beforeAll(async () => {
         const response = await mailerlite.ecommerce.shops.create({
-            name: `Test shop nodejs ${getRandomInt()}`,
+            name: "Test shop nodejs products",
             url: "https://shop.example.com",
             currency: "EUR"
         });
@@ -38,7 +38,7 @@ describe("E-commerce products", () => {
 
     it("Create a product", async () => {
         try {
-            const response = await mailerlite.ecommerce.products.create(shopId, { name: `Test product nodejs ${getRandomInt()}`, price: 19.99 });
+            const response = await mailerlite.ecommerce.products.create(shopId, { name: "Test product nodejs products", price: 19.99 });
 
             expect(response).not.toBeNull();
             expect(response.data.data.id).toBeDefined();

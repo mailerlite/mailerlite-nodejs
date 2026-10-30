@@ -14,7 +14,7 @@ export async function setup() {
         port: 9090,
         path: "./tapes",
         allowHeaders: [], // all headers are identical, do not save or match by them
-        ignoreBody: true,
+        bodyMatcher: (_tape: Tape, req: Req) => !req.url.startsWith('/api/ecommerce/'),
         silent: true,
         // debug: true,
 

@@ -5,7 +5,7 @@ import {
     ListCategoriesResponse,
     SingleCategoryResponse
 } from "./categories.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -23,7 +23,7 @@ describe("E-commerce categories", () => {
 
     beforeAll(async () => {
         const response = await mailerlite.ecommerce.shops.create({
-            name: `Test shop nodejs ${getRandomInt()}`,
+            name: "Test shop nodejs categories",
             url: "https://shop.example.com",
             currency: "EUR"
         });
@@ -38,7 +38,7 @@ describe("E-commerce categories", () => {
 
     it("Create a category", async () => {
         try {
-            const response = await mailerlite.ecommerce.categories.create(shopId, { name: `Test category nodejs ${getRandomInt()}` });
+            const response = await mailerlite.ecommerce.categories.create(shopId, { name: "Test category nodejs categories" });
 
             expect(response).not.toBeNull();
             expect(response.data.data.id).toBeDefined();
@@ -76,7 +76,7 @@ describe("E-commerce categories", () => {
 
     it("Update a category", async () => {
         try {
-            const response = await mailerlite.ecommerce.categories.update(shopId, categoryId, { name: `Test category nodejs updated ${getRandomInt()}` });
+            const response = await mailerlite.ecommerce.categories.update(shopId, categoryId, { name: "Test category nodejs updated categories" });
 
             expect(response).not.toBeNull();
             expect(response.data.data).toBeDefined();

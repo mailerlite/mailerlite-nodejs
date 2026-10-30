@@ -183,7 +183,7 @@ describe("Campaign e-commerce reports", () => {
     let campaignId: string;
 
     beforeAll(async () => {
-        const response = await mailerlite.ecommerce.shops.create({ name: `Test shop nodejs ${getRandomInt()}`, url: "https://shop.example.com", currency: "EUR" });
+        const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs campaigns-reports", url: "https://shop.example.com", currency: "EUR" });
         shopId = response.data.data.id;
 
         const campaigns = await mailerlite.campaigns.get({ filter: { status: "sent" }, limit: 1 });

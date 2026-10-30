@@ -5,7 +5,7 @@ import {
     ListCustomersResponse,
     SingleCustomerResponse
 } from "./customers.types";
-import {getRandomInt, handleCatchedError} from "../../utils/helpers";
+import {handleCatchedError} from "../../utils/helpers";
 
 const MAILERLITE_API_KEY = process.env.API_KEY as string;
 
@@ -23,7 +23,7 @@ describe("E-commerce customers", () => {
 
     beforeAll(async () => {
         const response = await mailerlite.ecommerce.shops.create({
-            name: `Test shop nodejs ${getRandomInt()}`,
+            name: "Test shop nodejs customers",
             url: "https://shop.example.com",
             currency: "EUR"
         });
@@ -35,7 +35,7 @@ describe("E-commerce customers", () => {
     });
 
     let customerId: string;
-    const email = `customer-${getRandomInt()}@example.com`;
+    const email = "customer-customers@example.com";
 
     it("Create a customer", async () => {
         try {
