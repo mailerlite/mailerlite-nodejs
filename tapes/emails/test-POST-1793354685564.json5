@@ -1,0 +1,82 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:45.361Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202747081514812805/blocks/243657067/move',
+        method: 'POST',
+        body: 'ewogICJldGFnIjogIjMiLAogICJwbGFjZW1lbnQiOiB7CiAgICAicG9zaXRpb24iOiAic3RhcnQiCiAgfQp9',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:45 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '114',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '97',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52998ff8b4aa14c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '243657067',
+                type: 'paragraph',
+                editor_content: {
+                    content: [
+                        {
+                            text: 'SDK test paragraph updated',
+                            type: 'text',
+                        },
+                    ],
+                },
+                placement: {
+                    after: null,
+                    before: '243657062',
+                },
+            },
+            etag: '4',
+        },
+    },
+}

@@ -1,0 +1,71 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:47.465Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202747081514812805/settings/validate',
+        method: 'POST',
+        body: 'ewogICJicmFuZCI6IHsKICAgICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmZmZmZmYiCiAgfQp9',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:47 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '103',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '147',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a529990cca49bc1c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            valid: true,
+            errors: {},
+            schema: {
+                version: '2.83.4',
+                hash: '58535f428316b8c37786b635a2efc094',
+            },
+        },
+    },
+}
