@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -8,13 +8,16 @@ import { GetCampaignsParams, ListCampaignsResponse, CampaignStats } from '../cam
 import { FormTypes, GetFormsParams, ListFormsResponse } from "../forms/forms.types.js";
 import { FormsSubscribersParams } from "./stats.types.js";
 import { ListSubscribersResponse } from "../subscribers/subscribers.types.js";
+import Automation from "../automations/automations.module.js";
 import { AutomationStats, AutomationSubsParams, AutomationSubsResponse, GetAutomationsParams, ListAutomationsResponse } from "../automations/automations.types.js";
 
 export default class Statistics implements StatsInterface {
     private config: Config;
+    private automations: Automation;
 
     constructor(config: Config) {
         this.config = config;
+        this.automations = new Automation(config);
     }
 
     /**
@@ -39,10 +42,7 @@ export default class Statistics implements StatsInterface {
      * @campaign_id {String} - Campaign ID
      */
     public async getSentCampaignStats(campaign_id: string): Promise<CampaignStats | AxiosResponse> {
-
-        validateId(campaign_id);
-
-        const response = await request(`/api/campaigns/${campaign_id}`, {
+        const response = await request(`/api/campaigns/${pathSegment(campaign_id)}`, {
             method: "GET"
         }, this.config);
 
@@ -64,10 +64,7 @@ export default class Statistics implements StatsInterface {
      * @requestBody {Object} - Subscriber data for create or update
      */
     public async getSentCampaignSubscribers(campaign_id: string, requestBody: CampaignSubscribersActivityParams): Promise<AxiosResponse<CampaignSubscribersActivityResponse, CampaignSubscribersActivityParams>> {
-
-        validateId(campaign_id);
-
-        return request(`/api/campaigns/${campaign_id}/reports/subscriber-activity`, {
+        return request(`/api/campaigns/${pathSegment(campaign_id)}/reports/subscriber-activity`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -138,10 +135,7 @@ export default class Statistics implements StatsInterface {
      * @automation_id {String} - Automation ID
      */
     public async getAutomationStats(automation_id: string): Promise<AutomationStats | AxiosResponse> {
-
-        validateId(automation_id);
-
-        const response = await request(`/api/automations/${automation_id}`, {
+        const response = await request(`/api/automations/${pathSegment(automation_id)}`, {
             method: "GET"
         }, this.config);
 
@@ -161,12 +155,6 @@ export default class Statistics implements StatsInterface {
      * @params {Object} - List automation subscribers params
      */
     public getAutomationSubscribers(automation_id: string, params: AutomationSubsParams): Promise<AxiosResponse<AutomationSubsResponse>> {
-
-        validateId(automation_id);
-
-        return request(`/api/automations/${automation_id}/activity`, {
-            method: "GET",
-            params: params
-        }, this.config);
+        return this.automations.getAutomationSubscribers(automation_id, params);
     }
 };

@@ -21,6 +21,21 @@ import { FieldsInterface } from "./modules/fields/fields.types.js";
 import Automation from './modules/automations/automations.module.js';
 import { AutomationsInterface } from "./modules/automations/automations.types.js";
 
+import AutomationTrigger from './modules/automation-triggers/automation-triggers.module.js';
+import { AutomationTriggersInterface } from "./modules/automation-triggers/automation-triggers.types.js";
+
+import AutomationStep from './modules/automation-steps/automation-steps.module.js';
+import { AutomationStepsInterface } from "./modules/automation-steps/automation-steps.types.js";
+
+import AutomationEmail from './modules/automation-emails/automation-emails.module.js';
+import { AutomationEmailsInterface } from "./modules/automation-emails/automation-emails.types.js";
+
+import AutomationTemplate from './modules/automation-templates/automation-templates.module.js';
+import { AutomationTemplatesInterface } from "./modules/automation-templates/automation-templates.types.js";
+
+import AutomationReport from './modules/automation-reports/automation-reports.module.js';
+import { AutomationReportsInterface } from "./modules/automation-reports/automation-reports.types.js";
+
 import Timezone from './modules/timezones/timezones.module.js';
 import { TimezonesInterface } from "./modules/timezones/timezones.types.js";
 
@@ -52,6 +67,11 @@ export default class MailerLite {
     public segments: SegmentsInterface;
     public fields: FieldsInterface;
     public automations: AutomationsInterface;
+    public automationTriggers: AutomationTriggersInterface;
+    public automationSteps: AutomationStepsInterface;
+    public automationEmails: AutomationEmailsInterface;
+    public automationTemplates: AutomationTemplatesInterface;
+    public automationReports: AutomationReportsInterface;
     public timezones: TimezonesInterface;
     public languages: LanguagesInterface;
     public batches: BatchesInterface;
@@ -73,6 +93,11 @@ export default class MailerLite {
         this.segments = new Segment(this.config);
         this.fields = new Field(this.config);
         this.automations = new Automation(this.config);
+        this.automationTriggers = new AutomationTrigger(this.config);
+        this.automationSteps = new AutomationStep(this.config);
+        this.automationEmails = new AutomationEmail(this.config);
+        this.automationTemplates = new AutomationTemplate(this.config);
+        this.automationReports = new AutomationReport(this.config);
         this.timezones = new Timezone(this.config);
         this.languages = new Language(this.config);
         this.batches = new Batch(this.config);
@@ -90,6 +115,11 @@ export * from "./modules/groups/groups.types.js";
 export * from "./modules/segments/segments.types.js";
 export * from "./modules/fields/fields.types.js";
 export * from "./modules/automations/automations.types.js";
+export * from "./modules/automation-triggers/automation-triggers.types.js";
+export * from "./modules/automation-steps/automation-steps.types.js";
+export * from "./modules/automation-emails/automation-emails.types.js";
+export * from "./modules/automation-templates/automation-templates.types.js";
+export * from "./modules/automation-reports/automation-reports.types.js";
 export * from "./modules/timezones/timezones.types.js";
 export * from "./modules/languages/languages.types.js";
 export * from "./modules/batches/batches.types.js";

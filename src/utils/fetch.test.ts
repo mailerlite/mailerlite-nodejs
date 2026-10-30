@@ -63,6 +63,24 @@ describe("request query serialization", () => {
         axiosMock.mockClear();
     });
 
+    const queryOf = async (params: object) => {
+        await request("/api/subscribers", { method: "GET", params }, config);
+        const passedConfig = axiosMock.mock.calls[0][0] as { url: string };
+        return passedConfig.url.split("?")[1];
+    };
+
+    it("sends booleans as 1 and 0", async () => {
+        expect(await queryOf({ with_fields: true, with_groups: false, filter: { enabled: true } })).toBe("with_fields=1&with_groups=0&filter[enabled]=1");
+    });
+
+    it("sends dates as the caller's local YYYY-MM-DD", async () => {
+        expect(await queryOf({ filter: { date_from: new Date(2026, 2, 4), date_to: new Date(2026, 11, 31, 23, 59) } })).toBe("filter[date_from]=2026-03-04&filter[date_to]=2026-12-31");
+    });
+
+    it("keeps the caller's key order", async () => {
+        expect(await queryOf({ filter: { form: "9", status: "active" }, sort: "signup_date" })).toBe("filter[form]=9&filter[status]=active&sort=signup_date");
+    });
+
     const urlFor = async (params: object) => {
         await request("/api/files", { method: "GET", params }, config);
         return (axiosMock.mock.calls[0][0] as { url: string }).url;
