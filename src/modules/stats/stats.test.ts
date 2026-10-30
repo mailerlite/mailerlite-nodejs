@@ -161,7 +161,7 @@ describe("Stats", () => {
 
         const params: GetAutomationsParams = {
             filter: {
-                enabled: true,
+                enabled: "true",
                 name: "nodejs"
             },
             limit: 10,
