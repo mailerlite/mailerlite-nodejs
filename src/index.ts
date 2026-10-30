@@ -36,7 +36,7 @@ import { WebhooksInterface } from "./modules/webhooks/webhooks.types.js";
 import Statistics from './modules/stats/stats.module.js';
 import { StatsInterface } from "./modules/stats/stats.types.js";
 
-import Emails from './modules/emails/emails.module.js';
+import Email from './modules/emails/emails.module.js';
 import { EmailsInterface } from "./modules/emails/emails.types.js";
 
 import BrandStyle from './modules/brand-styles/brand-styles.module.js';
@@ -82,7 +82,7 @@ export default class MailerLite {
         this.batches = new Batch(this.config);
         this.webhooks = new Webhook(this.config);
         this.stats = new Statistics(this.config);
-        this.emails = new Emails(this.config);
+        this.emails = new Email(this.config);
         this.brandStyles = new BrandStyle(this.config);
         this.files = new Files(this.config);
     }

@@ -26,7 +26,7 @@ import type {
     SingleEmailVersionResponse
 } from './emails.types.js';
 
-export default class Emails implements EmailsInterface {
+export default class Email implements EmailsInterface {
     private config: Config;
 
     constructor(config: Config) {
