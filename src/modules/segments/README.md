@@ -30,7 +30,7 @@ const params = {
     status: "active",
   },
   limit: 5,
-  after: "SUBSCRIBER_ID"
+  cursor: "NEXT_CURSOR" // meta.next_cursor from the previous page
 }
 
 mailerlite.segments.getSubscribers("SEGMENT_ID", params)

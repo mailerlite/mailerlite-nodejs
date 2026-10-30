@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import {SubscriberObject, Links, Meta} from "../../utils/types.js";
+import {SubscriberObject, Links, Meta, CursorMeta} from "../../utils/types.js";
 
 export interface SegmentsInterface {
     get:            (params: GetSegmentsParams)                                 => Promise<AxiosResponse<ListAllSegmentsResponse>>;
@@ -11,6 +11,8 @@ export interface SegmentsInterface {
 export interface GetSegmentsParams {
     limit?: number;
     page?:  number;
+    sort?:  "name" | "-name" | "total" | "-total" | "open_rate" | "-open_rate" | "click_rate" | "-click_rate" | "created_at" | "-created_at" | (string & {});
+    with_filter?: boolean;
 }
 
 export interface GetSegmentSubscribersParams {
@@ -30,11 +32,12 @@ export interface ListAllSegmentsResponse {
 
 export interface ListAllSubscribers {
     data: Array<SubscriberObject>;
+    links: Links;
     meta: {
         total: number;
         count: number;
         last:  number;
-    }
+    } & CursorMeta;
 }
 
 export interface SingleSegmentResponse {
@@ -42,7 +45,13 @@ export interface SingleSegmentResponse {
 }
 
 export interface UpdateSegmentParams {
-    name: string;
+    name?:      string;
+    filter?:    Array<Array<SegmentFilterRule>>;
+}
+
+export interface SegmentFilterRule {
+    operator:   string;
+    args:       Array<unknown>;
 }
 
 export interface SegmentObject {
@@ -58,5 +67,7 @@ export interface SegmentObject {
         string:     string;
     },
     created_at:     string;
+    filter?:        Array<Array<SegmentFilterRule>>;
+    automations_using_segment_count?: number;
 }
 

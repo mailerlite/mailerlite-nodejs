@@ -19,7 +19,7 @@ let params = {
     status: "active",
   },
   limit: 3,
-  // after: "subscriber_id"
+  // cursor: "next_cursor" // meta.next_cursor from the previous page
 }
 
 mailerlite.segments.getSubscribers(segment_id, params)
