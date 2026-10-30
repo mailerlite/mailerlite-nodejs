@@ -56,7 +56,7 @@ describe("Groups", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleGroupResponse>()
             createdGroupId = response.data.data.id;
         } catch (error) {
@@ -76,7 +76,7 @@ describe("Groups", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleGroupResponse>()
         } catch (error) {
             handleCatchedError(error);

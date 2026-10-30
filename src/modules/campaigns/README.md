@@ -77,6 +77,34 @@ mailerlite.campaigns.create(params)
   });
 ```
 
+#### Create a campaign with the simple editor
+
+Set `editor: "simple"` on every email and omit `content` to create the email in the simple editor. The email starts blank and is then edited with the emails module. Every email in the campaign must use the same `editor`. `editor` can't be changed after the campaign is created.
+
+```javascript
+const params = {
+  name: "Dummy simple editor campaign",
+  type: "regular",
+  emails: [{
+    subject: "Dummy subject",
+    from_name: "Dummy Testerson",
+    from: "dummy@mailerlite.io",
+    editor: "simple"
+  }],
+  groups: ['4243829086487936']
+}
+
+mailerlite.campaigns.create(params)
+  .then(response => {
+    console.log(response.data.data.emails[0].id); // ID of the email to edit
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+Advanced: to start from a shared gallery simple editor template instead of a blank email, also set `template_id` (a string) on every email. Own templates and other template types are rejected.
+
 ### Update campaign
 [Official Documentation](https://developers.mailerlite.com/docs/campaigns.html#update-campaign)
 
