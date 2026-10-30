@@ -42,6 +42,11 @@ function serializeQuery(params: object, prefix?: string): string {
     const queryParamsArray: string[] = Object.keys(params).map((key) => {
         const value = params[key as keyof typeof params];
 
+        // Unset params are omitted instead of sent as `key=undefined`; `null`
+        // would otherwise reach the recursive call below and throw.
+        if (value === undefined || value === null)
+            return '';
+
         if (params.constructor === Array)
             key = `${prefix}[]`;
         else if (params.constructor === Object)
@@ -53,5 +58,7 @@ function serializeQuery(params: object, prefix?: string): string {
             return `${key}=${encodeURIComponent(value)}`;
     });
 
-    return queryParamsArray.flat(10).join('&');
+    // Drop empty entries from skipped keys and empty nested objects so they
+    // don't leave stray `&` separators.
+    return queryParamsArray.flat(10).filter(Boolean).join('&');
 }
