@@ -1,11 +1,15 @@
 import { AxiosResponse } from "axios";
 import { Email } from "../campaigns/campaigns.types.js";
 import {Links, Meta, Stats} from "../../utils/types.js";
+import {EcommerceBestPerformingEmail, EcommerceReportOrderObject, EcommerceStats} from "../../utils/types.js";
 
 export interface AutomationsInterface {
     get:                        (params: GetAutomationsParams)                          => Promise<AxiosResponse<ListAutomationsResponse>>;
     find:                       (automation_id: string)                                 => Promise<AxiosResponse<SingleAutomationResponse>>;
     getAutomationSubscribers:   (automation_id: string, params: AutomationSubsParams)   => Promise<AxiosResponse<AutomationSubsResponse>>;
+    getEcommerceStats:          (automation_id: string, params: AutomationEcommerceStatsParams)                    => Promise<AxiosResponse<AutomationEcommerceStatsResponse>>;
+    getEmailEcommerceStats:     (automation_id: string, email_id: string, params: AutomationEcommerceStatsParams)  => Promise<AxiosResponse<AutomationEmailEcommerceStatsResponse>>;
+    getEcommerceOrders:         (automation_id: string, params: AutomationEcommerceOrdersParams)                   => Promise<AxiosResponse<AutomationEcommerceOrdersResponse>>;
 }
 
 export interface GetAutomationsParams {
@@ -180,4 +184,38 @@ export interface AutomationTriggers {
 
 export interface ListAutomationsResponseMeta extends Meta {
     total_unfiltered:   number
+}
+
+export interface AutomationEcommerceStatsParams {
+    shop_id?:       string;
+    start_date?:    string;
+    end_date?:      string;
+}
+
+export interface AutomationEcommerceOrdersParams {
+    time_frame:         'week' | 'month' | 'two_months' | 'three_months' | 'six_months' | 'year' | 'last_year' | 'all_time' | 'custom';
+    time_frame_start?:  string;
+    time_frame_end?:    string;
+    ecommerce_shop_id?: string;
+    limit?:             number;
+    page?:              number;
+}
+
+export interface AutomationEcommerceStatsResponse {
+    data: {
+        ecommerce:              EcommerceStats;
+        best_performing_email:  null | EcommerceBestPerformingEmail;
+    };
+}
+
+export interface AutomationEmailEcommerceStatsResponse {
+    data: {
+        ecommerce: EcommerceStats;
+    };
+}
+
+export interface AutomationEcommerceOrdersResponse {
+    data:   Array<EcommerceReportOrderObject>;
+    links:  Links;
+    meta:   Meta;
 }

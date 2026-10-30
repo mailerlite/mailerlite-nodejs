@@ -1,0 +1,82 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:25.440Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223295/products/import',
+        method: 'POST',
+        body: 'WwogIHsKICAgICJuYW1lIjogIlRlc3QgcHJvZHVjdCBub2RlanMgaW1wb3J0IG9yZGVycyIsCiAgICAicHJpY2UiOiAxOS45OQogIH0KXQ==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:25 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '72',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '108',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30dbcb98d424-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '202753605071013140',
+                    name: 'Test product nodejs import orders',
+                    resource_id: null,
+                    price: 19.99,
+                    url: null,
+                    image: null,
+                    exclude_from_automations: null,
+                    enabled: true,
+                    short_description: null,
+                    description: null,
+                    type: 'one-time',
+                    categories: [],
+                    variants: [],
+                },
+            ],
+        },
+    },
+}

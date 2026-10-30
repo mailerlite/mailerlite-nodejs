@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import {SubscriberObject, Links} from "../../utils/types.js";
+import {EcommerceReportOrderObject, EcommerceStats, Meta} from "../../utils/types.js";
 
 export interface SubscriberInterface {
     get:            (params: GetSubscribersParams)              => Promise<AxiosResponse<ListSubscribersResponse>>;
@@ -9,6 +10,8 @@ export interface SubscriberInterface {
     getCount:       ()                                          => Promise<AxiosResponse<CountSubscribersResponse>>;
     delete:         (subscriber_id: string)                     => Promise<AxiosResponse<null>>;
     forget:         (subscriber_id: string)                     => Promise<AxiosResponse<ForgetSubscriberResponse>>;
+    getEcommerceStats:  (subscriber_id: string, params: SubscriberEcommerceReportParams) => Promise<AxiosResponse<SubscriberEcommerceStatsResponse>>;
+    getEcommerceOrders: (subscriber_id: string, params: SubscriberEcommerceOrdersParams) => Promise<AxiosResponse<SubscriberEcommerceOrdersResponse>>;
 }
 
 export interface GetSubscribersParams {
@@ -64,4 +67,26 @@ export interface CountSubscribersResponse {
 export interface ForgetSubscriberResponse {
     message: string;
     data: SubscriberObject;
+}
+
+export interface SubscriberEcommerceReportParams {
+    shop_id: string;
+}
+
+export interface SubscriberEcommerceOrdersParams {
+    shop_id: string;
+    limit?:  number;
+    page?:   number;
+}
+
+export interface SubscriberEcommerceStatsResponse {
+    data: {
+        ecommerce: EcommerceStats;
+    };
+}
+
+export interface SubscriberEcommerceOrdersResponse {
+    data:   Array<EcommerceReportOrderObject>;
+    links:  Links;
+    meta:   Meta;
 }

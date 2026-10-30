@@ -1,0 +1,78 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:22.998Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops',
+        method: 'POST',
+        body: 'ewogICJuYW1lIjogIlRlc3Qgc2hvcCBub2RlanMgY2F0ZWdvcmllcy1wcm9kdWN0cyIsCiAgInVybCI6ICJodHRwczovL3Nob3AuZXhhbXBsZS5jb20iLAogICJjdXJyZW5jeSI6ICJFVVIiCn0=',
+    },
+    res: {
+        status: 201,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:24 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '118',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '82',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30cfbe8c934c-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '223293',
+                name: 'Test shop nodejs categories-products',
+                url: 'https://shop.example.com',
+                currency: 'EUR',
+                enabled: null,
+                enable_popups: null,
+                enable_resubscribe: null,
+                group: null,
+                created_at: '2026-10-30T11:48:23.000000Z',
+                updated_at: '2026-10-30T11:48:23.000000Z',
+                currency_sign: '€',
+            },
+        },
+    },
+}

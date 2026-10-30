@@ -1,0 +1,92 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:25.507Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223296/products/202753603815867765/variants/202753604238444125',
+        method: 'PUT',
+        body: 'ewogICJuYW1lIjogIkV4dHJhIGxhcmdlIiwKICAiYXR0cmlidXRlcyI6IHsKICAgICJzaXplIjogIlhMIgogIH0KfQ==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:25 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '70',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '96',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30dc0a6965e2-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '202753603815867765',
+                name: 'Test product nodejs product-variants',
+                resource_id: null,
+                price: 19.99,
+                url: null,
+                image: null,
+                exclude_from_automations: false,
+                enabled: true,
+                short_description: null,
+                description: null,
+                type: 'one-time',
+                categories: [],
+                variants: [
+                    {
+                        id: '202753604238444125',
+                        name: 'Extra large',
+                        attributes: {
+                            size: 'XL',
+                        },
+                        price: 0,
+                        price_type: null,
+                        resource_id: 'variant-product-variants',
+                        image_url: null,
+                    },
+                ],
+            },
+        },
+    },
+}

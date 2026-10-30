@@ -1,4 +1,6 @@
 import { describe, it, expect, expectTypeOf } from "vitest";
+import { beforeAll, afterAll } from "vitest";
+import { CampaignEcommerceStatsResponse, CampaignEcommerceOrdersResponse } from "./campaigns.types";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
@@ -226,3 +228,49 @@ describe("Campaigns", () => {
 
 });
 
+describe("Campaign e-commerce reports", () => {
+
+    let shopId: string;
+    let campaignId: string;
+
+    beforeAll(async () => {
+        const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs campaigns-reports", url: "https://shop.example.com", currency: "EUR" });
+        shopId = response.data.data.id;
+
+        const campaigns = await mailerlite.campaigns.get({ filter: { status: "sent" }, limit: 1 });
+        if (campaigns.data.data.length) campaignId = campaigns.data.data[0].id;
+    });
+
+    afterAll(async () => {
+        await mailerlite.ecommerce.shops.delete(shopId);
+    });
+
+    it("Get campaign e-commerce stats", async ({ skip }) => {
+        skip(!campaignId);
+
+        try {
+            const response = await mailerlite.campaigns.getEcommerceStats(campaignId, { shop_id: shopId });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<CampaignEcommerceStatsResponse>()
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
+    it("Get campaign e-commerce orders", async ({ skip }) => {
+        skip(!campaignId);
+
+        try {
+            const response = await mailerlite.campaigns.getEcommerceOrders(campaignId, { shop_id: shopId, limit: 10 });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<CampaignEcommerceOrdersResponse>()
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
+});

@@ -26,9 +26,13 @@ export async function setup() {
         ignoreBody: false,
         bodyMatcher: function bodyMatcher(tape: Tape, req: Req) {
             // Matching is on method and URL only, except for campaign creation, where the editor is part of the match
-            // (a simple editor campaign must not replay the default editor tape). Note talkback 4.2 has no `tapeMatcher` option.
+            // (a simple editor campaign must not replay the default editor tape), and e-commerce requests, where the whole body must match
+            // (each test file creates its own shop). Note talkback 4.2 has no `tapeMatcher` option.
             if (req.method === "POST" && new URL(req.url, "http://localhost").pathname === "/api/campaigns") {
                 return campaignEditor(tape.req.body) === campaignEditor(req.body);
+            }
+            if (new URL(req.url, "http://localhost").pathname.startsWith("/api/ecommerce/")) {
+                return false;
             }
             return true;
         },

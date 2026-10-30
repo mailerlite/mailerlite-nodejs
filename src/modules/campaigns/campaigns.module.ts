@@ -4,6 +4,7 @@ import request from '../../utils/fetch.js'
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
 import type { CampaignsInterface, GetCampaignsParams, ListCampaignsResponse, SingleCampaignResponse, CreateUpdateCampaignParams, CreateCampaignParams, ScheduleCampaignParams } from './campaigns.types.js';
+import type { CampaignEcommerceReportParams, CampaignEcommerceOrdersParams, CampaignEcommerceStatsResponse, CampaignEcommerceOrdersResponse } from './campaigns.types.js';
 
 export default class Campaign implements CampaignsInterface {
     private config: Config;
@@ -122,6 +123,42 @@ export default class Campaign implements CampaignsInterface {
 
         return request(`/api/campaigns/${campaign_id}`, {
             method: "DELETE"
+        }, this.config);
+    }
+
+    /**
+     * @description Get campaign e-commerce stats
+     *
+     * @see https://developers.mailerlite.com/api/campaigns#get-campaign-e-commerce-stats
+     *
+     * @campaign_id {String} - Campaign ID
+     * @params {Object} - Query parameters
+     */
+    public getEcommerceStats(campaign_id: string, params: CampaignEcommerceReportParams): Promise<AxiosResponse<CampaignEcommerceStatsResponse>> {
+
+        validateId(campaign_id);
+
+        return request(`/api/campaigns/${campaign_id}/reports/ecommerce`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description Get campaign e-commerce orders
+     *
+     * @see https://developers.mailerlite.com/api/campaigns#get-campaign-e-commerce-orders
+     *
+     * @campaign_id {String} - Campaign ID
+     * @params {Object} - Query parameters
+     */
+    public getEcommerceOrders(campaign_id: string, params: CampaignEcommerceOrdersParams): Promise<AxiosResponse<CampaignEcommerceOrdersResponse>> {
+
+        validateId(campaign_id);
+
+        return request(`/api/campaigns/${campaign_id}/reports/ecommerce/orders`, {
+            method: "GET",
+            params: params
         }, this.config);
     }
 };

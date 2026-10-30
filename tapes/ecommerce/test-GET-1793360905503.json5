@@ -1,0 +1,78 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:25.016Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223296/products/202753603815867765/variants',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:25 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '84',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '96',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30d8ee7b65e2-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '202753604238444125',
+                    name: 'Large',
+                    attributes: {
+                        size: 'L',
+                    },
+                    price: 0,
+                    price_type: null,
+                    resource_id: 'variant-product-variants',
+                    image_url: null,
+                },
+            ],
+        },
+    },
+}

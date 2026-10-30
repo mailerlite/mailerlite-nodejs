@@ -1,4 +1,6 @@
 import { describe, it, expect, expectTypeOf } from "vitest";
+import { beforeAll, afterAll } from "vitest";
+import { AutomationEcommerceStatsResponse, AutomationEmailEcommerceStatsResponse, AutomationEcommerceOrdersResponse, AutomationEmailStep } from "./automations.types";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
@@ -78,6 +80,72 @@ describe("Automations", () => {
             expect(response.data.data).toBeDefined();
             expect(Array.isArray(response.data.data)).toBeTruthy();
             expectTypeOf(response.data).toEqualTypeOf<AutomationSubsResponse>();
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
+});
+
+describe("Automation e-commerce reports", () => {
+
+    let shopId: string;
+    let automationId: string;
+    let emailId: string;
+
+    beforeAll(async () => {
+        const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs automations-reports", url: "https://shop.example.com", currency: "EUR" });
+        shopId = response.data.data.id;
+
+        const automations = await mailerlite.automations.get({ limit: 25 });
+        const automation = automations.data.data.find(automation => automation.steps.some(step => "email_id" in step));
+        if (automation) {
+            automationId = automation.id;
+            emailId = (automation.steps.find(step => "email_id" in step) as AutomationEmailStep).email_id;
+        }
+    }, 30000);
+
+    afterAll(async () => {
+        await mailerlite.ecommerce.shops.delete(shopId);
+    });
+
+    it("Get automation e-commerce stats", async ({ skip }) => {
+        skip(!automationId);
+
+        try {
+            const response = await mailerlite.automations.getEcommerceStats(automationId, { shop_id: shopId });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<AutomationEcommerceStatsResponse>()
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
+    it("Get automation email e-commerce stats", async ({ skip }) => {
+        skip(!automationId);
+
+        try {
+            const response = await mailerlite.automations.getEmailEcommerceStats(automationId, emailId, { shop_id: shopId });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<AutomationEmailEcommerceStatsResponse>()
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
+    it("Get automation e-commerce orders", async ({ skip }) => {
+        skip(!automationId);
+
+        try {
+            const response = await mailerlite.automations.getEcommerceOrders(automationId, { time_frame: "all_time", ecommerce_shop_id: shopId, limit: 10 });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<AutomationEcommerceOrdersResponse>()
         } catch (error) {
             handleCatchedError(error);
         }

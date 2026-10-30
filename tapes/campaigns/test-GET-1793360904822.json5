@@ -1,0 +1,791 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:24.175Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/campaigns?filter[status]=sent&limit=1',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:24 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '99',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '191',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30d46b9ac13d-CPT',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: [
+                {
+                    id: '202500164196238767',
+                    account_id: '2',
+                    name: 'Test name',
+                    type: 'regular',
+                    status: 'sent',
+                    missing_data: [],
+                    settings: {
+                        track_opens: true,
+                        use_google_analytics: false,
+                    },
+                    filter: [
+                        [
+                            {
+                                operator: 'Test operator',
+                                args: [
+                                    '46575694832993613',
+                                    '104095188210681086',
+                                ],
+                            },
+                            {
+                                operator: 'Test operator',
+                                args: [
+                                    '163813708647106386',
+                                    '163807387295155275',
+                                ],
+                            },
+                            {
+                                operator: 'Test operator',
+                                args: [
+                                    'Test args',
+                                    [
+                                        '163256764100248919',
+                                        '111267667175802633',
+                                    ],
+                                ],
+                            },
+                        ],
+                    ],
+                    filter_for_humans: [
+                        [
+                            'Test filter_for_humans',
+                            'Test filter_for_humans',
+                            'Test filter_for_humans',
+                        ],
+                    ],
+                    delivery_schedule: 'Test delivery_schedule',
+                    language_id: '4',
+                    language: {
+                        id: '4',
+                        shortcode: 'Test shortcode',
+                        iso639: 'Test iso639',
+                        name: 'Test name',
+                        direction: 'Test direction',
+                    },
+                    created_at: '2026-10-27 16:40:05',
+                    updated_at: '2026-10-30 11:48:15',
+                    scheduled_for: '2026-10-29 15:00:00',
+                    queued_at: '2026-10-29 15:00:23',
+                    started_at: '2026-10-29 15:01:21',
+                    finished_at: '2026-10-29 15:24:54',
+                    stopped_at: null,
+                    default_email_id: '202500164208821680',
+                    emails: [
+                        {
+                            id: '202500164208821680',
+                            account_id: '2',
+                            emailable_id: '202500164196238767',
+                            emailable_type: 'campaigns',
+                            type: 'builder',
+                            from: 'test@example.com',
+                            from_name: 'Test from_name',
+                            reply_to: 'test@example.com',
+                            name: null,
+                            subject: 'Test subject',
+                            plain_text: 'Test plain_text',
+                            screenshot_url: 'https://example.com',
+                            uses_new_builder: false,
+                            uses_landscape_screenshot: true,
+                            generate_screenshot_timestamp: null,
+                            is_building_content: false,
+                            preview_url: 'https://example.com',
+                            report_preview_url: 'https://example.com',
+                            created_at: '2026-10-27 16:40:05',
+                            updated_at: '2026-10-30 11:48:08',
+                            is_designed: true,
+                            language_id: 4,
+                            is_winner: false,
+                            stats: {
+                                sent: 394273,
+                                opens_count: 64864,
+                                open_rate: {
+                                    float: 0.1645154499547268,
+                                    string: '16.45%',
+                                },
+                                clicks_count: 2768,
+                                click_rate: {
+                                    float: 0.007020516241284592,
+                                    string: '0.7%',
+                                },
+                                unsubscribes_count: 748,
+                                unsubscribe_rate: {
+                                    float: 0.00189716262589627,
+                                    string: '0.19%',
+                                },
+                                spam_count: 3,
+                                spam_rate: {
+                                    float: 0.000007608941012952954,
+                                    string: '0%',
+                                },
+                                hard_bounces_count: 1455,
+                                hard_bounce_rate: {
+                                    float: 0.0036903363912821827,
+                                    string: '0.37%',
+                                },
+                                soft_bounces_count: 1241,
+                                soft_bounce_rate: {
+                                    float: 0.003147565265691539,
+                                    string: '0.31%',
+                                },
+                                deliveries_count: 392818,
+                                delivery_rate: {
+                                    float: 0.9963096636087179,
+                                    string: '99.63%',
+                                },
+                                forwards_count: 0,
+                                forward_rate: {
+                                    float: 0,
+                                    string: '0%',
+                                },
+                                social_interactions_count: 0,
+                                social_interaction_rate: {
+                                    float: 0,
+                                    string: '0%',
+                                },
+                                click_to_open_rate: {
+                                    float: 0.04267390231869758,
+                                    string: '4.27%',
+                                },
+                            },
+                            send_after: null,
+                            track_opens: true,
+                            uses_survey: false,
+                            uses_quiz: false,
+                            preheader: 'Test preheader',
+                        },
+                    ],
+                    used_in_automations: false,
+                    type_for_humans: 'Test type_for_humans',
+                    stats: {
+                        sent: 394273,
+                        opens_count: 64864,
+                        open_rate: {
+                            float: 0.16451544995473,
+                            string: '16.45%',
+                        },
+                        clicks_count: 2768,
+                        click_rate: {
+                            float: 0.0070205162412846,
+                            string: '0.7%',
+                        },
+                        unsubscribes_count: 748,
+                        unsubscribe_rate: {
+                            float: 0.0018971626258963,
+                            string: '0.19%',
+                        },
+                        spam_count: 3,
+                        spam_rate: {
+                            float: 0.000007608941012953,
+                            string: '0%',
+                        },
+                        hard_bounces_count: 1455,
+                        hard_bounce_rate: {
+                            float: 0.0036903363912822,
+                            string: '0.37%',
+                        },
+                        soft_bounces_count: 1241,
+                        soft_bounce_rate: {
+                            float: 0.0031475652656915,
+                            string: '0.31%',
+                        },
+                        deliveries_count: 392818,
+                        delivery_rate: {
+                            float: 0.9963096636087179,
+                            string: '99.63%',
+                        },
+                        forwards_count: 0,
+                        forward_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        social_interactions_count: 0,
+                        social_interaction_rate: {
+                            float: 0,
+                            string: '0%',
+                        },
+                        click_to_open_rate: {
+                            float: 0.04267390231869758,
+                            string: '4.27%',
+                        },
+                    },
+                    is_stopped: false,
+                    has_winner: null,
+                    winner_version_for_human: null,
+                    winner_sending_time_for_humans: null,
+                    winner_selected_manually_at: null,
+                    can: {
+                        update: true,
+                        delete: true,
+                        send: true,
+                        copy: true,
+                        resend: true,
+                    },
+                    uses_ecommerce: false,
+                    ecommerce_stats: {
+                        total_orders: 0,
+                        total_price: 'Test total_price',
+                        multi_currency: false,
+                    },
+                    uses_survey: false,
+                    is_smart_sending_index_option_finished: true,
+                    is_applied_for_smart_sending_index_option: true,
+                    warnings: [],
+                    initial_created_at: null,
+                    is_currently_sending_out: false,
+                    can_be_copied: true,
+                    has_basic_filter: true,
+                    basic_filter_for_humans: {
+                        included_groups: [],
+                        excluded_groups: [
+                            {
+                                id: 111267667175802640,
+                                account_id: 2,
+                                created_at: '2024-01-24T16:18:36.000000Z',
+                                updated_at: '2026-10-23T09:01:07.000000Z',
+                                deleted_at: null,
+                                name: 'Test name',
+                                active_count: 150,
+                                open_rate: 0.39368895567243,
+                                click_rate: 0.015777610818933,
+                                serial_no: 1608293,
+                                sent_count: 1331,
+                                opens_count: 524,
+                                clicks_count: 21,
+                                unsubscribed_count: 5,
+                                unconfirmed_count: 1,
+                                bounced_count: 11,
+                                junk_count: 0,
+                            },
+                            {
+                                id: 163256764100248930,
+                                account_id: 2,
+                                created_at: '2025-08-20T12:43:02.000000Z',
+                                updated_at: '2026-10-30T05:39:40.000000Z',
+                                deleted_at: null,
+                                name: 'Test name',
+                                active_count: 15059,
+                                open_rate: 0.49367015014317,
+                                click_rate: 0.036530476785706,
+                                serial_no: 3777409,
+                                sent_count: 206403,
+                                opens_count: 101895,
+                                clicks_count: 7540,
+                                unsubscribed_count: 711,
+                                unconfirmed_count: 0,
+                                bounced_count: 443,
+                                junk_count: 3,
+                            },
+                        ],
+                        included_segments: [
+                            {
+                                id: 46575694832993620,
+                                account_id: 2,
+                                created_at: '2022-02-09T14:47:23.000000Z',
+                                updated_at: '2026-10-30T11:44:40.000000Z',
+                                deleted_at: null,
+                                name: 'Test name',
+                                total: 400381,
+                                open_rate: 0.35143945424077,
+                                click_rate: 0.012542258888401,
+                                filter: [
+                                    [
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '297',
+                                                '1',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '307',
+                                                '1',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                    ],
+                                    [
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                                [
+                                                    '95603459948021713',
+                                                    '95933204514473771',
+                                                    '100367579215824536',
+                                                    '46558085670504297',
+                                                    '46558083247245159',
+                                                    '117500001240744982',
+                                                    '110015986186323341',
+                                                    '46759503285191785',
+                                                    '77088250721732147',
+                                                    '109434930847549064',
+                                                    '46558093067159407',
+                                                    '46558080818743134',
+                                                    '46558099105908596',
+                                                    '80809999001978383',
+                                                    '46558107566868347',
+                                                    '49642551076979773',
+                                                    '63779593572583031',
+                                                    '142966850417853589',
+                                                ],
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                    ],
+                                ],
+                                settings: [],
+                                serial_no: 133,
+                            },
+                            {
+                                id: 104095188210681090,
+                                account_id: 2,
+                                created_at: '2023-11-06T12:15:07.000000Z',
+                                updated_at: '2026-10-30T11:44:40.000000Z',
+                                deleted_at: null,
+                                name: 'Test name',
+                                total: 266316,
+                                open_rate: 0.33834242240754,
+                                click_rate: 0.011534417079483,
+                                filter: [
+                                    [
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                                [
+                                                    '101021188213442046',
+                                                    '146819090008245279',
+                                                    '104095170412152140',
+                                                    '168229752435377921',
+                                                ],
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '297',
+                                                '0',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '441',
+                                                'Test args',
+                                            ],
+                                        },
+                                    ],
+                                ],
+                                settings: [],
+                                serial_no: 203883,
+                            },
+                        ],
+                        excluded_segments: [
+                            {
+                                id: 163807387295155260,
+                                account_id: 2,
+                                created_at: '2025-08-26T14:34:58.000000Z',
+                                updated_at: '2026-10-30T11:44:45.000000Z',
+                                deleted_at: null,
+                                name: 'Test name',
+                                total: 140285,
+                                open_rate: 0.5015363529775,
+                                click_rate: 0.030101739439246,
+                                filter: [
+                                    [
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                                [
+                                                    '163167426665514516',
+                                                ],
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '589654',
+                                                '2025-08-19',
+                                            ],
+                                        },
+                                    ],
+                                ],
+                                settings: [],
+                                serial_no: 779004,
+                            },
+                            {
+                                id: 163813708647106400,
+                                account_id: 2,
+                                created_at: '2025-08-26T16:15:26.000000Z',
+                                updated_at: '2026-10-30T11:44:46.000000Z',
+                                deleted_at: null,
+                                name: 'Test name',
+                                total: 129912,
+                                open_rate: 0.49547139770584,
+                                click_rate: 0.029856067997946,
+                                filter: [
+                                    [
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                '297',
+                                                '1',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                                '2025-08-21',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                            ],
+                                        },
+                                    ],
+                                    [
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                                '2025-08-19',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                                '2025-08-20',
+                                            ],
+                                        },
+                                        {
+                                            operator: 'Test operator',
+                                            args: [
+                                                'Test args',
+                                            ],
+                                        },
+                                    ],
+                                ],
+                                settings: [],
+                                serial_no: 779128,
+                            },
+                        ],
+                        all_active_subscribers: false,
+                    },
+                    is_eligible_for_sending: true,
+                    needs_repair: false,
+                },
+            ],
+            links: {
+                first: 'https://connect.mailerlite.com/api/campaigns?page=1',
+                last: 'https://connect.mailerlite.com/api/campaigns?page=497',
+                prev: null,
+                next: 'https://connect.mailerlite.com/api/campaigns?page=2',
+            },
+            meta: {
+                current_page: 1,
+                from: 1,
+                last_page: 497,
+                links: [
+                    {
+                        url: null,
+                        label: '&laquo; Previous',
+                        page: null,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=1',
+                        label: '1',
+                        page: 1,
+                        active: true,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=2',
+                        label: '2',
+                        page: 2,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=3',
+                        label: '3',
+                        page: 3,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=4',
+                        label: '4',
+                        page: 4,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=5',
+                        label: '5',
+                        page: 5,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=6',
+                        label: '6',
+                        page: 6,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=7',
+                        label: '7',
+                        page: 7,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=8',
+                        label: '8',
+                        page: 8,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=9',
+                        label: '9',
+                        page: 9,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=10',
+                        label: '10',
+                        page: 10,
+                        active: false,
+                    },
+                    {
+                        url: null,
+                        label: '...',
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=496',
+                        label: '496',
+                        page: 496,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=497',
+                        label: '497',
+                        page: 497,
+                        active: false,
+                    },
+                    {
+                        url: 'https://connect.mailerlite.com/api/campaigns?page=2',
+                        label: 'Next &raquo;',
+                        page: 2,
+                        active: false,
+                    },
+                ],
+                path: 'https://connect.mailerlite.com/api/campaigns',
+                per_page: 1,
+                to: 1,
+                total: 497,
+                aggregations: {
+                    all: 539,
+                    draft: 42,
+                    ready: 0,
+                    sent: 497,
+                },
+            },
+        },
+    },
+}

@@ -1,0 +1,88 @@
+{
+    meta: {
+        createdAt: '2026-10-30T11:48:26.102Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/ecommerce/shops/223294/carts/202753604255221349/items/202753604657874936',
+        method: 'PUT',
+        body: 'ewogICJxdWFudGl0eSI6IDIKfQ==',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 11:48:27 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '47',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '104',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52a30e3aed2d424-LOS',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '202753604657874936',
+                resource_id: null,
+                product: {
+                    id: '202753603823207799',
+                    name: 'Test product nodejs cart-items',
+                    resource_id: null,
+                    price: 19.99,
+                    url: null,
+                    image: null,
+                    exclude_from_automations: false,
+                    enabled: true,
+                    short_description: null,
+                    description: null,
+                    type: 'one-time',
+                    categories: [],
+                    variants: [],
+                },
+                ecommerce_product_variant_id: null,
+                variant: '',
+                quantity: 2,
+                price: 0,
+            },
+        },
+    },
+}

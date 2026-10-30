@@ -1,4 +1,6 @@
 import { describe, it, expect, expectTypeOf } from "vitest";
+import { beforeAll, afterAll } from "vitest";
+import { SubscriberEcommerceStatsResponse, SubscriberEcommerceOrdersResponse } from "./subscribers.types";
 import "dotenv/config";
 import MailerLite from '../../index';
 import {
@@ -138,6 +140,53 @@ describe("Subscribers", () => {
 
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
+});
+
+describe("Subscriber e-commerce reports", () => {
+
+    let shopId: string;
+    let subscriberId: string;
+
+    beforeAll(async () => {
+        const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs subscribers-reports", url: "https://shop.example.com", currency: "EUR" });
+        shopId = response.data.data.id;
+
+        const subscribers = await mailerlite.subscribers.get({ limit: 1 });
+        if (subscribers.data.data.length) subscriberId = subscribers.data.data[0].id;
+    });
+
+    afterAll(async () => {
+        await mailerlite.ecommerce.shops.delete(shopId);
+    });
+
+    it("Fetch subscriber e-commerce stats", async ({ skip }) => {
+        skip(!subscriberId);
+
+        try {
+            const response = await mailerlite.subscribers.getEcommerceStats(subscriberId, { shop_id: shopId });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<SubscriberEcommerceStatsResponse>()
+        } catch (error) {
+            handleCatchedError(error);
+        }
+    });
+
+    it("Fetch subscriber e-commerce orders", async ({ skip }) => {
+        skip(!subscriberId);
+
+        try {
+            const response = await mailerlite.subscribers.getEcommerceOrders(subscriberId, { shop_id: shopId, limit: 10 });
+
+            expect(response).not.toBeNull();
+            expect(response.data.data).toBeDefined();
+            expectTypeOf(response.data).toEqualTypeOf<SubscriberEcommerceOrdersResponse>()
         } catch (error) {
             handleCatchedError(error);
         }
