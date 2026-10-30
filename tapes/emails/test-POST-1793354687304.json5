@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: '2026-10-28T11:08:57.080Z',
+        createdAt: '2026-10-30T10:04:47.142Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/emails/202022897780262459/templates',
+        url: '/api/emails/202747081514812805/templates',
         method: 'POST',
         body: 'ewogICJuYW1lIjogIlNESyB0ZXN0IHRlbXBsYXRlIgp9',
     },
@@ -14,7 +14,7 @@
         status: 201,
         headers: {
             date: [
-                'Wed, 28 Oct 2026 11:08:57 GMT',
+                'Fri, 30 Oct 2026 10:04:47 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -41,19 +41,19 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '108',
+                '106',
             ],
             'access-control-allow-origin': [
                 '*',
             ],
             'x-envoy-upstream-service-time': [
-                '120',
+                '107',
             ],
             'cf-cache-status': [
                 'DYNAMIC',
             ],
             'cf-ray': [
-                'a5197c48ceebe4d5-RIX',
+                'a529990aa909a14c-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -61,10 +61,10 @@
         },
         body: {
             data: {
-                id: '18107432',
+                id: '18146905',
                 name: 'SDK test template',
                 type: 'email',
-                created_at: '2026-10-28 11:08:57',
+                created_at: '2026-10-30 10:04:47',
             },
         },
     },

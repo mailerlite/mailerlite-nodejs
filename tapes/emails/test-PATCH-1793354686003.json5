@@ -1,20 +1,20 @@
 {
     meta: {
-        createdAt: '2026-10-28T11:08:55.701Z',
+        createdAt: '2026-10-30T10:04:45.838Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/emails/202022897780262459/settings',
+        url: '/api/emails/202747081514812805/settings',
         method: 'PATCH',
-        body: 'ewogICJldGFnIjogIjkiLAogICJicmFuZCI6IHsKICAgICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmZmZmZmYiCiAgfQp9',
+        body: 'ewogICJldGFnIjogIjUiLAogICJicmFuZCI6IHsKICAgICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmZmZmZmYiCiAgfQp9',
     },
     res: {
         status: 200,
         headers: {
             date: [
-                'Wed, 28 Oct 2026 11:08:55 GMT',
+                'Fri, 30 Oct 2026 10:04:46 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -41,19 +41,19 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '114',
+                '112',
             ],
             'access-control-allow-origin': [
                 '*',
             ],
             'x-envoy-upstream-service-time': [
-                '192',
+                '103',
             ],
             'cf-cache-status': [
                 'DYNAMIC',
             ],
             'cf-ray': [
-                'a5197c402c49e4d5-RIX',
+                'a529990288e1a14c-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -63,10 +63,10 @@
             data: {
                 brand: {
                     mode: 'custom',
-                    font_family: 'DM Sans, sans-serif',
+                    font_family: 'Inter, sans-serif',
                     background_color: '#ffffff',
-                    text_color: '#333333',
-                    border_color: '#e5e5e5',
+                    text_color: '#5D5D5D',
+                    border_color: '#15C7D2',
                 },
                 layout: {
                     width_mode: 'default',
@@ -74,11 +74,11 @@
                 },
                 typography: {
                     link: {
-                        color: '#ef4444',
+                        color: '#22c55e',
                     },
                     heading: {
-                        font_family: 'Merriweather, serif',
-                        font_weight: '700',
+                        font_family: 'Inter, sans-serif',
+                        font_weight: '600',
                         line_height: '150%',
                         letter_spacing: '0',
                         h1: {
@@ -95,7 +95,7 @@
                         },
                     },
                     paragraph: {
-                        font_family: 'DM Sans, sans-serif',
+                        font_family: 'Inter, sans-serif',
                         font_weight: '400',
                         line_height: '150%',
                         letter_spacing: '0',
@@ -106,10 +106,10 @@
                     },
                 },
                 button: {
-                    font_family: 'DM Sans, sans-serif',
-                    font_weight: '600',
-                    letter_spacing: '0.025',
-                    background_color: '#ef4444',
+                    font_family: 'Inter, sans-serif',
+                    font_weight: '500',
+                    letter_spacing: '0',
+                    background_color: '#22c55e',
                     text_color: '#ffffff',
                     border_radius: '8',
                 },
@@ -120,7 +120,7 @@
                             content: [
                                 {
                                     type: 'text',
-                                    text: 'Test account',
+                                    text: 'Design squad',
                                     marks: [
                                         {
                                             type: 'bold',
@@ -150,25 +150,12 @@
                             ],
                         },
                     },
-                    unsubscribe_text: 'ML test account unsubscribe link text',
-                    preferences_text: 'Custom preference center link text',
-                    social_links: [
-                        {
-                            url: 'https://github.com/mailerlite/groot',
-                            type: 'github',
-                            label: 'github',
-                            link_id: 101,
-                        },
-                        {
-                            url: 'https://facebook.com/mailerlite',
-                            type: 'facebook',
-                            label: 'facebook',
-                            link_id: 102,
-                        },
-                    ],
+                    unsubscribe_text: 'Unsubscribe',
+                    preferences_text: 'Update your preferences',
+                    social_links: [],
                 },
             },
-            etag: '10',
+            etag: '6',
         },
     },
 }

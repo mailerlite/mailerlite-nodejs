@@ -1,0 +1,69 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:46.840Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202747081514812805/html',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:47 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '107',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '187',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a5299908c8d2a14c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                html: '<!DOCTYPE html>\n<html xmlns="http://www.w3.org/1999/xhtml" lang="en" style="height: 100%;">\n  <head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <meta name="csrf-token" content>\n    \n  <link rel="stylesheet" type="text/css" href="https://assets.mlcdn.com/fonts-v2.css?version=1793354687012">\n<style type="text/css">\n* { margin: 0; padding: 0; box-sizing: border-box; }\n\n        img { outline: none; text-decoration: none; display: block; }\n        a img { border: none; }\n\n        a[href^=&quot;tel&quot;], a[href^=&quot;sms&quot;] { text-decoration: none; pointer-events: none; cursor: default; }\n@import url(https://assets.mlcdn.com/fonts-v2.css?version=1793354687012);\n\n\n        @media (max-width: 767px) {\n            #ml-preview-wrapper.ml-site h1.ml-content-heading { font-size: 24px; }\n            #ml-preview-wrapper.ml-site h2.ml-content-heading { font-size: 24px; }\n            #ml-preview-wrapper.ml-site h3.ml-content-heading { font-size: 20px; }\n            #ml-preview-wrapper.ml-site h4.ml-content-heading { font-size: 18px; }\n            #ml-preview-wrapper.ml-site p.ml-p-1 { font-size: 16px; }\n            #ml-preview-wrapper.ml-site p.ml-p-2 { font-size: 14px; }\n            #ml-preview-wrapper.ml-site p.ml-p-3 { font-size: 12px; }\n        }\n</style>\n</head>\n  <body style="min-height: 100%; margin: 0; background-color: #ffffff;">\n    <div id="app" style="height: 100%;"><div class="ml-nbx" data-version="2.83.4" style="height: 100%;"><!----><!----><table id="ml-preview-wrapper" class="ml-email ml-site" width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="font-family: \'Inter\', sans-serif, \'Arial\', \'Helvetica\', sans-serif; color: #5D5D5D; font-size: 16px; background-color: #ffffff;"><tbody><tr><td align="center" valign="top"><!--[--><!--]--><!--[--><!--]--><table width="100%" style="max-width:640px;" role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tbody><tr><td class="py-6 px-4" style="padding-left: 16px; padding-right: 16px; padding-top: 24px; padding-bottom: 24px;"><!--[--><!--[--><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="ml-email-text-table ml-inline-email-node w-full" style="width: 100%;"><tbody><tr><td dir="ltr" style="padding-top: 12px;"><p dir="ltr" class="ml-p ml-p-1" style="margin-top: 0; font-family: \'Inter\', sans-serif, \'Arial\', \'Helvetica\', sans-serif; font-weight: 400; line-height: 150%; letter-spacing: 0px; font-size: 16px; color: #333333; margin-bottom: 4px; text-align: left;"></p></td></tr></tbody></table><!--]--><!--[--><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="w-full ml-email-divider-table ml-inline-email-node" style="width: 100%;"><tbody><tr><td align="center" style="padding-top: 12px;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tbody><tr><td height="1" style="padding-top: 12px; border-top: 1px solid #15C7D2; line-height: 0; font-size: 0;"></td></tr></tbody></table></td></tr></tbody></table><!--]--><!--[--><!----><!--]--><!--[--><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="ml-email-text-table ml-inline-email-node w-full" style="width: 100%;"><tbody><tr><td dir="ltr" style="padding-top: 12px;"><p dir="ltr" class="ml-p ml-p-1" style="margin-top: 0; font-family: \'Inter\', sans-serif, \'Arial\', \'Helvetica\', sans-serif; font-weight: 400; line-height: 150%; letter-spacing: 0px; font-size: 16px; color: #333333; margin-bottom: 4px; text-align: left;"><strong>Design squad</strong><br>Add your company postal address here</p></td></tr></tbody></table><!--]--><!--[--><!----><!--]--><!--[--><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="ml-email-text-table ml-inline-email-node w-full" style="width: 100%;"><tbody><tr><td dir="ltr" style="padding-top: 12px;"><p dir="ltr" class="ml-p ml-p-1" style="margin-top: 0; font-family: \'Inter\', sans-serif, \'Arial\', \'Helvetica\', sans-serif; font-weight: 400; line-height: 150%; letter-spacing: 0px; font-size: 16px; color: #333333; margin-bottom: 4px; text-align: left;">SDK test paragraph for stale etag</p></td></tr></tbody></table><!--]--><!--]--><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="ml-inline-footer-preview"><tbody><!----><!----><tr><td style="padding:12px 0 8px;"><p style="margin-top: 0; margin-bottom: 8px; font-family: \'Inter\', sans-serif, \'Arial\', \'Helvetica\', sans-serif; font-size: 14px; line-height: 21px; font-weight: 400; color: #5D5D5D; margin: 0; text-align: left;">You received this email because you signed up on our website or made a purchase from us.</p></td></tr><!----><tr><td style="padding:0;"><p style="margin-top: 0; margin-bottom: 8px; font-family: \'Inter\', sans-serif, \'Arial\', \'Helvetica\', sans-serif; font-size: 14px; line-height: 21px; margin: 0;"><a href="{$unsubscribe}" linkid="1" style="color: #22c55e; text-decoration: underline;">Unsubscribe</a><!----></p></td></tr></tbody></table></td></tr><!----><!----></tbody></table></td></tr></tbody></table><!----></div></div>\n  </body>\n</html>\n',
+            },
+            etag: '8',
+        },
+    },
+}

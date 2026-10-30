@@ -1,12 +1,12 @@
 {
     meta: {
-        createdAt: '2026-10-28T11:08:56.175Z',
+        createdAt: '2026-10-30T10:04:46.235Z',
         host: 'https://connect.mailerlite.com',
         resHumanReadable: true,
     },
     req: {
         headers: {},
-        url: '/api/emails/202022897780262459/versions?limit=10&page=1',
+        url: '/api/emails/202747081514812805/versions?limit=10&page=1',
         method: 'GET',
         body: '',
     },
@@ -14,7 +14,7 @@
         status: 200,
         headers: {
             date: [
-                'Wed, 28 Oct 2026 11:08:56 GMT',
+                'Fri, 30 Oct 2026 10:04:46 GMT',
             ],
             'content-type': [
                 'application/json',
@@ -41,19 +41,19 @@
                 '120',
             ],
             'x-ratelimit-remaining': [
-                '112',
+                '110',
             ],
             'access-control-allow-origin': [
                 '*',
             ],
             'x-envoy-upstream-service-time': [
-                '76',
+                '87',
             ],
             'cf-cache-status': [
                 'DYNAMIC',
             ],
             'cf-ray': [
-                'a5197c432faee4d5-RIX',
+                'a52999050a43a14c-VNO',
             ],
             'alt-svc': [
                 'h3=":443"; ma=86400',
@@ -62,19 +62,14 @@
         body: {
             data: [
                 {
-                    id: '847700',
-                    created_at: '2026-10-28 11:08:56',
+                    id: '858140',
+                    created_at: '2026-10-30 10:04:46',
                     current: true,
-                },
-                {
-                    id: '819333',
-                    created_at: '2026-10-22 10:23:33',
-                    current: false,
                 },
             ],
             links: {
-                first: 'https://connect.mailerlite.com/api/emails/202022897780262459/versions?page=1',
-                last: 'https://connect.mailerlite.com/api/emails/202022897780262459/versions?page=1',
+                first: 'https://connect.mailerlite.com/api/emails/202747081514812805/versions?page=1',
+                last: 'https://connect.mailerlite.com/api/emails/202747081514812805/versions?page=1',
                 prev: null,
                 next: null,
             },
@@ -90,7 +85,7 @@
                         active: false,
                     },
                     {
-                        url: 'https://connect.mailerlite.com/api/emails/202022897780262459/versions?page=1',
+                        url: 'https://connect.mailerlite.com/api/emails/202747081514812805/versions?page=1',
                         label: '1',
                         page: 1,
                         active: true,
@@ -102,10 +97,10 @@
                         active: false,
                     },
                 ],
-                path: 'https://connect.mailerlite.com/api/emails/202022897780262459/versions',
+                path: 'https://connect.mailerlite.com/api/emails/202747081514812805/versions',
                 per_page: 10,
-                to: 2,
-                total: 2,
+                to: 1,
+                total: 1,
             },
         },
     },
