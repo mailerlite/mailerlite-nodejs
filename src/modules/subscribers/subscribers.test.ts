@@ -67,7 +67,7 @@ describe("Subscribers", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleSubscriberResponse>()
             createdSubscriberId = response.data.data.id;
         } catch (error) {
@@ -97,7 +97,7 @@ describe("Subscribers", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleSubscriberResponse>()
         } catch (error) {
             handleCatchedError(error);
@@ -111,7 +111,7 @@ describe("Subscribers", () => {
             expect(response).not.toBeNull();
             expect(response.data).toBeDefined();
             expect(response.data.data).toBeDefined();
-            expect(response.data.data.id).not.toBeNull();
+            expect(response.data.data.id).toEqual(expect.any(String));
             expectTypeOf(response.data).toEqualTypeOf<SingleSubscriberResponse>()
         } catch (error) {
             handleCatchedError(error);
