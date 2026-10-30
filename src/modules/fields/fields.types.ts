@@ -44,4 +44,5 @@ export interface FieldObject {
     name:   string;
     key:    string;
     type:   string;
+    is_default: boolean;
 }
