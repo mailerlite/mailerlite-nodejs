@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Config }  from './types.js'
 
 interface Options {
@@ -8,7 +8,7 @@ interface Options {
     params?: object;
 }
 
-export default function request(endpoint: string = "", options: Options, config: Config) {
+export default function request(endpoint: string = "", options: Options, config: Config): Promise<AxiosResponse> {
 
     const {headers = {}, method, body = null, params = {}} = options
 
@@ -39,19 +39,34 @@ export default function request(endpoint: string = "", options: Options, config:
 
 function serializeQuery(params: object, prefix?: string): string {
 
-    const queryParamsArray: string[] = Object.keys(params).map((key) => {
-        const value = params[key as keyof typeof params];
+    const queryParamsArray: string[] = Object.keys(params).flatMap((key) => {
+        const value = params[key as keyof typeof params] as unknown;
+
+        if (value === undefined || value === null)
+            return [];
 
         if (params.constructor === Array)
             key = `${prefix}[]`;
         else if (params.constructor === Object)
             key = (prefix ? `${prefix}[${key}]` : key);
 
-        if (typeof value === 'object')
+        if (value instanceof Date)
+            return `${key}=${formatDate(value)}`;
+        else if (typeof value === 'boolean')
+            return `${key}=${value ? 1 : 0}`;
+        else if (Array.isArray(value) && prefix === 'filter')
+            return `${key}=${encodeURIComponent(value.join(','))}`;
+        else if (typeof value === 'object')
             return serializeQuery(value, key);
         else
-            return `${key}=${encodeURIComponent(value)}`;
+            return `${key}=${encodeURIComponent(String(value))}`;
     });
 
     return queryParamsArray.flat(10).join('&');
+}
+
+function formatDate(date: Date): string {
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }

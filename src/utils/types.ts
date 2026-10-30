@@ -59,6 +59,20 @@ export interface Meta {
     total:          number;
 }
 
+export interface Rate {
+    float?: number;
+    string: string;
+}
+
+export type SubscriberReference = Pick<SubscriberObject, "id" | "email">;
+
+export interface CursorMeta {
+    path:           string;
+    per_page:       number;
+    next_cursor:    string | null;
+    prev_cursor:    string | null;
+}
+
 export interface MetaLinks {
     url:    string;
     label:  string;
@@ -93,5 +107,24 @@ export interface SubscriberObject {
     groups?:          Array<GroupObject>; // In some endpoints groups are excluded by default. They get added when `include` param is used in request
     opted_in_at:      null | string;
     optin_ip:         null | string;
+    deleted_at?:      string;
+    forget_at?:       string;
+    location?: {
+        id:             string;
+        title:          null | string;
+        country_name:   null | string;
+        continent_name: null | string;
+        state_name:     null | string;
+        time_zone:      null | string;
+    };
+    timezone?: {
+        id:              string;
+        name:            string;
+        name_for_humans: string;
+        offset_name:     null | string;
+        offset:          null | number;
+    };
+    signup_date?:        string;
+    unsubscribe_reason?: string;
 }
 
