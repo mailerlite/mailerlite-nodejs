@@ -38,6 +38,9 @@ export interface GetSubscribersParams {
     start_date?: string;
     end_date?:  string;
     with_fields?: boolean;
+    /**
+     * @deprecated Has no effect on the current API version. Use `include: "groups"` instead.
+     */
     with_groups?: boolean;
 }
 
