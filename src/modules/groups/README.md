@@ -123,3 +123,25 @@ mailerlite.groups.unAssignSubscriber("SUBSCRIBER_ID", "GROUP_ID")
     if (error.response) console.log(error.response.data);
   });
 ```
+
+### Import bulk subscribers to group
+[Official Documentation](https://developers.mailerlite.com/docs/groups.html#import-bulk-subscribers-to-group)
+
+---
+```javascript
+const params = {
+  subscribers: [
+    { email: "dummy@example.com", name: "Dummy", fields: { company: "MailerLite" } }
+  ],
+  resubscribe: false,
+  trigger_automations: true
+};
+
+mailerlite.groups.importSubscribers("GROUP_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
