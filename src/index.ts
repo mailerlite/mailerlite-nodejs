@@ -57,6 +57,9 @@ import { BrandStylesInterface } from "./modules/brand-styles/brand-styles.types.
 import Files from './modules/files/files.module.js';
 import { FilesInterface } from "./modules/files/files.types.js";
 
+import Ecommerce from './ecommerce-modules/index.js';
+import { EcommerceInterface } from "./ecommerce-modules/index.js";
+
 export default class MailerLite {
 
     private config: Config;
@@ -79,6 +82,7 @@ export default class MailerLite {
     public stats: StatsInterface;
     public brandStyles: BrandStylesInterface;
     public files: FilesInterface;
+    public ecommerce: EcommerceInterface;
 
     constructor(params: { api_key: string; base_path?: string; }) {
         this.config = {
@@ -105,6 +109,7 @@ export default class MailerLite {
         this.stats = new Statistics(this.config);
         this.brandStyles = new BrandStyle(this.config);
         this.files = new Files(this.config);
+        this.ecommerce = new Ecommerce(this.config);
     }
 };
 
@@ -127,4 +132,5 @@ export * from "./modules/webhooks/webhooks.types.js";
 export * from "./modules/stats/stats.types.js";
 export * from "./modules/brand-styles/brand-styles.types.js";
 export * from "./modules/files/files.types.js";
+export * from "./ecommerce-modules/index.js";
 export * from "./utils/types.js";
