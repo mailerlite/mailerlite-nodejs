@@ -149,6 +149,42 @@ mailerlite.subscribers.forget("SUBSCRIBER_ID")
   });
 ```
 
+### Fetch subscriber activity
+[Official Documentation](https://developers.mailerlite.com/docs/subscribers.html#fetch-subscriber-activity)
+
+---
+```javascript
+const params = {
+  filter: {
+    log_name: "activated"
+  },
+  limit: 10,
+  page: 1
+};
+
+mailerlite.subscribers.getActivityLog("SUBSCRIBER_ID", params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
+### Get single import
+[Official Documentation](https://developers.mailerlite.com/docs/subscribers.html#get-single-import)
+
+---
+```javascript
+mailerlite.subscribers.getImport("IMPORT_ID")
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
+```
+
 ### Fetch subscriber e-commerce stats
 [Official Documentation](https://developers.mailerlite.com/api/subscribers#fetch-subscriber-e-commerce-stats)
 

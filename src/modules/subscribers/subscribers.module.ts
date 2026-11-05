@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -11,7 +11,10 @@ import type {
     SingleSubscriberResponse,
     CountSubscribersResponse,
     ForgetSubscriberResponse,
-    UpdateSubscriberParams
+    UpdateSubscriberParams,
+    GetSubscriberActivityLogParams,
+    ListSubscriberActivityLogResponse,
+    SingleSubscriberImportResponse
 } from './subscribers.types.js';
 import type { SubscriberEcommerceReportParams, SubscriberEcommerceOrdersParams, SubscriberEcommerceStatsResponse, SubscriberEcommerceOrdersResponse } from './subscribers.types.js';
 
@@ -59,9 +62,7 @@ export default class Subscriber implements SubscriberInterface {
      * @requestBody {Object} - Subscriber data for update
      */
     public update(subscriber_id: string, requestBody: UpdateSubscriberParams): Promise<AxiosResponse<SingleSubscriberResponse, UpdateSubscriberParams>> {
-        validateId(subscriber_id);
-
-        return request(`/api/subscribers/${subscriber_id}`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -75,10 +76,7 @@ export default class Subscriber implements SubscriberInterface {
      * @subscriber_id {String} - Subscriber ID
      */
     public find(subscriber_id: string): Promise<AxiosResponse<SingleSubscriberResponse>> {
-
-        validateId(subscriber_id);
-
-        return request(`/api/subscribers/${subscriber_id}`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -107,9 +105,7 @@ export default class Subscriber implements SubscriberInterface {
      * @subscriber_id {String} - Subscriber ID
      */
     public delete(subscriber_id: string): Promise<AxiosResponse<null>> {
-        validateId(subscriber_id);
-
-        return request(`/api/subscribers/${subscriber_id}`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}`, {
             method: "DELETE"
         }, this.config);
     }
@@ -122,9 +118,36 @@ export default class Subscriber implements SubscriberInterface {
      * @subscriber_id {String} - Subscriber ID
      */
     public forget(subscriber_id: string): Promise<AxiosResponse<ForgetSubscriberResponse>> {
-        validateId(subscriber_id);
-        return request(`/api/subscribers/${subscriber_id}/forget`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/forget`, {
             method: "POST"
+        }, this.config);
+    }
+
+    /**
+     * @description Fetch subscriber activity
+     *
+     * @see https://developers.mailerlite.com/docs/subscribers.html#fetch-subscriber-activity
+     *
+     * @subscriber_id {String} - Subscriber ID
+     * @params {Object} - Activity log params
+     */
+    public getActivityLog(subscriber_id: string, params?: GetSubscriberActivityLogParams): Promise<AxiosResponse<ListSubscriberActivityLogResponse>> {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/activity-log`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description Get single import
+     *
+     * @see https://developers.mailerlite.com/docs/subscribers.html#get-single-import
+     *
+     * @import_id {String} - Import ID
+     */
+    public getImport(import_id: string): Promise<AxiosResponse<SingleSubscriberImportResponse>> {
+        return request(`/api/subscribers/import/${pathSegment(import_id)}`, {
+            method: "GET"
         }, this.config);
     }
 
@@ -137,10 +160,7 @@ export default class Subscriber implements SubscriberInterface {
      * @params {Object} - Query parameters
      */
     public getEcommerceStats(subscriber_id: string, params: SubscriberEcommerceReportParams): Promise<AxiosResponse<SubscriberEcommerceStatsResponse>> {
-
-        validateId(subscriber_id);
-
-        return request(`/api/subscribers/${subscriber_id}/reports/ecommerce`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/reports/ecommerce`, {
             method: "GET",
             params: params
         }, this.config);
@@ -155,10 +175,7 @@ export default class Subscriber implements SubscriberInterface {
      * @params {Object} - Query parameters
      */
     public getEcommerceOrders(subscriber_id: string, params: SubscriberEcommerceOrdersParams): Promise<AxiosResponse<SubscriberEcommerceOrdersResponse>> {
-
-        validateId(subscriber_id);
-
-        return request(`/api/subscribers/${subscriber_id}/reports/ecommerce/orders`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/reports/ecommerce/orders`, {
             method: "GET",
             params: params
         }, this.config);

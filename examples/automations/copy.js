@@ -1,4 +1,4 @@
-// node examples/automations/getEcommerceOrders.js AUTOMATION_ID_string
+// node examples/automations/copy.js AUTOMATION_ID_string
 
 "use strict";
 
@@ -13,11 +13,7 @@ const mailerlite = new MailerLite({
 
 const automation_id = process.argv[2] ? String(process.argv[2]) : null;
 
-const params = {
-  time_frame: "all_time"
-};
-
-mailerlite.automations.getEcommerceOrders(automation_id, params)
+mailerlite.automations.copy(automation_id)
   .then(response => {
     console.log(response.data);
   })

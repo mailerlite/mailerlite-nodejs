@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { omitFalse, pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -8,9 +8,15 @@ import {
     AutomationsInterface, AutomationSubsParams, AutomationSubsResponse,
     GetAutomationsParams,
     ListAutomationsResponse,
-    SingleAutomationResponse
+    SingleAutomationResponse,
+    CreateAutomationParams,
+    UpdateAutomationParams,
+    TestAutomationParams,
+    AddSubscribersToAutomationParams,
+    ReaddAutomationSubscribersParams,
+    AddAutomationActivityToGroupParams,
+    AutomationActiveRunsParams
 } from "./automations.types.js";
-import type { AutomationEcommerceStatsParams, AutomationEcommerceOrdersParams, AutomationEcommerceStatsResponse, AutomationEmailEcommerceStatsResponse, AutomationEcommerceOrdersResponse } from './automations.types.js';
 
 export default class Automation implements AutomationsInterface {
     private config: Config;
@@ -41,10 +47,7 @@ export default class Automation implements AutomationsInterface {
      * @automation_id {String} - Automation ID
      */
     public find(automation_id: string): Promise<AxiosResponse<SingleAutomationResponse>> {
-
-        validateId(automation_id);
-
-        return request(`/api/automations/${automation_id}`, {
+        return request(`/api/automations/${pathSegment(automation_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -58,68 +61,180 @@ export default class Automation implements AutomationsInterface {
      * @params {Object} - List automation subscribers params
      */
     public getAutomationSubscribers(automation_id: string, params: AutomationSubsParams): Promise<AxiosResponse<AutomationSubsResponse>> {
-
-        validateId(automation_id);
-
-        return request(`/api/automations/${automation_id}/activity`, {
+        return request(`/api/automations/${pathSegment(automation_id)}/activity`, {
             method: "GET",
-            params: params
+            params: omitFalse(params, "with_subscribers")
         }, this.config);
     }
 
     /**
-     * @description Get the orders and revenue an automation earned
+     * @description Create a draft automation
      *
-     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
+     * @see https://developers.mailerlite.com/docs/automations.html#create-draft-automation
      *
-     * @automation_id {String} - Automation ID
-     * @params {Object} - Query parameters
+     * @requestBody {Object} - Automation data for create
      */
-    public getEcommerceStats(automation_id: string, params: AutomationEcommerceStatsParams): Promise<AxiosResponse<AutomationEcommerceStatsResponse>> {
-
-        validateId(automation_id);
-
-        return request(`/api/automations/${automation_id}/monthly-totals/ecommerce`, {
-            method: "GET",
-            params: params
+    public create(requestBody: CreateAutomationParams): Promise<AxiosResponse<SingleAutomationResponse, CreateAutomationParams>> {
+        return request(`/api/automations`, {
+            method: "POST",
+            body: requestBody
         }, this.config);
     }
 
     /**
-     * @description Get the orders and revenue one automation email earned
+     * @description Update an automation
      *
-     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
+     * @see https://developers.mailerlite.com/docs/automations.html
      *
      * @automation_id {String} - Automation ID
-     * @email_id {String} - Email ID
-     * @params {Object} - Query parameters
+     * @requestBody {Object} - Automation data for update
      */
-    public getEmailEcommerceStats(automation_id: string, email_id: string, params: AutomationEcommerceStatsParams): Promise<AxiosResponse<AutomationEmailEcommerceStatsResponse>> {
-
-        validateId(automation_id);
-        validateId(email_id);
-
-        return request(`/api/automations/${automation_id}/emails/${email_id}/ecommerce-overview-stats`, {
-            method: "GET",
-            params: params
+    public update(automation_id: string, requestBody: UpdateAutomationParams): Promise<AxiosResponse<SingleAutomationResponse, UpdateAutomationParams>> {
+        return request(`/api/automations/${pathSegment(automation_id)}`, {
+            method: "PUT",
+            body: requestBody
         }, this.config);
     }
 
     /**
-     * @description Get the orders attributed to an automation
+     * @description Delete an automation
      *
-     * TODO: add @see link once developers.mailerlite.com publishes these endpoints
+     * @see https://developers.mailerlite.com/docs/automations.html#delete-automation
      *
      * @automation_id {String} - Automation ID
-     * @params {Object} - Query parameters
      */
-    public getEcommerceOrders(automation_id: string, params: AutomationEcommerceOrdersParams): Promise<AxiosResponse<AutomationEcommerceOrdersResponse>> {
+    public delete(automation_id: string): Promise<AxiosResponse<null>> {
+        return request(`/api/automations/${pathSegment(automation_id)}`, {
+            method: "DELETE"
+        }, this.config);
+    }
 
-        validateId(automation_id);
+    /**
+     * @description Copy an automation
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     */
+    public copy(automation_id: string): Promise<AxiosResponse<SingleAutomationResponse>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/copy`, {
+            method: "POST"
+        }, this.config);
+    }
 
-        return request(`/api/automations/${automation_id}/order-activity`, {
-            method: "GET",
-            params: params
+    /**
+     * @description Enable an automation
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     */
+    public enable(automation_id: string): Promise<AxiosResponse<SingleAutomationResponse>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/enable`, {
+            method: "POST"
+        }, this.config);
+    }
+
+    /**
+     * @description Disable an automation
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     */
+    public disable(automation_id: string): Promise<AxiosResponse<SingleAutomationResponse>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/disable`, {
+            method: "POST"
+        }, this.config);
+    }
+
+    /**
+     * @description Send an automation test email
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     * @requestBody {Object} - Test email recipient
+     */
+    public test(automation_id: string, requestBody: TestAutomationParams): Promise<AxiosResponse<null, TestAutomationParams>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/test`, {
+            method: "POST",
+            body: requestBody
+        }, this.config);
+    }
+
+    /**
+     * @description Add subscribers to an automation
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     * @requestBody {Object} - Subscribers to add
+     */
+    public addSubscribers(automation_id: string, requestBody: AddSubscribersToAutomationParams): Promise<AxiosResponse<null, AddSubscribersToAutomationParams>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/add-subscribers`, {
+            method: "POST",
+            body: requestBody
+        }, this.config);
+    }
+
+    /**
+     * @description Re-add subscribers to an automation
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     * @requestBody {Object} - Runs to re-add and where they re-enter
+     */
+    public readd(automation_id: string, requestBody: ReaddAutomationSubscribersParams): Promise<AxiosResponse<null, ReaddAutomationSubscribersParams>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/readd`, {
+            method: "POST",
+            body: requestBody
+        }, this.config);
+    }
+
+    /**
+     * @description Copy automation subscribers to groups
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     * @requestBody {Object} - Destination groups and runs filter
+     */
+    public addActivityToGroup(automation_id: string, requestBody: AddAutomationActivityToGroupParams): Promise<AxiosResponse<null, AddAutomationActivityToGroupParams>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/activity/add-to-group`, {
+            method: "POST",
+            body: requestBody
+        }, this.config);
+    }
+
+    /**
+     * @description Cancel automation runs
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     * @requestBody {Object} - Runs filter
+     */
+    public cancelActivity(automation_id: string, requestBody: AutomationActiveRunsParams): Promise<AxiosResponse<null, AutomationActiveRunsParams>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/activity/cancel-automation`, {
+            method: "POST",
+            body: requestBody
+        }, this.config);
+    }
+
+    /**
+     * @description Skip an automation delay
+     *
+     * @see https://developers.mailerlite.com/docs/automations.html
+     *
+     * @automation_id {String} - Automation ID
+     * @requestBody {Object} - Runs filter
+     */
+    public skipActivityDelay(automation_id: string, requestBody: AutomationActiveRunsParams): Promise<AxiosResponse<null, AutomationActiveRunsParams>> {
+        return request(`/api/automations/${pathSegment(automation_id)}/activity/skip-delay`, {
+            method: "POST",
+            body: requestBody
         }, this.config);
     }
 };

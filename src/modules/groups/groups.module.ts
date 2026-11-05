@@ -1,9 +1,9 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
 import { AxiosResponse } from "axios";
-import type { GroupsInterface, GetGroupsParams, ListAllGroupsResponse, SingleGroupResponse, CreateUpdateGroupParams, ListAllSubscribersResponse, SubscriberParams } from './groups.types.js';
+import type { GroupsInterface, GetGroupsParams, ListAllGroupsResponse, SingleGroupResponse, CreateUpdateGroupParams, ListAllSubscribersResponse, SubscriberParams, ImportGroupSubscribersParams, ImportGroupSubscribersResponse } from './groups.types.js';
 
 export default class Group implements GroupsInterface {
     private config: Config;
@@ -49,10 +49,7 @@ export default class Group implements GroupsInterface {
      * @requestBody {Object} - Group data for update
      */
     public update(group_id: string, requestBody: CreateUpdateGroupParams): Promise<AxiosResponse<SingleGroupResponse, CreateUpdateGroupParams>> {
-
-        validateId(group_id);
-
-        return request(`/api/groups/${group_id}`, {
+        return request(`/api/groups/${pathSegment(group_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -66,10 +63,7 @@ export default class Group implements GroupsInterface {
      * @group_id {String} - Group ID
      */
     public delete(group_id: string): Promise<AxiosResponse<null>> {
-
-        validateId(group_id);
-
-        return request(`/api/groups/${group_id}`, {
+        return request(`/api/groups/${pathSegment(group_id)}`, {
             method: "DELETE"
         }, this.config);
     }
@@ -83,10 +77,7 @@ export default class Group implements GroupsInterface {
      * @params {Object} - List subscribers params
      */
     public getSubscribers(group_id: string, params: SubscriberParams): Promise<AxiosResponse<ListAllSubscribersResponse>> {
-
-        validateId(group_id);
-
-        return request(`/api/groups/${group_id}/subscribers`, {
+        return request(`/api/groups/${pathSegment(group_id)}/subscribers`, {
             method: "GET",
             params: params
         }, this.config);
@@ -101,11 +92,7 @@ export default class Group implements GroupsInterface {
      * @group_id {String} - Group ID
      */
     public assignSubscriber(subscriber_id: string, group_id: string): Promise<AxiosResponse<SingleGroupResponse>> {
-
-        validateId(subscriber_id);
-        validateId(group_id);
-
-        return request(`/api/subscribers/${subscriber_id}/groups/${group_id}`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/groups/${pathSegment(group_id)}`, {
             method: "POST"
         }, this.config);
     }
@@ -119,12 +106,23 @@ export default class Group implements GroupsInterface {
      * @group_id {String} - Group ID
      */
     public unAssignSubscriber(subscriber_id: string, group_id: string): Promise<AxiosResponse<null>> {
-
-        validateId(subscriber_id);
-        validateId(group_id);
-
-        return request(`/api/subscribers/${subscriber_id}/groups/${group_id}`, {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/groups/${pathSegment(group_id)}`, {
             method: "DELETE"
+        }, this.config);
+    }
+
+    /**
+     * @description Import bulk subscribers to a group
+     *
+     * @see https://developers.mailerlite.com/docs/groups.html#import-bulk-subscribers-to-group
+     *
+     * @group_id {String} - Group ID
+     * @requestBody {Object} - Subscribers to import
+     */
+    public importSubscribers(group_id: string, requestBody: ImportGroupSubscribersParams): Promise<AxiosResponse<ImportGroupSubscribersResponse, ImportGroupSubscribersParams>> {
+        return request(`/api/groups/${pathSegment(group_id)}/import-subscribers`, {
+            method: "POST",
+            body: requestBody
         }, this.config);
     }
 };

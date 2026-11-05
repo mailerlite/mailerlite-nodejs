@@ -1,4 +1,4 @@
-// node examples/automations/getEcommerceStats.js AUTOMATION_ID_string
+// node examples/automations/skipActivityDelay.js AUTOMATION_ID_string
 
 "use strict";
 
@@ -14,10 +14,13 @@ const mailerlite = new MailerLite({
 const automation_id = process.argv[2] ? String(process.argv[2]) : null;
 
 const params = {
-  shop_id: "SHOP_ID"
+  filter: {
+    status: "active",
+    id: ["RUN_ID"]
+  }
 };
 
-mailerlite.automations.getEcommerceStats(automation_id, params)
+mailerlite.automations.skipActivityDelay(automation_id, params)
   .then(response => {
     console.log(response.data);
   })
