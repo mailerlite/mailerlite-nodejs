@@ -1,86 +1,25 @@
-import { describe, it, expect, expectTypeOf, beforeAll, afterAll } from "vitest";
-import "dotenv/config";
-import MailerLite from '../../index';
-import {
-    ListCartsResponse,
-    SingleCartResponse
-} from "./carts.types";
-import {handleCatchedError} from "../../utils/helpers";
+import { describe, it, expect, vi } from "vitest";
 
-const MAILERLITE_API_KEY = process.env.API_KEY as string;
+const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
+vi.mock("axios", () => ({ default: axiosMock }));
 
-if (!MAILERLITE_API_KEY)
-    throw "No MailerLite API key found in environment variables";
+import { mockClient, lastRequest } from "../../utils/request-mock";
 
-const mailerlite = new MailerLite({
-    api_key: MAILERLITE_API_KEY,
-    base_path: "http://localhost:9090",
-});
+const mailerlite = mockClient();
+const carts = "/api/ecommerce/shops/1/carts";
 
-describe("E-commerce carts", () => {
+describe("E-commerce carts requests", () => {
+    it.each([
+        ["Get carts", () => mailerlite.ecommerce.carts.get("1", { limit: 10 }), "GET", carts, "limit=10", undefined],
+        ["Fetch a cart", () => mailerlite.ecommerce.carts.find("1", "4"), "GET", `${carts}/4`, "", undefined],
+        ["Update a cart", () => mailerlite.ecommerce.carts.update("1", "4", { checkout_url: "https://shop.example.com/cart" }), "PUT", `${carts}/4`, "", { checkout_url: "https://shop.example.com/cart" }],
+    ] as const)("%s", async (_, call, method, path, query, body) => {
+        await call();
 
-    let shopId: string;
-    let productId: string;
-    let cartId: string;
-
-    beforeAll(async () => {
-        const response = await mailerlite.ecommerce.shops.create({
-            name: "Test shop nodejs carts",
-            url: "https://shop.example.com",
-            currency: "EUR"
-        });
-        shopId = response.data.data.id;
-
-        const product = await mailerlite.ecommerce.products.create(shopId, {
-            name: "Test product nodejs carts",
-            price: 19.99
-        });
-        productId = product.data.data.id;
-
-        const order = await mailerlite.ecommerce.orders.create(shopId, {
-            customer: { email: "customer-carts@example.com", create_subscriber: false },
-            cart: { items: [{ ecommerce_product_id: productId, quantity: 1, price: 19.99 }] }
-        });
-        cartId = order.data.data.cart.id;
+        expect(lastRequest(axiosMock)).toEqual({ method, path, query, body });
     });
 
-    afterAll(async () => {
-        await mailerlite.ecommerce.shops.delete(shopId);
-    });
-
-    it("Get carts", async () => {
-        try {
-            const response = await mailerlite.ecommerce.carts.get(shopId, { limit: 10 });
-
-            expect(response).not.toBeNull();
-            expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListCartsResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Fetch a cart", async () => {
-        try {
-            const response = await mailerlite.ecommerce.carts.find(shopId, cartId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCartResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Update a cart", async () => {
-        try {
-            const response = await mailerlite.ecommerce.carts.update(shopId, cartId, { checkout_url: "https://shop.example.com/cart" });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCartResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
+    it("rejects a numeric cart id", () => {
+        expect(() => mailerlite.ecommerce.carts.find("1", 4 as never)).toThrow("ID must be of type string");
     });
 });

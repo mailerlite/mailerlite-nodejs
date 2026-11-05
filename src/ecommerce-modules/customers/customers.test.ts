@@ -1,101 +1,27 @@
-import { describe, it, expect, expectTypeOf, beforeAll, afterAll } from "vitest";
-import "dotenv/config";
-import MailerLite from '../../index';
-import {
-    ListCustomersResponse,
-    SingleCustomerResponse
-} from "./customers.types";
-import {handleCatchedError} from "../../utils/helpers";
+import { describe, it, expect, vi } from "vitest";
 
-const MAILERLITE_API_KEY = process.env.API_KEY as string;
+const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
+vi.mock("axios", () => ({ default: axiosMock }));
 
-if (!MAILERLITE_API_KEY)
-    throw "No MailerLite API key found in environment variables";
+import { mockClient, lastRequest } from "../../utils/request-mock";
 
-const mailerlite = new MailerLite({
-    api_key: MAILERLITE_API_KEY,
-    base_path: "http://localhost:9090",
-});
+const mailerlite = mockClient();
+const customers = "/api/ecommerce/shops/1/customers";
 
-describe("E-commerce customers", () => {
+describe("E-commerce customers requests", () => {
+    it.each([
+        ["Get customers", () => mailerlite.ecommerce.customers.get("1", { filter: { email: "a@b.test" } }), "GET", customers, "filter[email]=a%40b.test", undefined],
+        ["Fetch a customer", () => mailerlite.ecommerce.customers.find("1", "3"), "GET", `${customers}/3`, "", undefined],
+        ["Create a customer", () => mailerlite.ecommerce.customers.create("1", { email: "a@b.test", create_subscriber: false }), "POST", customers, "", { email: "a@b.test", create_subscriber: false }],
+        ["Update a customer", () => mailerlite.ecommerce.customers.update("1", "3", { accepts_marketing: true }), "PUT", `${customers}/3`, "", { accepts_marketing: true }],
+        ["Delete a customer", () => mailerlite.ecommerce.customers.delete("1", "3"), "DELETE", `${customers}/3`, "", undefined],
+    ] as const)("%s", async (_, call, method, path, query, body) => {
+        await call();
 
-    let shopId: string;
-
-    beforeAll(async () => {
-        const response = await mailerlite.ecommerce.shops.create({
-            name: "Test shop nodejs customers",
-            url: "https://shop.example.com",
-            currency: "EUR"
-        });
-        shopId = response.data.data.id;
+        expect(lastRequest(axiosMock)).toEqual({ method, path, query, body });
     });
 
-    afterAll(async () => {
-        await mailerlite.ecommerce.shops.delete(shopId);
-    });
-
-    let customerId: string;
-    const email = "customer-customers@example.com";
-
-    it("Create a customer", async () => {
-        try {
-            const response = await mailerlite.ecommerce.customers.create(shopId, { email: email, create_subscriber: false });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data.id).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCustomerResponse>()
-
-            customerId = response.data.data.id;
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Get customers", async () => {
-        try {
-            const response = await mailerlite.ecommerce.customers.get(shopId, { filter: { email: email } });
-
-            expect(response).not.toBeNull();
-            expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListCustomersResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Fetch a customer", async () => {
-        try {
-            const response = await mailerlite.ecommerce.customers.find(shopId, customerId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCustomerResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Update a customer", async () => {
-        try {
-            const response = await mailerlite.ecommerce.customers.update(shopId, customerId, { accepts_marketing: true });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCustomerResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Delete a customer", async () => {
-        try {
-            const response = await mailerlite.ecommerce.customers.delete(shopId, customerId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCustomerResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
+    it("rejects a numeric customer id", () => {
+        expect(() => mailerlite.ecommerce.customers.find("1", 3 as never)).toThrow("ID must be of type string");
     });
 });

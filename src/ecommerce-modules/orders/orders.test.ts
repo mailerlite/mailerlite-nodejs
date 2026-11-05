@@ -1,107 +1,31 @@
-import { describe, it, expect, expectTypeOf, beforeAll, afterAll } from "vitest";
-import "dotenv/config";
-import MailerLite from '../../index';
-import {
-    ListOrdersResponse,
-    SingleOrderResponse
-} from "./orders.types";
-import {handleCatchedError} from "../../utils/helpers";
+import { describe, it, expect, vi } from "vitest";
 
-const MAILERLITE_API_KEY = process.env.API_KEY as string;
+const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
+vi.mock("axios", () => ({ default: axiosMock }));
 
-if (!MAILERLITE_API_KEY)
-    throw "No MailerLite API key found in environment variables";
+import { mockClient, lastRequest } from "../../utils/request-mock";
 
-const mailerlite = new MailerLite({
-    api_key: MAILERLITE_API_KEY,
-    base_path: "http://localhost:9090",
-});
+const mailerlite = mockClient();
+const orders = "/api/ecommerce/shops/1/orders";
+const order = {
+    customer: { email: "a@b.test", create_subscriber: false },
+    cart: { items: [{ ecommerce_product_id: "7", quantity: 1, price: 19.99 }] },
+};
 
-describe("E-commerce orders", () => {
+describe("E-commerce orders requests", () => {
+    it.each([
+        ["Get orders", () => mailerlite.ecommerce.orders.get("1", { filter: { status: "pending" } }), "GET", orders, "filter[status]=pending", undefined],
+        ["Fetch an order", () => mailerlite.ecommerce.orders.find("1", "9"), "GET", `${orders}/9`, "", undefined],
+        ["Create an order", () => mailerlite.ecommerce.orders.create("1", order), "POST", orders, "", order],
+        ["Update an order", () => mailerlite.ecommerce.orders.update("1", "9", { status: "complete" }), "PUT", `${orders}/9`, "", { status: "complete" }],
+        ["Delete an order", () => mailerlite.ecommerce.orders.delete("1", "9"), "DELETE", `${orders}/9`, "", undefined],
+    ] as const)("%s", async (_, call, method, path, query, body) => {
+        await call();
 
-    let shopId: string;
-    let productId: string;
-
-    beforeAll(async () => {
-        const response = await mailerlite.ecommerce.shops.create({
-            name: "Test shop nodejs orders",
-            url: "https://shop.example.com",
-            currency: "EUR"
-        });
-        shopId = response.data.data.id;
-
-        const product = await mailerlite.ecommerce.products.create(shopId, {
-            name: "Test product nodejs orders",
-            price: 19.99
-        });
-        productId = product.data.data.id;
+        expect(lastRequest(axiosMock)).toEqual({ method, path, query, body });
     });
 
-    afterAll(async () => {
-        await mailerlite.ecommerce.shops.delete(shopId);
-    });
-
-    let orderId: string;
-
-    it("Create an order", async () => {
-        try {
-            const response = await mailerlite.ecommerce.orders.create(shopId, { customer: { email: "customer-orders@example.com", create_subscriber: false }, cart: { items: [{ ecommerce_product_id: productId, quantity: 1, price: 19.99 }] } });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data.id).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleOrderResponse>()
-
-            orderId = response.data.data.id;
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Get orders", async () => {
-        try {
-            const response = await mailerlite.ecommerce.orders.get(shopId, { filter: { status: "pending" } });
-
-            expect(response).not.toBeNull();
-            expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListOrdersResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Fetch an order", async () => {
-        try {
-            const response = await mailerlite.ecommerce.orders.find(shopId, orderId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleOrderResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Update an order", async () => {
-        try {
-            const response = await mailerlite.ecommerce.orders.update(shopId, orderId, { status: "complete" });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleOrderResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Delete an order", async () => {
-        try {
-            const response = await mailerlite.ecommerce.orders.delete(shopId, orderId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleOrderResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
+    it("rejects a numeric order id", () => {
+        expect(() => mailerlite.ecommerce.orders.find("1", 9 as never)).toThrow("ID must be of type string");
     });
 });

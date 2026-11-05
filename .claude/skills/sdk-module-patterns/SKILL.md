@@ -29,7 +29,7 @@ The folder layout follows the page structure of the official API docs at https:/
 src/modules/<name>/
 ├── <name>.module.ts   # one class, flat methods
 ├── <name>.types.ts    # <Name>Interface + params/response types
-├── <name>.test.ts     # talkback tape tests
+├── <name>.test.ts     # request tests (mocked axios)
 └── README.md          # one section per method
 ```
 
@@ -37,9 +37,8 @@ Plus, outside the folder:
 - `src/index.ts`: import the class and the interface, add the public property, instantiate it in the constructor, and add `export * from "./modules/<name>/<name>.types.js"`.
 - Root `README.md`: a module entry plus one bullet per method, linking to the README anchors.
 - `examples/<name>/<method>.js`: one file per method.
-- `tapes/<name>/`: recorded tapes.
 
-Adding a method to an existing module touches the same set: module, types, test, module README, root README bullet, example, tape.
+Adding a method to an existing module touches the same set: module, types, test, module README, root README bullet, example.
 
 ## 3. `<name>.module.ts`
 
@@ -102,15 +101,29 @@ Rules:
 
 ## 5. `<name>.test.ts`
 
-- Tests replay **talkback tapes** through `http://localhost:9090`. Never mock axios or `request()`: tapes are the only thing that checks paths, bodies and response shapes against the real API.
-- Use the same setup as the existing tests: `import "dotenv/config"`, `const MAILERLITE_API_KEY = process.env.API_KEY as string`, throw if it's missing, and create `new MailerLite({ api_key, base_path: "http://localhost:9090" })`.
-- In each test:
-  - wrap the call in `try { … } catch (error) { handleCatchedError(error); }`,
-  - assert `response.data` and its shape,
-  - finish with `expectTypeOf(response.data).toEqualTypeOf<…Response>()`.
-- **Each module's methods are tested in that module's test file.**
-- **Tests create their own resources** (with `getRandomInt()` in names) and delete them afterwards. Don't depend on fixed IDs that exist only on the recording account.
-- **Record tapes** as described in `CLAUDE.md` → "Recording new tapes". Before committing, check that tapes contain no `Authorization` header, tokens, real email addresses or personal names.
+- New tests **mock axios** and assert the request the SDK builds. Don't add talkback tapes; the older modules still replay tapes, leave those alone. Follow `src/utils/fetch.test.ts` and the ecommerce tests:
+
+```ts
+import { describe, it, expect, vi } from "vitest";
+
+const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
+vi.mock("axios", () => ({ default: axiosMock }));
+
+import { mockClient, lastRequest } from "../../utils/request-mock";
+
+const mailerlite = mockClient();
+
+it("Update a group", async () => {
+    await mailerlite.groups.update("1", { name: "New" });
+
+    expect(lastRequest(axiosMock)).toEqual({ method: "PUT", path: "/api/groups/1", query: "", body: { name: "New" } });
+});
+```
+
+- Cover every method: `method`, `path`, `query` and `body`. Use `it.each` for a table of calls.
+- Add one test that a numeric ID is rejected (`toThrow("ID must be of type string")`).
+- **Each module's methods are tested in that module's folder.** When adding methods to a module whose `<name>.test.ts` uses tapes, put the mocked tests in `<name>.<topic>.request.test.ts` next to it.
+- No `API_KEY` or `.env` is needed for mocked tests.
 
 ## 6. Docs and examples
 
@@ -130,12 +143,12 @@ Rules:
 ## 7. Before you finish
 
 - [ ] The module folder matches its docs subgroup; nothing is crammed into another module.
-- [ ] All the files from section 2 are added or updated, including the root README, examples and tapes.
+- [ ] All the files from section 2 are added or updated, including the root README and examples.
 - [ ] Every ID is a `string` passed to `validateId()`.
 - [ ] Every response is typed by name; shared types come from `src/utils/types.ts`.
 - [ ] The interface and class signatures match.
 - [ ] `npm run build` passes.
-- [ ] `npm run test` passes in replay mode. Ask the user for `API_KEY`; never read `.env`.
+- [ ] `npm run test` passes (the tape tests still need `API_KEY`: ask the user for it; never read `.env`).
 - [ ] `npx tsc --noEmit` shows no *new* errors. `main` already has pre-existing axios-typing errors, so compare against it.
 
 ## When reviewing a PR against these patterns

@@ -1,100 +1,27 @@
-import { describe, it, expect, expectTypeOf, beforeAll, afterAll } from "vitest";
-import "dotenv/config";
-import MailerLite from '../../index';
-import {
-    ListCategoriesResponse,
-    SingleCategoryResponse
-} from "./categories.types";
-import {handleCatchedError} from "../../utils/helpers";
+import { describe, it, expect, vi } from "vitest";
 
-const MAILERLITE_API_KEY = process.env.API_KEY as string;
+const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
+vi.mock("axios", () => ({ default: axiosMock }));
 
-if (!MAILERLITE_API_KEY)
-    throw "No MailerLite API key found in environment variables";
+import { mockClient, lastRequest } from "../../utils/request-mock";
 
-const mailerlite = new MailerLite({
-    api_key: MAILERLITE_API_KEY,
-    base_path: "http://localhost:9090",
-});
+const mailerlite = mockClient();
+const categories = "/api/ecommerce/shops/1/categories";
 
-describe("E-commerce categories", () => {
+describe("E-commerce categories requests", () => {
+    it.each([
+        ["Get categories", () => mailerlite.ecommerce.categories.get("1", { limit: 10 }), "GET", categories, "limit=10", undefined],
+        ["Fetch a category", () => mailerlite.ecommerce.categories.find("1", "5"), "GET", `${categories}/5`, "", undefined],
+        ["Create a category", () => mailerlite.ecommerce.categories.create("1", { name: "Hats" }), "POST", categories, "", { name: "Hats" }],
+        ["Update a category", () => mailerlite.ecommerce.categories.update("1", "5", { name: "Caps" }), "PUT", `${categories}/5`, "", { name: "Caps" }],
+        ["Delete a category", () => mailerlite.ecommerce.categories.delete("1", "5"), "DELETE", `${categories}/5`, "", undefined],
+    ] as const)("%s", async (_, call, method, path, query, body) => {
+        await call();
 
-    let shopId: string;
-
-    beforeAll(async () => {
-        const response = await mailerlite.ecommerce.shops.create({
-            name: "Test shop nodejs categories",
-            url: "https://shop.example.com",
-            currency: "EUR"
-        });
-        shopId = response.data.data.id;
+        expect(lastRequest(axiosMock)).toEqual({ method, path, query, body });
     });
 
-    afterAll(async () => {
-        await mailerlite.ecommerce.shops.delete(shopId);
-    });
-
-    let categoryId: string;
-
-    it("Create a category", async () => {
-        try {
-            const response = await mailerlite.ecommerce.categories.create(shopId, { name: "Test category nodejs categories" });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data.id).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCategoryResponse>()
-
-            categoryId = response.data.data.id;
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Get categories", async () => {
-        try {
-            const response = await mailerlite.ecommerce.categories.get(shopId, { limit: 10 });
-
-            expect(response).not.toBeNull();
-            expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListCategoriesResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Fetch a category", async () => {
-        try {
-            const response = await mailerlite.ecommerce.categories.find(shopId, categoryId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCategoryResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Update a category", async () => {
-        try {
-            const response = await mailerlite.ecommerce.categories.update(shopId, categoryId, { name: "Test category nodejs updated categories" });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCategoryResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Delete a category", async () => {
-        try {
-            const response = await mailerlite.ecommerce.categories.delete(shopId, categoryId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleCategoryResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
+    it("rejects a numeric category id", () => {
+        expect(() => mailerlite.ecommerce.categories.find("1", 5 as never)).toThrow("ID must be of type string");
     });
 });

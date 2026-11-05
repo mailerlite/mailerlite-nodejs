@@ -1,98 +1,27 @@
-import { describe, it, expect, expectTypeOf } from "vitest";
-import "dotenv/config";
-import MailerLite from '../../index';
-import {
-    ListShopsResponse,
-    SingleShopResponse,
-    ShopStatsResponse
-} from "./shops.types";
-import {handleCatchedError} from "../../utils/helpers";
+import { describe, it, expect, vi } from "vitest";
 
-const MAILERLITE_API_KEY = process.env.API_KEY as string;
+const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
+vi.mock("axios", () => ({ default: axiosMock }));
 
-if (!MAILERLITE_API_KEY)
-    throw "No MailerLite API key found in environment variables";
+import { mockClient, lastRequest } from "../../utils/request-mock";
 
-const mailerlite = new MailerLite({
-    api_key: MAILERLITE_API_KEY,
-    base_path: "http://localhost:9090",
-});
+const mailerlite = mockClient();
 
-describe("E-commerce shops", () => {
+describe("E-commerce shops requests", () => {
+    it.each([
+        ["List shops", () => mailerlite.ecommerce.shops.get({ limit: 10 }), "GET", "/api/ecommerce/shops", "limit=10", undefined],
+        ["Fetch a shop", () => mailerlite.ecommerce.shops.find("1"), "GET", "/api/ecommerce/shops/1", "", undefined],
+        ["Create a shop", () => mailerlite.ecommerce.shops.create({ name: "Shop", url: "https://shop.example.com", currency: "EUR" }), "POST", "/api/ecommerce/shops", "", { name: "Shop", url: "https://shop.example.com", currency: "EUR" }],
+        ["Update a shop", () => mailerlite.ecommerce.shops.update("1", { name: "New" }), "PUT", "/api/ecommerce/shops/1", "", { name: "New" }],
+        ["Delete a shop", () => mailerlite.ecommerce.shops.delete("1"), "DELETE", "/api/ecommerce/shops/1", "", undefined],
+        ["Fetch shop stats", () => mailerlite.ecommerce.shops.getStats("1", { start_date: "2026-10-01", end_date: "2026-10-31" }), "GET", "/api/ecommerce/shops/1/reports/stats", "start_date=2026-10-01&end_date=2026-10-31", undefined],
+    ] as const)("%s", async (_, call, method, path, query, body) => {
+        await call();
 
-    let createdShopId: string;
-
-    it("Create a shop", async () => {
-        try {
-            const response = await mailerlite.ecommerce.shops.create({ name: "Test shop nodejs shops", url: "https://shop.example.com", currency: "EUR" });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data.id).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleShopResponse>()
-
-            createdShopId = response.data.data.id;
-        } catch (error) {
-            handleCatchedError(error);
-        }
+        expect(lastRequest(axiosMock)).toEqual({ method, path, query, body });
     });
 
-    it("List e-commerce shops", async () => {
-        try {
-            const response = await mailerlite.ecommerce.shops.get({ limit: 10 });
-
-            expect(response).not.toBeNull();
-            expect(Array.isArray(response.data.data)).toBeTruthy();
-            expectTypeOf(response.data).toEqualTypeOf<ListShopsResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Fetch a shop", async () => {
-        try {
-            const response = await mailerlite.ecommerce.shops.find(createdShopId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleShopResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Update a shop", async () => {
-        try {
-            const response = await mailerlite.ecommerce.shops.update(createdShopId, { name: "Test shop nodejs updated shops" });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleShopResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Fetch shop e-commerce stats", async () => {
-        try {
-            const response = await mailerlite.ecommerce.shops.getStats(createdShopId, { start_date: "2026-10-01", end_date: "2026-10-31" });
-
-            expect(response).not.toBeNull();
-            expect(response.data.data.ecommerce).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<ShopStatsResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
-    });
-
-    it("Delete a shop", async () => {
-        try {
-            const response = await mailerlite.ecommerce.shops.delete(createdShopId);
-
-            expect(response).not.toBeNull();
-            expect(response.data.data).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<SingleShopResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
+    it("rejects a numeric shop id", () => {
+        expect(() => mailerlite.ecommerce.shops.find(1 as never)).toThrow("ID must be of type string");
     });
 });

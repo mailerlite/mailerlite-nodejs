@@ -1,32 +1,16 @@
-import { describe, it, expect, expectTypeOf } from "vitest";
-import "dotenv/config";
-import MailerLite from '../../index';
-import {
-    EcommerceSettingsResponse
-} from "./settings.types";
-import {handleCatchedError} from "../../utils/helpers";
+import { describe, it, expect, vi } from "vitest";
 
-const MAILERLITE_API_KEY = process.env.API_KEY as string;
+const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
+vi.mock("axios", () => ({ default: axiosMock }));
 
-if (!MAILERLITE_API_KEY)
-    throw "No MailerLite API key found in environment variables";
+import { mockClient, lastRequest } from "../../utils/request-mock";
 
-const mailerlite = new MailerLite({
-    api_key: MAILERLITE_API_KEY,
-    base_path: "http://localhost:9090",
-});
+const mailerlite = mockClient();
 
-describe("E-commerce settings", () => {
-
+describe("E-commerce settings requests", () => {
     it("Get e-commerce tracking settings", async () => {
-        try {
-            const response = await mailerlite.ecommerce.settings.get();
+        await mailerlite.ecommerce.settings.get();
 
-            expect(response).not.toBeNull();
-            expect(response.data.data.ecommerce_attribution_window).toBeDefined();
-            expectTypeOf(response.data).toEqualTypeOf<EcommerceSettingsResponse>()
-        } catch (error) {
-            handleCatchedError(error);
-        }
+        expect(lastRequest(axiosMock)).toEqual({ method: "GET", path: "/api/ecommerce/settings", query: "", body: undefined });
     });
 });
