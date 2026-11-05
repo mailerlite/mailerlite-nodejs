@@ -57,7 +57,7 @@ export interface ShopObject {
     currency:           string;
     currency_sign:      string;
     platform?:           string;
-    enabled:            boolean;
+    enabled?:            boolean;
     enable_popups:      boolean;
     enable_resubscribe: boolean;
     group:              null | { id: string; name: string };
