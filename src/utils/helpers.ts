@@ -35,3 +35,15 @@ export function validateNumericId (id: string): void {
         throw new Error("ID must contain only digits");
     }
 }
+
+export function pathSegment(id: string): string {
+    validateId(id);
+
+    return encodeURIComponent(id);
+}
+
+export function omitFalse<T extends object>(params: T | undefined | null, key: keyof T): T | undefined {
+    if (!params) return undefined;
+
+    return params[key] === false ? { ...params, [key]: undefined } : params;
+}

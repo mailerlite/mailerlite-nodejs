@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import {SubscriberObject, Links, Meta} from "../../utils/types.js";
+import {SubscriberObject, Links, Meta, CursorMeta} from "../../utils/types.js";
 
 export interface GroupsInterface {
     get:                (params: GetGroupsParams)                           => Promise<AxiosResponse<ListAllGroupsResponse>>;
@@ -9,6 +9,7 @@ export interface GroupsInterface {
     getSubscribers:     (group_id: string, params: SubscriberParams)        => Promise<AxiosResponse<ListAllSubscribersResponse>>;
     assignSubscriber:   (subscriber_id: string, group_id: string)           => Promise<AxiosResponse<SingleGroupResponse>>;
     unAssignSubscriber: (subscriber_id: string, group_id: string)           => Promise<AxiosResponse<null>>;
+    importSubscribers:  (group_id: string, params: ImportGroupSubscribersParams) => Promise<AxiosResponse<ImportGroupSubscribersResponse, ImportGroupSubscribersParams>>;
 }
 
 export interface GetGroupsParams {
@@ -29,7 +30,7 @@ export interface ListAllGroupsResponse {
 export interface ListAllSubscribersResponse {
     data:   Array<SubscriberObject>;
     links:  Links;
-    meta:   Meta;
+    meta:   Meta & CursorMeta;
 }
 
 export interface SingleGroupResponse {
@@ -50,6 +51,7 @@ export interface SubscriberParams {
     limit?:  number;
     page?:   number; // deprecated
     cursor?: string;
+    include?: "groups";
 }
 
 export interface GroupObject {
@@ -72,4 +74,18 @@ export interface GroupObject {
     bounced_count:      number;
     junk_count:         number;
     created_at:         string;
+}
+
+export interface ImportGroupSubscribersParams {
+    subscribers: Array<{
+        email:      string;
+        name?:      string;
+        fields?:    Record<string, unknown>;
+    }>;
+    resubscribe?:           boolean;
+    trigger_automations?:   boolean;
+}
+
+export interface ImportGroupSubscribersResponse {
+    import_progress_url: string;
 }
