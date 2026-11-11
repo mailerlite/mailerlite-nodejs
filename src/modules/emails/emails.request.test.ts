@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 
-// Type-level test: run `npx tsc --noEmit --skipLibCheck` on this file too, not only vitest (vitest does not check types).
+// Type-level test: vitest does not check types, so `npm test` first runs `npm run typecheck:tests` (tsc on this file).
 const rejected = { message: "Some attributes were rejected.", keys: ["editor_content.attrs.onclick"] };
 const axiosMock = vi.hoisted(() => vi.fn());
 vi.mock("axios", () => ({ default: axiosMock }));
