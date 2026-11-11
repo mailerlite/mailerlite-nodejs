@@ -6,6 +6,7 @@ import {
     SingleEmailDocumentResponse,
     EmailHtmlResponse,
     SingleEmailBlockResponse,
+    EmailBlockWriteResponse,
     CreateEmailBlockParams,
     UpdateEmailBlockParams,
     MoveEmailBlockParams,
@@ -129,7 +130,7 @@ describe("Emails", () => {
             // Inserted at the end, so nothing comes after it.
             expect(response.data.data.placement.before).toBeNull();
             expect(typeof response.data.etag).toBe("string");
-            expectTypeOf(response.data).toEqualTypeOf<SingleEmailBlockResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<EmailBlockWriteResponse>();
 
             createdBlockId = response.data.data.id;
             etag = response.data.etag;
@@ -174,7 +175,7 @@ describe("Emails", () => {
             expect(response.data.data.editor_content).toBeDefined();
             expect(response.data.data.placement).toBeDefined();
             expect(typeof response.data.etag).toBe("string");
-            expectTypeOf(response.data).toEqualTypeOf<SingleEmailBlockResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<EmailBlockWriteResponse>();
 
             etag = response.data.etag;
         } catch (error) {
@@ -228,7 +229,7 @@ describe("Emails", () => {
             expect(response.data.data.id).toBeTruthy();
             expect(response.data.data.id).not.toBe(createdBlockId);
             expect(typeof response.data.etag).toBe("string");
-            expectTypeOf(response.data).toEqualTypeOf<SingleEmailBlockResponse>();
+            expectTypeOf(response.data).toEqualTypeOf<EmailBlockWriteResponse>();
 
             staleTestBlockId = response.data.data.id;
             etag = response.data.etag;

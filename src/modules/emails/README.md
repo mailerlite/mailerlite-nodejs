@@ -141,7 +141,8 @@ Any type except `title` can be inserted. Inserts always go at the top level, so 
 top-level block; without `placement` the block goes at the end. `editor_content` is the editor's own JSON (camelCase
 keys) and may be `{}`, e.g. for a `divider`. A button's label is the text nodes in `content`, not an `attrs.label`.
 Link tracking IDs are assigned by the server. A value not allowed in email content, such as a `javascript:` URL, is a
-`422` naming the key, and nothing is written.
+`422` naming the key, and nothing is written. An attribute or `mobile` key that the block type does not declare is
+dropped, not refused: the write succeeds and `response.data.rejected.keys` lists the dropped keys.
 
 ---
 ```javascript
@@ -173,7 +174,8 @@ mailerlite.emails.createBlock("EMAIL_ID", params)
 Replaces `editor_content` whole, with no merge: read the block with `findBlock`, change it, send it back. Links you
 send back keep their tracking IDs and click history. A block's type cannot change (delete it and create a new one),
 position changes go through `moveBlock`, and `title` blocks cannot be updated (`422`). A value not allowed in email
-content is a `422` naming the key, and nothing is written.
+content is a `422` naming the key, and nothing is written. An attribute or `mobile` key that the block type does not
+declare is dropped, not refused: the write succeeds and `response.data.rejected.keys` lists the dropped keys.
 
 ---
 ```javascript
@@ -241,7 +243,8 @@ mailerlite.emails.moveBlock("EMAIL_ID", "BLOCK_ID", params)
 
 Checks a block without writing it; no email ID or `etag` needed. Invalid content returns `200` with `valid: false`,
 so check `valid`. `errors` matches what `createBlock` would return in a `422`. A malformed request (missing `type`, or
-`editor_content` that is not an object) is still a `422`.
+`editor_content` that is not an object) is still a `422`. When `valid` is `true`, `rejected` lists the keys that
+`createBlock` would drop.
 
 ---
 ```javascript
@@ -255,7 +258,7 @@ const params = {
 
 mailerlite.emails.validateBlock(params)
   .then(response => {
-    console.log(response.data); // { valid, errors, schema }
+    console.log(response.data); // { valid, errors, schema, rejected? }
   })
   .catch(error => {
     if (error.response) console.log(error.response.data);
