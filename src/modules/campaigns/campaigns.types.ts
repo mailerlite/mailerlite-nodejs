@@ -95,7 +95,10 @@ export type DefaultEditorCampaignEmailParams = CampaignEmailBaseParams & {
 export type SimpleEditorCampaignEmailParams = CampaignEmailBaseParams & {
     /** Create the email in the simple editor. */
     editor:         "simple";
-    /** Shared gallery simple-editor template ID. */
+    /**
+     * Simple-editor template to start from: one from the shared gallery, or one of the account's own
+     * simple-editor templates (for example one saved from an email). Must be the same on every email.
+     */
     template_id?:   string;
     content?:       never;
 };

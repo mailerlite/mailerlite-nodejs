@@ -103,7 +103,7 @@ mailerlite.campaigns.create(params)
   });
 ```
 
-Advanced: to start from a shared gallery simple editor template instead of a blank email, also set `template_id` (a string) on every email. Own templates and other template types are rejected.
+Advanced: to start from a template instead of a blank email, also set the same `template_id` (a string) on every email. The template can be a simple editor template from the shared gallery, or one of the account's own simple editor templates, for example one saved from an email with `POST /api/emails/{email_id}/templates`. The template is copied into the new email, and the template itself does not change. Other template types are rejected.
 
 ### Update campaign
 [Official Documentation](https://developers.mailerlite.com/docs/campaigns.html#update-campaign)
