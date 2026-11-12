@@ -1,0 +1,246 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:44.684Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202747081514812805',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:44 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '118',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '81',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a52998fb483ea14c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '202747081514812805',
+                type: 'builder_inline_email',
+                emailable_type: 'campaigns',
+                emailable_id: '202747081488598400',
+                settings: {
+                    brand: {
+                        mode: 'account',
+                        font_family: 'Inter, sans-serif',
+                        background_color: '#FFFFFF',
+                        text_color: '#5D5D5D',
+                        border_color: '#15C7D2',
+                    },
+                    layout: {
+                        width_mode: 'default',
+                        alignment: 'center',
+                    },
+                    typography: {
+                        link: {
+                            color: '#22c55e',
+                        },
+                        heading: {
+                            font_family: 'Inter, sans-serif',
+                            font_weight: '600',
+                            line_height: '150%',
+                            letter_spacing: '0',
+                            h1: {
+                                color: '#111111',
+                                size: '32',
+                            },
+                            h2: {
+                                color: '#111111',
+                                size: '24',
+                            },
+                            h3: {
+                                color: '#111111',
+                                size: '20',
+                            },
+                        },
+                        paragraph: {
+                            font_family: 'Inter, sans-serif',
+                            font_weight: '400',
+                            line_height: '150%',
+                            letter_spacing: '0',
+                            p1: {
+                                color: '#333333',
+                                size: '16',
+                            },
+                        },
+                    },
+                    button: {
+                        font_family: 'Inter, sans-serif',
+                        font_weight: '500',
+                        letter_spacing: '0',
+                        background_color: '#22c55e',
+                        text_color: '#ffffff',
+                        border_radius: '8',
+                    },
+                    footer: {
+                        show_preferences: false,
+                        company_name: {
+                            editor_content: {
+                                content: [
+                                    {
+                                        type: 'text',
+                                        text: 'Design squad',
+                                        marks: [
+                                            {
+                                                type: 'bold',
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                        address: {
+                            editor_content: {
+                                content: [
+                                    {
+                                        type: 'text',
+                                        text: 'Add your company postal address here',
+                                    },
+                                ],
+                            },
+                        },
+                        info_text: {
+                            editor_content: {
+                                content: [
+                                    {
+                                        text: 'You received this email because you signed up on our website or made a purchase from us.',
+                                        type: 'text',
+                                    },
+                                ],
+                            },
+                        },
+                        unsubscribe_text: 'Unsubscribe',
+                        preferences_text: 'Update your preferences',
+                        social_links: [],
+                    },
+                },
+                blocks: [
+                    {
+                        id: '243657062',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {},
+                            content: [],
+                        },
+                    },
+                    {
+                        id: '243657063',
+                        type: 'divider',
+                        editor_content: {
+                            attrs: {},
+                        },
+                    },
+                    {
+                        id: '243657064',
+                        type: 'image',
+                        editor_content: {
+                            attrs: {
+                                alt: '',
+                                src: '',
+                                url: '',
+                                width: 130,
+                                height: null,
+                                linkId: null,
+                                caption: '',
+                                linkType: 'link',
+                                alignment: 'left',
+                                fullWidth: false,
+                                footerRole: 'logo',
+                                openNewTab: false,
+                            },
+                        },
+                    },
+                    {
+                        id: '243657065',
+                        type: 'paragraph',
+                        editor_content: {
+                            attrs: {
+                                footerRole: null,
+                            },
+                            content: [
+                                {
+                                    text: 'Design squad',
+                                    type: 'text',
+                                    marks: [
+                                        {
+                                            type: 'bold',
+                                        },
+                                    ],
+                                },
+                                {
+                                    type: 'hardBreak',
+                                },
+                                {
+                                    text: 'Add your company postal address here',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        id: '243657066',
+                        type: 'social_icon',
+                        editor_content: {
+                            attrs: {
+                                size: 16,
+                                color: 'grey',
+                                items: [],
+                                shape: 'default',
+                                alignment: 'left',
+                                footerRole: 'social',
+                                targetBlank: true,
+                            },
+                        },
+                    },
+                ],
+            },
+            etag: '1',
+        },
+    },
+}

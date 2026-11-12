@@ -1,13 +1,13 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "noEmit": true,
-        "declaration": false,
-        "declarationMap": false,
-        "moduleResolution": "Bundler",
-        "skipLibCheck": true
-    },
-    "files": [],
-    "include": ["src/ecommerce-modules/**/*.ts"],
-    "exclude": []
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "moduleResolution": "Bundler"
+  },
+  "files": ["./src/modules/emails/emails.request.test.ts"],
+  "include": ["src/ecommerce-modules/**/*.ts"]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@mailerlite/mailerlite-nodejs",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "MailerLite Node.js SDK",
   "main": "./dist/index.js",
   "module": "/dist/index.mjs",
@@ -9,8 +9,8 @@
     "clean": "rm -rf ./dist",
     "build": "npm run clean && tsup",
     "prepack": "npm run build",
-    "typecheck": "tsc -p tsconfig.test.json",
-    "test": "npm run typecheck && vitest run",
+    "test": "npm run typecheck:tests && vitest run",
+    "typecheck:tests": "tsc -p tsconfig.test.json",
     "test:watch": "vitest watch"
   },
   "repository": {

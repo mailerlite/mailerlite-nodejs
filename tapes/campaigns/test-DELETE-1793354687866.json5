@@ -1,0 +1,57 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:47.693Z',
+        host: 'https://connect.mailerlite.com',
+    },
+    req: {
+        headers: {},
+        url: '/api/campaigns/202747081488598400',
+        method: 'DELETE',
+        body: '',
+    },
+    res: {
+        status: 204,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:47 GMT',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '102',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '117',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a529990e1c49bc1c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: '',
+    },
+}

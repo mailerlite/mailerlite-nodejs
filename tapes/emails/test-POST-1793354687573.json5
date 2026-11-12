@@ -1,0 +1,75 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:47.464Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/blocks/validate',
+        method: 'POST',
+        body: 'ewogICJ0eXBlIjogInBhcmFncmFwaCIsCiAgImVkaXRvcl9jb250ZW50IjogewogICAgImNvbnRlbnQiOiBbCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJ0ZXh0IiwKICAgICAgICAidGV4dCI6ICJVbnNhZmUgbGluayIsCiAgICAgICAgIm1hcmtzIjogWwogICAgICAgICAgewogICAgICAgICAgICAidHlwZSI6ICJsaW5rIiwKICAgICAgICAgICAgImF0dHJzIjogewogICAgICAgICAgICAgICJocmVmIjogImphdmFzY3JpcHQ6YWxlcnQoMSkiCiAgICAgICAgICAgIH0KICAgICAgICAgIH0KICAgICAgICBdCiAgICAgIH0KICAgIF0KICB9Cn0=',
+    },
+    res: {
+        status: 200,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:47 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '104',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '52',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a529990ca96ba14c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            valid: false,
+            errors: {
+                'editor_content.content[0].marks[0].attrs.href': [
+                    'This value is not allowed in email content and was rejected.',
+                ],
+            },
+            schema: {
+                version: '2.83.4',
+                hash: '1918a6a0c25034cf9c934976f2755085',
+            },
+        },
+    },
+}
