@@ -5,7 +5,7 @@ MailerLite Node.js SDK (`@mailerlite/mailerlite-nodejs`) — TypeScript wrapper 
 ## Commands
 
 - `npm run build` — tsup → `dist/` (CJS `index.js` + ESM `index.mjs` + `.d.ts` + source maps, minified, target node16)
-- `npm run test` — vitest, replays recorded HTTP tapes
+- `npm run test` — type-checks the type-level tests (`npm run typecheck:tests`, files listed in `tsconfig.test.json`), then runs vitest, which replays recorded HTTP tapes
 - `npm run test:watch`
 
 ## Structure

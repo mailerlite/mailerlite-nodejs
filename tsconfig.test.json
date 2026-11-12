@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false
+  },
+  "files": ["./src/modules/emails/emails.request.test.ts"]
+}

@@ -9,7 +9,8 @@
     "clean": "rm -rf ./dist",
     "build": "npm run clean && tsup",
     "prepack": "npm run build",
-    "test": "vitest run",
+    "test": "npm run typecheck:tests && vitest run",
+    "typecheck:tests": "tsc -p tsconfig.test.json",
     "test:watch": "vitest watch"
   },
   "repository": {

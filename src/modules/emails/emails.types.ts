@@ -5,8 +5,8 @@ export interface EmailsInterface {
     find:               (email_id: string)                                                                                      => Promise<AxiosResponse<SingleEmailDocumentResponse>>;
     getHtml:            (email_id: string)                                                                                      => Promise<AxiosResponse<EmailHtmlResponse>>;
     findBlock:          (email_id: string, block_id: string)                                                                    => Promise<AxiosResponse<SingleEmailBlockResponse>>;
-    createBlock:        (email_id: string, requestBody: CreateEmailBlockParams, options?: EmailWriteOptions)                   => Promise<AxiosResponse<SingleEmailBlockResponse, CreateEmailBlockParams>>;
-    updateBlock:        (email_id: string, block_id: string, requestBody: UpdateEmailBlockParams, options?: EmailWriteOptions) => Promise<AxiosResponse<SingleEmailBlockResponse, UpdateEmailBlockParams>>;
+    createBlock:        (email_id: string, requestBody: CreateEmailBlockParams, options?: EmailWriteOptions)                   => Promise<AxiosResponse<EmailBlockWriteResponse, CreateEmailBlockParams>>;
+    updateBlock:        (email_id: string, block_id: string, requestBody: UpdateEmailBlockParams, options?: EmailWriteOptions) => Promise<AxiosResponse<EmailBlockWriteResponse, UpdateEmailBlockParams>>;
     deleteBlock:        (email_id: string, block_id: string, requestBody: EmailEtagParams, options?: EmailWriteOptions)        => Promise<AxiosResponse<DeleteEmailBlockResponse, EmailEtagParams>>;
     moveBlock:          (email_id: string, block_id: string, requestBody: MoveEmailBlockParams, options?: EmailWriteOptions)   => Promise<AxiosResponse<SingleEmailBlockResponse, MoveEmailBlockParams>>;
     validateBlock:      (requestBody: ValidateEmailBlockParams)                                                                 => Promise<AxiosResponse<EmailValidationResponse, ValidateEmailBlockParams>>;
@@ -265,6 +265,12 @@ export interface SingleEmailBlockResponse {
     etag:   string;
 }
 
+/** POST /api/emails/{email}/blocks and PATCH /api/emails/{email}/blocks/{block} */
+export interface EmailBlockWriteResponse extends SingleEmailBlockResponse {
+    /** Present only when the API dropped attributes or `mobile` keys that the block type does not declare. The write itself still succeeded. */
+    rejected?:  EmailRejected;
+}
+
 /** POST /api/emails/{email}/blocks */
 export interface CreateEmailBlockParams {
     etag:               string;
@@ -316,8 +322,8 @@ export interface EmailValidationResponse {
     errors:     Record<string, Array<string>>;
     /** The version of the rules the check ran against. */
     schema:     { version: string; hash: string };
-    /** Only from settings/validate, and only when the write would strip an unsafe value. */
-    rejected?:  EmailSettingsRejected;
+    /** From both validate endpoints, only when `valid` is true and the write would drop something. */
+    rejected?:  EmailRejected;
 }
 
 /** PATCH /api/emails/{email}/settings — deep partial; only sent keys change. */
@@ -359,18 +365,22 @@ export interface EmailFooterSocialLinkParams {
     link_id?:   number | null;
 }
 
-export interface EmailSettingsRejected {
+/** What a block or settings write dropped. The write itself still succeeded. */
+export interface EmailRejected {
     message:    "Some attributes were rejected." | (string & {});
-    /** Dot paths, e.g. "footer.social_links[0].url". */
+    /** Dot paths, e.g. "editor_content.attrs.onclick" or "footer.social_links[0].url". */
     keys:       Array<string>;
 }
+
+/** The same as `EmailRejected`. */
+export type EmailSettingsRejected = EmailRejected;
 
 export interface UpdateEmailSettingsResponse {
     /** The settings as they now apply, in the same shape as `settings` in the email document. */
     data:       EmailSettingsObject;
     etag:       string;
     /** Present only when an unsafe value was dropped. The write itself still succeeded. */
-    rejected?:  EmailSettingsRejected;
+    rejected?:  EmailRejected;
 }
 
 /** POST /api/emails/{email}/settings/validate — same body as the settings update, without etag. */

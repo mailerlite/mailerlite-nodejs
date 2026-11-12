@@ -9,6 +9,7 @@ import type {
     SingleEmailDocumentResponse,
     EmailHtmlResponse,
     SingleEmailBlockResponse,
+    EmailBlockWriteResponse,
     CreateEmailBlockParams,
     UpdateEmailBlockParams,
     EmailEtagParams,
@@ -92,7 +93,7 @@ export default class Email implements EmailsInterface {
      * @requestBody {Object} - Block data for create (incl. `etag`)
      * @options {Object} - Optional request options (`idempotencyKey`)
      */
-    public createBlock(email_id: string, requestBody: CreateEmailBlockParams, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailBlockResponse, CreateEmailBlockParams>> {
+    public createBlock(email_id: string, requestBody: CreateEmailBlockParams, options?: EmailWriteOptions): Promise<AxiosResponse<EmailBlockWriteResponse, CreateEmailBlockParams>> {
 
         validateNumericId(email_id);
 
@@ -113,7 +114,7 @@ export default class Email implements EmailsInterface {
      * @requestBody {Object} - Block data for update (incl. `etag`)
      * @options {Object} - Optional request options (`idempotencyKey`)
      */
-    public updateBlock(email_id: string, block_id: string, requestBody: UpdateEmailBlockParams, options?: EmailWriteOptions): Promise<AxiosResponse<SingleEmailBlockResponse, UpdateEmailBlockParams>> {
+    public updateBlock(email_id: string, block_id: string, requestBody: UpdateEmailBlockParams, options?: EmailWriteOptions): Promise<AxiosResponse<EmailBlockWriteResponse, UpdateEmailBlockParams>> {
 
         validateNumericId(email_id);
         validateNumericId(block_id);
