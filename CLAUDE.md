@@ -30,6 +30,7 @@ MailerLite Node.js SDK (`@mailerlite/mailerlite-nodejs`) — TypeScript wrapper 
 ## Testing
 
 - E-commerce tests and `*.request.test.ts` files mock axios (`src/utils/request-mock.ts`) and assert method/path/query/body; write new tests this way, not as tapes.
+- The axios mock returns `{ data: {} }`, so it never checks response types. Each e-commerce test file therefore also holds one documented response sample per object, assigned to the response type (`const sample: ListProductsResponse = {...}`). `npm run typecheck` (`tsconfig.test.json`, run by `npm test`) fails when a type drifts from the sample.
 - Older module tests run against a talkback proxy on `localhost:9090` (`src/utils/setup-teardown-hooks.ts`), replaying tapes from `tapes/`. Unrecorded requests return 404.
 - Env: `API_KEY` (required even in replay), `VERIFIED_EMAIL` (campaign tests). Never read `.env` — ask the user to provide the credentials.
 
