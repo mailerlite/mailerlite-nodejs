@@ -16,6 +16,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Smoke-test built package (CJS + ESM)
+        run: |
+          node -e "const M = require('./dist/index.js'); if (!new M.default({ api_key: 'x' }).subscribers) process.exit(1)"
+          node --input-type=module -e "import M from './dist/index.mjs'; if (!new M({ api_key: 'x' }).subscribers) process.exit(1)"
       - run: npm test
         env:
           API_KEY: dummy
