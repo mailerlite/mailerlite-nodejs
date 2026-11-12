@@ -16,6 +16,7 @@ import type {
     ListSubscriberActivityLogResponse,
     SingleSubscriberImportResponse
 } from './subscribers.types.js';
+import type { SubscriberEcommerceReportParams, SubscriberEcommerceOrdersParams, SubscriberEcommerceStatsResponse, SubscriberEcommerceOrdersResponse } from './subscribers.types.js';
 
 export default class Subscriber implements SubscriberInterface {
     private config: Config;
@@ -147,6 +148,36 @@ export default class Subscriber implements SubscriberInterface {
     public getImport(import_id: string): Promise<AxiosResponse<SingleSubscriberImportResponse>> {
         return request(`/api/subscribers/import/${pathSegment(import_id)}`, {
             method: "GET"
+        }, this.config);
+    }
+
+    /**
+     * @description Fetch subscriber e-commerce stats
+     *
+     * @see https://developers.mailerlite.com/api/subscribers#fetch-subscriber-e-commerce-stats
+     *
+     * @subscriber_id {String} - Subscriber ID
+     * @params {Object} - Query parameters
+     */
+    public getEcommerceStats(subscriber_id: string, params: SubscriberEcommerceReportParams): Promise<AxiosResponse<SubscriberEcommerceStatsResponse>> {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/reports/ecommerce`, {
+            method: "GET",
+            params: params
+        }, this.config);
+    }
+
+    /**
+     * @description Fetch subscriber e-commerce orders
+     *
+     * @see https://developers.mailerlite.com/api/subscribers#fetch-subscriber-e-commerce-orders
+     *
+     * @subscriber_id {String} - Subscriber ID
+     * @params {Object} - Query parameters
+     */
+    public getEcommerceOrders(subscriber_id: string, params: SubscriberEcommerceOrdersParams): Promise<AxiosResponse<SubscriberEcommerceOrdersResponse>> {
+        return request(`/api/subscribers/${pathSegment(subscriber_id)}/reports/ecommerce/orders`, {
+            method: "GET",
+            params: params
         }, this.config);
     }
 };

@@ -1,0 +1,80 @@
+import { AxiosResponse } from "axios";
+import { EcommerceStats, NullableLinks, NullableMeta, Rate } from "../../utils/types.js";
+
+export interface ShopsInterface {
+    get:      (params: GetShopsParams)                         => Promise<AxiosResponse<ListShopsResponse>>;
+    find:     (shop_id: string)                                => Promise<AxiosResponse<SingleShopResponse>>;
+    create:   (requestBody: CreateShopParams)                  => Promise<AxiosResponse<SingleShopResponse, CreateShopParams>>;
+    update:   (shop_id: string, requestBody: UpdateShopParams) => Promise<AxiosResponse<SingleShopResponse, UpdateShopParams>>;
+    delete:   (shop_id: string)                                => Promise<AxiosResponse<SingleShopResponse>>;
+    getStats: (shop_id: string, params: GetShopStatsParams)    => Promise<AxiosResponse<ShopStatsResponse>>;
+}
+
+export interface GetShopsParams {
+    limit?: number;
+    page?:  number;
+}
+
+export interface GetShopStatsParams {
+    start_date: string;
+    end_date:   string;
+}
+
+export interface CreateShopParams {
+    name:           string;
+    url:            string;
+    currency:       string;
+    platform?:      string;
+    group_id?:      string;
+    enable_popups?: boolean;
+    enabled?:       boolean;
+    access_data?:   string;
+}
+
+export interface UpdateShopParams extends Partial<CreateShopParams> {}
+
+export interface ListShopsResponse {
+    data:   Array<ShopObject>;
+    links:  NullableLinks;
+    meta:   NullableMeta;
+}
+
+export interface SingleShopResponse {
+    data: ShopObject;
+}
+
+export interface ShopStatsResponse {
+    data: {
+        ecommerce:  Omit<EcommerceStats, "conversion_rate"> & {
+            /** Formatted percentage, e.g. "0%" */
+            conversion_rate: string;
+        };
+        series:     Array<Record<string, number | string>>;
+    };
+}
+
+export interface ShopObject {
+    id:                 string;
+    name:               string;
+    url:                string;
+    currency:           string;
+    currency_sign:      string;
+    platform?:          string;
+    /** true for the MailerLite shop */
+    internal?:          boolean;
+    enabled?:           boolean;
+    enable_popups:      boolean;
+    enable_resubscribe?: boolean;
+    group:              null | ShopGroupObject;
+    created_at:         string;
+    updated_at:         string;
+}
+
+export interface ShopGroupObject {
+    id:         string;
+    name:       string;
+    total:      number;
+    open_rate:  Rate;
+    click_rate: Rate;
+    created_at: string;
+}

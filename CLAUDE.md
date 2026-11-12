@@ -17,19 +17,21 @@ MailerLite Node.js SDK (`@mailerlite/mailerlite-nodejs`) — TypeScript wrapper 
   - `<name>.test.ts` — tests
   - `README.md` — usage docs per endpoint
 - `src/utils/fetch.ts` — single axios `request()`: auth header, nested query serialization (`filter[x]=`), adapters `["http","xhr","fetch"]` for edge runtimes. `data` must stay `undefined` (not `null`) for bodiless requests — Cloudflare Workers rejects it otherwise.
-- `src/utils/helpers.ts` — `validateId` (IDs are strings; numbers rejected because IDs exceed `MAX_SAFE_INTEGER`), test helpers.
+- `src/utils/helpers.ts` — `validateId` (IDs are strings; numbers rejected because IDs exceed `MAX_SAFE_INTEGER`), `pathSegment` (validates and URL-encodes an ID), test helpers.
 - `examples/` — manual-testing scripts importing from `../../dist/index.mjs`.
 
 ## Conventions
 
 - Relative imports use `.js` extension (`'../../utils/fetch.js'`).
-- Every method that takes an ID calls `validateId()` first.
+- IDs in a URL go through `pathSegment(id)` (`/shops/${pathSegment(shop_id)}`), which validates and escapes them so an ID can't point the request at another endpoint. Use `validateId()` only for IDs that don't go in the path.
 - Each method has a JSDoc block with `@description` and `@see` linking to developers.mailerlite.com.
 - Adding a module: create the 4 files above, wire it into `src/index.ts` (property, constructor, `export *`), add a section to the root README.
 
 ## Testing
 
-- Tests run against a talkback proxy on `localhost:9090` (`src/utils/setup-teardown-hooks.ts`), replaying tapes from `tapes/`. Unrecorded requests return 404.
+- E-commerce tests and `*.request.test.ts` files mock axios (`src/utils/request-mock.ts`) and assert method/path/query/body; write new tests this way, not as tapes.
+- The axios mock returns `{ data: {} }`, so it never checks response types. Each e-commerce test file therefore also holds one documented response sample per object, assigned to the response type (`const sample: ListProductsResponse = {...}`). `npm run typecheck:tests` (`tsconfig.test.json`, run by `npm test`) fails when a type drifts from the sample.
+- Older module tests run against a talkback proxy on `localhost:9090` (`src/utils/setup-teardown-hooks.ts`), replaying tapes from `tapes/`. Unrecorded requests return 404.
 - Env: `API_KEY` (required even in replay), `VERIFIED_EMAIL` (campaign tests). Never read `.env` — ask the user to provide the credentials.
 
 ### Recording new tapes

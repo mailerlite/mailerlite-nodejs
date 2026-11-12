@@ -5,7 +5,9 @@
     "skipLibCheck": true,
     "declaration": false,
     "declarationMap": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "moduleResolution": "Bundler"
   },
-  "files": ["./src/modules/emails/emails.request.test.ts"]
+  "files": ["./src/modules/emails/emails.request.test.ts"],
+  "include": ["src/ecommerce-modules/**/*.ts"]
 }
