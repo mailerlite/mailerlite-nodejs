@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -31,10 +31,7 @@ export default class Import implements ImportInterface {
      * @requestBody {Object} - Request body
      */
     public importCategories(shop_id: string, requestBody: ImportCategoriesParams): Promise<AxiosResponse<ImportCategoriesResponse, ImportCategoriesParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/categories/import`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/categories/import`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -49,10 +46,7 @@ export default class Import implements ImportInterface {
      * @requestBody {Object} - Request body
      */
     public importCustomers(shop_id: string, requestBody: ImportCustomersParams): Promise<AxiosResponse<ImportCustomersResponse, ImportCustomersParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/customers/import`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/customers/import`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -67,10 +61,7 @@ export default class Import implements ImportInterface {
      * @requestBody {Object} - Request body
      */
     public importProducts(shop_id: string, requestBody: ImportProductsParams): Promise<AxiosResponse<ImportProductsResponse, ImportProductsParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/import`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/import`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -85,10 +76,7 @@ export default class Import implements ImportInterface {
      * @requestBody {Object} - Request body
      */
     public importOrders(shop_id: string, requestBody: ImportOrdersParams): Promise<AxiosResponse<ImportOrdersResponse, ImportOrdersParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/orders/import`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/orders/import`, {
             method: "POST",
             body: requestBody
         }, this.config);

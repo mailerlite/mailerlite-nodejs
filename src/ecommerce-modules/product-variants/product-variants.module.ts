@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -27,11 +27,7 @@ export default class ProductVariant implements ProductVariantsInterface {
      * @product_id {String} - Product ID
      */
     public get(shop_id: string, product_id: string): Promise<AxiosResponse<ListProductVariantsResponse>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}/variants`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}/variants`, {
             method: "GET"
         }, this.config);
     }
@@ -46,11 +42,7 @@ export default class ProductVariant implements ProductVariantsInterface {
      * @requestBody {Object} - Request body
      */
     public create(shop_id: string, product_id: string, requestBody: CreateProductVariantsParams): Promise<AxiosResponse<ProductWithVariantsResponse, CreateProductVariantsParams>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}/variants`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}/variants`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -67,12 +59,7 @@ export default class ProductVariant implements ProductVariantsInterface {
      * @requestBody {Object} - Request body
      */
     public update(shop_id: string, product_id: string, variant_id: string, requestBody: UpdateProductVariantParams): Promise<AxiosResponse<ProductWithVariantsResponse, UpdateProductVariantParams>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-        validateId(variant_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}/variants/${variant_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}/variants/${pathSegment(variant_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -88,12 +75,7 @@ export default class ProductVariant implements ProductVariantsInterface {
      * @variant_id {String} - Variant ID
      */
     public delete(shop_id: string, product_id: string, variant_id: string): Promise<AxiosResponse<ProductWithVariantsResponse>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-        validateId(variant_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}/variants/${variant_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}/variants/${pathSegment(variant_id)}`, {
             method: "DELETE"
         }, this.config);
     }

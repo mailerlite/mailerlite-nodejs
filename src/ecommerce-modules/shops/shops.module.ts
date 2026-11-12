@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -29,7 +29,6 @@ export default class Shop implements ShopsInterface {
      * @params {Object} - Query parameters
      */
     public get(params: GetShopsParams): Promise<AxiosResponse<ListShopsResponse>> {
-
         return request(`/api/ecommerce/shops`, {
             method: "GET",
             params: params
@@ -44,10 +43,7 @@ export default class Shop implements ShopsInterface {
      * @shop_id {String} - Shop ID
      */
     public find(shop_id: string): Promise<AxiosResponse<SingleShopResponse>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -60,7 +56,6 @@ export default class Shop implements ShopsInterface {
      * @requestBody {Object} - Request body
      */
     public create(requestBody: CreateShopParams): Promise<AxiosResponse<SingleShopResponse, CreateShopParams>> {
-
         return request(`/api/ecommerce/shops`, {
             method: "POST",
             body: requestBody
@@ -76,10 +71,7 @@ export default class Shop implements ShopsInterface {
      * @requestBody {Object} - Request body
      */
     public update(shop_id: string, requestBody: UpdateShopParams): Promise<AxiosResponse<SingleShopResponse, UpdateShopParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -93,10 +85,7 @@ export default class Shop implements ShopsInterface {
      * @shop_id {String} - Shop ID
      */
     public delete(shop_id: string): Promise<AxiosResponse<SingleShopResponse>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}`, {
             method: "DELETE"
         }, this.config);
     }
@@ -110,10 +99,7 @@ export default class Shop implements ShopsInterface {
      * @params {Object} - Query parameters
      */
     public getStats(shop_id: string, params: GetShopStatsParams): Promise<AxiosResponse<ShopStatsResponse>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/reports/stats`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/reports/stats`, {
             method: "GET",
             params: params
         }, this.config);

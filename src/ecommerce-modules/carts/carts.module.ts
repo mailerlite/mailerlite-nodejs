@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -27,10 +27,7 @@ export default class Cart implements CartsInterface {
      * @params {Object} - Query parameters
      */
     public get(shop_id: string, params: GetCartsParams): Promise<AxiosResponse<ListCartsResponse>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts`, {
             method: "GET",
             params: params
         }, this.config);
@@ -45,11 +42,7 @@ export default class Cart implements CartsInterface {
      * @cart_id {String} - Cart ID
      */
     public find(shop_id: string, cart_id: string): Promise<AxiosResponse<SingleCartResponse>> {
-
-        validateId(shop_id);
-        validateId(cart_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts/${cart_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts/${pathSegment(cart_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -64,11 +57,7 @@ export default class Cart implements CartsInterface {
      * @requestBody {Object} - Request body
      */
     public update(shop_id: string, cart_id: string, requestBody: UpdateCartParams): Promise<AxiosResponse<SingleCartResponse, UpdateCartParams>> {
-
-        validateId(shop_id);
-        validateId(cart_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts/${cart_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts/${pathSegment(cart_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);

@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -27,10 +27,7 @@ export default class Customer implements CustomersInterface {
      * @params {Object} - Query parameters
      */
     public get(shop_id: string, params: GetCustomersParams): Promise<AxiosResponse<ListCustomersResponse>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/customers`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/customers`, {
             method: "GET",
             params: params
         }, this.config);
@@ -45,11 +42,7 @@ export default class Customer implements CustomersInterface {
      * @customer_id {String} - Customer ID
      */
     public find(shop_id: string, customer_id: string): Promise<AxiosResponse<SingleCustomerResponse>> {
-
-        validateId(shop_id);
-        validateId(customer_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/customers/${customer_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/customers/${pathSegment(customer_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -63,10 +56,7 @@ export default class Customer implements CustomersInterface {
      * @requestBody {Object} - Request body
      */
     public create(shop_id: string, requestBody: CreateUpdateCustomerParams): Promise<AxiosResponse<SingleCustomerResponse, CreateUpdateCustomerParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/customers`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/customers`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -82,11 +72,7 @@ export default class Customer implements CustomersInterface {
      * @requestBody {Object} - Request body
      */
     public update(shop_id: string, customer_id: string, requestBody: CreateUpdateCustomerParams): Promise<AxiosResponse<SingleCustomerResponse, CreateUpdateCustomerParams>> {
-
-        validateId(shop_id);
-        validateId(customer_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/customers/${customer_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/customers/${pathSegment(customer_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -101,11 +87,7 @@ export default class Customer implements CustomersInterface {
      * @customer_id {String} - Customer ID
      */
     public delete(shop_id: string, customer_id: string): Promise<AxiosResponse<SingleCustomerResponse>> {
-
-        validateId(shop_id);
-        validateId(customer_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/customers/${customer_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/customers/${pathSegment(customer_id)}`, {
             method: "DELETE"
         }, this.config);
     }

@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -28,11 +28,7 @@ export default class CategoryProduct implements CategoriesProductsInterface {
      * @params {Object} - Query parameters
      */
     public getProducts(shop_id: string, category_id: string, params: GetCategoryProductsParams): Promise<AxiosResponse<ListCategoryProductsResponse>> {
-
-        validateId(shop_id);
-        validateId(category_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/categories/${category_id}/products`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/categories/${pathSegment(category_id)}/products`, {
             method: "GET",
             params: params
         }, this.config);
@@ -48,12 +44,7 @@ export default class CategoryProduct implements CategoriesProductsInterface {
      * @product_id {String} - Product ID
      */
     public assignProduct(shop_id: string, category_id: string, product_id: string): Promise<AxiosResponse<CategoryProductResponse>> {
-
-        validateId(shop_id);
-        validateId(category_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/categories/${category_id}/products/${product_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/categories/${pathSegment(category_id)}/products/${pathSegment(product_id)}`, {
             method: "PUT"
         }, this.config);
     }
@@ -68,11 +59,7 @@ export default class CategoryProduct implements CategoriesProductsInterface {
      * @requestBody {Object} - Request body
      */
     public assignCategories(shop_id: string, product_id: string, requestBody: AssignCategoriesParams): Promise<AxiosResponse<CategoryProductResponse, AssignCategoriesParams>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}/categories/multiple`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}/categories/multiple`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -88,12 +75,7 @@ export default class CategoryProduct implements CategoriesProductsInterface {
      * @product_id {String} - Product ID
      */
     public unassignProduct(shop_id: string, category_id: string, product_id: string): Promise<AxiosResponse<CategoryProductResponse>> {
-
-        validateId(shop_id);
-        validateId(category_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/categories/${category_id}/products/${product_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/categories/${pathSegment(category_id)}/products/${pathSegment(product_id)}`, {
             method: "DELETE"
         }, this.config);
     }

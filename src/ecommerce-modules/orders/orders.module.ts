@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -28,10 +28,7 @@ export default class Order implements OrdersInterface {
      * @params {Object} - Query parameters
      */
     public get(shop_id: string, params: GetOrdersParams): Promise<AxiosResponse<ListOrdersResponse>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/orders`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/orders`, {
             method: "GET",
             params: params
         }, this.config);
@@ -46,11 +43,7 @@ export default class Order implements OrdersInterface {
      * @order_id {String} - Order ID
      */
     public find(shop_id: string, order_id: string): Promise<AxiosResponse<SingleOrderResponse>> {
-
-        validateId(shop_id);
-        validateId(order_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/orders/${order_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/orders/${pathSegment(order_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -64,10 +57,7 @@ export default class Order implements OrdersInterface {
      * @requestBody {Object} - Request body
      */
     public create(shop_id: string, requestBody: CreateOrderParams): Promise<AxiosResponse<SingleOrderResponse, CreateOrderParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/orders`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/orders`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -83,11 +73,7 @@ export default class Order implements OrdersInterface {
      * @requestBody {Object} - Request body
      */
     public update(shop_id: string, order_id: string, requestBody: UpdateOrderParams): Promise<AxiosResponse<SingleOrderResponse, UpdateOrderParams>> {
-
-        validateId(shop_id);
-        validateId(order_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/orders/${order_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/orders/${pathSegment(order_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -102,11 +88,7 @@ export default class Order implements OrdersInterface {
      * @order_id {String} - Order ID
      */
     public delete(shop_id: string, order_id: string): Promise<AxiosResponse<SingleOrderResponse>> {
-
-        validateId(shop_id);
-        validateId(order_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/orders/${order_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/orders/${pathSegment(order_id)}`, {
             method: "DELETE"
         }, this.config);
     }

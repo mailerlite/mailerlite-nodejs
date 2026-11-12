@@ -26,6 +26,12 @@ describe("E-commerce products requests", () => {
     it("rejects a numeric product id", () => {
         expect(() => mailerlite.ecommerce.products.find("1", 7 as never)).toThrow("ID must be of type string");
     });
+
+    it("escapes ids so they cannot change the endpoint", async () => {
+        await mailerlite.ecommerce.products.find("1", "../7");
+
+        expect(lastRequest(axiosMock).path).toBe(`${products}/..%2F7`);
+    });
 });
 
 describe("E-commerce products responses", () => {

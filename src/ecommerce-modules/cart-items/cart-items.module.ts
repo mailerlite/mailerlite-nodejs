@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -28,11 +28,7 @@ export default class CartItem implements CartItemsInterface {
      * @params {Object} - Query parameters
      */
     public get(shop_id: string, cart_id: string, params: GetCartItemsParams): Promise<AxiosResponse<ListCartItemsResponse>> {
-
-        validateId(shop_id);
-        validateId(cart_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts/${cart_id}/items`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts/${pathSegment(cart_id)}/items`, {
             method: "GET",
             params: params
         }, this.config);
@@ -48,12 +44,7 @@ export default class CartItem implements CartItemsInterface {
      * @item_id {String} - Cart item ID
      */
     public find(shop_id: string, cart_id: string, item_id: string): Promise<AxiosResponse<SingleCartItemResponse>> {
-
-        validateId(shop_id);
-        validateId(cart_id);
-        validateId(item_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts/${cart_id}/items/${item_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts/${pathSegment(cart_id)}/items/${pathSegment(item_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -68,11 +59,7 @@ export default class CartItem implements CartItemsInterface {
      * @requestBody {Object} - Request body
      */
     public create(shop_id: string, cart_id: string, requestBody: CreateUpdateCartItemParams): Promise<AxiosResponse<SingleCartItemResponse, CreateUpdateCartItemParams>> {
-
-        validateId(shop_id);
-        validateId(cart_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts/${cart_id}/items`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts/${pathSegment(cart_id)}/items`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -89,12 +76,7 @@ export default class CartItem implements CartItemsInterface {
      * @requestBody {Object} - Request body
      */
     public update(shop_id: string, cart_id: string, item_id: string, requestBody: CreateUpdateCartItemParams): Promise<AxiosResponse<SingleCartItemResponse, CreateUpdateCartItemParams>> {
-
-        validateId(shop_id);
-        validateId(cart_id);
-        validateId(item_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts/${cart_id}/items/${item_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts/${pathSegment(cart_id)}/items/${pathSegment(item_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -110,12 +92,7 @@ export default class CartItem implements CartItemsInterface {
      * @item_id {String} - Cart item ID
      */
     public delete(shop_id: string, cart_id: string, item_id: string): Promise<AxiosResponse<SingleCartItemResponse>> {
-
-        validateId(shop_id);
-        validateId(cart_id);
-        validateId(item_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/carts/${cart_id}/items/${item_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/carts/${pathSegment(cart_id)}/items/${pathSegment(item_id)}`, {
             method: "DELETE"
         }, this.config);
     }

@@ -1,4 +1,4 @@
-import { validateId } from '../../utils/helpers.js';
+import { pathSegment } from '../../utils/helpers.js';
 import request from '../../utils/fetch.js'
 
 import type { Config }  from '../../utils/types.js'
@@ -28,10 +28,7 @@ export default class Product implements ProductsInterface {
      * @params {Object} - Query parameters
      */
     public get(shop_id: string, params: GetProductsParams): Promise<AxiosResponse<ListProductsResponse>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products`, {
             method: "GET",
             params: params
         }, this.config);
@@ -46,11 +43,7 @@ export default class Product implements ProductsInterface {
      * @product_id {String} - Product ID
      */
     public find(shop_id: string, product_id: string): Promise<AxiosResponse<SingleProductResponse>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}`, {
             method: "GET"
         }, this.config);
     }
@@ -64,10 +57,7 @@ export default class Product implements ProductsInterface {
      * @requestBody {Object} - Request body
      */
     public create(shop_id: string, requestBody: CreateUpdateProductParams): Promise<AxiosResponse<SingleProductResponse, CreateUpdateProductParams>> {
-
-        validateId(shop_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products`, {
             method: "POST",
             body: requestBody
         }, this.config);
@@ -83,11 +73,7 @@ export default class Product implements ProductsInterface {
      * @requestBody {Object} - Request body
      */
     public update(shop_id: string, product_id: string, requestBody: CreateUpdateProductParams): Promise<AxiosResponse<SingleProductResponse, CreateUpdateProductParams>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}`, {
             method: "PUT",
             body: requestBody
         }, this.config);
@@ -102,11 +88,7 @@ export default class Product implements ProductsInterface {
      * @product_id {String} - Product ID
      */
     public delete(shop_id: string, product_id: string): Promise<AxiosResponse<SingleProductResponse>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}`, {
             method: "DELETE"
         }, this.config);
     }
@@ -121,11 +103,7 @@ export default class Product implements ProductsInterface {
      * @requestBody {Object} - Request body
      */
     public changeStatus(shop_id: string, product_id: string, requestBody: ChangeProductStatusParams): Promise<AxiosResponse<SingleProductResponse, ChangeProductStatusParams>> {
-
-        validateId(shop_id);
-        validateId(product_id);
-
-        return request(`/api/ecommerce/shops/${shop_id}/products/${product_id}/change-status`, {
+        return request(`/api/ecommerce/shops/${pathSegment(shop_id)}/products/${pathSegment(product_id)}/change-status`, {
             method: "PUT",
             body: requestBody
         }, this.config);

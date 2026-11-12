@@ -17,13 +17,13 @@ MailerLite Node.js SDK (`@mailerlite/mailerlite-nodejs`) — TypeScript wrapper 
   - `<name>.test.ts` — tests
   - `README.md` — usage docs per endpoint
 - `src/utils/fetch.ts` — single axios `request()`: auth header, nested query serialization (`filter[x]=`), adapters `["http","xhr","fetch"]` for edge runtimes. `data` must stay `undefined` (not `null`) for bodiless requests — Cloudflare Workers rejects it otherwise.
-- `src/utils/helpers.ts` — `validateId` (IDs are strings; numbers rejected because IDs exceed `MAX_SAFE_INTEGER`), test helpers.
+- `src/utils/helpers.ts` — `validateId` (IDs are strings; numbers rejected because IDs exceed `MAX_SAFE_INTEGER`), `pathSegment` (validates and URL-encodes an ID), test helpers.
 - `examples/` — manual-testing scripts importing from `../../dist/index.mjs`.
 
 ## Conventions
 
 - Relative imports use `.js` extension (`'../../utils/fetch.js'`).
-- Every method that takes an ID calls `validateId()` first.
+- IDs in a URL go through `pathSegment(id)` (`/shops/${pathSegment(shop_id)}`), which validates and escapes them so an ID can't point the request at another endpoint. Use `validateId()` only for IDs that don't go in the path.
 - Each method has a JSDoc block with `@description` and `@see` linking to developers.mailerlite.com.
 - Adding a module: create the 4 files above, wire it into `src/index.ts` (property, constructor, `export *`), add a section to the root README.
 
