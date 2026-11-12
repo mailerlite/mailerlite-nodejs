@@ -1,0 +1,82 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:45.567Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202747081514812805/blocks',
+        method: 'POST',
+        body: 'ewogICJldGFnIjogIjQiLAogICJ0eXBlIjogInBhcmFncmFwaCIsCiAgImVkaXRvcl9jb250ZW50IjogewogICAgImNvbnRlbnQiOiBbCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJ0ZXh0IiwKICAgICAgICAidGV4dCI6ICJTREsgdGVzdCBwYXJhZ3JhcGggZm9yIHN0YWxlIGV0YWciCiAgICAgIH0KICAgIF0KICB9LAogICJwbGFjZW1lbnQiOiB7CiAgICAicG9zaXRpb24iOiAiZW5kIgogIH0KfQ==',
+    },
+    res: {
+        status: 201,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:45 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '113',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '206',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a5299900d99ca14c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            data: {
+                id: '243657068',
+                type: 'paragraph',
+                editor_content: {
+                    content: [
+                        {
+                            text: 'SDK test paragraph for stale etag',
+                            type: 'text',
+                        },
+                    ],
+                },
+                placement: {
+                    after: '243657066',
+                    before: null,
+                },
+            },
+            etag: '5',
+        },
+    },
+}

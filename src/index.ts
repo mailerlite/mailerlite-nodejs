@@ -51,6 +51,9 @@ import { WebhooksInterface } from "./modules/webhooks/webhooks.types.js";
 import Statistics from './modules/stats/stats.module.js';
 import { StatsInterface } from "./modules/stats/stats.types.js";
 
+import Email from './modules/emails/emails.module.js';
+import { EmailsInterface } from "./modules/emails/emails.types.js";
+
 import BrandStyle from './modules/brand-styles/brand-styles.module.js';
 import { BrandStylesInterface } from "./modules/brand-styles/brand-styles.types.js";
 
@@ -77,6 +80,7 @@ export default class MailerLite {
     public batches: BatchesInterface;
     public webhooks: WebhooksInterface;
     public stats: StatsInterface;
+    public emails: EmailsInterface;
     public brandStyles: BrandStylesInterface;
     public files: FilesInterface;
 
@@ -103,6 +107,7 @@ export default class MailerLite {
         this.batches = new Batch(this.config);
         this.webhooks = new Webhook(this.config);
         this.stats = new Statistics(this.config);
+        this.emails = new Email(this.config);
         this.brandStyles = new BrandStyle(this.config);
         this.files = new Files(this.config);
     }
@@ -125,6 +130,7 @@ export * from "./modules/languages/languages.types.js";
 export * from "./modules/batches/batches.types.js";
 export * from "./modules/webhooks/webhooks.types.js";
 export * from "./modules/stats/stats.types.js";
+export * from "./modules/emails/emails.types.js";
 export * from "./modules/brand-styles/brand-styles.types.js";
 export * from "./modules/files/files.types.js";
 export * from "./utils/types.js";

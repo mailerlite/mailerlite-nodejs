@@ -1,0 +1,68 @@
+{
+    meta: {
+        createdAt: '2026-10-30T10:04:47.308Z',
+        host: 'https://connect.mailerlite.com',
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {},
+        url: '/api/emails/202747081514812805/blocks/243657068',
+        method: 'PATCH',
+        body: 'ewogICJldGFnIjogIjEiLAogICJlZGl0b3JfY29udGVudCI6IHsKICAgICJjb250ZW50IjogWwogICAgICB7CiAgICAgICAgInR5cGUiOiAidGV4dCIsCiAgICAgICAgInRleHQiOiAiU0RLIHRlc3QgcGFyYWdyYXBoIGZvciBzdGFsZSBldGFnIgogICAgICB9CiAgICBdCiAgfQp9',
+    },
+    res: {
+        status: 409,
+        headers: {
+            date: [
+                'Fri, 30 Oct 2026 10:04:47 GMT',
+            ],
+            'content-type': [
+                'application/json',
+            ],
+            'transfer-encoding': [
+                'chunked',
+            ],
+            connection: [
+                'keep-alive',
+            ],
+            server: [
+                'cloudflare',
+            ],
+            'cache-control': [
+                'no-cache, private',
+            ],
+            'x-mailerlite-api-version-resolved': [
+                '2025-05',
+            ],
+            'x-locale': [
+                'en',
+            ],
+            'x-ratelimit-limit': [
+                '120',
+            ],
+            'x-ratelimit-remaining': [
+                '105',
+            ],
+            'access-control-allow-origin': [
+                '*',
+            ],
+            'x-envoy-upstream-service-time': [
+                '88',
+            ],
+            'cf-cache-status': [
+                'DYNAMIC',
+            ],
+            'cf-ray': [
+                'a529990bbdbea14c-VNO',
+            ],
+            'alt-svc': [
+                'h3=":443"; ma=86400',
+            ],
+        },
+        body: {
+            message: 'The email changed since you read it. Fetch it again, then retry with its new etag.',
+            code: 'version_conflict',
+            etag: '8',
+        },
+    },
+}
