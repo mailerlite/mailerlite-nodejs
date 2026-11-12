@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { EcommerceStats, Links, Meta } from "../../utils/types.js";
+import { EcommerceStats, NullableLinks, NullableMeta, Rate } from "../../utils/types.js";
 
 export interface ShopsInterface {
     get:      (params: GetShopsParams)                         => Promise<AxiosResponse<ListShopsResponse>>;
@@ -35,8 +35,8 @@ export interface UpdateShopParams extends Partial<CreateShopParams> {}
 
 export interface ListShopsResponse {
     data:   Array<ShopObject>;
-    links:  Links;
-    meta:   Meta;
+    links:  NullableLinks;
+    meta:   NullableMeta;
 }
 
 export interface SingleShopResponse {
@@ -45,7 +45,10 @@ export interface SingleShopResponse {
 
 export interface ShopStatsResponse {
     data: {
-        ecommerce:  EcommerceStats;
+        ecommerce:  Omit<EcommerceStats, "conversion_rate"> & {
+            /** Formatted percentage, e.g. "0%" */
+            conversion_rate: string;
+        };
         series:     Array<Record<string, number | string>>;
     };
 }
@@ -56,11 +59,22 @@ export interface ShopObject {
     url:                string;
     currency:           string;
     currency_sign:      string;
-    platform?:           string;
-    enabled?:            boolean;
+    platform?:          string;
+    /** true for the MailerLite shop */
+    internal?:          boolean;
+    enabled?:           boolean;
     enable_popups:      boolean;
-    enable_resubscribe: boolean;
-    group:              null | { id: string; name: string };
+    enable_resubscribe?: boolean;
+    group:              null | ShopGroupObject;
     created_at:         string;
     updated_at:         string;
+}
+
+export interface ShopGroupObject {
+    id:         string;
+    name:       string;
+    total:      number;
+    open_rate:  Rate;
+    click_rate: Rate;
+    created_at: string;
 }

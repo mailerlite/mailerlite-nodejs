@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { EcommerceProductObject, EcommerceProductVariantObject, EcommerceProductVariantParams, Links, Meta } from "../../utils/types.js";
+import { EcommerceProductObject, EcommerceProductVariantObject, EcommerceProductVariantParams } from "../../utils/types.js";
 
 export interface ProductVariantsInterface {
     get:    (shop_id: string, product_id: string)                                                              => Promise<AxiosResponse<ListProductVariantsResponse>>;
@@ -13,9 +13,7 @@ export type CreateProductVariantsParams = Array<EcommerceProductVariantParams>;
 export type UpdateProductVariantParams = EcommerceProductVariantParams;
 
 export interface ListProductVariantsResponse {
-    data:   Array<EcommerceProductVariantObject>;
-    links:  Links;
-    meta:   Meta;
+    data: Array<EcommerceProductVariantObject>;
 }
 
 export interface ProductWithVariantsResponse {

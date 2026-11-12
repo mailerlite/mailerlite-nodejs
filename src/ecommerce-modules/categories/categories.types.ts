@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { EcommerceCategoryObject, EcommerceCategoryParams, Links, Meta } from "../../utils/types.js";
+import { EcommerceCategoryObject, EcommerceCategoryParams, NullableLinks, NullableMeta } from "../../utils/types.js";
 
 export interface CategoriesInterface {
     get:    (shop_id: string, params: GetCategoriesParams)                                  => Promise<AxiosResponse<ListCategoriesResponse>>;
@@ -21,8 +21,8 @@ export type CreateUpdateCategoryParams = EcommerceCategoryParams;
 
 export interface ListCategoriesResponse {
     data:   Array<EcommerceCategoryObject>;
-    links:  Links;
-    meta:   Meta;
+    links:  NullableLinks;
+    meta:   NullableMeta;
 }
 
 export interface SingleCategoryResponse {

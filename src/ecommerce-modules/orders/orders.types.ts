@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { EcommerceOrderObject, EcommerceOrderParams, Links, Meta } from "../../utils/types.js";
+import { EcommerceOrderObject, EcommerceOrderParams, NullableLinks, NullableMeta } from "../../utils/types.js";
 
 export interface OrdersInterface {
     get:    (shop_id: string, params: GetOrdersParams)                          => Promise<AxiosResponse<ListOrdersResponse>>;
@@ -32,8 +32,8 @@ export interface UpdateOrderParams {
 
 export interface ListOrdersResponse {
     data:   Array<EcommerceOrderObject>;
-    links:  Links;
-    meta:   Meta;
+    links:  NullableLinks;
+    meta:   NullableMeta;
 }
 
 export interface SingleOrderResponse {

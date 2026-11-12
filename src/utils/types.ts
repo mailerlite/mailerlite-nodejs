@@ -1,4 +1,5 @@
 import {GroupObject} from "../modules/groups/groups.types";
+import {ShopObject} from "../ecommerce-modules/shops/shops.types.js";
 
 export interface Config {
     basePath: string;
@@ -161,7 +162,7 @@ export interface EcommerceStats {
 
 export interface EcommerceCategoryObject {
     id:                         string;
-    resource_id:                null | string;
+    resource_id?:               null | string;
     name:                       string;
     exclude_from_automations:   boolean;
     created_at:                 string;
@@ -180,65 +181,84 @@ export interface EcommerceProductVariantObject {
 
 export interface EcommerceProductObject {
     id:                         string;
-    resource_id:                null | string;
+    resource_id?:               null | string;
     name:                       string;
     price:                      number;
-    currency:                   null | string;
     url:                        null | string;
     image:                      null | string;
-    short_description:          null | string;
-    description:                null | string;
-    type:                       null | 'one-time' | 'subscription' | 'booking' | (string & {});
+    /** Omitted when the product is nested in a cart item */
+    short_description?:         null | string;
+    /** Omitted when the product is nested in a cart item */
+    description?:               null | string;
     enabled:                    boolean;
     exclude_from_automations:   boolean;
     categories:                 Array<EcommerceCategoryObject>;
-    variants:                   Array<EcommerceProductVariantObject>;
-    created_at:                 string;
+    /** Omitted when the product is nested in a cart item */
+    variants?:                  Array<EcommerceProductVariantObject>;
+    /** MailerLite shop products only */
+    type?:                      'one-time' | 'subscription' | 'booking' | (string & {});
+    /** MailerLite shop products only. ISO 4217 currency code */
+    currency?:                  string;
+    /** MailerLite shop products only */
+    currency_symbol?:           string;
+    /** MailerLite shop products only */
+    created_at?:                string;
 }
 
 export interface EcommerceCustomerObject {
     id:                 string;
-    resource_id:        null | string;
+    resource_id?:       null | string;
     email:              string;
     accepts_marketing:  boolean;
     total_spent:        null | number;
     orders_count:       null | number;
     subscriber:         null | SubscriberObject;
+    /** Omitted when fetching a single customer */
+    created_at?:        string;
+    /** Omitted when fetching a single customer */
+    updated_at?:        string;
 }
 
 export interface EcommerceCartItemObject {
     id:                             string;
-    resource_id:                    null | string;
+    resource_id?:                   null | string;
     product:                        EcommerceProductObject;
-    ecommerce_product_variant_id:   null | string;
+    /** Omitted when the item is nested in a cart or order */
+    ecommerce_product_variant_id?:  null | string;
     variant:                        null | string;
     quantity:                       number;
     price:                          number;
 }
 
 export interface EcommerceCartObject {
-    id:             string;
-    resource_id:    null | string;
-    checkout_url:   null | string;
-    cart_total:     number;
-    items:          Array<EcommerceCartItemObject>;
+    id:                     string;
+    resource_id:            null | string;
+    /** Omitted when the cart is nested in an order */
+    ecommerce_order_id?:    null | string;
+    checkout_url:           null | string;
+    cart_total:             number;
+    /** Omitted when the cart is nested in an order */
+    customer?:              EcommerceCustomerObject;
+    items:                  Array<EcommerceCartItemObject>;
 }
 
 export interface EcommerceOrderObject {
     id:             string;
-    resource_id:    null | string;
+    resource_id?:   null | string;
+    shop:           Omit<ShopObject, "currency_sign">;
     customer:       EcommerceCustomerObject;
     cart:           EcommerceCartObject;
     total:          number;
     status:         'pending' | 'complete' | (string & {});
-    stage:          null | 'cart' | 'checkout' | (string & {});
-    created_at:     string;
-    updated_at:     string;
-    completed_at:   null | string;
-    attribution?:   null | {
+    stage?:         null | 'cart' | 'checkout' | (string & {});
+    /** The email that earned the order, or null when it is not attributed */
+    attribution:    null | {
         email_id:   string;
         type:       'campaign' | 'automation' | (string & {});
     };
+    created_at:     string;
+    updated_at:     string;
+    completed_at:   null | string;
 }
 
 export interface EcommerceReportOrderObject {

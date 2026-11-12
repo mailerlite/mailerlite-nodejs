@@ -4,6 +4,7 @@ const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
 vi.mock("axios", () => ({ default: axiosMock }));
 
 import { mockClient, lastRequest } from "../../utils/request-mock";
+import type { ListProductVariantsResponse } from "./product-variants.types";
 
 const mailerlite = mockClient();
 const variants = "/api/ecommerce/shops/1/products/7/variants";
@@ -23,5 +24,32 @@ describe("E-commerce product variants requests", () => {
 
     it("rejects a numeric variant id", () => {
         expect(() => mailerlite.ecommerce.productVariants.delete("1", "7", 3 as never)).toThrow("ID must be of type string");
+    });
+});
+
+describe("E-commerce product variants responses", () => {
+    // Documented response sample, typed so tsc fails when ListProductVariantsResponse drifts from the API
+    it("returns a variant list", async () => {
+        const sample: ListProductVariantsResponse = {
+            data: [
+                {
+                    id: "31986843543567900",
+                    name: "Black / Medium",
+                    attributes: {
+                        color: "Black",
+                        size: "Medium"
+                    },
+                    price: 123.4,
+                    price_type: "fixed",
+                    resource_id: "variant-123",
+                    image_url: "https://shop-url.com/product-black.jpg"
+                }
+            ]
+        };
+        axiosMock.mockResolvedValueOnce({ data: sample });
+
+        const { data } = await mailerlite.ecommerce.productVariants.get("1", "7");
+
+        expect(data).toEqual(sample);
     });
 });

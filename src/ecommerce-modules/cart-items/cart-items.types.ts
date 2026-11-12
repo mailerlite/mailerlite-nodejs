@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { EcommerceCartItemObject, EcommerceCartItemParams, Links, Meta } from "../../utils/types.js";
+import { EcommerceCartItemObject, EcommerceCartItemParams, NullableLinks, NullableMeta } from "../../utils/types.js";
 
 export interface CartItemsInterface {
     get:    (shop_id: string, cart_id: string, params: GetCartItemsParams)                               => Promise<AxiosResponse<ListCartItemsResponse>>;
@@ -18,8 +18,8 @@ export type CreateUpdateCartItemParams = EcommerceCartItemParams;
 
 export interface ListCartItemsResponse {
     data:   Array<EcommerceCartItemObject>;
-    links:  Links;
-    meta:   Meta;
+    links:  NullableLinks;
+    meta:   NullableMeta;
 }
 
 export interface SingleCartItemResponse {

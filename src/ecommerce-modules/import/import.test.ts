@@ -4,6 +4,7 @@ const axiosMock = vi.hoisted(() => vi.fn(() => Promise.resolve({ data: {} })));
 vi.mock("axios", () => ({ default: axiosMock }));
 
 import { mockClient, lastRequest } from "../../utils/request-mock";
+import type { ImportCustomersResponse } from "./import.types";
 
 const mailerlite = mockClient();
 const shop = "/api/ecommerce/shops/1";
@@ -28,5 +29,26 @@ describe("E-commerce import requests", () => {
 
     it("rejects a numeric shop id", () => {
         expect(() => mailerlite.ecommerce.import.importCategories(1 as never, [])).toThrow("ID must be of type string");
+    });
+});
+
+describe("E-commerce import responses", () => {
+    // Documented response sample, typed so tsc fails when ImportCustomersResponse drifts from the API
+    it("returns an imported customer list", async () => {
+        const sample: ImportCustomersResponse = {
+            data: [
+                {
+                    resource_id: "1001",
+                    email: "customer@email.com",
+                    accepts_marketing: true,
+                    create_subscriber: true
+                }
+            ]
+        };
+        axiosMock.mockResolvedValueOnce({ data: sample });
+
+        const { data } = await mailerlite.ecommerce.import.importCustomers("1", [{ email: "customer@email.com" }]);
+
+        expect(data).toEqual(sample);
     });
 });
